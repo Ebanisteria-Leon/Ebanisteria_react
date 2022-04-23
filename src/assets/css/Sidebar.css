@@ -1,0 +1,239 @@
+.sidebar{
+    font-family: 'Rubik', sans-serif;
+    position: fixed;
+    height: 100%;
+    width: 78px;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    padding: 6px 14px;
+    z-index: 99;
+    transition: all ease 0.5s;
+}
+
+.sidebar.active{
+    width: 240px;
+}
+
+.sidebar .logo-content{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.sidebar .logo_content .logo{
+    color: #fff;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all ease 0.5s;
+}
+
+.sidebar.active .logo_content .logo{
+    opacity: 1;
+    pointer-events: none;
+    transition: all ease 0.5s;
+}
+
+.sidebar .logo_content .logo img{
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+}
+
+.logo_content .logo .logo_name{
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+.sidebar .btnSidebar{
+    position: absolute;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    left: 50%;
+    top: 5px;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    transform: translateX(-50%);
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.sidebar.active .btnSidebar{
+    left: 90%;
+}
+
+.sidebar ul{
+    margin-top: 20px;
+}
+
+.sidebar ul li{
+    position: relative;
+    list-style: none;
+    height: 50px;
+    width: 100%;
+    margin: 5px 0;
+    line-height: 50px;
+}
+
+.sidebar ul li .tooltip{
+    position: absolute;
+    top: 0;
+    left: 122px;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+    height: 35px;
+    width: 122px;
+    line-height: 35px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: 0s;
+    pointer-events: none;
+    display: block;
+}
+
+.sidebar.active ul li .tooltip{
+    display: none;
+}
+
+.sidebar ul li:hover .tooltip{
+    transition: all ease 0.5s;
+    top: 50%;
+    opacity: 1;
+}
+
+.sidebar ul li input{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 12px;
+    outline: none;
+    border: none;
+    background-color: #ffaa00;
+    padding-left: 50px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.sidebar ul li .fa-magnifying-glass{
+    position: absolute;
+    z-index: 99;
+    color: #fff;
+    font-size: 22px;
+    transition: all ease 0.5s;
+}
+
+.sidebar ul li .fa-magnifying-glass:hover{
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.sidebar ul li a{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all ease 0.35s;
+    white-space: nowrap;
+    border-radius: 12px;
+}
+
+.sidebar ul li a:hover{
+    color: #000;
+    background-color: #fff;
+}
+
+.sidebar ul li i{
+    height: 50px;
+    line-height: 50px;
+    border-radius: 12px;
+    min-width: 50px;
+    text-align: center;
+}
+
+.sidebar .links_name{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar.active .links_name{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.sidebar .profile_content{
+    position: absolute;
+    color: #fff;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.sidebar .profile_content .profile{
+    position: relative;
+    padding: 10px 6px;
+    height: 60px;
+}
+
+.sidebar .profile_content .profile .profile_details{
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    transition: all ease 0.5s;
+}
+
+.sidebar.active .profile .profile_details{
+    opacity: 1;
+    pointer-events: auto;
+    transition: all ease 0.5s;
+}
+
+.profile .profile_details img{
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.profile .profile_details .name_job{
+    margin-left: 10px;
+}
+
+.profile .profile_details .name{
+    font-size: 15px;
+}
+
+.profile .profile_details .job{
+    font-size: 12px;
+}
+
+.profile #log_out{
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    transform: translateX(-50%) scaleX(-1);
+    min-width: 50px;
+    line-height: 50px;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+
+.sidebar.active .profile #log_out{
+    left: 88%;
+    transform: translateX(-80%) scaleX(-1);
+}

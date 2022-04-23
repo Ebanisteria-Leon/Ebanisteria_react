@@ -1,0 +1,271 @@
+.mainLogin{
+    width: 100%;
+    height: 100vh;
+    background-color: #dfbc75;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor_boxLogin{
+    width: 70%;
+    height: 70%;
+    background-image:url(../images/Login/loginFondo.jpg);
+    background-size: 100% 100%;
+    border-radius: .5rem;
+    display: flex;
+}
+
+.img_login{
+    width: 50%;
+    height: 100%;
+}
+
+.login_box{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login{
+    margin-left: 100px;
+    width: 60%;
+    height: 80%;
+    background-color: white;
+    border-radius: .5rem;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo_login{
+    height: 40%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.logo_login img{
+    width: 30%;
+}
+
+.titu_login{
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.formLogin{
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    padding: 2rem;
+  }
+  
+.txt_field{
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.txt_field input{
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    width: 100%;
+    height: 40px;
+}
+
+
+.txt_field textarea{
+  border: 1px solid #7a7a7a;
+  outline: none;
+  transition: all 200ms ease;
+}
+
+.txt_field label{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  transition: .5s;
+}
+
+.txt_field span::before{
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #DFAC48;
+  transition: .5s;
+}
+
+.txt_field input:focus{
+  border: none;
+}
+
+.txt_field input:focus ~ label,
+.txt_field input:valid ~ label {
+  top: -4px;
+  color: #dfac48;
+}
+
+.txt_field input:focus ~ span::before,
+.txt_field input:valid ~ span::before {
+  width: 100%;
+}
+
+.labelForm{
+  margin: 0.1rem 0 0.1rem 0;
+}
+
+.divbtn{
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.btnSubmit{
+  padding: 8px 14px;
+  border:none;
+  border-radius: 0.5em;
+  color:white;
+  background-color: #DFAC48;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  width: 100%;
+  font-size: 16px;
+}
+
+.btnSubmit:hover{
+  background-color: #dd9a15;
+
+}
+
+.accesos{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.accesos p{
+  margin-right: 10px;
+  color: #7a7a7a;
+}
+
+.accesos a{
+  color: #dd9a15;
+  text-decoration: none;
+}
+
+.accesos a:hover{
+  color: #DFAC48;
+  text-decoration: underline;
+}
+
+.recuperar{
+  width: 100%;
+  font-size: 15px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.recuperar a{
+  color: #7a7a7a;
+  text-decoration: none;
+  transition: all 300ms;
+}
+
+.recuperar a:hover{
+  color: #5a5959;
+  text-decoration: underline;
+}
+
+@media(max-width:1400px){
+  .login{
+    height: 85%;
+    width: 65%;
+    justify-content: space-between;
+  }
+
+  .contenedor_boxLogin{
+    height: 80%;
+    font-size: 13px;
+  }
+
+  .formLogin{
+    margin-bottom: 50px;
+  }
+
+  .recuperar a{
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .login_box{
+    width: 60%;
+  }
+  .login{
+    width: 70%;
+    margin: 0;
+    height: 80%;
+  }
+  .contenedor_boxLogin{
+    justify-content: space-between;
+  }
+
+  .img_login{
+    width: 20%;
+  }
+}
+
+@media(max-width: 1024px){
+  .img_login{
+    display: none;
+  }
+
+  .login_box{
+    width: 100%;
+  }
+
+  .login{
+    width: 50%;
+    margin: 0;
+    height: 80%;
+  }
+  .contenedor_boxLogin{
+    height: 90%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+  .contenedor_boxLogin{
+    width: 90%;
+  }
+}
+
+@media (max-width: 500px) {
+  .contenedor_boxLogin{
+    height: 80%;
+  }
+  .login{
+    height: 85%;
+    width: 80%;
+  }
+}
+
+

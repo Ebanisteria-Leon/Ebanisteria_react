@@ -1,0 +1,97 @@
+.mainTable-assingRol{
+    width: 100%;
+    height: 100%;
+}
+
+.title-table-assingRol{
+    font-size: 28px;
+    text-transform: uppercase;
+    color: #313131;
+    text-align: center;
+    padding: 20px 0 0 0;
+}
+
+.section__table-assingRol{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 60px;
+}
+
+.table-assingRol{
+    margin: 45px 0 0 0;
+    width: 80%;
+    border-collapse: collapse;
+    text-align: center;
+    border: 2px solid #000;
+}
+
+.lbl{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lbl input:checked ~ span::after{
+    background-color: #db970e;
+    transform: scale(0.9) translate(33px);
+}
+
+.lbl input:checked ~ span .on{
+    transform: translate(30px);
+    opacity: 1;
+}
+
+.lbl input:checked ~ span .off{
+    transform: translate(30px);
+    opacity: 0;
+}
+
+.lbl input{
+    display: none;
+}
+
+.lbl span{
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: #979797;
+    cursor: pointer;
+    box-shadow: inset 0px 0px 2px #000;
+    position: relative;
+}
+
+.lbl span::after{
+    content: "";
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: #eee;
+    border-radius: 30px;
+    transform: scale(0.9);
+    box-shadow: inset 0px 0px 2px #000;
+    transition: all 0.4s;
+}
+
+.lbl i {
+    position: absolute;
+    left: 7px;
+    top: 7px;
+    z-index: 1;
+    color: #fff;
+    transition: all 0.4s;
+}
+
+.lbl .on{
+    opacity: 0;
+    left: 7px;
+    top: 7px;
+}
+
+.lbl .off{
+    color: #000;
+    left: 9px;
+    top: 7px;
+}

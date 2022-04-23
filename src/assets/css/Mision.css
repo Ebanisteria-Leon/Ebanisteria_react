@@ -1,0 +1,132 @@
+.mainMision{
+    background-color: black;
+    height: 100vh;
+    width: 100%;
+}
+
+.contenedorMision{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.banner2{
+    height: 40%;
+    width: 80%;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.banner__icon-micro{
+    width: 35%;
+    height: 100%;
+}
+
+.banner__icon-micro img{
+    width: 400px;
+    position: relative;
+    filter: drop-shadow(-40px 0px 30px rgba(0,0,0,0.5));
+    margin-top: 250px;
+}
+
+.banner__text{
+    width: 50%;
+    position:relative;
+    padding: 40px;
+    font-size: 16px;
+}
+
+.banner__text h2{
+    color: #dcaa47;
+    font-size: 50px;
+    font-weight: 400;
+}
+
+
+.banner__icon-numeral{
+    height: 100%;
+    position:absolute;
+    right: 10px;
+    overflow: hidden;
+}
+
+.banner__icon-numeral img{
+    width: 300px;
+    position:relative;
+    margin-top: -250px;
+    opacity:0.6;
+}
+
+@media (max-width: 1400px) {
+    .banner2{
+        height: 60%;
+    }
+    .banner__icon-micro img{
+        margin-top: 190px;
+    }
+    .banner__text{
+        width: 60%;
+    }
+}
+
+
+@media (max-width: 1200px) {
+    .banner2{
+        height: 60%;
+    }
+    .banner__icon-micro img{
+        margin-top: 190px;
+        width: 350px;
+    }
+    .banner__text{
+        width: 60%;
+    }
+    .mainMision{
+        height: 65vh;
+        width: 100%;
+    }
+}
+
+ @media (max-width: 1024px) {
+    .banner2{
+        justify-content: space-around;
+    }
+    .banner__icon-numeral{
+        visibility: hidden;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner2{
+        justify-content: space-around;
+    }
+    .banner__icon-numeral{
+        visibility: hidden;
+    }
+    .banner__icon-micro img{
+        width: 300px;
+    }
+    .banner__text{
+        width: 60%;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 500px) {
+    .contenedorMision{
+        align-items: center;
+    }
+    .banner__icon-micro{
+        visibility: hidden;
+        width: 0;
+    }
+
+    .banner__text{
+        width: 100%;
+        font-size: 14px;
+    }
+}

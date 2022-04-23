@@ -1,0 +1,153 @@
+.mainVision{
+    background-color: black;
+    width: 100%;
+}
+
+.contenedorVision{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+.banner22{
+    margin-top: 200px;
+    height: 400px;
+    width: 80%;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.banner__icon-micro2{
+    width: 35%;
+    height: 100%;
+}
+
+.banner__icon-micro2 img{
+    width: 500px;
+    position: relative;
+    filter: drop-shadow(-40px 0px 30px rgba(0,0,0,0.5));
+    margin-top: 250px;
+}
+
+.banner__text2{
+    width: 50%;
+    position:relative;
+    padding: 40px;
+    font-size: 16px;
+}
+
+.banner__text2 h2{
+    color: #dcaa47;
+    font-size: 50px;
+    font-weight: 400;
+}
+
+
+.banner__icon-numeral2{
+    height: 100%;
+    position:absolute;
+    right: 10px;
+    overflow: hidden;
+}
+
+.banner__icon-numeral2 img{
+    width: 400px;
+    position:relative;
+    margin-top: -250px;
+    opacity:0.6;
+}
+
+.onda2{
+    width: 100%;
+    position: absolute;
+    filter: drop-shadow(-40px 0px 30px rgba(0,0,0,0.5));
+}
+
+@media (max-width: 1400px) {
+    .banner22{
+        height: 383px;
+    }
+    .banner__icon-micro2 img{
+        width:380px;
+        margin-top: 190px;
+    }
+    .banner__text2{
+        width: 60%;
+    }
+    .mainVision{
+        height: 90vh;
+        width: 100%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .banner22{
+        height: 245px;
+    }
+    .banner__icon-micro2 img{
+        width:350px;
+        margin-top: 190px;
+    }
+    .banner__icon-numeral2 img{
+        width: 350px;
+    }
+    .banner__text2{
+        width: 60%;
+    }
+    .mainVision{
+        height: 90vh;
+        width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .banner22{
+        justify-content: space-around;
+    }
+    .banner__icon-micro2 img{
+        width:340px;
+    }
+    .banner__icon-numeral2{
+        visibility: hidden;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner22{
+        justify-content: space-around;
+    }
+    .banner__icon-numeral2{
+        visibility: hidden;
+    }
+    .banner__icon-micro2 img{
+        width: 270px;
+        margin-top: 230px;
+    }
+    .banner__text2{
+        width: 60%;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 500px) {
+    .contenedorVision{
+        align-items: center;
+    }
+    .banner22{
+        margin: 0;
+    }
+    .banner__icon-micro2{
+        visibility: hidden;
+        width: 0;
+    }
+
+    .banner__text2{
+        width: 100%;
+        font-size: 14px;
+    }
+}

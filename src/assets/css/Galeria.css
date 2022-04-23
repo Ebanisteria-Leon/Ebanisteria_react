@@ -1,0 +1,158 @@
+.galeria{
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 20px;
+}
+
+.columna{
+    flex: 20%;
+    max-width: 20%;
+    padding: 0px 7px;
+}
+
+.columna img{
+    margin-top: 10px;
+    vertical-align: middle;
+    width: 100%;
+    filter: grayscale(100%);
+    transition: all .3s ease;
+}
+
+.columna img:hover{
+    cursor: pointer;
+    filter: grayscale(0%);
+    box-shadow: 0 0 1px rgba(0,0,0,.5);
+    transform: scale(1.1);
+}
+
+.overlay2{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.9);
+    z-index: 60;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .7s ease;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.overlay2 .slideshow{
+    width: 80%;
+    height: 85%;
+    background-color: rgba(0,0,0,.0);
+    color: #000;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.slideshow img{
+    height: 100%;
+    width: 85%;
+    object-fit: contain;
+}
+
+.btn_cerrar{
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    font-size: 30px;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    transition: all .2s ease;
+}
+
+.btn_cerrar:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.botones{
+    width: 70px;
+    height: 50px;
+    border-radius: 50%;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: white;
+}
+
+.botones:hover > i{
+    transform: scale(1.1);
+    transition: all .2s ease;
+}
+
+.atras{
+    left: 20px;
+}
+
+.adelante{
+    right: 20px;
+}
+
+.botones .fa{
+    pointer-events: none;
+}
+
+@media screen and (max-width:800px){
+    .columna{
+        flex: 50%;
+        max-width: 50%;
+    }
+    .botones{
+        font-size: 30px;
+    }
+    .atras{
+        left: 5px;
+    }
+    .adelante{
+        right: 5px;
+    }
+
+    .overlay2 .slideshow{
+        height: 70%;
+    }
+
+    .slideshow img{
+        width: 98%;
+    }
+}
+
+.titulo_galeria{
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
+}
+
+
+@media (max-width: 800px) {
+    .galeria{
+        height: 89vh;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 768px) {
+    .columna{
+        flex: 50%;
+        max-width: 100%;
+    }
+}

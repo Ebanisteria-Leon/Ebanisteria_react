@@ -1,0 +1,187 @@
+.mainAgregar{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../images/AgregarProducto/fondo.png);
+    background-size: 100% 100%;
+}
+
+.container_agregar{
+    width: 30%;
+    height: 80%;
+    position: relative;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 1em;
+}
+
+.titulo_agregar{
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    font-size: 25px;
+    color: #e39804;
+    letter-spacing: 5px;
+}
+
+.agregar_sofa{
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    top: -80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.agregar_sofa img{
+    object-fit: contain;
+    width: 70%;
+    height: 100%;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.7));
+}
+
+.formAgregar{
+    height: 90%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    padding: 2rem;
+}
+
+.select_agregar{
+    width: 100%;
+    height: 15%;
+    margin: 10px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.select_agregar select{
+    width: 40%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    transition: all 600ms;
+    font-size: 16px;
+}
+
+.custom-input-file {
+    background-color: #dfac48;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 auto 0;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 50%;
+    height: 30%;
+    border-radius: .4em;
+    transition: all 300ms;
+  }
+
+  .custom-input-file:hover {
+    background-color: #da9d24;
+    color: #fff;
+
+  }
+
+.custom-input-file p{
+    height: 100%;
+    line-height: 28px;
+}
+
+.select_agregar input{
+    border: 100px solid transparent;
+    cursor: pointer;
+    font-size: 10000px;
+    margin: 0;
+    opacity: 0;
+    outline: 0 none;
+    padding: 0;
+    position: absolute;
+    right: -100px;
+    top: -100px;
+    height: 10%;
+}
+
+
+.divbtn_agregar {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+}
+
+.divbtn_agregar button{
+    width: 35%;
+}
+
+.divbtn_agregar button:nth-child(2){
+    background-color: rgb(159, 133, 133);
+}
+
+.divbtn_agregar button:nth-child(2):hover{
+    width: 35%;
+    background-color: rgb(158, 114, 114);
+}
+
+@media (max-width: 1400px) {
+    .custom-input-file {
+        font-size: 15px;
+        width: 50%;
+        height: 65%;
+    }
+}
+
+
+@media (max-width: 1200px) {
+    .titulo_agregar{
+        font-size: 20px;
+    }
+    .container_agregar{
+        width: 35%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .titulo_agregar{
+        font-size: 17px;
+    }
+    .container_agregar{
+        width: 40%;
+    }
+}
+
+@media (max-width: 768px) {
+    .titulo_agregar{
+        font-size: 16px;
+    }
+    .container_agregar{
+        width: 50%;
+        margin-top: 70px;
+    }
+}
+
+@media (max-width: 500px) {
+    .titulo_agregar{
+        font-size: 16px;
+    }
+    .container_agregar{
+        width: 75%;
+        margin-top: 80px;
+    }
+    .mainAgregar{
+        background-size: cover;
+    }
+}

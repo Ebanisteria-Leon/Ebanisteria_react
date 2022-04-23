@@ -1,0 +1,247 @@
+.mainRecover{
+    width: 100%;
+    height: 100vh;
+    background-color: #99888a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor_boxRecover{
+    width: 70%;
+    height: 70%;
+    background-image:url(../images/Login/loginFondo.jpg);
+    background-size: 100% 100%;
+    border-radius: .5rem;
+    display: flex;
+}
+
+.img_recover{
+    width: 50%;
+    height: 100%;
+}
+
+.recover_box{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recover{
+    margin-left: 100px;
+    width: 60%;
+    height: 90%;
+    background-color: white;
+    border-radius: .5rem;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo_recover{
+    height: 40%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.logo_recover img{
+    width: 30%;
+}
+
+.logo_recover .titu_login{
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.formRecover{
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    padding: 2rem;
+  }
+  
+.txt_field{
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.txt_field input{
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    width: 100%;
+    height: 40px;
+}
+
+
+.txt_field textarea{
+  border: 1px solid #7a7a7a;
+  outline: none;
+  transition: all 200ms ease;
+}
+
+.txt_field label{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  transition: .5s;
+}
+
+.txt_field span::before{
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #DFAC48;
+  transition: .5s;
+}
+
+.txt_field input:focus{
+  border: none;
+}
+
+.txt_field input:focus ~ label,
+.txt_field input:valid ~ label {
+  top: -4px;
+  color: #dfac48;
+}
+
+.txt_field input:focus ~ span::before,
+.txt_field input:valid ~ span::before {
+  width: 100%;
+}
+
+.labelForm{
+  margin: 0.1rem 0 0.1rem 0;
+}
+
+.divbtn{
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.btnSubmit{
+  padding: 8px 14px;
+  border:none;
+  border-radius: 0.5em;
+  color:white;
+  background-color: #DFAC48;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  width: 100%;
+  font-size: 16px;
+}
+
+.btnSubmit:hover{
+  background-color: #dd9a15;
+
+}
+
+.accesos_recover{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.accesos_recover p{
+  margin-right: 10px;
+  color: #7a7a7a;
+}
+
+.accesos_recover a{
+  color: #dd9a15;
+  text-decoration: none;
+}
+
+.accesos_recover a:hover{
+  color: #DFAC48;
+  text-decoration: underline;
+}
+
+@media(max-width:1400px){
+  .recover{
+    height: 85%;
+    width: 65%;
+    justify-content: space-between;
+  }
+
+  .contenedor_boxRecover{
+    height: 85%;
+    font-size: 13px;
+  }
+
+  .formRecover{
+    margin-bottom: 50px;
+  }
+
+  .accesos_recover a{
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .img_recover{
+    width: 20%;
+  }
+  .recover_box{
+    width: 70%;
+  }
+  .contenedor_boxRecover{
+    justify-content: space-between;
+  }
+  .recover{
+    height: 90%;
+  }
+}
+
+@media(max-width: 1024px){
+  .img_recover{
+    display: none;
+  }
+
+  .recover_box{
+    width: 100%;
+  }
+
+  .recover{
+    margin: 0;
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .recover{
+    width: 70%;
+  }
+}
+
+@media (max-width: 500px) {
+  .titulo img {
+    width: 100%;
+  }
+  .contenedor_boxRecover{
+    width: 90%;
+  }
+  .btnSubmit{
+    font-size: 5px;
+    padding: 10px 10px;
+  }
+}

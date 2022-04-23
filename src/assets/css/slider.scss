@@ -1,0 +1,16 @@
+.slick-prev,
+.slick-next {
+
+    background: red;
+    color: red;
+
+    &:hover, &:focus {
+        background: red;
+        color: red;
+    }
+    &:before {
+
+        color: red;
+
+    }
+}

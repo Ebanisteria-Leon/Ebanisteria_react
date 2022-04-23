@@ -1,0 +1,18 @@
+.slick-prev,
+.slick-next {
+  background: rgba(0, 0, 0, 0);
+  color: rgb(0, 0, 0);
+}
+
+.slick-prev:hover, .slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus {
+  background: rgba(0, 0, 0, 0);
+  color: rgb(0, 0, 0);
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: rgb(0, 0, 0);
+}
+/*# sourceMappingURL=slider.css.map */

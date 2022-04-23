@@ -1,0 +1,145 @@
+.mainCategory{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+.title-page-category{
+    font-size: 28px;
+    text-transform: uppercase;
+    color: #000000;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.section__category{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+
+.cardCategory{
+    width: 480px;
+    margin: 20px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 1);
+    transition: all ease 0.4s;
+}
+
+.cardCategory:hover{
+    transform: scale(1.05);
+}
+
+.contentCard{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    opacity: 0;
+    transition: all ease 0.4s;
+}
+
+.nameCategory{
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 600;
+    animation: mostrartexto .8s ease .5s forwards;
+}
+
+.linkCategory{
+    cursor: pointer;
+    color: #c2c2c2;
+    background: none;
+    border: none;
+    font-size: 15px;
+    transition: all 0.2s;
+    font-weight: 400;
+}
+
+.linkCategory:hover{
+    color: #fff;
+    text-decoration: underline;
+}
+
+.cardCategory:hover .contentCard{
+    opacity: 1;
+}
+
+.image1{
+    background-image: url(../images/categorias/silla.jpg);
+    background-size: cover;
+}
+
+.image2{
+    background-image: url(../images/categorias/comedor.jpg);
+    background-size: cover;
+}
+
+.image3{
+    background-image: url(../images/categorias/sofa.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.image4{
+    background-image: url(../images/categorias/habitacion.jpg);
+    background-size: cover;
+}
+
+.image5{
+    background-image: url(../images/categorias/diseño_interior.jpg);
+    background-size: cover;
+}
+
+.section__links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+
+.linksProducts{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.linksProducts a{
+    color: #252525;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.35s;
+}
+
+.linksProducts a:hover{
+    font-size: 21px;
+    color: #000;
+    text-decoration: underline;
+}
+
+
+@media (max-width: 768px) {
+    .linksProducts li{
+        text-align: center;
+        margin: 0px 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .linksProducts a{
+        font-size: 16px;
+    }
+}
+

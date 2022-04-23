@@ -1,0 +1,446 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+main {
+  width: 100%;
+  padding: 4% 10% 0% 10%;
+}
+
+.splash{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #191919;
+  color: white;
+}
+
+.splash h1{
+  font-size: 300px;
+  text-transform: uppercase;
+  font-family: 'Anton', sans-serif;
+  font-weight: 100;
+  letter-spacing: 20px;
+  background-image: url(../images/Splash/fondo6.jpg);
+  background-size: cover;
+  background-position-y:bottom;
+  background-clip:text;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color: transparent;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.splash h2{
+  font-size: 5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 10px;
+  color: #dcaa47;
+}
+
+.absolute{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  z-index: 200;
+}
+
+/*BANNER*/
+
+.banner {
+  height: 100vh;
+  background-image: url("../images/banner.jpg");
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 9;
+  z-index: 1;
+}
+
+.banner:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.titulo {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.titulo img {
+  width: 60%;
+}
+
+.banner h1 {
+  color: white;
+  letter-spacing: 5px;
+  font-size: 100px;
+}
+
+/*-----------------------------*/
+
+/* OVERLAY PRODUCTOS */
+
+.overlay {
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.active {
+  visibility: visible;
+}
+
+/* SLIDER PROMOCIONES */
+
+.p-slider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0px;
+}
+
+.titu-slider {
+  font-size: 28px;
+  text-transform: uppercase;
+  color: #313131;
+  text-align: center;
+  margin: 0;
+}
+
+.product-box {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  margin: 0px 20px;
+  position: relative;
+}
+
+.p-img-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.p-img a,
+.p-img {
+  width: 100%;
+  height: 300px;
+  display: flex;
+}
+
+.p-img a img {
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: contain;
+  animation: fade 0.6s;
+}
+
+.p-img-back {
+  display: none;
+}
+
+.p-img-container:hover .p-img-back {
+  display: block;
+}
+
+.p-img-container:hover .p-img-front {
+  display: none;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.box-text {
+  margin-top: 5px;
+  width: 100%;
+}
+
+.producto-categoria {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.producto-categoria span {
+  color: #acacac;
+  font-size: 0.9rem;
+  margin: 5px 0px;
+}
+
+.producto-titulo {
+  color: #333333;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all ease 0.3s;
+}
+
+.producto-titulo:hover {
+  counter-reset: #111111;
+  opacity: 0.7;
+  transition: all ease 0.3s;
+}
+
+.precio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.precio .p-precio {
+  font-size: 1.3rem;
+  color: #333333;
+  font-weight: 700;
+}
+
+.precio .buy-btn {
+  border: none;
+  background: none;
+  color: #dcaa47;
+  margin: 0px 5px;
+  font-weight: 600;
+}
+
+.precio .buy-btn:hover {
+  text-decoration: underline;
+}
+
+.p-descuento {
+  position: relative;
+  left: 20px;
+  top: 20px;
+  width: 65px;
+  height: 24px;
+  color: white;
+  background-color: #dcaa47;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  z-index: 100;
+  border-radius: 3px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-family: "slick";
+  font-size: 20px;
+  line-height: 1;
+
+  opacity: 0.75;
+  color: #000;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*--------------------------------*/
+
+/* Cajas de produccion
+.box_production{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.boxes{
+  margin: 15px 0;
+  padding: 50px;
+  background-color: red;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 1px solid #000;
+  transition: all ease-in-out 0.35s;
+}
+
+.boxes:hover{
+  background-color: #b12929;
+}
+
+Envio de correos masivos 
+.email__form{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 25px;
+}
+
+.label_email{
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.input_form{
+  width: 50%;
+  border: #000 2px solid;
+  height: 45px;
+  padding: 5px;
+}
+
+.textarea_form{
+  min-width: 50%;
+  max-width: 90%;
+  border: #000 2px solid;
+  min-height: 70px;
+  max-height: 105px;
+  padding: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.boton_email{
+  margin-top: 25px;
+  max-width: fit-content;
+  padding: 15px 25px;
+  color: #000;
+  background-color: red;
+  border-radius: 10px;
+  border: #000 solid 1px;
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all ease-in-out 0.35s;
+}
+
+.boton_email:hover{
+  background-color: #b12929;
+}
+
+Tabla de pedidos pendientes 
+.table{
+  margin: 45px 0 0 0;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  border: 2px solid #000;
+}
+
+thead{
+  background-color: red;
+  color: #fff;
+  border-bottom: #000 5px solid;
+}
+
+tr:nth-child(even){
+  background-color: #ddd;
+}
+
+tr:hover td{
+  background-color: #757575;
+} 
+
+th, td{
+   border: #000 solid 1px; 
+  padding: 20px;
+}
+
+Iconos, por si gustan ponerlos me dicen :) 
+.fas{
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.fab{
+  font-size: 20px;
+  margin-right: 5px;
+} */
+
+@media (max-width: 1400px) {
+  .splash h1{
+    font-size: 11rem;
+  }
+  
+  .splash h2{
+    font-size: 7rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .splash h1{
+    font-size: 9rem;
+  }
+  
+  .splash h2{
+    font-size: 5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .splash h1{
+    font-size: 8rem;
+  }
+  
+  .splash h2{
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .splash h1{
+    font-size: 6rem;
+  }
+  
+  .splash h2{
+    font-size: 3rem;
+  }
+
+  .banner {
+    background-size: cover;
+  }
+}
+
+@media (max-width: 500px) {
+  .titulo img {
+    width: 100%;
+  }
+  .splash h1{
+    font-size: 4rem;
+  }
+  
+  .splash h2{
+    font-size: 2rem;
+  }
+
+  .banner {
+    background-size: cover;
+  }
+}

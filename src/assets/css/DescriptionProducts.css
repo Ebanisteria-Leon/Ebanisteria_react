@@ -1,0 +1,205 @@
+.mainDescriptionProducts{
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.3);
+    background-color: #f8f8f8;
+
+    transition: 0.3s ease all;
+    transform: scale(0.6);
+    opacity: 0;
+    position: relative;
+}
+
+.productsImage{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    transition: all 300ms;
+}
+
+.products_img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius:20px ;
+    transition: all 300ms;
+    z-index: 2;
+}
+
+.products_img:hover{
+    transform: scale(1.2);
+}
+
+.productsInfo{
+    padding-left: 20px;
+    width: 50%;
+    height: 80%;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.paragraph-span{
+    font-weight: 600;
+}
+
+.paragraph-p{
+    font-weight: 500;
+    padding-left: 10px;
+}
+
+.productsActions{
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.addProducts{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.buttonProducts{
+    padding: 15px;
+    border: none;
+    border-radius: 1em;
+    margin: 5px 10px;
+}
+
+.addProducts_add{
+    background-color: #dfac48;
+    transition: all 0.35s;
+}
+
+.addProducts_remove{
+    background-color: #000;
+    color: #fff;
+    transition: all 0.35s;
+}
+
+.buttonProducts_buy{
+    padding: 10px 20px;
+    background-color: #dfac48;
+    font-weight: 600;
+    border: none;
+    border-radius: 1em;
+    transition: all 0.35s;
+}
+
+.addProducts_add:hover{
+    background-color: #db970e;
+}
+
+.addProducts_remove:hover{
+    background-color: rgb(58, 58, 58);
+}
+
+.buttonProducts_buy:hover{
+    background-color: #db970e;
+}
+
+.fa-shopping-cart{
+    margin: 5px;
+}
+
+/* Animaciones */
+
+.active{
+    transform: scale(1);
+    opacity: 1;
+    z-index: 2;
+}
+
+.active .productsInfo{
+    animation: mostrartexto .8s ease .5s forwards;
+}
+
+@media (max-width: 1200px) {
+    .mainDescriptionProducts{
+        height: 85%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .mainDescriptionProducts{
+        height: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .mainDescriptionProducts{
+        height: 75%;
+    }
+    .productsInfo{
+        height: 60%;
+        font-size: 12px;
+    }
+    .buttonProducts_buy{
+        padding: 10px 10px;
+        font-size: 12px;
+    }
+    .productsActions{
+        margin-right: 10px;
+    }
+    .addProducts_remove{
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .addProducts_add{
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 500px) {
+    .mainDescriptionProducts{
+        height: 60%;
+        width: 90%;
+    }
+    .productsInfo{
+        height: 100%;
+        width: 100%;
+        font-size: 12px;
+    }
+    .buttonProducts_buy{
+        padding: 10px 10px;
+    }
+    .productsActions{
+        margin-right: 10px;
+    }
+    .productsImage{
+        width: 0;
+    }
+    .products_img{
+        display: none;
+        width: 0;
+    }
+    
+}
+
+@keyframes mostrartexto {
+    from {
+        transform: translateY(-25px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

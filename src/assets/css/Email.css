@@ -1,0 +1,398 @@
+.mainEmail {
+  width: 100%;
+  height: 100vh;
+  background-color: #dbb8a8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../images/Contacto/fondo_contactos.jpg);
+  background-size: 100% 100%;
+}
+
+.fondo_contacto{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.767);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container_contacto{
+  width: 70%;
+  height: 70%;
+  display: flex;
+  border-top-right-radius:1em ;
+  border-bottom-right-radius:1em ;
+}
+
+.box_contacto{
+  width: 50%;
+  height: 100%;
+  border-top-left-radius:1em ;
+  border-bottom-left-radius:1em ;
+  position: relative;
+  background-image: url(../images/Contacto/fondos/fondo1.jpg);
+  background-size: cover;
+  background-position: center center;
+  animation: banner 10s infinite;
+  animation-direction: alternate;
+}
+
+.box_contacto2{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #d8a1327e;
+  border-top-left-radius:1em ;
+  border-bottom-left-radius:1em ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  text-align: center; 
+}
+
+.contacto_logo{
+  width: 70%;
+  height: 25%;
+}
+
+.contacto_logo img{
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.contacto_info{
+  width: 70%;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.contacto_info h2{
+  font-size: 30px;
+}
+
+.contacto_logos{
+  width: 80%;
+  height: 30%;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+
+.contacto_logos h2{
+  font-size: 30px;
+}
+
+.redes_contacto{
+  display: flex;
+  width: 50%;
+  justify-content: space-evenly;
+  font-size: 45px;
+  color: black;
+  font-weight: bold;
+  
+}
+
+.redes_contacto a{
+  color: black;
+}
+
+
+#icono_contacto-fb{
+  transition: all 300ms ease;
+}
+
+#icono_contacto-fb:hover{
+  font-size:50px;
+  color: white;
+  text-shadow: 0 0 10px white;
+}
+
+#icono_contacto-wp{
+  transition: all 300ms ease;
+}
+
+#icono_contacto-wp:hover{
+  font-size:50px;
+  color: white;
+  text-shadow: 0 0 10px white;
+}
+
+.box_form{
+  width: 70%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formEmail {
+  height: 70%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  padding: 2rem;
+  border-top-right-radius:1em ;
+  border-bottom-right-radius:1em ;
+}
+
+.formEmail textarea{
+  resize: none;
+  width: 100%;
+  height: 120px;
+  padding: 0px 10px;
+  color: black;
+  font-size: 16px;
+}
+
+.formEmail textarea:focus{
+  border: 1px solid #dfac48;
+}
+
+.txt_field {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.txt_field input {
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  width: 100%;
+  height: 40px;
+}
+
+.txt_field textarea {
+  border: 1px solid #7a7a7a;
+  outline: none;
+  transition: all 200ms ease;
+}
+
+.txt_field label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  transition: 0.5s;
+}
+
+.txt_field span::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #dfac48;
+  transition: 0.5s;
+}
+
+.txt_field input:focus{
+  border: none;
+}
+
+.txt_field input:focus ~ label,
+.txt_field input:valid ~ label {
+  top: -4px;
+  color: #dfac48;
+}
+
+.txt_field input:focus ~ span::before,
+.txt_field input:valid ~ span::before {
+  width: 100%;
+}
+
+.labelForm {
+  margin: 0.1rem 0 0.1rem 0;
+}
+
+.divbtn {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.btnSubmit {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 0.5em;
+  color: white;
+  background-color: #dfac48;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  width: 100%;
+  font-size: 16px;
+}
+
+.btnSubmit:hover {
+  background-color: #dd9a15;
+}
+
+/* .accesos{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+
+}
+
+.recuperar{
+    width: 100%;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.recuperar{
+    width: 100%;
+} */
+
+@keyframes banner {
+  0%, 30%{
+      background-image: url(../images/Contacto/fondos/fondo1.jpg);
+  }
+
+  35%, 65%{
+      background-image: url(../images/Contacto/fondos/fondo2.jpg);
+
+  }
+
+  70%, 100%{
+
+      background-image: url(../images/Contacto/fondos/fondo3.jpg);
+  }
+
+}
+
+@media (max-width: 1400px) {
+  .email {
+    height: 85%;
+    width: 65%;
+    justify-content: space-between;
+  }
+
+  .contenedor_boxEmail {
+    height: 80%;
+    font-size: 13px;
+  }
+
+  .formEmail {
+    margin-bottom: 50px;
+  }
+
+  .accesos_recover a {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .box_contacto2{
+    font-size: 14px;
+  }
+
+  .contacto_info h2{
+    font-size: 25px;
+  }
+
+  .contacto_logos h2{
+    font-size: 25px;
+  }
+  .formEmail{
+    width: 70%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .img_email {
+    display: none;
+  }
+
+  .email_box {
+    width: 100%;
+  }
+
+  .email {
+    margin: 0;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .container_contacto{
+    width: 90%;
+  }
+  .box_contacto2{
+    font-size: 13px;
+  }
+
+  .contacto_info h2{
+    font-size: 20px;
+  }
+
+  .contacto_logos h2{
+    font-size: 20px;
+  }
+
+  .redes_contacto{
+    font-size: 30px;
+  }
+  
+  #icono_contacto-fb:hover{
+    font-size:40px;
+  }
+
+  #icono_contacto-wp:hover{
+    font-size:40px;
+  }
+}
+
+@media (max-width: 500px) {
+  .box_contacto2{
+    display: none;
+  }
+  .container_contacto{
+    position: relative;
+    justify-content: center;
+  }
+  .box_contacto{
+    position: absolute;
+    width: 100%;
+  }
+  .box_form{
+    position: relative;
+    width: 100%;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+    background-color: rgba(255, 255, 255, 0.445);
+  }
+  .formEmail{
+    background-color: transparent;
+  }
+  .txt_field input{
+    background-color: transparent;
+  }
+  .txt_field textarea{
+    background-color: transparent;
+    color: black;
+  }
+  .txt_field textarea::placeholder{
+    color: black;
+  }
+}
+

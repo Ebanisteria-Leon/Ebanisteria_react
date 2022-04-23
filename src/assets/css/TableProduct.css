@@ -1,0 +1,68 @@
+.mainTable-products{
+    width: 100%;
+    height: 100%;
+}
+
+.title-table-products{
+    font-size: 28px;
+    text-transform: uppercase;
+    color: #313131;
+    text-align: center;
+    padding: 20px 0 0 0;
+}
+
+.section__table-products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 60px;
+}
+
+.table-products{
+    margin: 25px 0;
+    width: 90%;
+    border-collapse: collapse;
+    text-align: center;
+    border: 2px solid #000;
+}
+
+.buttonsTable-actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnAction-table{
+    border: none;
+    padding: 10px;
+    margin: 3px;
+    border-radius: 1em;
+}
+
+.update-products{
+    background-color: #dfac48;
+    transition: all 0.35s;
+}
+
+.delete-products{
+    background-color: #000;
+    transition: all 0.35s;
+}
+
+.update-products:hover{
+    background-color: #db970e;
+}
+
+.delete-products:hover{
+    background-color: #3a3a3a;
+}
+
+.fa-trash{
+    color: #fff;
+}
+
+.img-table{
+    width: 120px;
+    height: 120px;
+}

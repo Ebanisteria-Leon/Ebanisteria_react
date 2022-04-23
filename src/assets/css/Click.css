@@ -1,0 +1,85 @@
+
+.clicks{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin-top: 250px;
+    background-image: url(../images/Clicks/fondo.png);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+.contenedor_clicks{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo_click{
+    width: 15%;
+}
+
+.contenedor_clicks img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.contenedor_clicks p{
+    font-size: 35px;
+    font-weight: bold;
+}
+
+@media (max-width: 1400px) {
+    .clicks{
+        margin-top: 200px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .clicks{
+        height: 60vh;
+        margin-top: 170px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .logo_click{
+        width: 20%;
+    }
+    .clicks{
+        margin-top: 145px;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo_click{
+        width: 25%;
+    }
+    .clicks{
+        margin-top: 110px;
+        background-size: cover;
+    }
+}
+
+@media (max-width: 500px) {
+    .clicks{
+        margin-top: 0;
+        margin-bottom: 100px;
+        align-items: center;
+    }
+    .contenedor_clicks{
+        margin-top: 70px;
+    }
+    .logo_click{
+        width: 30%;
+    }
+    .contenedor_clicks p{
+        font-size: 20px;
+        font-weight: bold;
+    }
+}

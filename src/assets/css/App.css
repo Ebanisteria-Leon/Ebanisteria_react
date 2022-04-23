@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+*::-webkit-scrollbar{
+  width: 12px;
+}
+
+*::-webkit-scrollbar-thumb{
+  background: linear-gradient(transparent, #db970ec5);
+  border-radius: 6px;
+  transition: all 600ms;
+}
+
+*::-webkit-scrollbar-thumb:hover{
+  background: linear-gradient(transparent, #be830dc5);
+
+}
+
+html{
+  scroll-behavior: smooth;
+}
+/* BOTONES */
+
+button{
+  cursor: pointer;
+}
+
+/* TABLAS */
+
+thead{
+  background-color: #db970e;
+  color: #fff;
+  border-bottom: #000 5px solid;
+}
+
+tr:nth-child(even){
+  background-color: #ddd;
+  transition: all 0.3s;
+  color: #000;
+}
+
+tr:hover td{
+  background-color: #aaaaaa;
+} 
+
+th, td{
+  border: #000 solid 1px; 
+  padding: 10px;
+}
+
+/* BARRAS */
+
+.menu-btn{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  right: 25px;
+  top: 25px;
+  color: #fff;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+  z-index: 201;
+}
+
+.menu-btn__burger{
+  width: 35px;
+  height: 6px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #DCAA47;
+  transition: all .5s ease-in-out;
+}
+
+.menu-btn__burger::before,
+.menu-btn__burger::after{
+  content: '';
+  position: absolute;
+  width: 35px;
+  height: 6px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #DCAA47;
+  transition: all .5s ease-in-out;
+}
+
+.menu-btn__burger::before{
+  transform: translateY(-16px);
+}
+
+.menu-btn__burger::after{
+  transform: translateY(16px);
+}
+
+/* ANIMACION BARRAS */
+.menu-btn.open .menu-btn__burger{
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none;
+}
+
+
+.menu-btn.open .menu-btn__burger::before{
+  transform: rotate(45deg) translate(35px, -35px);
+}
+
+.menu-btn.open .menu-btn__burger::after{
+  transform: rotate(-45deg) translate(35px, 35px);
+}
+
+@media (max-width: 1200px) {
+
+}
+
+@media (max-width: 1024px) {
+
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 500px) {
+
+}
