@@ -6,7 +6,7 @@ import { Barra } from '../../UI/Barra/Barra'
 import { Mision } from '../../UI/Mision/Mision'
 import { Vision } from '../../UI/Vision/Vision'
 import { Click } from '../../UI/Click/Click'
-import { SpinnerCircular } from 'spinners-react';
+import { SpinnerCircular, SpinnerDotted } from 'spinners-react';
 
 export const Home = () => {
 
@@ -40,6 +40,7 @@ export const Home = () => {
       <div className="splash absolute">
         <h1>BIENVENIDOS!</h1>
         <h2>EBANISTERÍA LEÓN</h2>
+        <SpinnerDotted color='#dcaa47'/>
       </div>
       ) :(
     <>
