@@ -11,6 +11,9 @@ import { Imagen } from '../../UI/Imagen/Imagen'
 import { Modal } from '../../UI/Modal/Modal';
 
 export const Email = () => {
+    let inputNombre
+    let inputEmail
+    let inputMensaje
 
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
 
@@ -21,10 +24,19 @@ export const Email = () => {
         .then(response => {
             console.log(response)
             cambiarEstadoModalEmail(!estadoModalEmail)
-            
+            inputNombre.textContent=""
+            inputEmail.textContent=""
+            inputMensaje.textContent=""
         })
         .catch(error => console.log(error))
     }
+
+    useEffect(() => {
+        inputNombre = document.querySelector("#nombre")
+        inputEmail = document.querySelector("#email")
+        inputMensaje = document.querySelector("#mensaje")
+    }, [])
+    
 
     return (
         <>
