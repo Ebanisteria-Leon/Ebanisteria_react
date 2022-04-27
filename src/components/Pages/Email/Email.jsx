@@ -24,9 +24,9 @@ export const Email = () => {
         .then(response => {
             console.log(response)
             cambiarEstadoModalEmail(!estadoModalEmail)
-            inputNombre.textContent=""
-            inputEmail.textContent=""
-            inputMensaje.textContent=""
+            inputNombre.value=""
+            inputEmail.value=""
+            inputMensaje.value=""
         })
         .catch(error => console.log(error))
     }

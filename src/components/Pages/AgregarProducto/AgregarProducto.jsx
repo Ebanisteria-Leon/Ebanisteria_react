@@ -6,6 +6,14 @@ import { Imagen } from '../../UI/Imagen/Imagen'
 import mueble from '../../../assets/images/AgregarProducto/muebleLargo.png'
 
 export const AgregarProducto = () => {
+
+    const mostrarArchivo=()=>{
+        const inputFile = document.getElementById('imagen')
+        const tituImagen = document.querySelector('.tituImagen')
+        tituImagen.innerText = inputFile.files[0].name
+    }
+
+
     return (
         <div className='mainAgregar'>
             <div className='titulo_agregar'>
@@ -74,8 +82,10 @@ export const AgregarProducto = () => {
                                 id='imagen'
                                 className=''
                                 autoComplete='off'
+                                onChange={mostrarArchivo}
                             />
                             <p>Subir Imagen</p>
+                            <h5 className='tituImagen'></h5>
                         </div>
                     </div>
 

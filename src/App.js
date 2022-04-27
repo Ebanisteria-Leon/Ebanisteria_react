@@ -1,10 +1,11 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import './assets/css/App.css'
 import { 
     BrowserRouter,
     Routes,
     Route
 } from 'react-router-dom'
+import * as Scroll from 'react-scroll';
 
 import { Home } from './components/Pages/Home/Home'
 import { PageNot } from './components/Pages/PageNot/PageNot'
@@ -25,7 +26,41 @@ import { TableProducts } from './components/Pages/TableProducts/TableProducts'
 
 
 function App() {
+
+    // const obtener_pixeles = () => document.documentElement.scrollTop || document.body.scrollTop
+
+    // let scroll    = Scroll.animateScroll;
+
+    // const irArriba = () =>{
+    //     if (obtener_pixeles() >0) {
+    //     scroll.scrollTo(0,0)
+    //     }
+    // }
+
+    // window.onscroll = function(){
+    //     const boton = document.getElementById('boton_arriba')
     
+    //     if(obtener_pixeles() >50){
+    //       boton.classList.add("mostrar")
+    //       boton.classList.remove("ocultar")
+    //     } else{
+    //       boton.classList.add("ocultar")
+    //       boton.classList.remove("mostrar")
+    //     }
+    //   }  
+    
+    window.onscroll = function() {
+        
+        console.log("Vertical: " + window.scrollY);
+        console.log("Horizontal: " + window.scrollX);
+      
+      };
+    
+
+
+
+    
+
     return (
         <div className='App' >
             <BrowserRouter>

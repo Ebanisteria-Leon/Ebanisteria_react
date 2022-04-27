@@ -6,7 +6,6 @@ export const UseMision = () => {
     }, [])
 
     const ejecutarEffect = () => {
-        console.log("entro")
         let elemento1 = document.getElementById('img_micro')
         let elemento2 = document.getElementById('img_numeral')
         let elemento3 = document.getElementById('img_micro2')
