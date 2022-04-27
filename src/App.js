@@ -23,43 +23,11 @@ import { TableOrders } from './components/Pages/TableOrders/TableOrders'
 import { TableSalesDate } from './components/Pages/TableSalesDate/TableSalesDate'
 import { TableRol } from './components/Pages/TableRol/TableRol'
 import { TableProducts } from './components/Pages/TableProducts/TableProducts'
+import { ProductosAgregados } from './components/Pages/ProductosAgregados/ProductosAgregados';
+
 
 
 function App() {
-
-    // const obtener_pixeles = () => document.documentElement.scrollTop || document.body.scrollTop
-
-    // let scroll    = Scroll.animateScroll;
-
-    // const irArriba = () =>{
-    //     if (obtener_pixeles() >0) {
-    //     scroll.scrollTo(0,0)
-    //     }
-    // }
-
-    // window.onscroll = function(){
-    //     const boton = document.getElementById('boton_arriba')
-    
-    //     if(obtener_pixeles() >50){
-    //       boton.classList.add("mostrar")
-    //       boton.classList.remove("ocultar")
-    //     } else{
-    //       boton.classList.add("ocultar")
-    //       boton.classList.remove("mostrar")
-    //     }
-    //   }  
-    
-    window.onscroll = function() {
-        
-        console.log("Vertical: " + window.scrollY);
-        console.log("Horizontal: " + window.scrollX);
-      
-      };
-    
-
-
-
-    
 
     return (
         <div className='App' >
@@ -77,6 +45,7 @@ function App() {
                     <Route path='/Admin/TableRol' element={<TableRol />} />
                     <Route path='/Admin/TableProducts' element={<TableProducts />} />
                     <Route path='/Admin/AgregarProducto' element={<AgregarProducto />} />
+                    <Route path='/Products/Productos-agregados' element={<ProductosAgregados />} />
                     <Route path='*' element={<PageNot />} />
                 </Routes>
             </BrowserRouter>

@@ -11,6 +11,7 @@ import { Header } from '../../Layouts/Header/Header'
 import { Barra } from '../../UI/Barra/Barra'
 import { DescriptionProducts } from '../../UI/DescriptionProducts/DescriptionProducts'
 import { Imagen } from '../../UI/Imagen/Imagen'
+import { ContadorCarrito } from '../../UI/ContadorCarrito/ContadorCarrito'
 
 export const Products = () => {
     const { mostrar_producto } = useViewModal()
@@ -18,6 +19,7 @@ export const Products = () => {
 
     return (
         <>
+        <ContadorCarrito cantidad={20}/>
             <div className='mainProducts'>
                 <Barra />
                 <Header />

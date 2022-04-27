@@ -47,6 +47,21 @@ main {
   z-index: 200;
 }
 
+.contadorCarrito{
+  position: fixed;
+  top: 10px;
+  left: 0;
+  width: 10vw;
+  height: 8vh;
+  background-color: #dcaa47;
+  border-top-right-radius:2em;
+  border-bottom-right-radius:2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
 /*BANNER*/
 
 .banner {
