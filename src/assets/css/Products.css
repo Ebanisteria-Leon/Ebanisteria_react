@@ -39,14 +39,15 @@
     overflow: hidden;
 }
 
-.product-img a,
+.product-img .linkImg,
 .product-img {
     width: 100%;
     height: 300px;
     display: flex;
+    cursor: pointer;
 }
 
-.product-img a img {
+.product-img .linkImg img {
     width: 100%;
     height: 100%;
     object-position: center;

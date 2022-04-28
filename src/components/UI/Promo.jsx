@@ -5,7 +5,6 @@ import 'slick-carousel/slick/slick-theme.css'
 import '../../assets/css/slider.css'
 
 import { useViewModal } from '../hooks/useViewModal'
-import { useCloseModal } from '../hooks/useCloseModal'
 
 import { DescriptionProducts } from './DescriptionProducts/DescriptionProducts'
 import { Imagen } from './Imagen/Imagen'
@@ -16,7 +15,6 @@ export const Promo = () => {
     // como serializar relaciones
 
     const { mostrar_producto } = useViewModal()
-    const { cerrar_producto } = useCloseModal()
 
     const settings = {
         dots: true,
@@ -277,7 +275,7 @@ export const Promo = () => {
             </Slider>
 
             <div className='overlay' id='overlay'>
-                <DescriptionProducts id='floatWindow' click={cerrar_producto} />
+                <DescriptionProducts id='floatWindow' click={mostrar_producto} />
             </div>
         </>
     )
