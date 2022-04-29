@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 
 export const ContadorCarrito = ({cantidad}) => {
     return (
-        <NavLink to="Productos-agregados">
+        <NavLink to="/Productos-agregados">
             <bottom className="contadorCarrito">
                 <FontAwesomeIcon icon={faCartShopping} />
                 <p>{cantidad}</p>

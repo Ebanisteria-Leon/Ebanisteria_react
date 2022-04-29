@@ -45,7 +45,7 @@ function App() {
                     <Route path='/Admin/TableRol' element={<TableRol />} />
                     <Route path='/Admin/TableProducts' element={<TableProducts />} />
                     <Route path='/Admin/AgregarProducto' element={<AgregarProducto />} />
-                    <Route path='/Products/Productos-agregados' element={<ProductosAgregados />} />
+                    <Route path='/Productos-agregados' element={<ProductosAgregados />} />
                     <Route path='*' element={<PageNot />} />
                 </Routes>
             </BrowserRouter>

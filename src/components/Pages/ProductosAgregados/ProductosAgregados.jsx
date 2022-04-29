@@ -1,9 +1,11 @@
 import React,{useState, useEffect} from 'react'
-import { ProductCard } from '../../UI/ProductCard/ProductCard'
 import { useViewModal } from '../../hooks/useViewModal'
 import { Header } from '../../Layouts/Header/Header'
 import { Barra } from '../../UI/Barra/Barra'
 import { DescriptionProducts } from '../../UI/DescriptionProducts/DescriptionProducts'
+import { ProductoAgregado } from '../../UI/ProductoAgregado/ProductoAgregado'
+import { Total } from '../../UI/Total/Total'
+
 
 export const ProductosAgregados = () => {
 
@@ -30,11 +32,11 @@ export const ProductosAgregados = () => {
                 <Header />
 
                 <h3 className='title-category'>Productos Agregados</h3>
-                <p>total</p>
+                <Total/>
 
                 <section className='section__products'>
                         {!todos ? 'No existen' : 
-                        todos.map((productos)=><ProductCard key={productos.id} productos={productos}/>)}
+                        todos.map((productos)=><ProductoAgregado key={productos.id} productos={productos}/>)}
                 </section>
 
                 <div className='overlay' id='overlay'>
