@@ -5,19 +5,19 @@ export const useViewModal = () => {
 
     const mostrar_producto = () => {
         setVerModal(!verModal)
-        console.log(verModal);
+        console.log("muestra", verModal);
     }
 
     useEffect(() => {
-        console.log("cambia");
         const overlay = document.getElementById('overlay')
         const floatWindow = document.getElementById('floatWindow')
 
         if (verModal===false) {
-            console.log("cambia2");
+            console.log("Muestra if");
             overlay.classList.add('active')
             floatWindow.classList.add('active')
         }else{
+            console.log("Oculta if");
             overlay.classList.remove('active')
             floatWindow.classList.remove('active')
         }
