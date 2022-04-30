@@ -2,12 +2,22 @@ import React from 'react'
 import accounting from 'accounting'
 import { Imagen } from '../../UI/Imagen/Imagen'
 import { useViewModal } from '../../hooks/useViewModal'
+import { actionTypes } from '../../hooks/reducer'
+import { useStateValue } from '../../hooks/StateProvider'
+
 
 import Mueble_Azul_move from '../../../assets/images/muebles-promo/mueble-azul-move.jpg'
 
 export const ProductoAgregado = ({productos : {id, name, image, gender}}) => {
 
     const { mostrar_producto } = useViewModal()
+    const [{basket}, dispatch] = useStateValue()
+
+
+    const eliminarProducto = () => dispatch({
+        type: actionTypes.REMOVE_ITEM,
+        id: id
+    })
 
     return (
     <div className='product-card'>
@@ -37,7 +47,7 @@ export const ProductoAgregado = ({productos : {id, name, image, gender}}) => {
         <div className='product-btn'>
             <button
                 className='buy-btn'
-                onClick={mostrar_producto}
+                onClick={eliminarProducto}
             >
                 <i className='fas fa-trash'></i>
                 Eliminar

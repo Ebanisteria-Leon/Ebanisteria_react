@@ -8,6 +8,8 @@ import { Barra } from '../../UI/Barra/Barra'
 import { DescriptionProducts } from '../../UI/DescriptionProducts/DescriptionProducts'
 import { ContadorCarrito } from '../../UI/ContadorCarrito/ContadorCarrito'
 import { ProductCard } from '../../UI/ProductCard/ProductCard'
+import { useStateValue } from '../../hooks/StateProvider'
+
 
 export const Products = () => {
     const { mostrar_producto } = useViewModal()
@@ -26,10 +28,12 @@ export const Products = () => {
         fetchApi(url)
     },[])
 
+    const [{basket}, dispatch] = useStateValue()
+
 
     return (
         <>
-        <ContadorCarrito cantidad={"20"}/>
+        <ContadorCarrito cantidad={basket?.length}/>
             <div className='mainProducts'>
                 <Barra />
                 <Header />

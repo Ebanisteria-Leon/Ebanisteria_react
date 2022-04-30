@@ -1,13 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import accounting from 'accounting'
 import { Imagen } from '../../UI/Imagen/Imagen'
 import { useViewModal } from '../../hooks/useViewModal'
+import { actionTypes } from '../../hooks/reducer'
+import { useStateValue } from '../../hooks/StateProvider'
+
 
 import Mueble_Azul_move from '../../../assets/images/muebles-promo/mueble-azul-move.jpg'
 
 export const ProductCard = ({productos : {id, name, image, gender}}) => {
 
     const { mostrar_producto } = useViewModal()
+
+    const [{basket}, dispatch] = useStateValue()
+
+    // mandara o disparará los datos del objeto que hayamos clickeado y en reducer escuchará esta acción
+    const addToCar = () =>{
+        dispatch({
+            type:actionTypes.ADD_TO_BASKET,
+            item: {
+                id,
+                name,
+                image,
+                gender
+            }
+        })
+    }
 
     return (
     <div className='product-card'>
@@ -37,7 +55,7 @@ export const ProductCard = ({productos : {id, name, image, gender}}) => {
         <div className='product-btn'>
             <button
                 className='buy-btn'
-                onClick={mostrar_producto}
+                onClick={addToCar}
             >
                 <i className='fas fa-shopping-cart'></i>
                 Compralo ahora!
