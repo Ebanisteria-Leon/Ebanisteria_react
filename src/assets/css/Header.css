@@ -11,17 +11,17 @@ header {
 }
 
 .header{
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.815);
   position: fixed;
   height: 100vh;
   width: 100%;
   z-index: 200;
-  top: 0;
-  display: none;
+  top: -100vh;
+  transition: all 600ms ease;
 }
 
 .open_header{
-  display: block;
+  top: 0;
 }
 
 header img{
@@ -58,6 +58,14 @@ header img{
 }
 
 .nav__links a:hover {
-  color: #DCAA47;
+  color: white;
   margin-left: 20px;
+  text-shadow:  0 0 7px #fff,
+                0 0 10px #fff,
+                0 0 21px #fff,
+                0 0 40px #DCAA47,
+                0 0 80px #DCAA47,
+                0 0 90px #DCAA47,
+                0 0 100px #DCAA47,
+                0 0 149px #DCAA47;
 }
