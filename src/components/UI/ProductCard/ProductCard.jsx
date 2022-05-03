@@ -67,13 +67,12 @@ export const ProductCard = ({productos : {id, name, image, gender}}) => {
                 </div>
 
                 <div className='product-btn'>
-                    <button
-                        className='buy-btn'
-                        onClick={addToCar}
-                    >
+                    <button className='buy-btn' onClick={addToCar} >
                         <i className='fas fa-shopping-cart'></i>
-                        Compralo ahora!
                     </button>
+                </div>
+                <div className="contenedorBlanco">
+                    
                 </div>
             </div>
         </>

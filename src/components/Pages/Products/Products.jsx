@@ -9,6 +9,8 @@ import { DescriptionProducts } from '../../UI/DescriptionProducts/DescriptionPro
 import { ContadorCarrito } from '../../UI/ContadorCarrito/ContadorCarrito'
 import { ProductCard } from '../../UI/ProductCard/ProductCard'
 import { useStateValue } from '../../hooks/StateProvider'
+import ClipLoader from "react-spinners/ClipLoader";
+
 
 
 export const Products = () => {
@@ -41,7 +43,7 @@ export const Products = () => {
                 <h3 className='title-category'>Productos nuevos</h3>
 
                 <section className='section__products'>
-                        {!todos ? 'No existen' : 
+                        {!todos ? <ClipLoader color='#dcaa47'/> : 
                         todos.map((productos)=><ProductCard key={productos.id} productos={productos}/>)}
                 </section>
 
