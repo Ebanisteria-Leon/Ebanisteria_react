@@ -9,7 +9,7 @@ import { useViewModal } from '../hooks/useViewModal'
 import { DescriptionProducts } from './DescriptionProducts/DescriptionProducts'
 import { Imagen } from './Imagen/Imagen'
 import Mueble_Azul from '../../assets/images/muebles-promo/mueble-azul.png'
-import Mueble_Azul_move from '../../assets/images/muebles-promo/mueble-azul-move.jpg'
+import Mueble_Azul_move from '../../assets/images/muebles-promo/mueble-azul-move.png'
 
 export const Promo = () => {
     // como serializar relaciones

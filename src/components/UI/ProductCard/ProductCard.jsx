@@ -6,7 +6,7 @@ import { actionTypes } from '../../hooks/reducer'
 import { useStateValue } from '../../hooks/StateProvider'
 import { Modal } from '../Modal/Modal'
 
-import Mueble_Azul_move from '../../../assets/images/muebles-promo/mueble-azul-move.jpg'
+import Mueble_Azul_move from '../../../assets/images/muebles-promo/mueble-azul-move.png'
 
 
 export const ProductCard = ({productos : {id, name, image, gender}}) => {
@@ -28,9 +28,9 @@ export const ProductCard = ({productos : {id, name, image, gender}}) => {
             }
         })
         cambiarEstadoModalEmail(!estadoModalEmail)
-        const contadorCarrito = document.querySelector('.contadorCarrito')
-        console.log(contadorCarrito);
-        contadorCarrito.style.left='0'
+        const boxCarrito = document.querySelector('.box-carrito')
+        boxCarrito.style.opacity='1'
+        boxCarrito.style.zIndex='200'
 
     }
 
@@ -56,9 +56,6 @@ export const ProductCard = ({productos : {id, name, image, gender}}) => {
                     <div className='product-category'>
                         <span>{name}</span>
                         </div>
-                    <p className='product-title'>
-                        {gender}
-                    </p>
                     <div className='price'>
                         <span className='product-price'>
                             {accounting.formatMoney(1809900, "$")}
@@ -70,9 +67,9 @@ export const ProductCard = ({productos : {id, name, image, gender}}) => {
                     <button className='buy-btn' onClick={addToCar} >
                         <i className='fas fa-shopping-cart'></i>
                     </button>
-                </div>
-                <div className="contenedorBlanco">
-                    
+                    <button className='ver-btn' onClick={mostrar_producto} >
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
                 </div>
             </div>
         </>

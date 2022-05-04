@@ -16,6 +16,7 @@ export const ProductosAgregados = () => {
     const { mostrar_producto } = useViewModal()
 
     const [{basket}, dispatch] = useStateValue()
+    console.log(basket);
 
 
     return (

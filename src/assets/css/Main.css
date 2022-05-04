@@ -49,19 +49,71 @@ main {
 
 .contadorCarrito{
   position: fixed;
-  top: 10px;
-  left: -200px;
-  width: 10vw;
-  height: 8vh;
-  background-color: #dcaa47;
-  border-top-right-radius:2em;
-  border-bottom-right-radius:2em;
+  width: 40px;
+  height: 40px;
+  right: 90px;
+  top: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
   z-index: 100;
+  cursor: pointer;
+}
 
+
+
+.contadorCarrito .contador{
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background-color: red;
+  border-radius: 50%;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contadorCarrito p{
+  color:white;
+  margin: 0;
+  padding: 0;
+}
+
+.box-carrito{
+  width: 300px;
+  height: 100px;
+  display: flex;
+  background-color: white;
+  justify-content: space-between;
+  padding: 20px;
+  position: fixed;
+  top: 20px;
+  left: 100px;
+  opacity: 0;
+  transition:all 300ms ease;
+  z-index: 100;
+}
+
+.box-carrito .producto{
+  width: 100%;
+  height: 20%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.box-carrito .pImg{
+  width: 20%;
+}
+
+.pImg img{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 /*BANNER*/
@@ -171,6 +223,7 @@ main {
   width: 100%;
   height: 300px;
   display: flex;
+  position:relative;
 }
 
 .p-img a img {
@@ -182,25 +235,26 @@ main {
 }
 
 .p-img-back {
-  display: none;
+  position: absolute;
+  bottom: -300px;
+  transition: all 600ms ease;
+}
+
+.p-img-front{
+  position: relative;
+  opacity: 1;
+  transition: all 900ms ease;
 }
 
 .p-img-container:hover .p-img-back {
-  display: block;
+  bottom: 0px;
 }
+
 
 .p-img-container:hover .p-img-front {
-  display: none;
+  opacity: 0;
 }
 
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 
 .box-text {
   margin-top: 5px;
