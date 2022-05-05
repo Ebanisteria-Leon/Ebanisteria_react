@@ -35,12 +35,13 @@ export const Products = () => {
 
     return (
         <>
-        <ContadorCarrito cantidad={basket?.length}/>
+        
             <div className='mainProducts'>
                 <Barra />
                 <Header />
 
                 <h3 className='title-category'>Productos nuevos</h3>
+                <ContadorCarrito cantidad={basket?.length}/>
 
                 <section className='section__products'>
                         {!todos ? <ClipLoader color='#dcaa47'/> : 

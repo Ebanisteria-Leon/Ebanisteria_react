@@ -43,7 +43,7 @@ export const Home = () => {
   return (
     <>
     {preloader? (
-      <div className="splash absolute">
+      <div className="splash absolutee">
         <h1>BIENVENIDOS!</h1>
         <h2>EBANISTERÍA LEÓN</h2>
         <ClipLoader color='#dcaa47'/>

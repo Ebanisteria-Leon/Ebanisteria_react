@@ -5,6 +5,7 @@ import { useViewModal } from '../../hooks/useViewModal'
 import { actionTypes } from '../../hooks/reducer'
 import { useStateValue } from '../../hooks/StateProvider'
 import { Modal } from '../Modal/Modal'
+// import { Rating } from 'react-simple-star-rating'
 
 import Mueble_Azul_move from '../../../assets/images/muebles-promo/mueble-azul-move.png'
 
@@ -12,6 +13,11 @@ import Mueble_Azul_move from '../../../assets/images/muebles-promo/mueble-azul-m
 export const ProductCard = ({productos : {id, name, image, gender}}) => {
 
     const { mostrar_producto } = useViewModal()
+    if(id> 5){
+        id=5
+    }
+    const stars = Array(id).fill(0)
+    const stars2 = Array(5).fill(0)
 
     const [{basket}, dispatch] = useStateValue()
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
@@ -30,7 +36,6 @@ export const ProductCard = ({productos : {id, name, image, gender}}) => {
         cambiarEstadoModalEmail(!estadoModalEmail)
         const boxCarrito = document.querySelector('.box-carrito')
         boxCarrito.style.opacity='1'
-        boxCarrito.style.zIndex='200'
 
     }
 
@@ -60,6 +65,20 @@ export const ProductCard = ({productos : {id, name, image, gender}}) => {
                         <span className='product-price'>
                             {accounting.formatMoney(1809900, "$")}
                         </span>
+                        <div className="stars">
+                            {stars.map((_, index)=>{
+                                return(
+                                    <i class="fa-solid fa-star" key={index}></i>
+                                )
+                            })}
+                        </div>
+                        <div className="stars2">
+                            {stars2.map((_, index)=>{
+                                return(
+                                    <i class="fa-solid fa-star star-grey" key={index}></i>
+                                )
+                            })}
+                        </div>
                     </div>
                 </div>
 

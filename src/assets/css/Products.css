@@ -17,7 +17,16 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    margin-top: 100px;
+    padding-bottom: 50px;
+}
+
+.section__products2{
     margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     padding-bottom: 50px;
 }
 
@@ -101,6 +110,28 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 8px;
+    position: relative;
+}
+
+.stars{
+    position: relative;
+    z-index: 1;
+    width:23%;
+}
+
+.stars2{
+    position: absolute;
+    right: 0;
+    width:23%;
+}
+
+.price i{
+    color: rgb(255, 208, 0);
+    font-size: 11px;
+}
+
+.price .star-grey{
+    color: #d1d1d1;
 }
 
 .price .product-price {

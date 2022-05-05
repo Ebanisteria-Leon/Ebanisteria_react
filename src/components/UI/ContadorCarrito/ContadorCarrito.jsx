@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom';
 import { useStateValue } from '../../hooks/StateProvider'
 import { getBasketTotal } from '../../hooks/reducer'
 import { MostrarProductos } from '../MostrarProductos/MostrarProductos';
+import imgCarrito from '../../../assets/images/iconos/shopping-cart.png'
+import { Total } from '../Total/Total';
 // import { fab } from '@fortawesome/free-brands-svg-icons'
 
 export const ContadorCarrito = ({cantidad}) => {
@@ -19,27 +21,35 @@ export const ContadorCarrito = ({cantidad}) => {
 
         if(mostrar){
             boxCarrito.style.opacity='1'
-            boxCarrito.style.zIndex='200'
         }else{
             boxCarrito.style.opacity='0'
-            boxCarrito.style.zIndex='0'
         }
     }
 
     return (
         <>
             <bottom className="contadorCarrito" onClick={mostrarCarrito}>
-                <img src="../../../assets/images/iconos/shopping-cart.png" alt="" />
+                <img src={imgCarrito} alt="" />
                 <div className="contador">
                     <p>{cantidad}</p>
                 </div>
             </bottom>
             <div className="box-carrito">
-                {!basket ? 'No Tienes ningún producto agregado' : 
-                basket.map((productos)=><MostrarProductos key={productos.id} productos={productos}/>)}
+                <div className="tituPAgregados">
+                    <h4>PRODUCTOS AGREGADOS</h4>
+                </div>
+                <div className="productos-agregados">
+                    {!basket ? 'No Tienes ningún producto agregado' : 
+                    basket.map((productos)=><MostrarProductos key={productos.id} productos={productos}/>)}
+                </div>
+                <div className="pTotal">
+                    <Total precioTotal={getBasketTotal(basket)} pTotal={basket?.length}/>
+                </div>
+                <NavLink to="/Productos-agregados">
+                    <button>Ver mis productos</button>
+                </NavLink>
             </div>
-        <NavLink to="/Productos-agregados">
-        </NavLink>
+        
         </>
     )
 }
