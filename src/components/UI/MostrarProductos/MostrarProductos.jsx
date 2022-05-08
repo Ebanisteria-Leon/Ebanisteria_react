@@ -1,4 +1,5 @@
 import React from 'react'
+import '../../../assets/css/DescripcionCarrito.css'
 import { Imagen } from '../Imagen/Imagen'
 import accounting from 'accounting'
 import { useViewModal } from '../../hooks/useViewModal'
@@ -6,7 +7,7 @@ import { actionTypes } from '../../hooks/reducer'
 import { useStateValue } from '../../hooks/StateProvider'
 
 
-export const MostrarProductos = ({productos : {id, name, image, gender}}) => {
+export const MostrarProductos = ({productos : {id, name, image, gender, quantity}}) => {
 
   const [{basket}, dispatch] = useStateValue()
 
@@ -26,7 +27,7 @@ export const MostrarProductos = ({productos : {id, name, image, gender}}) => {
               <p>{name}</p>
           </div>
           <span className='product-price'>
-            {accounting.formatMoney(1809900, "$")}
+            {accounting.formatMoney(1809900, "$")} X {quantity} = {accounting.formatMoney(1809900 * quantity, "$")}
           </span>
         </div>
         <div className="eliminarP">

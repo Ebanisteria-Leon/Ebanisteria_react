@@ -15,6 +15,7 @@ export const Promo = () => {
     // como serializar relaciones
 
     const { mostrar_producto } = useViewModal()
+    const { ocultar_producto } = useViewModal()
 
     const settings = {
         dots: true,
@@ -275,7 +276,7 @@ export const Promo = () => {
             </Slider>
 
             <div className='overlay' id='overlay'>
-                <DescriptionProducts id='floatWindow' click={mostrar_producto} />
+                <DescriptionProducts id='floatWindow' click={ocultar_producto} />
             </div>
         </>
     )

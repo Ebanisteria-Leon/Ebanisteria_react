@@ -8,7 +8,7 @@ import { useStateValue } from '../../hooks/StateProvider'
 
 import Mueble_Azul_move from '../../../assets/images/muebles-promo/mueble-azul-move.jpg'
 
-export const ProductoAgregado = ({productos : {id, name, image, gender}}) => {
+export const ProductoAgregado = ({productos : {id, name, image, gender, quantity}}) => {
 
     const { mostrar_producto } = useViewModal()
     const [{basket}, dispatch] = useStateValue()
@@ -35,11 +35,11 @@ export const ProductoAgregado = ({productos : {id, name, image, gender}}) => {
                 <span>{name}</span>
                 </div>
             <p className='product-title'>
-                {gender}
+                {gender} X{quantity}
             </p>
             <div className='price'>
                 <span className='product-price'>
-                    {accounting.formatMoney(1809900, "$")}
+                    {accounting.formatMoney(1809900 * quantity, "$")}
                 </span>
             </div>
         </div>

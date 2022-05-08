@@ -1,0 +1,39 @@
+.contadorCarrito{
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    right: 90px;
+    top: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    z-index: 100;
+    cursor: pointer;
+  }
+  
+  .contadorCarrito img{
+    object-fit: contain;
+    width: 90%;
+    height: 90%;
+  }
+  
+  .contadorCarrito .contador{
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background-color: #dcaa47;
+    border-radius: 50%;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .contadorCarrito p{
+    color:white;
+    margin: 0;
+    padding: 0;
+  }

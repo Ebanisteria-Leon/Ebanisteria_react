@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import '../../../assets/css/ContadorCarrito.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping} from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom';
@@ -21,8 +22,12 @@ export const ContadorCarrito = ({cantidad}) => {
 
         if(mostrar){
             boxCarrito.style.opacity='1'
+            boxCarrito.style.zIndex='2'
+            boxCarrito.style.transform='scale(1)'
         }else{
             boxCarrito.style.opacity='0'
+            boxCarrito.style.zIndex='-1'
+            boxCarrito.style.transform='scale(0.6)'
         }
     }
 
@@ -39,15 +44,18 @@ export const ContadorCarrito = ({cantidad}) => {
                     <h4>PRODUCTOS AGREGADOS</h4>
                 </div>
                 <div className="productos-agregados">
-                    {!basket ? 'No Tienes ningún producto agregado' : 
+                    {basket.length===0 ? 'No hay productos agregados' : 
                     basket.map((productos)=><MostrarProductos key={productos.id} productos={productos}/>)}
                 </div>
                 <div className="pTotal">
                     <Total precioTotal={getBasketTotal(basket)} pTotal={basket?.length}/>
                 </div>
-                <NavLink to="/Productos-agregados">
-                    <button>Ver mis productos</button>
-                </NavLink>
+                <div className="botonesPAgregados">
+                    <NavLink to="/Productos-agregados">
+                        <button className="Bver">Mi carrito</button>
+                    </NavLink>
+                    <button className="botonTotal">Verificar</button>
+                </div>
             </div>
         
         </>

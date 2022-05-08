@@ -3,10 +3,12 @@ import accounting from 'accounting'
 
 export const Total = ({precioTotal, pTotal}) => {
   return (
-    <div className="contenedor total">
+    <div className="contenedorTotal">
         <p>Productos totales : {pTotal}</p>
-        <p>Total: {accounting.formatMoney({precioTotal}, "$")}</p>
-        <button className="botonTotal">Verificar</button>
+        <div className="total">
+        <p>Total</p>
+        <p>{accounting.formatMoney({precioTotal}, "$")}</p>
+        </div>
     </div>
   )
 }

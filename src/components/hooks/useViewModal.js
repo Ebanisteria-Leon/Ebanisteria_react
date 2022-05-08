@@ -1,29 +1,37 @@
 import { useState, useEffect } from 'react'
 
 export const useViewModal = () => {
-    const [verModal, setVerModal] = useState(true)
+    const [verModal1, setVerModal] = useState(false)
+    const [verModal2, setVerModal2] = useState(false)
 
     const mostrar_producto = () => {
-        setVerModal(!verModal)
-        console.log("muestra", verModal);
+        setVerModal(!verModal1)
+    }
+
+    const ocultar_producto = () => {
+        setVerModal2(!verModal2)
     }
 
     useEffect(() => {
+        console.log(verModal1, verModal2);
         const overlay = document.getElementById('overlay')
         const floatWindow = document.getElementById('floatWindow')
 
-        if (verModal===false) {
+        if (verModal1 === true) {
+            setVerModal(!verModal1)
             console.log("Muestra if");
             overlay.classList.add('active')
             floatWindow.classList.add('active')
-        }else{
+        }else if(verModal2 === true){
+            setVerModal2(!verModal2)
             console.log("Oculta if");
             overlay.classList.remove('active')
             floatWindow.classList.remove('active')
         }
-    }, [verModal])
+    }, [verModal1, verModal2])
 
     return{
-        mostrar_producto
+        mostrar_producto,
+        ocultar_producto
     }
 }

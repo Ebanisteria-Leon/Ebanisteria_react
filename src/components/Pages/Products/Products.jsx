@@ -14,7 +14,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 
 export const Products = () => {
-    const { mostrar_producto } = useViewModal()
+    const { ocultar_producto } = useViewModal()
 
     let url="https://rickandmortyapi.com/api/character/"
 
@@ -51,7 +51,7 @@ export const Products = () => {
                 <div className='overlay' id='overlay'>
                     <DescriptionProducts
                         id='floatWindow'
-                        click={mostrar_producto}
+                        click={ocultar_producto}
                     />
                 </div>
             </div>

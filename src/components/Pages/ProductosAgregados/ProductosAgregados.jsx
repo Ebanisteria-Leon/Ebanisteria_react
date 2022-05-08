@@ -27,9 +27,9 @@ export const ProductosAgregados = () => {
 
                 <h3 className='title-category'>Productos Agregados</h3>
                 <Total precioTotal={getBasketTotal(basket)} pTotal={basket?.length}/>
-
+                <button className="botonTotal">Verificar</button>
                 <section className='section__products2'>
-                        {!basket ? 'No Tienes ningún producto agregado' : 
+                        {basket?.length === 0 ? <p>No Tienes ningún producto agregado</p> : 
                         basket.map((productos)=><ProductoAgregado key={productos.id} productos={productos}/>)}
                 </section>
 

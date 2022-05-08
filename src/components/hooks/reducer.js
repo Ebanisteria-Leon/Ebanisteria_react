@@ -4,7 +4,9 @@ export const initialState = {
 
 export const actionTypes ={
     ADD_TO_BASKET: "ADD_TO_BASKET",
-    REMOVE_ITEM: "REMOVE_ITEM"
+    REMOVE_ONE_FROM_CART: "REMOVE_ONE_FROM_CART",
+    REMOVE_ALL_FROM_CART: "REMOVE_ALL_FROM_CART",
+    CLEAR_CART: "CLEAR_CART"
 }
 
 export const getBasketTotal =(basket)=>{
@@ -13,12 +15,21 @@ export const getBasketTotal =(basket)=>{
 
 
 const reducer = (state, action)=>{
-    console.log(action)
     switch(action.type){
-        case "ADD_TO_BASKET":
-        return {
+        case "ADD_TO_BASKET":{
+            
+            let itemInCart = state.basket.find(item => item.id === action.item.id)
+        return itemInCart ? {
             ...state,
-            basket: [...state.basket, action.item],
+            basket: state.basket.map(item=> 
+                item.id===action.item.id 
+                ? {...item, quantity: item.quantity+1}
+                :item)
+        } :{
+            ...state,
+            basket: [...state.basket, {...action.item, quantity:1}],
+        }
+
         }
         case "REMOVE_ITEM":
             const index = state.basket.findIndex((basketItem => basketItem.id === action.id))
