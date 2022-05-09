@@ -12,10 +12,20 @@ export const MostrarProductos = ({productos : {id, name, image, gender, quantity
   const [{basket}, dispatch] = useStateValue()
 
 
-    const eliminarProducto = () => dispatch({
-        type: actionTypes.REMOVE_ITEM,
-        id: id
-    })
+    const eliminarProducto = ( all = false) =>{
+      if(all===false){
+        dispatch({
+          type: actionTypes.REMOVE_ONE_FROM_CART,
+          id: id,
+        })
+      }else{
+        dispatch({
+          type: actionTypes.REMOVE_ALL_FROM_CART,
+          id: id,
+        })
+      }
+    }
+
 
   return (
     <div className='producto'>
@@ -31,8 +41,11 @@ export const MostrarProductos = ({productos : {id, name, image, gender, quantity
           </span>
         </div>
         <div className="eliminarP">
-          <button className='delete-btn' onClick={eliminarProducto} > 
-          <i className='fas fa-trash'></i>
+          <button className='delete-btn' onClick={()=>eliminarProducto(false)} > 
+            <i className='fas fa-trash'></i>
+          </button>
+          <button className='delete-btn' onClick={()=>eliminarProducto(true)} > 
+            <i class="fa-solid fa-trash-arrow-up"></i>
           </button>
         </div>
     </div>

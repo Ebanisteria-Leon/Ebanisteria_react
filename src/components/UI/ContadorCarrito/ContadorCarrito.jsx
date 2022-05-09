@@ -1,19 +1,24 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import '../../../assets/css/ContadorCarrito.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping} from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom';
 import { useStateValue } from '../../hooks/StateProvider'
 import { getBasketTotal } from '../../hooks/reducer'
+import { actionTypes } from '../../hooks/reducer'
 import { MostrarProductos } from '../MostrarProductos/MostrarProductos';
 import imgCarrito from '../../../assets/images/iconos/shopping-cart.png'
 import { Total } from '../Total/Total';
 // import { fab } from '@fortawesome/free-brands-svg-icons'
 
-export const ContadorCarrito = ({cantidad}) => {
+export const ContadorCarrito = () => {
 
     const [mostrar, setMostrar] = useState(true)
+    const [cantidad, setCantidad] = useState(0)
     const [{basket}, dispatch] = useStateValue()
+    const limpiarCarro =()=>dispatch({
+        type: actionTypes.CLEAR_CART
+    })
     
     const mostrarCarrito = () =>{
         const boxCarrito = document.querySelector('.box-carrito')
@@ -31,11 +36,19 @@ export const ContadorCarrito = ({cantidad}) => {
         }
     }
 
+    useEffect(() => {
+        setCantidad(
+            basket.reduce((previus, current) => previus + current.quantity, 0)
+        )
+    }, [basket])
+    
+
     return (
         <>
             <bottom className="contadorCarrito" onClick={mostrarCarrito}>
                 <img src={imgCarrito} alt="" />
                 <div className="contador">
+                    {/* {basket.map((item)=><p>{item?.length}</p>)} */}
                     <p>{cantidad}</p>
                 </div>
             </bottom>
@@ -48,7 +61,10 @@ export const ContadorCarrito = ({cantidad}) => {
                     basket.map((productos)=><MostrarProductos key={productos.id} productos={productos}/>)}
                 </div>
                 <div className="pTotal">
-                    <Total precioTotal={getBasketTotal(basket)} pTotal={basket?.length}/>
+                    <div className="boxLimpiar">
+                        <button onClick={limpiarCarro} className="limpiarCarrito">Limpiar carrito</button>
+                    </div>
+                    <Total precioTotal={getBasketTotal(basket)} pTotal={cantidad}/>
                 </div>
                 <div className="botonesPAgregados">
                     <NavLink to="/Productos-agregados">

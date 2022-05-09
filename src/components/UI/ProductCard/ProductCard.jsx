@@ -32,12 +32,14 @@ export const ProductCard = ({productos : {id, name, image, gender}}) => {
                 image,
                 gender
             }
+            
         })
         cambiarEstadoModalEmail(!estadoModalEmail)
         const boxCarrito = document.querySelector('.box-carrito')
         boxCarrito.style.opacity='1'
         boxCarrito.style.zIndex='2'
         boxCarrito.style.transform='scale(1)'
+        console.log(basket);
     }
 
     return (

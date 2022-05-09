@@ -41,7 +41,7 @@ export const Products = () => {
                 <Header />
 
                 <h3 className='title-category'>Productos nuevos</h3>
-                <ContadorCarrito cantidad={basket?.length}/>
+                <ContadorCarrito />
 
                 <section className='section__products'>
                         {!todos ? <ClipLoader color='#dcaa47'/> : 

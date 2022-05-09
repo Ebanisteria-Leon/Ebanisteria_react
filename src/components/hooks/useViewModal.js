@@ -13,18 +13,15 @@ export const useViewModal = () => {
     }
 
     useEffect(() => {
-        console.log(verModal1, verModal2);
         const overlay = document.getElementById('overlay')
         const floatWindow = document.getElementById('floatWindow')
 
         if (verModal1 === true) {
             setVerModal(!verModal1)
-            console.log("Muestra if");
             overlay.classList.add('active')
             floatWindow.classList.add('active')
         }else if(verModal2 === true){
             setVerModal2(!verModal2)
-            console.log("Oculta if");
             overlay.classList.remove('active')
             floatWindow.classList.remove('active')
         }
