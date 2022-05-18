@@ -1,12 +1,14 @@
 export const initialState = {
-    basket: []
+    basket: [],
+    tempdata: 0
 }
 
 export const actionTypes ={
     ADD_TO_BASKET: "ADD_TO_BASKET",
     REMOVE_ONE_FROM_CART: "REMOVE_ONE_FROM_CART",
     REMOVE_ALL_FROM_CART: "REMOVE_ALL_FROM_CART",
-    CLEAR_CART: "CLEAR_CART"
+    CLEAR_CART: "CLEAR_CART",
+    TEMP_DATA: "TEMP_DATA"
 }
 
 export const getBasketTotal =(basket)=>{
@@ -59,6 +61,12 @@ const reducer = (state, action)=>{
         }
         case "CLEAR_CART":
             return initialState
+        case "TEMP_DATA":{
+            return{
+                ...state,   
+                tempdata: action.id
+            }
+        }
         default: return state;
         
     }

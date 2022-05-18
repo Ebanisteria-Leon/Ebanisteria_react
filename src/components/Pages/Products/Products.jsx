@@ -16,7 +16,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 export const Products = () => {
     const { ocultar_producto } = useViewModal()
 
-    let url="https://rickandmortyapi.com/api/character/"
+    let url="https://rickandmortyapi.com/api/character?page=2"
 
     const [todos, setTodos] = useState()
 

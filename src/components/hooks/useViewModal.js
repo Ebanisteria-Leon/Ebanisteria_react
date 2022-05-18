@@ -4,6 +4,7 @@ export const useViewModal = () => {
     const [verModal1, setVerModal] = useState(false)
     const [verModal2, setVerModal2] = useState(false)
 
+
     const mostrar_producto = () => {
         setVerModal(!verModal1)
     }

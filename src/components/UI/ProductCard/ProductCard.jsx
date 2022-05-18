@@ -8,15 +8,22 @@ import { Modal } from '../Modal/Modal'
 // import { Rating } from 'react-simple-star-rating'
 
 import Mueble_Azul_move from '../../../assets/images/muebles-promo/mueble-azul-move.png'
+import { DescriptionProducts } from '../DescriptionProducts/DescriptionProducts'
 
 
 export const ProductCard = ({productos : {id, name, image, gender}}) => {
 
+    let idProducto
     const { mostrar_producto } = useViewModal()
-    if(id> 5){
-        id=5
+    const mostrar_producto2 = () =>{
+        idProducto=id
+        dispatch({
+            type:actionTypes.TEMP_DATA,
+            id: idProducto
+        })
+        mostrar_producto()
     }
-    const stars = Array(id).fill(0)
+    const stars = Array(5).fill(0)
     const stars2 = Array(5).fill(0)
 
     const [{basket}, dispatch] = useStateValue()
@@ -89,7 +96,7 @@ export const ProductCard = ({productos : {id, name, image, gender}}) => {
                     <button className='buy-btn' onClick={addToCar} >
                         <i className='fas fa-shopping-cart'></i>
                     </button>
-                    <button className='ver-btn' onClick={mostrar_producto} >
+                    <button className='ver-btn' onClick={mostrar_producto2} >
                         <i class="fa-solid fa-eye"></i>
                     </button>
                 </div>
