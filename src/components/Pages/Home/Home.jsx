@@ -10,6 +10,7 @@ import { Click } from '../../UI/Click/Click'
 import ClipLoader from "react-spinners/ClipLoader";
 import DotLoader from "react-spinners/DotLoader";
 import HashLoader from "react-spinners/HashLoader";
+import {ContadorCarrito} from '../../UI/ContadorCarrito/ContadorCarrito'
 
 
 
@@ -51,6 +52,7 @@ export const Home = () => {
       ) :(
     <>
         <Barra/>
+        <ContadorCarrito />
         <Header/>
 
         {/* <!-- Cuerpo principal de la pagina --> */}

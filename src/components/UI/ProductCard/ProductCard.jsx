@@ -46,7 +46,6 @@ export const ProductCard = ({productos : {id, name, image, gender}}) => {
         boxCarrito.style.opacity='1'
         boxCarrito.style.zIndex='2'
         boxCarrito.style.transform='scale(1)'
-        console.log(basket);
     }
 
     return (
@@ -60,7 +59,7 @@ export const ProductCard = ({productos : {id, name, image, gender}}) => {
             <div className='product-card'>
                 <div className='product-img-container'>
                     <div className='product-img'>
-                        <div className='linkImg' onClick={mostrar_producto}>
+                        <div className='linkImg' onClick={mostrar_producto2}>
                             <Imagen clase='product-img-front' url={image} alt='Front'/>
                             <Imagen clase='product-img-back' url={Mueble_Azul_move} alt='Back'/>
                         </div>

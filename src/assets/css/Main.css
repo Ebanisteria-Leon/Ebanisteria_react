@@ -144,24 +144,27 @@ main {
   border-radius: 10px;
   margin: 0px 20px;
   position: relative;
+  overflow: hidden;
 }
 
 .p-img-container {
+  padding: 15px 15px 0 15px;
   width: 100%;
   height: 100%;
   display: flex;
   overflow: hidden;
 }
 
-.p-img a,
-.p-img {
+.p-img-container .linkImg,
+.p-img-container {
   width: 100%;
   height: 300px;
   display: flex;
   position:relative;
+  cursor: pointer;
 }
 
-.p-img a img {
+.p-img-container .linkImg img {
   width: 100%;
   height: 100%;
   object-position: center;

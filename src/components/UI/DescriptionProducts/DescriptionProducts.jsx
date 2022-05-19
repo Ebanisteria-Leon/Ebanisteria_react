@@ -8,12 +8,33 @@ import { Imagen } from '../Imagen/Imagen'
 import img1 from '../../../assets/images/muebles-promo/mueble-azul.png'
 import { actionTypes } from '../../hooks/reducer'
 import { useStateValue } from '../../hooks/StateProvider'
+import { Modal } from '../Modal/Modal'
+
 
 export const DescriptionProducts = ({ id, click}) => {
 
     const [dataId, setDataId] = useState({})
     const { counter, add, remove } = useCounter()
-    const [{tempdata}, dispatch] = useStateValue()
+    const [{tempdata, basket}, dispatch] = useStateValue()
+    const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
+
+    const addToCar = () =>{
+        dispatch({
+            type:actionTypes.ADD_TO_BASKET,
+            item: {
+                id,
+                name:dataId.name,
+                image:dataId.image,
+                gender:dataId.gender
+            }
+            
+        })
+        cambiarEstadoModalEmail(!estadoModalEmail)
+        const boxCarrito = document.querySelector('.box-carrito')
+        boxCarrito.style.opacity='1'
+        boxCarrito.style.zIndex='2'
+        boxCarrito.style.transform='scale(1)'
+    }
 
     useEffect(() => {
         fetch('https://rickandmortyapi.com/api/character/' + tempdata)
@@ -97,7 +118,7 @@ export const DescriptionProducts = ({ id, click}) => {
                                 </div>
 
                                 <div className='buyProducts'>
-                                    <button className='buttonProducts_buy'>
+                                    <button className='buttonProducts_buy' onClick={addToCar}>
                                         <i className='fas fa-shopping-cart'></i>
                                         Añadir al Carrito
                                     </button>
