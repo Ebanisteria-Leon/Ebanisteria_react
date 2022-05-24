@@ -24,6 +24,7 @@ export const Products = () => {
         const response = await fetch(url)
         const responseJSON = await response.json()
         setTodos(responseJSON.results)
+        console.log(todos);
     }
 
     useEffect(()=>{

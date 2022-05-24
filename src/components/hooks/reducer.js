@@ -1,3 +1,4 @@
+
 export const initialState = {
     basket: [],
     tempdata: 0
@@ -23,6 +24,18 @@ const reducer = (state, action)=>{
         case "ADD_TO_BASKET":{
             
             let itemInCart = state.basket.find(item => item.id === action.item.id)
+            try {
+                window.localStorage.setItem("producto", JSON.stringify(state.basket))
+            } catch (error) {
+                console.log(error);
+            }
+            let obtenerLocal = localStorage.getItem('producto')
+            if(obtenerLocal == null){
+                state.basket=[]
+            }else{
+                state.basket = JSON.parse(obtenerLocal)
+                console.log(state.basket);
+            }
             
         return itemInCart ? {
             ...state,

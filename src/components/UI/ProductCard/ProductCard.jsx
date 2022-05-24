@@ -11,7 +11,8 @@ import Mueble_Azul_move from '../../../assets/images/muebles-promo/mueble-azul-m
 import { DescriptionProducts } from '../DescriptionProducts/DescriptionProducts'
 
 
-export const ProductCard = ({productos : {id, name, image, gender}}) => {
+export const ProductCard = ({productos : {id, name, gender, status, image}}) => {
+
 
     let idProducto
     const { mostrar_producto } = useViewModal()
@@ -23,6 +24,7 @@ export const ProductCard = ({productos : {id, name, image, gender}}) => {
         })
         mostrar_producto()
     }
+    
     const stars = Array(5).fill(0)
     const stars2 = Array(5).fill(0)
 
@@ -48,6 +50,7 @@ export const ProductCard = ({productos : {id, name, image, gender}}) => {
         boxCarrito.style.transform='scale(1)'
     }
 
+
     return (
         <>
             <Modal
@@ -72,7 +75,7 @@ export const ProductCard = ({productos : {id, name, image, gender}}) => {
                         </div>
                     <div className='price'>
                         <span className='product-price'>
-                            {accounting.formatMoney(1809900, "$")}
+                            {accounting.formatMoney(800000, "$")}
                         </span>
                         <div className="stars">
                             {stars.map((_, index)=>{

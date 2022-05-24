@@ -23,7 +23,6 @@ export const ContadorCarrito = () => {
     const mostrarCarrito = () =>{
         const boxCarrito = document.querySelector('.box-carrito')
         setMostrar(!mostrar)
-        console.log(boxCarrito);
 
         if(mostrar){
             boxCarrito.style.opacity='1'
