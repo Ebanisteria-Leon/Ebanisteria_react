@@ -41,10 +41,10 @@ export const MostrarProductos = ({productos : {id, name, image, gender, quantity
           </span>
         </div>
         <div className="eliminarP">
-          <button className='delete-btn' onClick={()=>eliminarProducto(false)} > 
+          <button className='delete-btn' onClick={()=>eliminarProducto(false)} title="Eliminar unidad"> 
             <i className='fas fa-trash'></i>
           </button>
-          <button className='delete-btn' onClick={()=>eliminarProducto(true)} > 
+          <button className='delete-btn' onClick={()=>eliminarProducto(true)} title="Eliminar todos"> 
             <i class="fa-solid fa-trash-arrow-up"></i>
           </button>
         </div>
