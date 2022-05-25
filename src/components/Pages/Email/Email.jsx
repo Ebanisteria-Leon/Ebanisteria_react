@@ -14,6 +14,7 @@ export const Email = () => {
     let inputNombre
     let inputEmail
     let inputMensaje
+    let colorModal="#008F39"
 
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
 
@@ -43,6 +44,7 @@ export const Email = () => {
             <Modal
                 estado={estadoModalEmail}
                 cambiarEstado={cambiarEstadoModalEmail}
+                color={colorModal}
             >
                 <p>Se envió el correo correctamente!</p>
             </Modal>

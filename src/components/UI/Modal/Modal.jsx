@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import '../../../assets/css/Modal.css'
 
-export const Modal = ({children, estado, cambiarEstado}) => {
+export const Modal = ({children, estado, cambiarEstado, color}) => {
     
     let contenido 
+    console.log(color);
 
     const mostrarModal = ()=>{
         const timer = setTimeout(()=>{
@@ -22,7 +23,7 @@ export const Modal = ({children, estado, cambiarEstado}) => {
         setTimeout(()=>{
             contenido = document.querySelector('.contenido_modal')
             contenido.style.top='20px'
-            contenido.style.background='#008F39'
+            contenido.style.background=color
             contenido.style.color='#fff'
         }, 100 )
     }

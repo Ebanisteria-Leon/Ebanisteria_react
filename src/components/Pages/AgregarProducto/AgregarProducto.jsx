@@ -84,21 +84,21 @@ export const AgregarProducto = () => {
             <span></span>
           </div>
 
-          <div className="select_agregar">
-            <select name="agregar" id="">
-              <option value="agregar">Tipo</option>
-            </select>
-            </div>
-
           <div className="txt_field">
-            <input type="text" id="material" autoComplete="off" required />
-            <label className="labelForm" for="material"> Material </label>
+            <input type="text" id="estado" required />
+            <label className="labelForm" for="estado"> Estado del producto </label>
             <span></span>
           </div>
 
           <div className="select_agregar">
             <select name="agregar" id="">
-              <option value="agregar">Tipo</option>
+              <option value="agregar">Categoría</option>
+            </select>
+          </div>
+
+          <div className="select_agregar2">
+            <select name="agregar" id="">
+              <option value="agregar">Imagen</option>
             </select>
 
             <div className="custom-input-file">
@@ -110,8 +110,7 @@ export const AgregarProducto = () => {
 
           <div className="divbtn_agregar2">
           <div className="divbtn_agregar">
-            <button className="btnSubmit">Aceptar</button>
-            <button className="btnSubmit">Cancelar</button>
+            <button className="btnSubmit">Agregar</button>
           </div>
           </div>
         </form>
