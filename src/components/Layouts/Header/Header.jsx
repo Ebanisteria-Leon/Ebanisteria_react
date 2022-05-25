@@ -16,7 +16,7 @@ export const Header = () => {
                         <li><NavLink to='/Category'>Categorias</NavLink></li>
                         <li><NavLink to='/Login'>Iniciar sesion</NavLink></li>
                         <li><NavLink to='/Register'>Registrarse</NavLink></li>
-                        <li><NavLink to='/Email'>Contactanos</NavLink></li>
+                        <li><NavLink to='/Contactanos'>Contactanos</NavLink></li>
                     </ul>
                 </nav>
             </header>

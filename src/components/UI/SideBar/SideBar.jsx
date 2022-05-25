@@ -15,10 +15,12 @@ export const SideBar = () => {
         <>
             <div className='sidebar' id='sidebar'>
                 <div className='logo_content'>
-                    <div className='logo'>
-                        <img src={logoDash} alt='Logo_ebanisterialeon' />
-                        <div className='logo_name'>Ebanisteria Leon</div>
-                    </div>
+                    <NavLink to="/" className="redirectHome">
+                        <div className='logo'>
+                            <img src={logoDash} alt='Logo_ebanisterialeon' />
+                            <div className='logo_name'>Ebanistería León</div>
+                        </div>
+                    </NavLink>
                     <button
                         id='btn'
                         className='btnSidebar'
@@ -40,7 +42,7 @@ export const SideBar = () => {
                     </li>
 
                     <li>
-                        <NavLink to='/'>
+                        <NavLink to='/Admin'>
                             <i className='fa-solid fa-house '></i>
                             <span className='links_name'>Inicio</span>
                         </NavLink>
@@ -56,11 +58,13 @@ export const SideBar = () => {
                     </li>
 
                     <li>
-                        <a href='https://mail.google.com/mail/u/5/#inbox'>
+                        
+                        <NavLink to="/Contactanos">
                             <i className='fa-solid fa-envelope '></i>
-                            <span className='links_name'>Mensajes</span>
-                        </a>
-                        <span className='tooltip'>Mensajes</span>
+                            <span className='links_name'>Contacto</span>
+                        </NavLink>
+                        
+                        <span className='tooltip'>Contacto</span>
                     </li>
 
                     <li>

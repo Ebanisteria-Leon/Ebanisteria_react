@@ -5,8 +5,7 @@ import Mueble_Azul from '../../../assets/images/muebles-promo/mueble-azul.png'
 
 import { Imagen } from '../../UI/Imagen/Imagen'
 import { SideBar } from '../../UI/SideBar/SideBar'
-import { Modal } from '../../UI/Modal/Modal';
-
+import { ModalProducto } from '../../UI/ModalProducto/ModalProducto'
 
 export const TableProducts = () => {
 
@@ -27,6 +26,7 @@ export const TableProducts = () => {
         overlay.style.opacity="1"
         container.style.opacity="1"
         container.style.transform="scale(1)"
+        
     }
 
     const cerrarEditor = () =>{
@@ -40,23 +40,20 @@ export const TableProducts = () => {
     }
 
     const mostrarModal =(event) =>{
+        cambiarEstadoModalEmail(!estadoModalEmail) 
         event.preventDefault()
-        console.log("entra");
-
-        // colorModal="#F1C40F"
-        cambiarEstadoModalEmail(!estadoModalEmail)
-        console.log(estadoModalEmail);
     }
 
     return (
         <>
-            <Modal
+            <ModalProducto
                 estado={estadoModalEmail}
                 cambiarEstado={cambiarEstadoModalEmail}
                 color={colorModal}>
                 <p>Confirmar cambios?</p>
-
-            </Modal>
+                <button className='aceptar'><i class="fa-solid fa-check"></i></button>
+                <button className='cancelar'><i class="fa-solid fa-xmark"></i></button>
+            </ModalProducto>
         <div className="overlayEditar">
             <div className="container_agregar2">
                 <div className='close'>

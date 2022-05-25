@@ -12,7 +12,7 @@
 }
 
 .sidebar.active{
-    width: 240px;
+    width: 14%;
 }
 
 .sidebar .logo-content{
@@ -31,6 +31,10 @@
     opacity: 0;
     pointer-events: none;
     transition: all ease 0.5s;
+}
+
+.logo a{
+    text-decoration: none !important;
 }
 
 .sidebar.active .logo_content .logo{

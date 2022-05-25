@@ -24,6 +24,7 @@ import { TableSalesDate } from './components/Pages/TableSalesDate/TableSalesDate
 import { TableRol } from './components/Pages/TableRol/TableRol'
 import { TableProducts } from './components/Pages/TableProducts/TableProducts'
 import { ProductosAgregados } from './components/Pages/ProductosAgregados/ProductosAgregados';
+import { Admin } from './components/Pages/Admin/Admin';
 
 
 
@@ -39,7 +40,8 @@ function App() {
                     <Route path='/Login' element={<Login />} />
                     <Route path='/Register' element={<Register />} />
                     <Route path='/RecoverPass' element={<RecoverPass />} />
-                    <Route path='/Email' element={<Email />} />
+                    <Route path='/Contactanos' element={<Email />} />
+                    <Route path='/Admin' element={<Admin />} />
                     <Route path='/Admin/TableSalesDate' element={<TableSalesDate />} />
                     <Route path='/Admin/TableOrders' element={<TableOrders />} />
                     <Route path='/Admin/TableRol' element={<TableRol />} />
