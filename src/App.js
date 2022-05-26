@@ -25,6 +25,7 @@ import { TableRol } from './components/Pages/TableRol/TableRol'
 import { TableProducts } from './components/Pages/TableProducts/TableProducts'
 import { ProductosAgregados } from './components/Pages/ProductosAgregados/ProductosAgregados';
 import { Admin } from './components/Pages/Admin/Admin';
+import PasarelaDePago from './components/Pages/PasarelaDePago/PasarelaDePago';
 
 
 
@@ -48,6 +49,7 @@ function App() {
                     <Route path='/Admin/TableProducts' element={<TableProducts />} />
                     <Route path='/Admin/AgregarProducto' element={<AgregarProducto />} />
                     <Route path='/Productos-agregados' element={<ProductosAgregados />} />
+                    <Route path='/Payment' element={<PasarelaDePago />} />
                     <Route path='*' element={<PageNot />} />
                 </Routes>
             </BrowserRouter>

@@ -69,7 +69,9 @@ export const ContadorCarrito = () => {
                     <NavLink to="/Productos-agregados">
                         <button className="Bver">Mi carrito</button>
                     </NavLink>
-                    <button className="botonTotal">Verificar</button>
+                    <NavLink to="/Payment">
+                        <button className="botonTotal">Verificar</button>
+                    </NavLink>
                 </div>
             </div>
         
