@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 
 import '../../../assets/css/Login.css'
-import aos from "aos";
-import "aos/dist/aos.css";
+import aos from 'aos'
+import 'aos/dist/aos.css'
 import Logo from '../../../assets/images/logo/logoSolo.png'
 import axios from 'axios'
 
@@ -11,17 +11,20 @@ import { NavLink } from 'react-router-dom'
 import { Header } from '../../Layouts/Header/Header'
 import { Barra } from '../../UI/Barra/Barra'
 import { Imagen } from '../../UI/Imagen/Imagen'
+import { Modal } from '../../UI/Modal/Modal'
 
 export const Login = () => {
+    const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
+    let colorModal = '#FF5733'
 
     const [state, setState] = useState({
-        form:{
-          "username":"",
-          "password":"",
+        form: {
+            username: '',
+            password: '',
         },
-        error:false,
-        errorMsg:""
-      })
+        error: false,
+        errorMsg: '',
+    })
 
     useEffect(() => {
         aos.init({
@@ -29,44 +32,59 @@ export const Login = () => {
         })
     }, [])
 
-    const manejadorSubmit=(e)=>{
+    const manejadorSubmit = (e) => {
         e.preventDefault()
     }
 
-    const manejadorChange = async (e)=>{
+    const manejadorChange = async (e) => {
         await setState({
-            form:{
-            ...state.form,
-            [e.target.name]: e.target.value
-            }
+            form: {
+                ...state.form,
+                [e.target.name]: e.target.value,
+            },
         })
-    
+        console.log(state)
     }
 
-      const manejadorBoton=()=>{
-        let url="http://127.0.0.1:8000/login/"
-        axios.post(url, state.form)
-        .then(response => {
-          console.log(response);
-            if(response.data.status === "ok"){
+    const manejadorBoton = () => {
+        let url = 'http://127.0.0.1:8000/login/'
+        let response
+        axios
+            .post(url, state.form)
+            .then((response) => {
+                console.log(response)
+                response = response
+                if (response.status === 200) {
+                    console.log('Se ha logeado correctamente')
+                    localStorage.setItem('token', response.data.token)
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+                cambiarEstadoModalEmail(!estadoModalEmail)
+                const inputNombre = document.getElementById('nombre')
+                const inputEmail = document.getElementById('email')
 
-            }else{
-              setState({
-                error:true,
-                errorMsg:response.data.Message
-              })
-            }
-        }).catch(error =>{
-          console.log(error);
-          setState({
-            error:true,
-            errorMsg:"Error al conectar con el API"
-          })
-        })
-      }
+                inputNombre.value = ''
+                inputEmail.value = ''
+                setState({
+                    error: true,
+                    errorMsg: response.data.message,
+                })
+            })
+    }
 
     return (
         <div className='mainLogin'>
+            {state.error === true && (
+                <Modal
+                    estado={estadoModalEmail}
+                    cambiarEstado={cambiarEstadoModalEmail}
+                    color={colorModal}
+                >
+                    <p>{state.errorMsg}</p>
+                </Modal>
+            )}
             <Barra />
             <Header />
             <div className='contenedor_boxLogin'>
@@ -79,7 +97,15 @@ export const Login = () => {
                         </div>
                         <form className='formLogin' onSubmit={manejadorSubmit}>
                             <div className='txt_field'>
-                                <input type='text' id='nombre' autoComplete='off' name="username" required autoFocus onChange={manejadorChange}/>
+                                <input
+                                    type='text'
+                                    id='nombre'
+                                    autoComplete='off'
+                                    name='username'
+                                    required
+                                    autoFocus
+                                    onChange={manejadorChange}
+                                />
                                 <label className='labelForm' for='nombre'>
                                     Nombre De Usuario
                                 </label>
@@ -87,7 +113,13 @@ export const Login = () => {
                             </div>
 
                             <div className='txt_field'>
-                                <input type='password' id='email' name="password" required onChange={manejadorChange}/>
+                                <input
+                                    type='password'
+                                    id='email'
+                                    name='password'
+                                    required
+                                    onChange={manejadorChange}
+                                />
                                 <label className='labelForm' for='email'>
                                     Contraseña
                                 </label>
@@ -103,7 +135,10 @@ export const Login = () => {
                             </div>
 
                             <div className='divbtn'>
-                                <button className='btnSubmit' onClick={manejadorBoton}>
+                                <button
+                                    className='btnSubmit'
+                                    onClick={manejadorBoton}
+                                >
                                     Iniciar Sesión
                                 </button>
                             </div>
