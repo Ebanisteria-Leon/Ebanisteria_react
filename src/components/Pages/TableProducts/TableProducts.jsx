@@ -22,29 +22,34 @@ export const TableProducts = () => {
     let colorModal ="#F1C40F"
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
     const [productos, setProductos] = useState([])
+    const [categorias, setCategorias] = useState()
     const [loading, setLoading] = useState(false)
     const [msgError, setMsgError] = useState(null)
     let datoP ={}
 
-    const initialForm = {
-        nombre: "",
-        descripcion: "",
-        valor: null,
-        alto: "",
-        largo: "",
-        ancho: "",
-        color: "",
-        calificacion: null,
-        imagen: null,
-        fechaInicio: null,
-        fechaFinalizacion: null,
-        estadoProducto: "",
-        idCategoria: null
-      }
+    // const initialForm = {
+    //     nombre: "",
+    //     descripcion: "",
+    //     valor: null,
+    //     alto: "",
+    //     largo: "",
+    //     ancho: "",
+    //     color: "",
+    //     calificacion: null,
+    //     fechaInicio: null,
+    //     fechaFinalizacion: null,
+    //     estadoProducto: "",
+    //     idCategoria: null
+    //   }
       
 
-    const [form2, setForm2] = useState(initialForm)
+    const [form2, setForm2] = useState({})
 
+    const fetchApi=async()=>{
+        const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/categoria/")
+        const responseJSON = await response.json()
+        setCategorias(responseJSON)
+    }
 
     const mostrarArchivo = () => {
         const inputFile = document.getElementById("imagen");
@@ -80,7 +85,7 @@ export const TableProducts = () => {
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        updateData2(form2)
+        updateData2()
     }
 
     const handleChange = (e) =>{
@@ -88,7 +93,7 @@ export const TableProducts = () => {
         const categorias = document.getElementById('selectCategoria')
         setForm2({
         ...form2,
-        [e.target.name]: e.target.value,
+        [e.target.name]: e.target.value
         })
         console.log(form2);
     }
@@ -125,6 +130,7 @@ export const TableProducts = () => {
 
 
     useEffect(()=>{
+        fetchApi()
         setLoading(true)
         api.get(url).then(res=>{
             if(!res.err){
@@ -224,16 +230,24 @@ export const TableProducts = () => {
                 </div>
 
                 <div className="select_agregar">
-                    
+                {/* <select name="agregar" id="selectCategoria" onChange={handleChange}>
+                    <option value="">Categorías</option>
+                    {!categorias ? "" :
+                    categorias.map((index, key)=>{
+                        return (
+                        <option value={index.idCategoria} key={key}>{index.nombreCategoria}</option>
+                        )
+                    })}
+            </select> */}
                 </div>
 
                 <div className="select_agregar2">
-
+{/* 
                     <div className="custom-input-file">
                     <input type="file" id="imagen" name="imagen"  className="" autoComplete="off" onChange={mostrarArchivo} />
                     <p>Editar Imagen</p>
                     <h5 className="tituImagen"></h5>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="divbtn_agregar2">
@@ -250,10 +264,8 @@ export const TableProducts = () => {
                 <section className='section__table-products'>
                     {loading && <ClipLoader color='#dcaa47'/>}
                     {msgError && <Mensaje msg={'Error ' + msgError.status + ' : ' + msgError.statusText} bg={"#dc3545"}/>}
-                    {productos &&
-                    productos.map((index, key)=>{
-                        return(
-                            <table className='table-products' key={key}>
+                    
+                            <table className='table-products'>
                             {/* Cabecera de la tabla */}
                             <thead>
                                 <tr>
@@ -267,9 +279,10 @@ export const TableProducts = () => {
                                     <th scope='col'>Acciones</th>
                                 </tr>
                             </thead>
-
-                            {/* Cuerpo de la tabla, coff la info de los productos */}
-                            <tbody>
+                            {productos &&
+                            productos.map((index,_)=>{
+                            return(
+                                <tbody>
                                 <tr>
                                     <td>{index.idProducto}</td>
                                     <td>{index.nombre}</td>
@@ -302,9 +315,9 @@ export const TableProducts = () => {
                                     </td>
                                 </tr>
                             </tbody>
+                            )
+                        })}
                         </table>
-                        )
-                    })}
                 </section>
             </div>
         </>

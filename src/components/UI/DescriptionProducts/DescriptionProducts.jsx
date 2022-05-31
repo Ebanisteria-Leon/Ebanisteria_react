@@ -9,6 +9,8 @@ import img1 from '../../../assets/images/muebles-promo/mueble-azul.png'
 import { actionTypes } from '../../hooks/reducer'
 import { useStateValue } from '../../hooks/StateProvider'
 import { Modal } from '../Modal/Modal'
+import accounting from 'accounting'
+
 
 
 export const DescriptionProducts = ({ id, click}) => {
@@ -23,9 +25,9 @@ export const DescriptionProducts = ({ id, click}) => {
             type:actionTypes.ADD_TO_BASKET,
             item: {
                 id,
-                name:dataId.name,
-                image:dataId.image,
-                gender:dataId.gender
+                name:dataId.nombre,
+                image:dataId.imagen,
+                gender:dataId.descripcion
             }
             
         })
@@ -37,11 +39,11 @@ export const DescriptionProducts = ({ id, click}) => {
     }
 
     useEffect(() => {
-        fetch('https://rickandmortyapi.com/api/character/' + tempdata)
+        fetch("https://leon-ebanisteria.herokuapp.com/api/producto/" + tempdata)
         .then(response => response.json())
         .then(data => {
             setDataId(data)
-            console.log(data.results);
+            console.log(data);
         });
     }, [tempdata])
     
@@ -53,46 +55,40 @@ export const DescriptionProducts = ({ id, click}) => {
                 {!dataId ? "espera" :
                     <>
                     <div className='productsImage' id='contenedor_img'>
-                            <Imagen clase='products_img' url={dataId.image} />
+                            <Imagen clase='products_img' url={dataId.imagen} />
                         </div>
 
                         <div className='productsInfo'>
                             <div className='productsInfo_name'>
-                                <h2>{dataId.name}</h2>
-                                <h3>{dataId.created}</h3>
+                                <h2>{dataId.nombre}</h2>
+                                <h3>{dataId.fechaInicio}</h3>
                             </div>
 
                             <div className='productsInfo_description'>
-                                <h3>$ 828.370</h3>
+                                <h3>{accounting.formatMoney(dataId.valor, "$")}</h3>
                                 <div className='descripction_pagragh'>
                                     <span className='paragraph-span'>
                                         Dimensiones:
                                         <p className='paragraph-p'>
-                                            {dataId.gender}
+                                            {dataId.alto}
                                         </p>
                                         <p className='paragraph-p'>
-                                            {dataId.status}
+                                            {dataId.ancho}
                                         </p>
-                                        <p className='paragraph-p'>Alto: 27 Pulgadas</p>
+                                        <p className='paragraph-p'>
+                                            {dataId.largo}
+                                        </p>
                                     </span>
 
                                     <span className='paragraph-span'>
                                         Color:
-                                        <p className='paragraph-p'>Negro mate</p>
+                                        <p className='paragraph-p'>{dataId.color}</p>
                                     </span>
 
                                     <span className='paragraph-span'>
                                         Descripcion:
                                         <p className='paragraph-p'>
-                                            Madera natural lacada acabados en laminado
-                                            negro profundo
-                                        </p>
-                                        <p className='paragraph-p'>
-                                            Fabricado de madera compuesta
-                                        </p>
-                                        <p className='paragraph-p'>
-                                            Composicion: de carbono con un resplado
-                                            robusto
+                                            {dataId.descripcion}
                                         </p>
                                     </span>
                                 </div>

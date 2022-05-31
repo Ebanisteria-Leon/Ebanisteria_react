@@ -118,10 +118,12 @@ export const SideBar = () => {
                                 <div className='job'>Admin ebanisteria</div>
                             </div>
                         </div>
+                        <NavLink to='/'>
                         <i
                             className='fa-solid fa-arrow-right-from-bracket'
                             id='log_out'
                         ></i>
+                        </NavLink>
                     </div>
                 </div>
             </div>

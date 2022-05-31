@@ -11,22 +11,22 @@ import Mueble_Azul_move from '../../../assets/images/muebles-promo/mueble-azul-m
 import { DescriptionProducts } from '../DescriptionProducts/DescriptionProducts'
 
 export const ProductCard = ({
-    productos: { id, name, gender, status, image },
+    productos: { idProducto, nombre, imagen, descripcion, valor, alto, ancho, largo, color, calificacion, fechaInicio, fechaFinalizacion, estadoProducto, idCategoria },
 }) => {
-    let idProducto
+    let idProductos
     let colorModal = '#008F39'
     const { mostrar_producto } = useViewModal()
     const mostrar_producto2 = () => {
-        idProducto = id
+        idProductos = idProducto
         dispatch({
             type: actionTypes.TEMP_DATA,
-            id: idProducto,
+            id: idProductos,
         })
         mostrar_producto()
     }
 
-    const stars = Array(5).fill(0)
-    const stars2 = Array(5).fill(0)
+    const stars = Array(calificacion).fill(0)
+    const stars2 = Array(calificacion).fill(0)
 
     const [{ basket }, dispatch] = useStateValue()
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
@@ -36,10 +36,11 @@ export const ProductCard = ({
         dispatch({
             type: actionTypes.ADD_TO_BASKET,
             item: {
-                id,
-                name,
-                image,
-                gender,
+                idProducto,
+                nombre,
+                imagen,
+                valor,
+                calificacion
             },
         })
         cambiarEstadoModalEmail(!estadoModalEmail)
@@ -64,7 +65,7 @@ export const ProductCard = ({
                         <div className='linkImg' onClick={mostrar_producto2}>
                             <Imagen
                                 clase='product-img-front'
-                                url={image}
+                                url={imagen}
                                 alt='Front'
                             />
                             <Imagen
@@ -78,11 +79,11 @@ export const ProductCard = ({
 
                 <div className='product-box-text'>
                     <div className='product-category'>
-                        <span>{name}</span>
+                        <span>{nombre}</span>
                     </div>
                     <div className='price'>
                         <span className='product-price'>
-                            {accounting.formatMoney(800000, '$')}
+                            {accounting.formatMoney(valor, '$')}
                         </span>
                         <div className='stars'>
                             {stars.map((_, index) => {

@@ -16,19 +16,17 @@ import ClipLoader from "react-spinners/ClipLoader";
 export const Products = () => {
     const { ocultar_producto } = useViewModal()
 
-    let url="https://rickandmortyapi.com/api/character?page=2"
-
     const [todos, setTodos] = useState()
 
-    const fetchApi=async(url)=>{
-        const response = await fetch(url)
+    const fetchApi=async()=>{
+        const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/")
         const responseJSON = await response.json()
-        setTodos(responseJSON.results)
+        setTodos(responseJSON.rows)
         console.log(todos);
     }
 
     useEffect(()=>{
-        fetchApi(url)
+        fetchApi()
     },[])
 
     const [{basket}, dispatch] = useStateValue()

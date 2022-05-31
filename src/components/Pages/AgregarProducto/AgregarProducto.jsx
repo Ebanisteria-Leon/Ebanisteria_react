@@ -17,7 +17,7 @@ export const initialForm = {
   ancho: "",
   color: "",
   calificacion: null,
-  imagen: null,
+  imagen: "",
   fechaInicio: null,
   fechaFinalizacion: null,
   estadoProducto: "",
@@ -30,6 +30,8 @@ export const AgregarProducto = () => {
   let url = "https://leon-ebanisteria.herokuapp.com/api/producto/"
   const [form, setForm] = useState(initialForm)
   const [categorias, setCategorias] = useState()
+  let imagen_producto
+  
   let options = {
     body: form, 
     }
@@ -40,10 +42,15 @@ export const AgregarProducto = () => {
         setCategorias(responseJSON)
     }
 
-  const mostrarArchivo = () => {
+  const mostrarArchivo = (e) => {
+    const images = e.target.files
+    imagen_producto = images[0].name;
+
+
     const inputFile = document.getElementById("imagen");
     const tituImagen = document.querySelector(".tituImagen");
     tituImagen.innerText = inputFile.files[0].name;
+    handleChange2()
   };
 
   const handleSubmit = (e) =>{
@@ -52,14 +59,27 @@ export const AgregarProducto = () => {
   }
 
   const handleChange = (e) =>{
-  
+    console.log("entra al primero");
     const categorias = document.getElementById('selectCategoria')
     setForm({
       ...form,
       [e.target.name]: e.target.value,
-      idCategoria: Number(categorias.value)
+      // idCategoria: Number(categorias.value)
     })
+    console.log(form);
   }
+
+  const handleChange2 = () =>{
+    console.log("entra al segundo");
+    let urlImg="https://leon-ebanisteria.herokuapp.com/media/products/" + imagen_producto
+    setForm({
+      ...form,
+      imagen: urlImg
+    })
+    console.log(form);
+  }
+
+
 
   const createData = async () =>{
         console.log(form);
@@ -153,7 +173,7 @@ export const AgregarProducto = () => {
           </div>
 
           <div className="select_agregar">
-            <select name="agregar" id="selectCategoria" onChange={handleChange}>
+            {/* <select id="selectCategoria" onChange={handleChange}>
               <option value="">Categorías</option>
               {!categorias ? "" :
               categorias.map((index, key)=>{
@@ -161,7 +181,7 @@ export const AgregarProducto = () => {
                   <option value={index.idCategoria} key={key}>{index.nombreCategoria}</option>
                 )
               })}
-            </select>
+            </select> */}
           </div>
 
           <div className="select_agregar2">

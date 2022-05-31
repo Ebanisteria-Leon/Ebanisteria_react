@@ -7,7 +7,7 @@ import { actionTypes } from '../../hooks/reducer'
 import { useStateValue } from '../../hooks/StateProvider'
 
 
-export const MostrarProductos = ({productos : {id, name, image, gender, quantity}}) => {
+export const MostrarProductos = ({productos: {idProducto, nombre, imagen, descripcion, valor, alto, ancho, largo, color, calificacion, fechaInicio, fechaFinalizacion, estadoProducto, idCategoria, quantity}}) => {
 
   const [{basket}, dispatch] = useStateValue()
 
@@ -16,12 +16,12 @@ export const MostrarProductos = ({productos : {id, name, image, gender, quantity
       if(all===false){
         dispatch({
           type: actionTypes.REMOVE_ONE_FROM_CART,
-          id: id,
+          id: idProducto,
         })
       }else{
         dispatch({
           type: actionTypes.REMOVE_ALL_FROM_CART,
-          id: id,
+          id: idProducto,
         })
       }
     }
@@ -30,14 +30,14 @@ export const MostrarProductos = ({productos : {id, name, image, gender, quantity
   return (
     <div className='producto'>
         <div className="pImg">
-            <Imagen clase='product-img-front' url={image} alt='Front'/>
+            <Imagen clase='product-img-front' url={imagen} alt='Front'/>
         </div>
         <div className="conjunto">
           <div className="pName">
-              <p>{name}</p>
+              <p>{nombre}</p>
           </div>
           <span className='product-price'>
-            {accounting.formatMoney(1809900, "$")} X {quantity} = {accounting.formatMoney(1809900 * quantity, "$")}
+            {accounting.formatMoney(valor, "$")} X {quantity} = {accounting.formatMoney(valor * quantity, "$")}
           </span>
         </div>
         <div className="eliminarP">
