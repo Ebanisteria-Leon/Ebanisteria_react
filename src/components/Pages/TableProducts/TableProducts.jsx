@@ -6,17 +6,51 @@ import Mueble_Azul from '../../../assets/images/muebles-promo/mueble-azul.png'
 import { Imagen } from '../../UI/Imagen/Imagen'
 import { SideBar } from '../../UI/SideBar/SideBar'
 import { ModalProducto } from '../../UI/ModalProducto/ModalProducto'
+import accounting from 'accounting'
+import { helpHttp } from '../../helpers/helpHttp'
+import ClipLoader from "react-spinners/ClipLoader";
+import { Mensaje } from '../../UI/Mensaje/Mensaje'
+import axios from 'axios'
+
+
+
 
 export const TableProducts = () => {
 
+    let api = helpHttp()
+    let url = "https://leon-ebanisteria.herokuapp.com/api/producto/"
     let colorModal ="#F1C40F"
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
+    const [productos, setProductos] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [msgError, setMsgError] = useState(null)
+    let datoP ={}
+
+    const initialForm = {
+        nombre: "",
+        descripcion: "",
+        valor: null,
+        alto: "",
+        largo: "",
+        ancho: "",
+        color: "",
+        calificacion: null,
+        imagen: null,
+        fechaInicio: null,
+        fechaFinalizacion: null,
+        estadoProducto: "",
+        idCategoria: null
+      }
+      
+
+    const [form2, setForm2] = useState(initialForm)
+
 
     const mostrarArchivo = () => {
         const inputFile = document.getElementById("imagen");
         const tituImagen = document.querySelector(".tituImagen");
         tituImagen.innerText = inputFile.files[0].name;
-      };
+    };
     
     const editarProducto = () =>{
         const overlay = document.querySelector('.overlayEditar')
@@ -44,6 +78,66 @@ export const TableProducts = () => {
         event.preventDefault()
     }
 
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+        updateData2(form2)
+    }
+
+    const handleChange = (e) =>{
+    
+        const categorias = document.getElementById('selectCategoria')
+        setForm2({
+        ...form2,
+        [e.target.name]: e.target.value,
+        })
+        console.log(form2);
+    }
+
+    const updateData = (data) =>{
+        setForm2(data)
+        editarProducto()
+    }
+
+    const updateData2 = async () =>{
+        let endpoint = url+form2.idProducto+'/'
+        await axios.put(endpoint, form2)
+        .then((res) => {
+            window.location.href="/Admin/TableProducts"
+            console.log(res);
+        })
+    }
+
+    const deleteData = async (data) =>{
+        console.log(data.idProducto);
+        let isDelete = window.confirm(
+            `Estas seguro de eliminar el registro con el id ` + data.idProducto
+        )
+        if(isDelete){
+            let endpoint = url+data.idProducto+'/'
+            await axios.delete(endpoint)
+            .then((res) =>{
+                window.location.href="/Admin/TableProducts"
+                console.log(res);
+            })
+            
+        }
+    }
+
+
+    useEffect(()=>{
+        setLoading(true)
+        api.get(url).then(res=>{
+            if(!res.err){
+                setMsgError(null)
+                setProductos(res.rows)
+            }else{
+                setMsgError(res)
+                setProductos([])
+            }
+        })
+        setLoading(false)
+    },[])
+
     return (
         <>
             <ModalProducto
@@ -64,84 +158,79 @@ export const TableProducts = () => {
                 <div className="tituEditar">
                     <h2>EDITAR PRODUCTO</h2>
                 </div>
-                <form className="formAgregar2" onSubmit={mostrarModal}>
+                <form className="formAgregar2" onSubmit={handleSubmit}>
                 <div className="txt_field">
-                    <input type="text" id="nombre" utoComplete="off" required autoFocus />
+                    <input type="text" id="nombre" name="nombre" value={form2.nombre} utoComplete="off" required autoFocus onChange={handleChange}/>
                     <label className="labelForm" for="nombre"> Nombre del Producto </label>
                     <span></span>
                 </div>
 
                 <div className="txt_field">
-                <textarea name="user_message" id="mensaje" cols="30" rows="10" placeholder='Descripción del producto' required></textarea>
+                <textarea name="descripcion" id="mensaje" value={form2.descripcion} cols="30" rows="10" placeholder='Descripción del producto' required></textarea>
                 </div>
 
                 <div className="txt_field">
-                    <input type="number" id="precio" required />
+                    <input type="number" id="precio" name="valor" value={form2.valor} required onChange={handleChange}/>
                     <label className="labelForm" for="precio"> Valor del producto </label>
                     <span></span>
                 </div>
 
                 <div className="txt_field">
-                    <input type="text" id="medidasA" required />
+                    <input type="text" id="medidasA" name="alto" value={form2.alto} required onChange={handleChange}/>
                     <label className="labelForm" for="medidasA"> Medidas del producto (Altura) </label>
                     <span></span>
                 </div>
 
                 <div className="txt_field">
-                    <input type="text" id="medidasL" required />
+                    <input type="text" id="medidasL" name="largo" value={form2.largo} required onChange={handleChange}/>
                     <label className="labelForm" for="medidasL"> Medidas del producto (Largo) </label>
                     <span></span>
                 </div>
 
                 <div className="txt_field">
-                    <input type="text" id="medidasAn" required />
+                    <input type="text" id="medidasAn" name="ancho" value={form2.ancho} required onChange={handleChange}/>
                     <label className="labelForm" for="medidasAn"> Medidas del producto (Anchura) </label>
                     <span></span>
                 </div>
 
                 <div className="txt_field">
-                    <input type="text" id="color" required />
+                    <input type="text" id="color" name="color" value={form2.color} required onChange={handleChange}/>
                     <label className="labelForm" for="color"> Color </label>
                     <span></span>
                 </div>
 
                 <div className="txt_field">
-                    <input type="number" id="calificacion" required />
+                    <input type="number" id="calificacion" name="calificacion" value={form2.calificacion} required onChange={handleChange}/>
                     <label className="labelForm" for="calificacion"> Calificacion de producto </label>
                     <span></span>
                 </div>
 
                 <div className="txt_field">
-                    <input type="date" id="fechaInicio" required />
+                    <input type="date" id="fechaInicio" name="fechaInicio" value={form2.fechaInicio} required onChange={handleChange}/>
                     <label className="labelForm" for="fechaInicio"> Fecha de inicio</label>
                     <span></span>
                 </div>
 
                 <div className="txt_field">
-                    <input type="date" id="fechaInicio" required />
-                    <label className="labelForm" for="fechaInicio"> Fecha de finalización</label>
+                    <input type="date" id="fechaFinalizacion" name="fechaFinalizacion" value={form2.fechaFinalizacion} required onChange={handleChange}/>
+                    <label className="labelForm" for="fechaFinalizacion"> Fecha de finalización</label>
                     <span></span>
                 </div>
 
                 <div className="txt_field">
-                    <input type="text" id="estado" required />
+                    <input type="text" id="estado" name="estadoProducto" value={form2.estadoProducto} required onChange={handleChange}/>
                     <label className="labelForm" for="estado"> Estado del producto </label>
                     <span></span>
                 </div>
 
                 <div className="select_agregar">
-                    <select name="agregar" id="">
-                    <option value="agregar">Categoría</option>
-                    </select>
+                    
                 </div>
 
                 <div className="select_agregar2">
-                    <select name="agregar" id="">
-                    <option value="agregar">Imagen</option>
-                    </select>
 
                     <div className="custom-input-file">
-                    <input type="file" id="imagen" className="" autoComplete="off" onChange={mostrarArchivo} />
+                    <input type="file" id="imagen" name="imagen"  className="" autoComplete="off" onChange={mostrarArchivo} />
                     <p>Editar Imagen</p>
                     <h5 className="tituImagen"></h5>
                     </div>
@@ -159,58 +248,63 @@ export const TableProducts = () => {
                 <h3 className='title-table-products'>PRODUCTOS</h3>
                 <SideBar />
                 <section className='section__table-products'>
-                    <table className='table-products'>
-                        {/* Cabecera de la tabla */}
-                        <thead>
-                            <tr>
-                                <th scope='col'>ID</th>
-                                <th scope='col'>Nombre</th>
-                                <th scope='col'>Categoria</th>
-                                <th scope='col'>Descripcion</th>
-                                <th scope='col'>Color</th>
-                                <th scope='col'>Precio</th>
-                                <th scope='col'>Imagen</th>
-                                <th scope='col'>Acciones</th>
-                            </tr>
-                        </thead>
+                    {loading && <ClipLoader color='#dcaa47'/>}
+                    {msgError && <Mensaje msg={'Error ' + msgError.status + ' : ' + msgError.statusText} bg={"#dc3545"}/>}
+                    {productos &&
+                    productos.map((index, key)=>{
+                        return(
+                            <table className='table-products' key={key}>
+                            {/* Cabecera de la tabla */}
+                            <thead>
+                                <tr>
+                                    <th scope='col'>ID</th>
+                                    <th scope='col'>Nombre</th>
+                                    <th scope='col'>Categoria</th>
+                                    <th scope='col'>Descripcion</th>
+                                    <th scope='col'>Color</th>
+                                    <th scope='col'>Precio</th>
+                                    <th scope='col'>Imagen</th>
+                                    <th scope='col'>Acciones</th>
+                                </tr>
+                            </thead>
 
-                        {/* Cuerpo de la tabla, coff la info de los productos */}
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Silla Madera obscura</td>
-                                <td>Sillas</td>
-                                <td>
-                                    Silla en madera obscura, con respaldo hecho
-                                    en espuma comoda
-                                </td>
-                                <td>Café obscuro</td>
-                                <td>
-                                    $
-                                    <span className='priceProducts-table'>
-                                        1.200.000
-                                    </span>
-                                </td>
-                                <td>
-                                    <Imagen
-                                        clase='img-table'
-                                        url={Mueble_Azul}
-                                        alt='Front'
-                                    />
-                                </td>
-                                <td>
-                                    <div className='buttonsTable-actions'>
-                                        <button className='btnAction-table update-products' onClick={editarProducto}>
-                                            <i className='fas fa-edit'></i>
-                                        </button>
-                                        <button className='btnAction-table delete-products'>
-                                            <i className='fas fa-trash'></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                            {/* Cuerpo de la tabla, coff la info de los productos */}
+                            <tbody>
+                                <tr>
+                                    <td>{index.idProducto}</td>
+                                    <td>{index.nombre}</td>
+                                    <td>{index.idCategoria}</td>
+                                    <td>
+                                        {index.descripcion}
+                                    </td>
+                                    <td>{index.color}</td>
+                                    <td>
+                                        <span className='priceProducts-table'>
+                                            {accounting.formatMoney(index.valor, "$")}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <Imagen
+                                            clase='img-table'
+                                            url={index.imagen}
+                                            alt='Front'
+                                        />
+                                    </td>
+                                    <td>
+                                        <div className='buttonsTable-actions'>
+                                            <button className='btnAction-table update-products' onClick={()=>updateData(index)}>
+                                                <i className='fas fa-edit'></i>
+                                            </button>
+                                            <button className='btnAction-table delete-products' onClick={()=>deleteData(index)}>
+                                                <i className='fas fa-trash'></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        )
+                    })}
                 </section>
             </div>
         </>

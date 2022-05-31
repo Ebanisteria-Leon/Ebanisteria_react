@@ -1,0 +1,12 @@
+.mensaje{
+    width:500px;
+    min-height:50px;
+    background: #dc3545;
+    color: white;
+    border-radius:5px;
+    box-shadow: rgba(100,100,111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 500ms ease;
+}
