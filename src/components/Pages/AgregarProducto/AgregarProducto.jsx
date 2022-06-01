@@ -29,12 +29,28 @@ export const AgregarProducto = () => {
   let api = helpHttp()
   let url = "https://leon-ebanisteria.herokuapp.com/api/producto/"
   const [form, setForm] = useState(initialForm)
-  const [categorias, setCategorias] = useState()
-  let imagen_producto
+  const [image, setImage] = useState("");
   
-  let options = {
-    body: form, 
-    }
+  const [categorias, setCategorias] = useState()
+  const [nuevoForm, setNuevoForm] = useState()
+  let imagen_producto=""
+
+  const uploadImage = () => {
+    const data = new FormData()
+    data.append("file", image)
+    data.append("upload_preset", "ebanisteria")
+    data.append("cloud_name","Ebanisteria")
+    fetch("  https://api.cloudinary.com/v1_1/Ebanisteria/image/upload",{
+    method:"post",
+    body: data
+    })
+    .then(resp => resp.json())
+    .then(data => {
+    let imagen_producto2=data.url
+    mandarImagen(imagen_producto2)
+    })
+    .catch(err => console.log(err))
+  }
 
   const fetchApi=async()=>{
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/categoria/")
@@ -50,44 +66,48 @@ export const AgregarProducto = () => {
     const inputFile = document.getElementById("imagen");
     const tituImagen = document.querySelector(".tituImagen");
     tituImagen.innerText = inputFile.files[0].name;
-    handleChange2()
+
   };
 
   const handleSubmit = (e) =>{
     e.preventDefault()
-    createData(form)
+    uploadImage()
+    createData()
   }
 
   const handleChange = (e) =>{
-    console.log("entra al primero");
     const categorias = document.getElementById('selectCategoria')
     setForm({
       ...form,
       [e.target.name]: e.target.value,
-      // idCategoria: Number(categorias.value)
+      idCategoria: Number(categorias.value)
     })
     console.log(form);
+    
   }
 
-  const handleChange2 = () =>{
-    console.log("entra al segundo");
-    let urlImg="https://leon-ebanisteria.herokuapp.com/media/products/" + imagen_producto
+  const mandarImagen = (img) =>{
+    console.log(img);
     setForm({
       ...form,
-      imagen: urlImg
+      imagen: img
     })
-    console.log(form);
   }
 
-
+  useEffect(() => {
+    setNuevoForm(form)
+  }, [form])
+  
 
   const createData = async () =>{
-        console.log(form);
-        await axios.post(url, form)
+        console.log(nuevoForm);
+        await axios.post(url, nuevoForm)
         .then(res=>{
-          window.location.href="/Admin/TableProducts"
+
+          // window.location.href="/Admin/TableProducts"
             console.log(res)
         })
+        console.log(nuevoForm);
     }
 
   useEffect(()=>{
@@ -173,7 +193,7 @@ export const AgregarProducto = () => {
           </div>
 
           <div className="select_agregar">
-            {/* <select id="selectCategoria" onChange={handleChange}>
+            <select id="selectCategoria" onChange={handleChange}>
               <option value="">Categorías</option>
               {!categorias ? "" :
               categorias.map((index, key)=>{
@@ -181,12 +201,14 @@ export const AgregarProducto = () => {
                   <option value={index.idCategoria} key={key}>{index.nombreCategoria}</option>
                 )
               })}
-            </select> */}
+            </select>
           </div>
 
           <div className="select_agregar2">
             <div className="custom-input-file">
-              <input type="file" id="imagen" name="imagen" className="" autoComplete="off" onChange={mostrarArchivo} />
+            <input type="file" autoComplete="off" onChange= {(e)=> {
+              setImage(e.target.files[0])
+            }}></input>
               <p>Subir Imagen</p>
               <h5 className="tituImagen"></h5>
             </div>
