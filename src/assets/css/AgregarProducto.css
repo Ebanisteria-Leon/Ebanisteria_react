@@ -76,48 +76,39 @@
     font-size: 16px;
 }
 
-.select_agregar2{
-    width: 100%;
-    height:40px;
-    margin: 0px 0px 10px 0;
+.select_agregar22{
+    width: 30%;
+    height: 5%;
+    margin-top: 20px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
 
-.select_agregar2 select{
-    width: 30%;
-    height: 40px;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid black;
-    transition: all 600ms;
-    font-size: 16px;
-}
 
-.custom-input-file {
+.custom-input-file2 {
     background-color: #dfac48;
     color: #fff;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
-    margin: 0 0 0 46px;
     position: relative;
     text-align: center;
-    width: 30%;
-    height: 30%;
+    width: 100%;
+    height: 70%;
     border-radius: .4em;
     transition: all 300ms;
     position: relative;
   }
 
-  .custom-input-file:hover {
+  .custom-input-file2:hover {
     background-color: #da9d24;
     color: #fff;
 
   }
 
-.custom-input-file p{
+.custom-input-file2 p{
     height: 100%;
     line-height: 28px;
 }
@@ -137,7 +128,7 @@
     height: 100%;
 }
 
-.select_agregar2 input{
+.select_agregar22 input{
     border: 1px solid transparent;
     cursor: pointer;
     font-size: 1px;

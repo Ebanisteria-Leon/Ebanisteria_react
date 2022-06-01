@@ -100,6 +100,14 @@ export const SideBar = () => {
                     </li>
 
                     <li>
+                        <NavLink to='/Admin/AgregarCategoria'>
+                            <i className='fa-solid fa-file-circle-plus'></i>
+                            <span className='links_name'>Agregar categoría</span>
+                        </NavLink>
+                        <span className='tooltip'>Add categoría</span>
+                    </li>
+
+                    <li>
                         <NavLink to='/clients'>
                             <i className='fa-solid fa-gear'></i>
                             <span className='links_name'>Configuracion</span>

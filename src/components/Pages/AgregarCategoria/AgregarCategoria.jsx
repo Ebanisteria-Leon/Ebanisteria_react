@@ -3,7 +3,7 @@ import "../../../assets/css/AgregarProducto.css";
 
 import { SideBar } from "../../UI/SideBar/SideBar";
 import { Imagen } from "../../UI/Imagen/Imagen";
-import mueble from "../../../assets/images/AgregarProducto/muebleLargo.png";
+import categoria from "../../../assets/images/AgregarCategoria/categoria.png";
 import axios from "axios";
 
 
@@ -17,62 +17,24 @@ export const initialForm = {
   color: "",
   calificacion: null,
   imagen: "",
-  imagen2:"",
   fechaInicio: null,
   fechaFinalizacion: null,
-  estadoProducto: 0,
+  estadoProducto: "",
   idCategoria: null
 }
 
-export const AgregarProducto = () => {
+export const AgregarCategoria = () => {
 
-  let url = "https://leon-ebanisteria.herokuapp.com/api/producto/"
+  let url = "https://leon-ebanisteria.herokuapp.com/api/categoria/"
   const [form, setForm] = useState(initialForm)
-  const [image, setImage] = useState("");
   
   const [categorias, setCategorias] = useState()
-  let imagen_producto=""
-  let setearImg
 
-  const uploadImage = () => {
-    console.log("entra al upload", setearImg);
-    const data = new FormData()
-    data.append("file", setearImg)
-    data.append("upload_preset", "ebanisteria")
-    data.append("cloud_name","Ebanisteria")
-    fetch("  https://api.cloudinary.com/v1_1/Ebanisteria/image/upload",{
-    method:"post",
-    body: data
-    })
-    .then(resp => resp.json())
-    .then(data => {
-      console.log(data.url);
-    setForm({
-      ...form,
-      imagen: data.url
-    })
-    console.log(form);
-    })
-    .catch(err => console.log(err))
-  }
-
-  const fetchApi=async()=>{
-        const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/categoria/")
-        const responseJSON = await response.json()
-        setCategorias(responseJSON)
-    }
-
-  const mostrarArchivo = (e) => {
-    console.log(e);
-    const images = e.target.files
-    imagen_producto = images[0].name;
-
-
-    const tituImagen = document.querySelector(".tituImagen");
-    console.log(tituImagen);
-    tituImagen.innerText = imagen_producto;
-    // setearImagen(e)
-  };
+//   const fetchApi=async()=>{
+//         const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/categoria/")
+//         const responseJSON = await response.json()
+//         setCategorias(responseJSON)
+//     }
 
   const handleSubmit = (e) =>{
     e.preventDefault()
@@ -88,6 +50,14 @@ export const AgregarProducto = () => {
     })
     console.log(form);
   }
+
+  // const mandarImagen = (img) =>{
+  //   console.log(img);
+  //   setForm({
+  //     ...form,
+  //     imagen: img
+  //   })
+  // }
   
 
   const createData = async () =>{
@@ -95,19 +65,14 @@ export const AgregarProducto = () => {
         await axios.post(url, form)
         .then(res=>{
 
+          window.location.href="/Admin/TableProducts"
             console.log(res)
         })
     }
-  
-  const setearImagen = (e) =>{
-    console.log("entra");
-    setearImg=e.target.files[0]
-    uploadImage()
-  }
 
-  useEffect(()=>{
-    fetchApi()
-},[])
+//   useEffect(()=>{
+//     fetchApi()
+// },[])
 
   return (
     <div className="mainAgregar">
@@ -119,7 +84,7 @@ export const AgregarProducto = () => {
 
       <div className="container_agregar">
         <div className="agregar_sofa">
-          <Imagen url={mueble} />
+          <Imagen url={categoria} />
         </div>
 
         <form className="formAgregar" onSubmit={handleSubmit}>
@@ -127,17 +92,6 @@ export const AgregarProducto = () => {
             <input type="text" id="nombre" name="nombre" utoComplete="off" value={form?form.nombre:""} required autoFocus onChange={handleChange}/>
             <label className="labelForm" for="nombre"> Nombre del Producto </label>
             <span></span>
-          </div>
-
-          <div className="select_agregar22">
-            <div className="custom-input-file2">
-            <input type="file" autoComplete="off" onChange= {(e)=>{
-              mostrarArchivo(e)
-              setearImagen(e)
-            }}></input>
-              <p>Subir Imagen</p>
-              <h5 className="tituImagen"></h5>
-            </div>
           </div>
 
           <div className="txt_field">
@@ -192,11 +146,11 @@ export const AgregarProducto = () => {
             <span></span>
           </div>
 
-          {/* <div className="txt_field">
+          <div className="txt_field">
             <input type="text" id="estado" name="estadoProducto" value={form.estadoProducto} required onChange={handleChange}/>
             <label className="labelForm" for="estado"> Estado del producto </label>
             <span></span>
-          </div> */}
+          </div>
 
           <div className="select_agregar">
             <select id="selectCategoria" onChange={handleChange}>
