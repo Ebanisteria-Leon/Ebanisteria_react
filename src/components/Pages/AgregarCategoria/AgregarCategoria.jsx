@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import "../../../assets/css/AgregarProducto.css";
+import "../../../assets/css/AgregarCategoría.css"
 
 import { SideBar } from "../../UI/SideBar/SideBar";
 import { Imagen } from "../../UI/Imagen/Imagen";
@@ -8,33 +8,14 @@ import axios from "axios";
 
 
 export const initialForm = {
-  nombre: "",
+  nombreCategoria: "",
   descripcion: "",
-  valor: null,
-  alto: "",
-  largo: "",
-  ancho: "",
-  color: "",
-  calificacion: null,
-  imagen: "",
-  fechaInicio: null,
-  fechaFinalizacion: null,
-  estadoProducto: "",
-  idCategoria: null
 }
 
 export const AgregarCategoria = () => {
 
   let url = "https://leon-ebanisteria.herokuapp.com/api/categoria/"
   const [form, setForm] = useState(initialForm)
-  
-  const [categorias, setCategorias] = useState()
-
-//   const fetchApi=async()=>{
-//         const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/categoria/")
-//         const responseJSON = await response.json()
-//         setCategorias(responseJSON)
-//     }
 
   const handleSubmit = (e) =>{
     e.preventDefault()
@@ -42,129 +23,49 @@ export const AgregarCategoria = () => {
   }
 
   const handleChange = (e) =>{
-    const categorias = document.getElementById('selectCategoria')
     setForm({
       ...form,
-      [e.target.name]: e.target.value,
-      idCategoria: Number(categorias.value)
+      [e.target.name]: e.target.value
     })
     console.log(form);
   }
-
-  // const mandarImagen = (img) =>{
-  //   console.log(img);
-  //   setForm({
-  //     ...form,
-  //     imagen: img
-  //   })
-  // }
-  
 
   const createData = async () =>{
         console.log(form);
         await axios.post(url, form)
         .then(res=>{
 
-          window.location.href="/Admin/TableProducts"
+          window.location.href="/Admin/TableCategories"
             console.log(res)
         })
     }
 
-//   useEffect(()=>{
-//     fetchApi()
-// },[])
 
   return (
-    <div className="mainAgregar">
+    <div className="mainCategoria">
       <div className="titulo_agregar">
-        <h2>AGREGAR PRODUCTO</h2>
+        <h2>AGREGAR CATEGORÍA</h2>
       </div>
 
       <SideBar />
 
-      <div className="container_agregar">
-        <div className="agregar_sofa">
+      <div className="container_agregarC">
+        <div className="agregar_categoria">
           <Imagen url={categoria} />
         </div>
 
-        <form className="formAgregar" onSubmit={handleSubmit}>
-          <div className="txt_field">
-            <input type="text" id="nombre" name="nombre" utoComplete="off" value={form?form.nombre:""} required autoFocus onChange={handleChange}/>
-            <label className="labelForm" for="nombre"> Nombre del Producto </label>
+        <form className="formCategoria" onSubmit={handleSubmit}>
+          <div className="txt_field2">
+            <input type="text" id="nombreCategoria" name="nombreCategoria" utoComplete="off" value={form.nombreCategoria} required autoFocus onChange={handleChange}/>
+            <label className="labelForm" for="nombreCategoria"> Nombre de la categoría </label>
             <span></span>
           </div>
 
-          <div className="txt_field">
-          <textarea id="mensaje" name="descripcion" value={form.descripcion} cols="30" rows="10" placeholder='Descripción del producto' required onChange={handleChange}></textarea>
+          <div className="txt_field2">
+          <textarea id="mensaje" name="descripcion" value={form.descripcion} cols="30" rows="10" placeholder='Descripción de la categoría' required onChange={handleChange}></textarea>
           </div>
 
-          <div className="txt_field">
-            <input type="number" id="precio" name="valor" value={form.valor} required onChange={handleChange}/>
-            <label className="labelForm" for="precio"> Valor del producto </label>
-            <span></span>
-          </div>
-
-          <div className="txt_field">
-            <input type="text" id="medidasA" name="alto" value={form.alto} required onChange={handleChange}/>
-            <label className="labelForm" for="medidasA"> Medidas del producto (Altura) </label>
-            <span></span>
-          </div>
-
-          <div className="txt_field">
-            <input type="text" id="medidasL" name="largo" value={form.largo} required onChange={handleChange}/>
-            <label className="labelForm" for="medidasL"> Medidas del producto (Largo) </label>
-            <span></span>
-          </div>
-
-          <div className="txt_field">
-            <input type="text" id="medidasAn" name="ancho" value={form.ancho} required onChange={handleChange}/>
-            <label className="labelForm" for="medidasAn"> Medidas del producto (Anchura) </label>
-            <span></span>
-          </div>
-
-          <div className="txt_field">
-            <input type="text" id="color" name="color" value={form.color} required onChange={handleChange}/>
-            <label className="labelForm" for="color"> Color </label>
-            <span></span>
-          </div>
-
-          <div className="txt_field">
-            <input type="number" id="calificacion" name="calificacion" value={form.calificacion} required onChange={handleChange}/>
-            <label className="labelForm" for="calificacion"> Calificacion de producto </label>
-            <span></span>
-          </div>
-
-          <div className="txt_field">
-            <input type="date" id="fechaInicio" name="fechaInicio" value={form.fechaInicio} required onChange={handleChange}/>
-            <label className="labelForm" for="fechaInicio"> Fecha de inicio</label>
-            <span></span>
-          </div>
-
-          <div className="txt_field">
-            <input type="date" id="fechaInicio" name="fechaFinalizacion" value={form.fechaFinalizacion} required onChange={handleChange}/>
-            <label className="labelForm" for="fechaInicio"> Fecha de finalización</label>
-            <span></span>
-          </div>
-
-          <div className="txt_field">
-            <input type="text" id="estado" name="estadoProducto" value={form.estadoProducto} required onChange={handleChange}/>
-            <label className="labelForm" for="estado"> Estado del producto </label>
-            <span></span>
-          </div>
-
-          <div className="select_agregar">
-            <select id="selectCategoria" onChange={handleChange}>
-              <option value="">Categorías</option>
-              {!categorias ? "" :
-              categorias.map((index, key)=>{
-                return (
-                  <option value={index.idCategoria} key={key}>{index.nombreCategoria}</option>
-                )
-              })}
-            </select>
-          </div>
-
-          <div className="divbtn_agregar2">
+          <div className="divbtn_agregar22">
           <div className="divbtn_agregar">
             <button className="btnSubmit">Agregar</button>
           </div>

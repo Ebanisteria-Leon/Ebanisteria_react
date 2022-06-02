@@ -14,13 +14,13 @@
 .contenido_modal{
     width:500px;
     min-height:50px;
-    background:#fff;
+    background:#aa8a0c;
     position:relative;
     top: -100px;
     border-radius:5px;
     box-shadow: rgba(100,100,111, 0.2) 0px 7px 29px 0px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     transition: all 500ms ease;
 }
@@ -28,3 +28,32 @@
 .contenido_modal p{
     font-size: 16px;
 }
+
+.contenido_modal .aceptar{
+    width: 14%;
+    border: none;
+    background-color: transparent;
+    color: green;
+    font-size: 11px;
+    transition: all 300ms ease;
+}
+
+.contenido_modal .aceptar:hover{
+    transform: scale(1.2);
+    color: rgb(0, 88, 0);
+}
+
+.contenido_modal .cancelar{
+    width: 15%;
+    border: none;
+    background-color: transparent;
+    color: rgb(175, 0, 0);
+    font-size: 11px;
+    transition: all 300ms ease;
+}
+
+.contenido_modal .cancelar:hover{
+    transform: scale(1.2);
+    color: rgb(88, 0, 0);
+}
+

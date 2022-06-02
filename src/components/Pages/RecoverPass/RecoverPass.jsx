@@ -31,34 +31,15 @@ export const RecoverPass = () => {
                         </div>
 
                         <form className='formRecover'>
+                            
                             <div className='txt_field'>
                                 <input
-                                    type='text'
-                                    id='nombre'
-                                    autoComplete='off'
-                                    required
-                                    autoFocus
-                                />
-                                <label className='labelForm' for='nombre'>
-                                    Nombre
-                                </label>
-                                <span></span>
-                            </div>
-                            <div className='txt_field'>
-                                <input type='password' id='password' required />
-                                <label className='labelForm' for='password'>
-                                    Contraseña
-                                </label>
-                                <span></span>
-                            </div>
-                            <div className='txt_field'>
-                                <input
-                                    type='password'
+                                    type='email'
                                     id='passwordC'
                                     required
                                 />
                                 <label className='labelForm' for='passwordC'>
-                                    Confirmar Contraseña
+                                    Correo electrónico
                                 </label>
                                 <span></span>
                             </div>

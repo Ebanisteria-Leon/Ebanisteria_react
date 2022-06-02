@@ -84,6 +84,14 @@ export const SideBar = () => {
                     </li>
 
                     <li>
+                        <NavLink to='/Admin/TableCategories'>
+                            <i className='fa-solid fa-folder '></i>
+                            <span className='links_name'>Categorías</span>
+                        </NavLink>
+                        <span className='tooltip'>Categorías</span>
+                    </li>
+
+                    <li>
                         <NavLink to='/Admin/TableOrders'>
                             <i className='fa-solid fa-cart-shopping '></i>
                             <span className='links_name'>Ordenes</span>

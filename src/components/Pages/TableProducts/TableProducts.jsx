@@ -172,7 +172,7 @@ export const TableProducts = () => {
                 </div>
 
                 <div className="txt_field">
-                <textarea name="descripcion" id="mensaje" value={form2.descripcion} cols="30" rows="10" placeholder='Descripción del producto' required></textarea>
+                <textarea name="descripcion" id="mensaje" value={form2.descripcion} cols="30" rows="10" placeholder='Descripción del producto' required onChange={handleChange}></textarea>
                 </div>
 
                 <div className="txt_field">
@@ -230,7 +230,7 @@ export const TableProducts = () => {
                 </div>
 
                 <div className="select_agregar">
-                {/* <select name="agregar" id="selectCategoria" onChange={handleChange}>
+                <select name="agregar" id="selectCategoria" value={form2.idCategoria} onChange={handleChange}>
                     <option value="">Categorías</option>
                     {!categorias ? "" :
                     categorias.map((index, key)=>{
@@ -238,7 +238,7 @@ export const TableProducts = () => {
                         <option value={index.idCategoria} key={key}>{index.nombreCategoria}</option>
                         )
                     })}
-            </select> */}
+                </select>
                 </div>
 
                 <div className="select_agregar2">

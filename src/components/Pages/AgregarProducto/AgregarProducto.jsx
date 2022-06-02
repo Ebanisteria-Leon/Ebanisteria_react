@@ -33,6 +33,7 @@ export const AgregarProducto = () => {
   const [categorias, setCategorias] = useState()
   let imagen_producto=""
   let setearImg
+  let setearImg2
 
   const uploadImage = () => {
     console.log("entra al upload", setearImg);
@@ -46,7 +47,7 @@ export const AgregarProducto = () => {
     })
     .then(resp => resp.json())
     .then(data => {
-      console.log(data.url);
+      console.log("url1" + data.url);
     setForm({
       ...form,
       imagen: data.url
@@ -54,6 +55,30 @@ export const AgregarProducto = () => {
     console.log(form);
     })
     .catch(err => console.log(err))
+  }
+
+  const uploadImage2 = () => {
+    console.log("entra al upload2", setearImg2);
+    const data = new FormData()
+    data.append("file", setearImg2)
+    data.append("upload_preset", "ebanisteria")
+    data.append("cloud_name","Ebanisteria")
+    setTimeout(() => {
+      fetch("  https://api.cloudinary.com/v1_1/Ebanisteria/image/upload",{
+      method:"post",
+      body: data
+      })
+      .then(resp => resp.json())
+      .then(data => {
+        console.log("url2" + data.url);
+      setForm({
+        ...form,
+        imagen2: data.url
+      })
+      console.log(form);
+      })
+      .catch(err => console.log(err))
+    }, 8000);
   }
 
   const fetchApi=async()=>{
@@ -69,6 +94,18 @@ export const AgregarProducto = () => {
 
 
     const tituImagen = document.querySelector(".tituImagen");
+    console.log(tituImagen);
+    tituImagen.innerText = imagen_producto;
+    // setearImagen(e)
+  };
+
+  const mostrarArchivo2 = (e) => {
+    console.log(e);
+    const images = e.target.files
+    imagen_producto = images[0].name;
+
+
+    const tituImagen = document.querySelector(".tituImagenC");
     console.log(tituImagen);
     tituImagen.innerText = imagen_producto;
     // setearImagen(e)
@@ -105,6 +142,11 @@ export const AgregarProducto = () => {
     uploadImage()
   }
 
+  const setearImagen2 = (e) =>{
+    setearImg2=e.target.files[0]
+    uploadImage2()
+  }
+
   useEffect(()=>{
     fetchApi()
 },[])
@@ -135,8 +177,17 @@ export const AgregarProducto = () => {
               mostrarArchivo(e)
               setearImagen(e)
             }}></input>
-              <p>Subir Imagen</p>
+              <p>Subir Imagen 1</p>
               <h5 className="tituImagen"></h5>
+            </div>
+
+            <div className="custom-input-file2">
+            <input type="file" autoComplete="off" onChange= {(e)=>{
+              mostrarArchivo2(e)
+              setearImagen2(e)
+            }}></input>
+              <p>Subir Imagen 2</p>
+              <h5 className="tituImagenC"></h5>
             </div>
           </div>
 
