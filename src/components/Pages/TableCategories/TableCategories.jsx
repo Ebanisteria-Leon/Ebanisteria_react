@@ -88,7 +88,6 @@ export const TableCategories = () => {
     const updateData2 = async () =>{
         cambiarEstadoModalEmail(!estadoModalEmail) 
         if(confirmar===true){
-            console.log("entra");
             let endpoint = url+form2.idCategoria+'/'
             await axios.put(endpoint, form2)
             .then((res) => {

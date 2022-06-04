@@ -23,6 +23,20 @@
 
 }
 
+textarea::-webkit-scrollbar{
+  width: 5px;
+}
+
+textarea::-webkit-scrollbar-thumb{
+  background: #7a7a7a;
+  border-radius: 6px;
+  transition: all 600ms;
+}
+
+textarea::-webkit-scrollbar-thumb:hover{
+  background: linear-gradient(transparent, #474747);
+}
+
 html{
   scroll-behavior: smooth;
 }

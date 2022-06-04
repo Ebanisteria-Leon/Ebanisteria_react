@@ -19,91 +19,72 @@ export const TableProducts = () => {
 
     let api = helpHttp()
     let url = "https://leon-ebanisteria.herokuapp.com/api/producto/"
-    let colorModal ="#F1C40F"
+    let colorModal ="#fff"
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
     const [productos, setProductos] = useState([])
     const [categorias, setCategorias] = useState()
     const [loading, setLoading] = useState(false)
     const [msgError, setMsgError] = useState(null)
-    let datoP ={}
-
-    // const initialForm = {
-    //     nombre: "",
-    //     descripcion: "",
-    //     valor: null,
-    //     alto: "",
-    //     largo: "",
-    //     ancho: "",
-    //     color: "",
-    //     calificacion: null,
-    //     fechaInicio: null,
-    //     fechaFinalizacion: null,
-    //     estadoProducto: "",
-    //     idCategoria: null
-    //   }
-      
-
     const [form2, setForm2] = useState({})
+    let imagen_producto=""
+    let setearImg
+    let setearImg2 
+    let confirmar = Boolean     
 
-    const fetchApi=async()=>{
-        const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/categoria/")
-        const responseJSON = await response.json()
-        setCategorias(responseJSON)
-    }
+const cambiarEstado = () =>{
+    confirmar= true
+    updateData2()
+}
 
-    const mostrarArchivo = () => {
-        const inputFile = document.getElementById("imagen");
-        const tituImagen = document.querySelector(".tituImagen");
-        tituImagen.innerText = inputFile.files[0].name;
-    };
+const fetchApi=async()=>{
+    const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/categoria/")
+    const responseJSON = await response.json()
+    setCategorias(responseJSON)
+}
+
+const editarProducto = () =>{
+    const overlay = document.querySelector('.overlayEditar')
+    const container = document.querySelector('.container_agregar2')
+
+    overlay.style.visibility="visible"
+    overlay.style.opacity="1"
+    container.style.opacity="1"
+    container.style.transform="scale(1)"
     
-    const editarProducto = () =>{
-        const overlay = document.querySelector('.overlayEditar')
-        const container = document.querySelector('.container_agregar2')
+}
 
-        overlay.style.visibility="visible"
-        overlay.style.opacity="1"
-        container.style.opacity="1"
-        container.style.transform="scale(1)"
-        
-    }
+const cerrarEditor = () =>{
+    const overlay = document.querySelector('.overlayEditar')
+    const container = document.querySelector('.container_agregar2')
 
-    const cerrarEditor = () =>{
-        const overlay = document.querySelector('.overlayEditar')
-        const container = document.querySelector('.container_agregar2')
+    overlay.style.visibility="hidden"
+    overlay.style.opacity="0"
+    container.style.opacity="0"
+    container.style.transform="scale(0.6)"
+}
 
-        overlay.style.visibility="hidden"
-        overlay.style.opacity="0"
-        container.style.opacity="0"
-        container.style.transform="scale(0.6)"
-    }
+const handleSubmit = (e) =>{
+    e.preventDefault()
+    updateData2()
+}
 
-    const mostrarModal =(event) =>{
-        cambiarEstadoModalEmail(!estadoModalEmail) 
-        event.preventDefault()
-    }
+const handleChange = (e) =>{
+    const categorias = document.getElementById('selectCategoria')
+    setForm2({
+    ...form2,
+    [e.target.name]: e.target.value
+    })
+    console.log(form2);
+}
 
-    const handleSubmit = (e) =>{
-        e.preventDefault()
-        updateData2()
-    }
+const updateData = (data) =>{
+    setForm2(data)
+    editarProducto()
+}
 
-    const handleChange = (e) =>{
-    
-        const categorias = document.getElementById('selectCategoria')
-        setForm2({
-        ...form2,
-        [e.target.name]: e.target.value
-        })
-        console.log(form2);
-    }
-
-    const updateData = (data) =>{
-        setForm2(data)
-        editarProducto()
-    }
-
-    const updateData2 = async () =>{
+const updateData2 = async () =>{
+    cambiarEstadoModalEmail(!estadoModalEmail) 
+    if(confirmar === true){
         let endpoint = url+form2.idProducto+'/'
         await axios.put(endpoint, form2)
         .then((res) => {
@@ -111,22 +92,102 @@ export const TableProducts = () => {
             console.log(res);
         })
     }
+}
 
-    const deleteData = async (data) =>{
-        console.log(data.idProducto);
-        let isDelete = window.confirm(
-            `Estas seguro de eliminar el registro con el id ` + data.idProducto
-        )
-        if(isDelete){
-            let endpoint = url+data.idProducto+'/'
-            await axios.delete(endpoint)
-            .then((res) =>{
-                window.location.href="/Admin/TableProducts"
-                console.log(res);
-            })
-            
-        }
+const deleteData = async (data) =>{
+    console.log(data.idProducto);
+    let isDelete = window.confirm(
+        `Estas seguro de eliminar el registro con el id ` + data.idProducto
+    )
+    if(isDelete){
+        let endpoint = url+data.idProducto+'/'
+        await axios.delete(endpoint)
+        .then((res) =>{
+            window.location.href="/Admin/TableProducts"
+            console.log(res);
+        })
+        
     }
+}
+
+const mostrarArchivo = (e) => {
+    console.log(e);
+    const images = e.target.files
+    imagen_producto = images[0].name;
+
+    const tituImagen = document.querySelector(".tituImagen");
+    console.log(tituImagen);
+    tituImagen.innerText = imagen_producto;
+    // setearImagen(e)
+  };
+
+  const mostrarArchivo2 = (e) => {
+    console.log(e);
+    const images = e.target.files
+    imagen_producto = images[0].name;
+
+    const tituImagen = document.querySelector(".tituImagenC");
+    console.log(tituImagen);
+    tituImagen.innerText = imagen_producto;
+    // setearImagen(e)
+  };
+
+const uploadImage = () => {
+    console.log("entra al upload", setearImg);
+    const data = new FormData()
+    data.append("file", setearImg)
+    data.append("upload_preset", "ebanisteria")
+    data.append("cloud_name","Ebanisteria")
+    fetch("  https://api.cloudinary.com/v1_1/Ebanisteria/image/upload",{
+    method:"post",
+    body: data
+    })
+    .then(resp => resp.json())
+    .then(data => {
+        console.log("url1" + data.url);
+    setForm2({
+        ...form2,
+        imagen: data.url
+    })
+    console.log(form2);
+    })
+    .catch(err => console.log(err))
+}
+    
+const uploadImage2 = () => {
+    console.log("entra al upload2", setearImg2);
+    const data = new FormData()
+    data.append("file", setearImg2)
+    data.append("upload_preset", "ebanisteria")
+    data.append("cloud_name","Ebanisteria")
+    setTimeout(() => {
+        fetch("  https://api.cloudinary.com/v1_1/Ebanisteria/image/upload",{
+        method:"post",
+        body: data
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            console.log("url2" + data.url);
+        setForm2({
+            ...form2, 
+            imagen2: data.url
+        })
+        console.log(form2);
+        })
+        .catch(err => console.log(err))
+    }, 8000);
+}
+
+const setearImagen = (e) =>{
+    console.log("entra");
+    setearImg=e.target.files[0]
+    uploadImage()
+}
+
+const setearImagen2 = (e) =>{
+    setearImg2=e.target.files[0]
+    uploadImage2()
+}
 
 
     useEffect(()=>{
@@ -151,8 +212,7 @@ export const TableProducts = () => {
                 cambiarEstado={cambiarEstadoModalEmail}
                 color={colorModal}>
                 <p>Confirmar cambios?</p>
-                <button className='aceptar'><i class="fa-solid fa-check"></i></button>
-                <button className='cancelar'><i class="fa-solid fa-xmark"></i></button>
+                <button className='aceptar' onClick={cambiarEstado}><i class="fa-solid fa-check"> Aceptar</i></button>
             </ModalProducto>
         <div className="overlayEditar">
             <div className="container_agregar2">
@@ -169,6 +229,35 @@ export const TableProducts = () => {
                     <input type="text" id="nombre" name="nombre" value={form2.nombre} utoComplete="off" required autoFocus onChange={handleChange}/>
                     <label className="labelForm" for="nombre"> Nombre del Producto </label>
                     <span></span>
+                </div>
+
+                <div className="select_agregar222">
+                    <div className="caja1">
+                        <div className="cajaImagen">
+                            <img className='imagen' src={form2.imagen} alt="" />
+                        </div>
+                        <div className="custom-input-file2">
+                        <input type="file" autoComplete="off" onChange= {(e)=>{
+                            mostrarArchivo(e)
+                            setearImagen(e)
+                        }}></input>
+                            <p>Subir Imagen 1</p>
+                            <h5 className="tituImagen"></h5>
+                        </div>
+                    </div>
+                    <div className="caja2">
+                        <div className="cajaImagen">
+                            <img className='imagen' src={form2.imagen2} alt="" />
+                        </div>
+                        <div className="custom-input-file2">
+                        <input type="file" autoComplete="off" onChange= {(e)=>{
+                            mostrarArchivo2(e)
+                            setearImagen2(e)
+                        }}></input>
+                            <p>Subir Imagen 2</p>
+                            <h5 className="tituImagenC"></h5>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="txt_field">
@@ -239,15 +328,6 @@ export const TableProducts = () => {
                         )
                     })}
                 </select>
-                </div>
-
-                <div className="select_agregar2">
-{/* 
-                    <div className="custom-input-file">
-                    <input type="file" id="imagen" name="imagen"  className="" autoComplete="off" onChange={mostrarArchivo} />
-                    <p>Editar Imagen</p>
-                    <h5 className="tituImagen"></h5>
-                    </div> */}
                 </div>
 
                 <div className="divbtn_agregar2">

@@ -174,8 +174,9 @@ border-bottom: 1px solid #dfac48;
     }
 
     .container_agregarC{
-        width: 80%;
+        width: 50%;
         margin-top:50px;
+        height: 35%;
     }
 
     .titulo_agregar{
@@ -187,6 +188,10 @@ border-bottom: 1px solid #dfac48;
     }
     .divbtn_agregar2{
         height:10%;
+    }
+
+    .formCategoria{
+        
     }
 }
 

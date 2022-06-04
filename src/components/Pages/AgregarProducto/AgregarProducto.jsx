@@ -20,7 +20,7 @@ export const initialForm = {
   imagen2:"",
   fechaInicio: null,
   fechaFinalizacion: null,
-  estadoProducto: 0,
+  estadoProducto: null,
   idCategoria: null
 }
 
@@ -72,7 +72,7 @@ export const AgregarProducto = () => {
       .then(data => {
         console.log("url2" + data.url);
       setForm({
-        ...form,
+        ...form, 
         imagen2: data.url
       })
       console.log(form);
@@ -118,10 +118,13 @@ export const AgregarProducto = () => {
 
   const handleChange = (e) =>{
     const categorias = document.getElementById('selectCategoria')
+    const estado = document.getElementById('selectEstado')
+    console.log(estado.value);
     setForm({
       ...form,
       [e.target.name]: e.target.value,
-      idCategoria: Number(categorias.value)
+      idCategoria: Number(categorias.value),
+      estadoProducto: Number(estado.value)
     })
     console.log(form);
   }
@@ -131,7 +134,7 @@ export const AgregarProducto = () => {
         console.log(form);
         await axios.post(url, form)
         .then(res=>{
-
+            window.location.href="/Admin/TableProducts"
             console.log(res)
         })
     }
@@ -243,11 +246,13 @@ export const AgregarProducto = () => {
             <span></span>
           </div>
 
-          {/* <div className="txt_field">
-            <input type="text" id="estado" name="estadoProducto" value={form.estadoProducto} required onChange={handleChange}/>
-            <label className="labelForm" for="estado"> Estado del producto </label>
-            <span></span>
-          </div> */}
+          <div className="select_agregar">
+            <select id="selectEstado" onChange={handleChange}>
+              <option value="">Estado del producto</option>
+              <option value="1">Nuevo</option>
+              <option value="2">Destacado</option>
+            </select>
+          </div>
 
           <div className="select_agregar">
             <select id="selectCategoria" onChange={handleChange}>

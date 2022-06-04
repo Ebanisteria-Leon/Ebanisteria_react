@@ -25,7 +25,7 @@ export const ModalProducto = ({children, estado, cambiarEstado, color}) => {
     return (
         <>
         {estado &&
-            <div className="overlay_modal">
+            <div className="overlay_modal2">
                 <div className="contenido_modal">
                     {children}
                     <button className='cancelar' onClick={cerrarModal}><i class="fa-solid fa-xmark"> Cancelar</i></button>

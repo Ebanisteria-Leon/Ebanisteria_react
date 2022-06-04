@@ -115,13 +115,6 @@ export const SideBar = () => {
                         <span className='tooltip'>Add categoría</span>
                     </li>
 
-                    <li>
-                        <NavLink to='/clients'>
-                            <i className='fa-solid fa-gear'></i>
-                            <span className='links_name'>Configuracion</span>
-                        </NavLink>
-                        <span className='tooltip'>Configuracion</span>
-                    </li>
                 </ul>
 
                 <div className='profile_content'>

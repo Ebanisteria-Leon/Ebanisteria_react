@@ -11,7 +11,7 @@ import Mueble_Azul_move from '../../../assets/images/muebles-promo/mueble-azul-m
 import { DescriptionProducts } from '../DescriptionProducts/DescriptionProducts'
 
 export const ProductCard = ({
-    productos: { idProducto, nombre, imagen, descripcion, valor, alto, ancho, largo, color, calificacion, fechaInicio, fechaFinalizacion, estadoProducto, idCategoria },
+    productos: { idProducto, nombre, imagen, imagen2, descripcion, valor, alto, ancho, largo, color, calificacion, fechaInicio, fechaFinalizacion, estadoProducto, idCategoria },
 }) => {
     let idProductos
     let colorModal = '#008F39'
@@ -70,7 +70,7 @@ export const ProductCard = ({
                             />
                             <Imagen
                                 clase='product-img-back'
-                                url={Mueble_Azul_move}
+                                url={imagen2}
                                 alt='Back'
                             />
                         </div>

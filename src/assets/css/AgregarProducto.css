@@ -242,6 +242,16 @@ border-bottom: 1px solid #dfac48;
         height: 65%;
     }
 
+    .select_agregar22{
+        height: 8%;
+        justify-content: space-between;
+    }
+
+    .custom-input-file2{
+        width: 45%;
+        font-size: 13px;
+    }
+
     .container_agregar{
         width: 80%;
         margin-top:50px;
