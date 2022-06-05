@@ -14,7 +14,7 @@ export const Email = () => {
     let inputNombre
     let inputEmail
     let inputMensaje
-    let colorModal="#008F39"
+    let colorModal='#008F39'
 
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
 
@@ -25,17 +25,17 @@ export const Email = () => {
         .then(response => {
             console.log(response)
             cambiarEstadoModalEmail(!estadoModalEmail)
-            inputNombre.value=""
-            inputEmail.value=""
-            inputMensaje.value=""
+            inputNombre.value=''
+            inputEmail.value=''
+            inputMensaje.value=''
         })
         .catch(error => console.log(error))
     }
 
     useEffect(() => {
-        inputNombre = document.querySelector("#nombre")
-        inputEmail = document.querySelector("#email")
-        inputMensaje = document.querySelector("#mensaje")
+        inputNombre = document.querySelector('#nombre')
+        inputEmail = document.querySelector('#email')
+        inputMensaje = document.querySelector('#mensaje')
     }, [])
     
 
@@ -48,54 +48,54 @@ export const Email = () => {
             >
                 <p>Se envió el correo correctamente!</p>
             </Modal>
-        <div className='mainEmail'>
-            <Barra/>
-            <Header/>
-            <div className='fondo_contacto'>
-                <div className='container_contacto'>
-                    <div className='box_contacto'>
-                        <div className='box_contacto2'>
-                            <div className="contacto_logo">
-                                <Imagen url={Logo}/>
-                            </div>
-                            <div className="contacto_info">
-                            <h2>EBANISTERÍA LEÓN</h2>
-                                <p><i className="fa fa-solid fa-map"></i> Calarcá calle 20 #5 / Colombia</p>
-                                <p><i className="fa fa-solid fa-phone"></i> : 7384576 / <i className="fa fa-solid fa-mobile"></i> : 3156973456</p>
-                            </div>
-                            <div className="contacto_logos">
-                                <h2>Contáctanos por nuestras redes!</h2>
-                                <div className="redes_contacto">
-                                    
-                                    <NavLink to=""><i id="icono_contacto-fb" className="fab fa-facebook"></i></NavLink>
-                                    <NavLink to=""><i id="icono_contacto-wp" className="fab fa-whatsapp"></i></NavLink>
+            <div className='mainEmail'>
+                <Barra/>
+                <Header/>
+                <div className='fondo_contacto'>
+                    <div className='container_contacto'>
+                        <div className='box_contacto'>
+                            <div className='box_contacto2'>
+                                <div className='contacto_logo'>
+                                    <Imagen url={Logo}/>
+                                </div>
+                                <div className='contacto_info'>
+                                <h2>EBANISTERÍA LEÓN</h2>
+                                    <p><i className='fa fa-solid fa-map'></i> Circasia calle 15 #10-22 / Colombia</p>
+                                    <p><i className='fa fa-solid fa-phone'></i> : 7384576 / <i className='fa fa-solid fa-mobile'></i> : 3156973456</p>
+                                </div>
+                                <div className='contacto_logos'>
+                                    <h2>Contáctanos por nuestras redes!</h2>
+                                    <div className='redes_contacto'>
+                                        
+                                        <NavLink to=''><i id='icono_contacto-fb' className='fab fa-facebook'></i></NavLink>
+                                        <NavLink to=''><i id='icono_contacto-wp' className='fab fa-whatsapp'></i></NavLink>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className='box_form'>
-                        <form className='formEmail' onSubmit={sendEmail} >
-                            <div className='txt_field'>
-                                <input type='text' name="user_name" id='nombre' autoComplete='off'required autoFocus/>
-                                <label className='labelForm' for='nombre'>Nombre</label>
-                                <span></span>
-                            </div>
-                            <div className='txt_field'>
-                                <input type='email' name="user_email" id='email' required/>
-                                <label className='labelForm'for='email'>Email</label>
-                                <span></span>
-                            </div>
-                            <div className='txt_field'>
-                                <textarea name="user_message" id="mensaje" cols="30" rows="10" placeholder='Mensaje' required></textarea>
-                            </div>
-                            <div className='divbtn'>
-                                <button className='btnSubmit'>Enviar</button>
-                            </div>
-                        </form>
+                        <div className='box_form'>
+                            <form className='formEmail' onSubmit={sendEmail} >
+                                <div className='txt_field'>
+                                    <input type='text' name='user_name' id='nombre' autoComplete='off'required autoFocus/>
+                                    <label className='labelForm' for='nombre'>Nombre</label>
+                                    <span></span>
+                                </div>
+                                <div className='txt_field'>
+                                    <input type='email' name='user_email' id='email' required/>
+                                    <label className='labelForm'for='email'>Email</label>
+                                    <span></span>
+                                </div>
+                                <div className='txt_field'>
+                                    <textarea name='user_message' id='mensaje' cols='30' rows='10' placeholder='Mensaje' required></textarea>
+                                </div>
+                                <div className='divbtn'>
+                                    <button className='btnSubmit'>Enviar</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </>
     )
 }
