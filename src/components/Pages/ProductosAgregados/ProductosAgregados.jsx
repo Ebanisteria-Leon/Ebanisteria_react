@@ -14,9 +14,17 @@ import { getBasketTotal } from '../../hooks/reducer'
 export const ProductosAgregados = () => {
 
     const { mostrar_producto } = useViewModal()
+    const [total, setTotal] = useState(0)
 
     const [{basket}, dispatch] = useStateValue()
     console.log(basket);
+
+    useEffect(() => {
+        setTotal(
+            basket.reduce((amount, item) => amount + item.valor * item.quantity, 0)
+        )
+    }, [basket])
+    
 
 
     return (
@@ -26,7 +34,7 @@ export const ProductosAgregados = () => {
                 <Header />
 
                 <h3 className='title-category'>Productos Agregados</h3>
-                <Total precioTotal={getBasketTotal(basket)} pTotal={basket?.length}/>
+                <Total precioTotal={total} pTotal={basket?.length}/>
                 <button className="botonTotal">Verificar</button>
                 <section className='section__products2'>
                         {basket?.length === 0 ? <p>No Tienes ningún producto agregado</p> : 

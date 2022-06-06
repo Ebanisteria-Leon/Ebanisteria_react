@@ -29,6 +29,7 @@ export const TableProducts = () => {
     let imagen_producto=""
     let setearImg
     let setearImg2 
+    let c
     let confirmar = Boolean     
 
 const cambiarEstado = () =>{
@@ -72,7 +73,8 @@ const handleChange = (e) =>{
     const categorias = document.getElementById('selectCategoria')
     setForm2({
     ...form2,
-    [e.target.name]: e.target.value
+    [e.target.name]: e.target.value,
+    idCategoria: Number(categorias.value)
     })
     console.log(form2);
 }
@@ -190,20 +192,20 @@ const setearImagen2 = (e) =>{
 }
 
 
-    useEffect(()=>{
-        fetchApi()
-        setLoading(true)
-        api.get(url).then(res=>{
-            if(!res.err){
-                setMsgError(null)
-                setProductos(res.rows)
-            }else{
-                setMsgError(res)
-                setProductos([])
-            }
-        })
-        setLoading(false)
-    },[])
+useEffect(()=>{
+    fetchApi()
+    setLoading(true)
+    api.get(url).then(res=>{
+        if(!res.err){
+            setMsgError(null)
+            setProductos(res.rows)
+        }else{
+            setMsgError(res)
+            setProductos([])
+        }
+    })
+    setLoading(false)
+},[])
 
     return (
         <>
@@ -366,7 +368,7 @@ const setearImagen2 = (e) =>{
                                 <tr>
                                     <td>{index.idProducto}</td>
                                     <td>{index.nombre}</td>
-                                    <td>{index.idCategoria}</td>
+                                    <td>{index.idCategoria} </td>
                                     <td>
                                         {index.descripcion}
                                     </td>

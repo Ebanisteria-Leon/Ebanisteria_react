@@ -43,6 +43,7 @@ export const ProductCard = ({
                 calificacion
             },
         })
+        localStorage.setItem("producto", JSON.stringify(basket))
         cambiarEstadoModalEmail(!estadoModalEmail)
         const boxCarrito = document.querySelector('.box-carrito')
         boxCarrito.style.opacity = '1'

@@ -20,7 +20,7 @@ export const initialForm = {
   imagen2:"",
   fechaInicio: null,
   fechaFinalizacion: null,
-  estadoProducto: null,
+  estadoProducto: 0,
   idCategoria: null
 }
 
@@ -118,13 +118,10 @@ export const AgregarProducto = () => {
 
   const handleChange = (e) =>{
     const categorias = document.getElementById('selectCategoria')
-    const estado = document.getElementById('selectEstado')
-    console.log(estado.value);
     setForm({
       ...form,
       [e.target.name]: e.target.value,
-      idCategoria: Number(categorias.value),
-      estadoProducto: Number(estado.value)
+      idCategoria: Number(categorias.value)
     })
     console.log(form);
   }
@@ -244,14 +241,6 @@ export const AgregarProducto = () => {
             <input type="date" id="fechaInicio" name="fechaFinalizacion" value={form.fechaFinalizacion} required onChange={handleChange}/>
             <label className="labelForm" for="fechaInicio"> Fecha de finalización</label>
             <span></span>
-          </div>
-
-          <div className="select_agregar">
-            <select id="selectEstado" onChange={handleChange}>
-              <option value="">Estado del producto</option>
-              <option value="1">Nuevo</option>
-              <option value="2">Destacado</option>
-            </select>
           </div>
 
           <div className="select_agregar">
