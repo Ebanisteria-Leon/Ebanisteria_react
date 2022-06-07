@@ -9,6 +9,7 @@ import Sofa from '../../../assets/images/IconsAdmin/sofa.png'
 import Armario from '../../../assets/images/IconsAdmin/armario.png'
 import '../../../assets/css/MainAdmin.css'
 import { ModalFiltros } from '../../UI/ModalFiltros/ModalFiltros'
+import Audio from '../../../assets/audios/BienvenidoAdmin.mp3'
 
 
 export const Admin = () => {
@@ -104,6 +105,9 @@ export const Admin = () => {
 
   return (
     <div className="mainAdmin">
+      <audio constrols autoPlay>
+        <source src={Audio} type="audio/mpeg"/>
+      </audio>
         <div className="tituAdmin">
           <h1>BIENVENIDO/A</h1>
           <h2>PANEL DE CONTROL</h2>

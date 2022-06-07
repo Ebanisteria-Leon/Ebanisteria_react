@@ -49,7 +49,7 @@ export const Register = () => {
     }
 
     const manejadorBoton = () => {
-        let url = 'http://127.0.0.1:8000/users/usuario/'
+        let url = 'https://leon-ebanisteria.herokuapp.com/users/usuario/'
         axios
             .post(url, state.form)
             .then((response) => {

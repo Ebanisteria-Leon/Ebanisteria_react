@@ -11,6 +11,7 @@ import { helpHttp } from '../../helpers/helpHttp'
 import ClipLoader from "react-spinners/ClipLoader";
 import { Mensaje } from '../../UI/Mensaje/Mensaje'
 import axios from 'axios'
+import Editar from '../../../assets/images/iconos/editarProducto.png'
 
 
 
@@ -441,7 +442,7 @@ useEffect(()=>{
                                         </span>
                                     </td>
                                     <td>
-                                        <button className='botonEstado' onClick={()=>cambiarEstadoP(index)}>Cambiar estado</button>
+                                        
                                         {index.estadoProducto==="D" 
                                         ?<p>Disponible</p>
                                         :<p>No Disponible</p>
@@ -449,6 +450,9 @@ useEffect(()=>{
                                     </td>
                                     <td>
                                         <div className='buttonsTable-actions'>
+                                            <button className='btnAction-table update-products' onClick={()=>cambiarEstadoP(index)}>
+                                                <img src={Editar} alt="" />
+                                            </button>
                                             <button className='btnAction-table update-products' onClick={()=>updateData(index)}>
                                                 <i className='fas fa-edit'></i>
                                             </button>
