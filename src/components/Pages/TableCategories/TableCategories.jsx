@@ -98,7 +98,6 @@ export const TableCategories = () => {
     }
 
     const deleteData = async (data) =>{
-        cambiarEstadoModalEmail(!estadoModalEmail) 
         console.log(data);
         let isDelete = window.confirm(
             `Estas seguro de eliminar el registro con el id ` + data.idCategoria
@@ -120,7 +119,7 @@ export const TableCategories = () => {
         api.get(url).then(res=>{
             if(!res.err){
                 setMsgError(null)
-                setCategorias(res)
+                setCategorias(res.results)
             }else{
                 setMsgError(res)
                 setCategorias([])

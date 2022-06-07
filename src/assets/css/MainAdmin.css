@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.mainAdmin{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F7F8F9;
+}
+
+.tituAdmin{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.tituAdmin h1{
+    font-size: 50px;
+    letter-spacing: 8px;
+    color: #db970ec5;
+}
+
+.tituAdmin h2{
+    width: 20%;
+    border-bottom: 2px solid #db970ec5;
+}
+
+.mainTablero{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 80%;
+}
+
+.mainIcono{
+    width: 212px;
+    height: 212px;
+    margin: 20px 40px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    background-color: #FFFEFE;
+    box-shadow: rgb(46 44 54 / 2%) 0px 10px 20px 0px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.mainIcono:hover{
+    transform: translateY(-10px);
+}
+
+.mainIcono:hover .pIcon i{
+    transform: translateX(8px);
+}
+
+.boxIcono{
+    width: 80%;
+    height: 70%;
+}
+
+.boxIcono img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(-10px 5px 10px #b8b8b8);
+}
+
+.pIcon{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    align-items: center;
+}
+
+.pIcon p{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+}
+
+.pIcon i{
+    color: #db970ec5;
+    width: 10%;
+    transition: all 300ms ease;
+}
+
+.conteo{
+    width: 10%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 13px;
+    border-radius: 50%;
+    background-color: rgb(255, 60, 0);
+}
+
+.conteo p{
+    margin: 0;
+    color: white;
+}
+
+.overlayFiltro{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.856);
+    z-index: 60;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .7s ease;
+    visibility: hidden;
+    opacity: 0;
+}
+

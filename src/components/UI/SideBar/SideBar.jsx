@@ -58,16 +58,6 @@ export const SideBar = () => {
                     </li>
 
                     <li>
-                        
-                        <NavLink to="/Contactanos">
-                            <i className='fa-solid fa-envelope '></i>
-                            <span className='links_name'>Contacto</span>
-                        </NavLink>
-                        
-                        <span className='tooltip'>Contacto</span>
-                    </li>
-
-                    <li>
                         <NavLink to='/Admin/TableSalesDate'>
                             <i className='fa-solid fa-chart-pie '></i>
                             <span className='links_name'>Analiticas</span>

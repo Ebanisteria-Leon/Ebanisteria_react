@@ -37,10 +37,30 @@ const cambiarEstado = () =>{
     updateData2()
 }
 
+const cambiarEstadoP = (data)=>{
+    let estadoProducto
+
+    if(data.estadoProducto === "D"){
+        estadoProducto="ND"
+    }
+    if(data.estadoProducto === "ND"){
+        estadoProducto="D"
+    }
+
+    setForm2({
+        ...data,
+        idCategoria: 1,
+        estadoProducto: estadoProducto
+    })
+
+    updateData2()
+}
+console.log(form2);
+
 const fetchApi=async()=>{
     const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/categoria/")
     const responseJSON = await response.json()
-    setCategorias(responseJSON)
+    setCategorias(responseJSON.results)
 }
 
 const editarProducto = () =>{
@@ -71,18 +91,33 @@ const handleSubmit = (e) =>{
 
 const handleChange = (e) =>{
     const categorias = document.getElementById('selectCategoria')
+    const destacado = document.getElementById('selectDestacado')
+    const estado = document.getElementById('selectEstado')
+    const tiempo = document.getElementById('selectTiempoP')
     setForm2({
     ...form2,
     [e.target.name]: e.target.value,
-    idCategoria: Number(categorias.value)
+    idCategoria: Number(categorias.value),
+    estadoProducto: estado.value,
+    tiempoProducto: tiempo.value,
+    destacado: destacado.value
     })
     console.log(form2);
 }
 
+const llenarSelectCategoria = (data) =>{
+    let llenarCategoria = data.idCategoria
+    const categoria = document.getElementById('selectCategoria')
+    console.log(categoria);
+    categoria.value=llenarCategoria 
+}
+
 const updateData = (data) =>{
+    llenarSelectCategoria(data)
     setForm2(data)
     editarProducto()
 }
+
 
 const updateData2 = async () =>{
     cambiarEstadoModalEmail(!estadoModalEmail) 
@@ -198,7 +233,7 @@ useEffect(()=>{
     api.get(url).then(res=>{
         if(!res.err){
             setMsgError(null)
-            setProductos(res.rows)
+            setProductos(res.results)
         }else{
             setMsgError(res)
             setProductos([])
@@ -314,21 +349,42 @@ useEffect(()=>{
                     <span></span>
                 </div>
 
-                <div className="txt_field">
-                    <input type="text" id="estado" name="estadoProducto" value={form2.estadoProducto} required onChange={handleChange}/>
-                    <label className="labelForm" for="estado"> Estado del producto </label>
-                    <span></span>
-                </div>
-
                 <div className="select_agregar">
                 <select name="agregar" id="selectCategoria" value={form2.idCategoria} onChange={handleChange}>
-                    <option value="">Categorías</option>
+                    <option value="1">{form2.idCategoria}</option>
                     {!categorias ? "" :
                     categorias.map((index, key)=>{
                         return (
                         <option value={index.idCategoria} key={key}>{index.nombreCategoria}</option>
                         )
                     })}
+                </select>
+                </div>
+
+                <div className="select_agregar">
+                <select name="agregar" id="selectEstado"  onChange={handleChange}>
+                    {form2.estadoProducto==="D"
+                    ?<option value="D">Estado - Disponible</option>
+                    :<option value="ND">Estado - No disponible</option>
+                    }
+                    <option value="ND" >No disponible</option>
+                    <option value="D" >Disponible</option>
+                </select>
+                </div>
+
+                <div className="select_agregar">
+                <select name="agregar" id="selectDestacado" value={form2.destacado} onChange={handleChange}>
+                    <option value="">Producto Destacado</option>
+                    <option value="DE" >Destacado</option>
+                    <option value="NDE" >No destacado</option>
+                </select>
+                </div>
+
+                <div className="select_agregar">
+                <select name="agregar" id="selectTiempoP" value={form2.tiempoProducto} onChange={handleChange}>
+                    <option value="">Tiempo del producto</option>
+                    <option value="NUE" >Nuevo</option>
+                    <option value="ANT" >Antiguo</option>
                 </select>
                 </div>
 
@@ -351,13 +407,13 @@ useEffect(()=>{
                             {/* Cabecera de la tabla */}
                             <thead>
                                 <tr>
-                                    <th scope='col'>ID</th>
+                                    <th scope='col'>Imagen</th>
                                     <th scope='col'>Nombre</th>
                                     <th scope='col'>Categoria</th>
                                     <th scope='col'>Descripcion</th>
                                     <th scope='col'>Color</th>
                                     <th scope='col'>Precio</th>
-                                    <th scope='col'>Imagen</th>
+                                    <th scope='col'>Estado</th>
                                     <th scope='col'>Acciones</th>
                                 </tr>
                             </thead>
@@ -366,7 +422,13 @@ useEffect(()=>{
                             return(
                                 <tbody>
                                 <tr>
-                                    <td>{index.idProducto}</td>
+                                    <td>
+                                        <Imagen
+                                            clase='img-table'
+                                            url={index.imagen}
+                                            alt='Front'
+                                        />
+                                    </td>
                                     <td>{index.nombre}</td>
                                     <td>{index.idCategoria} </td>
                                     <td>
@@ -379,11 +441,11 @@ useEffect(()=>{
                                         </span>
                                     </td>
                                     <td>
-                                        <Imagen
-                                            clase='img-table'
-                                            url={index.imagen}
-                                            alt='Front'
-                                        />
+                                        <button className='botonEstado' onClick={()=>cambiarEstadoP(index)}>Cambiar estado</button>
+                                        {index.estadoProducto==="D" 
+                                        ?<p>Disponible</p>
+                                        :<p>No Disponible</p>
+                                        }
                                     </td>
                                     <td>
                                         <div className='buttonsTable-actions'>
