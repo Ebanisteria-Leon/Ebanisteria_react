@@ -56,6 +56,25 @@ const cambiarEstadoP = (data)=>{
 
     updateData2()
 }
+
+const cambiarDestcado = (data) =>{
+    let estadoDestacado
+
+    if(data.destacado === "DE"){
+        estadoDestacado="NDE"
+    }
+    if(data.destacado === "NDE"){
+        estadoDestacado="DE"
+    }
+
+    setForm2({
+        ...data,
+        idCategoria: 1,
+        destacado: estadoDestacado
+    })
+
+    updateData2()
+}
 console.log(form2);
 
 const fetchApi=async()=>{
@@ -432,6 +451,18 @@ useEffect(()=>{
                                             :<p>No disponible</p>
                                             }
                                         </div>
+                                        <div className="destacado">
+                                            {index.destacado==="DE" 
+                                            ?<p>Destacado</p>
+                                            :<p>No destacado</p>
+                                            }
+                                        </div>
+                                        {index.tiempoProducto==="NUE"
+                                            ?<div className="nuevo">
+
+                                            </div>
+                                            :""
+                                        }
                                     </div>
                                     <td>
                                         <Imagen
@@ -454,7 +485,7 @@ useEffect(()=>{
                                     
                                     <td>
                                         <div className='buttonsTable-actions'>
-                                            <button className='btnAction-table update-products' title="Producto destacado / No destacado" onClick={()=>cambiarEstadoP(index)}>
+                                            <button className='btnAction-table update-products' title="Producto destacado / No destacado" onClick={()=>cambiarDestcado(index)}>
                                                 <i class="fa-solid fa-star-half-stroke"></i>
                                             </button>
                                             <button className='btnAction-table update-products' title="Cambiar estado del Producto" onClick={()=>cambiarEstadoP(index)}>

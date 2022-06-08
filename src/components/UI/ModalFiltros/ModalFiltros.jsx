@@ -32,9 +32,6 @@ export const ModalFiltros = ({url, titulo}) => {
                     <th scope='col'>Descripcion</th>
                     <th scope='col'>Color</th>
                     <th scope='col'>Precio</th>
-                    <th scope='col'>Estado Producto</th>
-                    <th scope='col'>Destacado</th>
-                    <th scope='col'>Tiempo Producto</th>
                 </tr>
             </thead>
             {!url ? "No existen productos con este estado" :
@@ -59,24 +56,6 @@ export const ModalFiltros = ({url, titulo}) => {
                         <span className='priceProducts-table'>
                             {accounting.formatMoney(index.valor, "$")}
                         </span>
-                    </td>
-                    <td>
-                        {index.estadoProducto==="D" 
-                        ?<p>Disponible</p>
-                        :<p>No Disponible</p>
-                        }
-                    </td>
-                    <td>
-                        {index.destacado==="DE" 
-                        ?<p>Destacado</p>
-                        :<p>No Destacado</p>
-                        }
-                    </td>
-                    <td>
-                        {index.tiempoProducto==="NUE" 
-                        ?<p>Nuevo</p>
-                        :<p>Antiguo</p>
-                        }
                     </td>
                 </tr>
             </tbody>
