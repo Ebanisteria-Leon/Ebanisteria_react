@@ -105,7 +105,8 @@ export const Admin = () => {
 
   return (
     <div className="mainAdmin">
-      <audio src={Audio} controls autoplay></audio>
+      <audio src={Audio} autoPlay>
+      </audio>
         <div className="tituAdmin">
           <h1>BIENVENIDO/A</h1>
           <h2>PANEL DE CONTROL</h2>

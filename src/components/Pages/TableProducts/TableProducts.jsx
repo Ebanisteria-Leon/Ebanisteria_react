@@ -408,21 +408,31 @@ useEffect(()=>{
                             {/* Cabecera de la tabla */}
                             <thead>
                                 <tr>
+                                    <th className="primerCol"></th>
                                     <th scope='col'>Imagen</th>
                                     <th scope='col'>Nombre</th>
                                     <th scope='col'>Categoria</th>
                                     <th scope='col'>Descripcion</th>
                                     <th scope='col'>Color</th>
                                     <th scope='col'>Precio</th>
-                                    <th scope='col'>Estado</th>
                                     <th scope='col'>Acciones</th>
                                 </tr>
                             </thead>
+                            <tbody>
                             {productos &&
                             productos.map((index,_)=>{
                             return(
-                                <tbody>
+                                
+                                <>
                                 <tr>
+                                    <div className="etiquetas">
+                                        <div className="disponible">
+                                            {index.estadoProducto==="D" 
+                                            ?<p>Disponible</p>
+                                            :<p>No disponible</p>
+                                            }
+                                        </div>
+                                    </div>
                                     <td>
                                         <Imagen
                                             clase='img-table'
@@ -441,30 +451,29 @@ useEffect(()=>{
                                             {accounting.formatMoney(index.valor, "$")}
                                         </span>
                                     </td>
-                                    <td>
-                                        
-                                        {index.estadoProducto==="D" 
-                                        ?<p>Disponible</p>
-                                        :<p>No Disponible</p>
-                                        }
-                                    </td>
+                                    
                                     <td>
                                         <div className='buttonsTable-actions'>
-                                            <button className='btnAction-table update-products' onClick={()=>cambiarEstadoP(index)}>
-                                                <img src={Editar} alt="" />
+                                            <button className='btnAction-table update-products' title="Producto destacado / No destacado" onClick={()=>cambiarEstadoP(index)}>
+                                                <i class="fa-solid fa-star-half-stroke"></i>
                                             </button>
-                                            <button className='btnAction-table update-products' onClick={()=>updateData(index)}>
+                                            <button className='btnAction-table update-products' title="Cambiar estado del Producto" onClick={()=>cambiarEstadoP(index)}>
+                                                <i class="fa-solid fa-arrows-rotate"></i>
+                                            </button>
+                                            <button className='btnAction-table update-products' title="Editar Producto" onClick={()=>updateData(index)}>
                                                 <i className='fas fa-edit'></i>
                                             </button>
-                                            <button className='btnAction-table delete-products' onClick={()=>deleteData(index)}>
+                                            <button className='btnAction-table delete-products' title="Eliminar Producto" onClick={()=>deleteData(index)}>
                                                 <i className='fas fa-trash'></i>
                                             </button>
                                         </div>
                                     </td>
                                 </tr>
-                            </tbody>
+                                </>
+                            
                             )
                         })}
+                        </tbody>
                         </table>
                 </section>
             </div>

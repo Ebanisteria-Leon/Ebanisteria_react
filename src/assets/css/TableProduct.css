@@ -35,6 +35,42 @@ tbody{
     background-color: white;
 }
 
+.primerCol{
+    padding: 0;
+    border: none;
+    width: 0;
+}
+
+.etiquetas{
+    
+}
+
+.disponible{
+    position: absolute;
+    width: 8%;
+    right: -40px;
+    top: 10%;
+    z-index: 1;
+    background-color: #db970e;
+    color: white;
+    font-size: 11px;
+    padding: 0px 2px;
+    text-align: center;
+}
+
+
+.disponible:before {
+    content: "";
+    position: absolute;
+    background-color: white;
+    right: -10px;
+    height: 0%;
+    width: 0;
+    border-style: solid;
+    border-width: 9px 10px 8px 0px;
+    border-color: #db970e transparent #db970e #db970e;
+}
+
 .buttonsTable-actions{
     display: flex;
     justify-content: center;

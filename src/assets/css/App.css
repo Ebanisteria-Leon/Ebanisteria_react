@@ -54,10 +54,16 @@ thead{
   border-bottom: #000 5px solid;
 }
 
-tr:nth-child(even){
-  background-color: #ddd;
+thead>tr{
+  background-color: #db970e;
+  color: #fff;
+}
+
+tbody>tr{
+  background-color: white;
   transition: all 0.3s;
   color: #000;
+  position: relative;
 }
 
 tr:hover td{

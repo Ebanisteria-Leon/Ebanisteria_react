@@ -137,3 +137,8 @@
     opacity: 0;
 }
 
+@media (max-width:1400px){
+    .mainTablero{
+        max-width: 80%;
+    }
+}
