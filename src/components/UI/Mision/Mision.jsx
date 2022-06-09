@@ -21,6 +21,12 @@ export const Mision = () => {
                 <img src={onda} alt='' className='onda' />
 
                 <div className='contenedorMision'>
+                    
+                    <div className="container_triangulo">
+                        <div className="triangulo triangulo1"></div>
+                        <div className="triangulo triangulo2"></div>
+                        <div className="triangulo triangulo3"></div>
+                    </div>
                     <div className='banner2'>
                         <div className='banner__icon-micro'>
                             <Imagen id={'img_micro'} url={Silla1} />

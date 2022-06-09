@@ -50,7 +50,7 @@ const cambiarEstadoP = (data)=>{
 
     setForm2({
         ...data,
-        idCategoria: 1,
+        idCategoria: data.idCategoria[0],
         estadoProducto: estadoProducto
     })
 
@@ -69,7 +69,7 @@ const cambiarDestcado = (data) =>{
 
     setForm2({
         ...data,
-        idCategoria: 1,
+        idCategoria: data.idCategoria[0],
         destacado: estadoDestacado
     })
 
@@ -126,10 +126,11 @@ const handleChange = (e) =>{
 }
 
 const llenarSelectCategoria = (data) =>{
-    let llenarCategoria = data.idCategoria
+    let llenarCategoria = data.idCategoria[0]
     const categoria = document.getElementById('selectCategoria')
     console.log(categoria);
-    categoria.value=llenarCategoria 
+    categoria.value=llenarCategoria
+    console.log(llenarCategoria);
 }
 
 const updateData = (data) =>{
@@ -204,6 +205,7 @@ const uploadImage = () => {
         console.log("url1" + data.url);
     setForm2({
         ...form2,
+        idCategoria: form2.idCategoria[0],
         imagen: data.url
     })
     console.log(form2);
@@ -227,6 +229,7 @@ const uploadImage2 = () => {
             console.log("url2" + data.url);
         setForm2({
             ...form2, 
+            idCategoria: form2.idCategoria[0],
             imagen2: data.url
         })
         console.log(form2);
@@ -370,8 +373,8 @@ useEffect(()=>{
                 </div>
 
                 <div className="select_agregar">
-                <select name="agregar" id="selectCategoria" value={form2.idCategoria} onChange={handleChange}>
-                    <option value="1">{form2.idCategoria}</option>
+                <select id="selectCategoria" onChange={handleChange}>
+                    <option value="">Categorias</option>
                     {!categorias ? "" :
                     categorias.map((index, key)=>{
                         return (
@@ -472,9 +475,9 @@ useEffect(()=>{
                                         />
                                     </td>
                                     <td>{index.nombre}</td>
-                                    <td>{index.idCategoria} </td>
-                                    <td>
-                                        {index.descripcion}
+                                    <td>{index.idCategoria[1]} </td>
+                                    <td className='td-descripcion'>
+                                        <p>{index.descripcion}</p>
                                     </td>
                                     <td>{index.color}</td>
                                     <td>

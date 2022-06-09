@@ -48,8 +48,8 @@ tbody{
 .disponible{
     position: absolute;
     width: 6%;
-    right: -40px;
-    top: 10%;
+    right: -70px;
+    top: 15px;
     z-index: 1;
     background-color: #db970e;
     color: white;
@@ -74,8 +74,8 @@ tbody{
 .destacado{
     position: absolute;
     width: 6%;
-    right: -40px;
-    top: 40%;
+    right: -70px;
+    top: 35px;
     z-index: 1;
     background-color: #000000;
     color: white;
@@ -187,8 +187,23 @@ tbody{
     height: 100%;
 }
 
+.td-descripcion {
+    max-width: 400px;
+}
+
+.td-descripcion p{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 @media (max-width:1400px){
     .disponible{
         width:7%;
+    }
+    .destacado{
+        width: 7%;
+        font-size: 10px;
+        padding-bottom: 1px;
     }
 }
