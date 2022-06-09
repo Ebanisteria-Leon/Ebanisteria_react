@@ -1,7 +1,8 @@
 
 export const initialState = {
     basket: [],
-    tempdata: 0
+    tempdata: 0,
+    buscador:[]
 }
 
 export const actionTypes ={
@@ -9,7 +10,8 @@ export const actionTypes ={
     REMOVE_ONE_FROM_CART: "REMOVE_ONE_FROM_CART",
     REMOVE_ALL_FROM_CART: "REMOVE_ALL_FROM_CART",
     CLEAR_CART: "CLEAR_CART",
-    TEMP_DATA: "TEMP_DATA"
+    TEMP_DATA: "TEMP_DATA",
+    BUSCADOR: "BUSCADOR"
 }
 
 export const getBasketTotal =(basket)=>{
@@ -78,6 +80,14 @@ const reducer = (state, action)=>{
                 ...state,   
                 tempdata: action.id
             }
+        }
+        case "BUSCADOR":{
+            console.log(state.buscador)
+            return{
+                ...state,
+                buscador:action.data
+            }
+            
         }
         default: return state;
         

@@ -142,11 +142,30 @@
     margin-top: 100px;
 }
 
+@media (max-width: 1400px) {
+    .btn_cerrar{
+        right: 5px;
+        top: 5px;
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .btn_cerrar{
+        right: -35px;
+        top: 65px;
+        font-size: 25px;
+    }
+}
+
 
 @media (max-width: 800px) {
     .galeria{
         height: 89vh;
         overflow: hidden;
+    }
+    .btn_cerrar{
+        font-size: 25px;
     }
 }
 
@@ -154,5 +173,17 @@
     .columna{
         flex: 50%;
         max-width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .columna{
+        flex: 50%;
+        max-width: 100%;
+    }
+    .btn_cerrar{
+        right: -35px;
+        top: 125px;
+        font-size: 20px;
     }
 }

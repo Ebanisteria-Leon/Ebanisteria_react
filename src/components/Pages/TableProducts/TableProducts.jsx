@@ -12,12 +12,15 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { Mensaje } from '../../UI/Mensaje/Mensaje'
 import axios from 'axios'
 import Editar from '../../../assets/images/iconos/editarProducto.png'
+import { actionTypes } from '../../hooks/reducer'
+import { useStateValue } from '../../hooks/StateProvider'
 
 
 
 
 export const TableProducts = () => {
 
+    const [{ buscador }, dispatch] = useStateValue()
     let api = helpHttp()
     let url = "https://leon-ebanisteria.herokuapp.com/api/producto/"
     let colorModal ="#fff"
@@ -31,7 +34,9 @@ export const TableProducts = () => {
     let setearImg
     let setearImg2 
     let c
-    let confirmar = Boolean     
+    let confirmar = Boolean   
+    
+
 
 const cambiarEstado = () =>{
     confirmar= true
@@ -235,7 +240,7 @@ const uploadImage2 = () => {
         console.log(form2);
         })
         .catch(err => console.log(err))
-    }, 8000);
+    }, 5000);
 }
 
 const setearImagen = (e) =>{
@@ -263,7 +268,13 @@ useEffect(()=>{
         }
     })
     setLoading(false)
+    
 },[])
+
+useEffect(() => {
+    setProductos(buscador)
+}, [buscador])
+
 
     return (
         <>
@@ -421,7 +432,7 @@ useEffect(()=>{
         </div>
             <div className='mainTable-products'>
                 <h3 className='title-table-products'>PRODUCTOS</h3>
-                <SideBar />
+                <SideBar url={"https://leon-ebanisteria.herokuapp.com/api/producto/?search="}/>
                 <section className='section__table-products'>
                     {loading && <ClipLoader color='#dcaa47'/>}
                     {msgError && <Mensaje msg={'Error ' + msgError.status + ' : ' + msgError.statusText} bg={"#dc3545"}/>}
