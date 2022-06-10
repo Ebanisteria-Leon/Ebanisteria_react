@@ -5,7 +5,6 @@ import aos from 'aos'
 import 'aos/dist/aos.css'
 import Logo from '../../../assets/images/logo/logoSolo.png'
 import axios from 'axios'
-import jwt from 'jwt-decode'
 
 import { NavLink, useNavigate } from 'react-router-dom'
 
@@ -61,8 +60,9 @@ export const Login = () => {
 
                     localStorage.setItem('rolUser', rol)
                     localStorage.setItem('username', username)
-                    rol === 'Cliente' ? history('/')
-                    : console.log('datos invalidos');
+                    rol === 'Cliente' || rol === 'Admin'
+                        ? history('/')
+                        : console.log('datos invalidos')
                 }
             })
             .catch((error) => {
