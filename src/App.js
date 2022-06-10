@@ -9,7 +9,7 @@ import {
 import {
     PrivateAdminRoute,
     PrivateLogin,
-    PrivateRoute
+    PrivateProfileRoute
 } from './components/helpers/privateRoutes/PrivateRouters'
 
 import { Home } from './components/Pages/Home/Home'
@@ -30,10 +30,10 @@ import { TableRol } from './components/Pages/TableRol/TableRol'
 import { TableProducts } from './components/Pages/TableProducts/TableProducts'
 import { ProductosAgregados } from './components/Pages/ProductosAgregados/ProductosAgregados';
 import { Admin } from './components/Pages/Admin/Admin';
-import PasarelaDePago from './components/Pages/PasarelaDePago/PasarelaDePago';
 import { AgregarCategoria } from './components/Pages/AgregarCategoria/AgregarCategoria';
 import { TableCategories } from './components/Pages/TableCategories/TableCategories';
 
+import PasarelaDePago from './components/Pages/PasarelaDePago/PasarelaDePago';
 
 
 function App() {
@@ -57,6 +57,10 @@ function App() {
                     <Route element={PrivateAdminRoute()}>
                         <Route exact path='/Admin' element={<Admin />} />
                     </Route>
+
+                    {/* <Route element={PrivateProfileRoute()} >
+                        <Route exact path='/' element={<UserProfile />} />
+                    </Route> */}
 
                     <Route
                         path='/Admin/TableSalesDate'

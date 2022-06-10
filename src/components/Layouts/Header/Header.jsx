@@ -15,7 +15,9 @@ export const Header = () => {
                         <div className='perfil__header'>
                             <ul className='perfil__details'>
                                 <li>
-                                    <h3 className='perfil__username'>{username}</h3>
+                                    <h3 className='perfil__username'>
+                                        {username}
+                                    </h3>
                                 </li>
                                 <li>
                                     <NavLink to='/'>
@@ -39,6 +41,20 @@ export const Header = () => {
                         <li>
                             <NavLink to='/Category'>Categorias</NavLink>
                         </li>
+                        <li>
+                            <NavLink to='/Contactanos'>Contactanos</NavLink>
+                        </li>
+
+                        {rol === 'Admin' ? (
+                            <>
+                                <li>
+                                    <NavLink to='/Admin'>Administración</NavLink>
+                                </li>
+                            </>
+                        ) : (
+                            <></>
+                        )}
+
                         {!rol ? (
                             <>
                                 <li>
@@ -61,19 +77,6 @@ export const Header = () => {
                                 </li>
                             </>
                         )}
-                        {rol === 'Admin' ? (
-                            <>
-                                <li>
-                                    <NavLink to='/Admin'>Admin</NavLink>
-                                </li>
-                            </>
-                        ) : (
-                            <></>
-                        )}
-
-                        <li>
-                            <NavLink to='/Contactanos'>Contactanos</NavLink>
-                        </li>
                     </ul>
                 </nav>
             </header>

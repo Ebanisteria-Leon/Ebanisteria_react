@@ -16,3 +16,7 @@ export function PrivateLogin() {
 export function PrivateAdminRoute() {
   return rolUser === 'Admin' ? <Outlet /> : <Navigate to='/' />
 }
+
+export function PrivateProfileRoute() {
+  return rolUser === 'Cliente' || rolUser === 'Admin' ? <Outlet /> : <Navigate to='/' /> 
+}
