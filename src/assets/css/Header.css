@@ -69,3 +69,49 @@ header img{
                 0 0 60px #DCAA47,
                 0 0 70px #DCAA47;
 }
+
+/* PERFIL DE USUARIO */
+.perfil__header{
+  position: absolute;
+  top: 5%;
+  right: 10%;
+}
+
+.perfil__details{
+  width: 30vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: center;
+}
+
+.perfil__details li{
+  list-style: none;
+}
+
+.perfil__details a{
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 10px;
+  transition: all ease-in-out 0.5s;
+}
+
+.perfil__details a:hover {
+  color: white;
+  margin-left: 20px;
+  text-shadow:  0 0 7px #fff,
+                0 0 10px #fff,
+                0 0 21px #fff,
+                0 0 10px #DCAA47,
+                0 0 30px #DCAA47,
+                0 0 40px #DCAA47,
+                0 0 60px #DCAA47,
+                0 0 70px #DCAA47;
+}
+
+.perfil__username{
+  padding: 10px;
+}

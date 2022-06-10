@@ -66,10 +66,6 @@ tbody>tr{
   position: relative;
 }
 
-tr:hover td{
-  background-color: #d3d3d3;
-} 
-
 th, td{
   border: #7a7a7a solid 1px; 
   padding: 10px;

@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../../assets/css/TableOrders.css'
 
-import { SideBar } from '../../UI/SideBar/SideBar';
+import { SideBar } from '../../UI/SideBar/SideBar'
 
 export const TableOrders = () => {
+
+    const url = 'https://rickandmortyapi.com/api/character?page=2'
+
+    const [pedidos, setPedidos] = useState([])
+
+    const fetchApi = async (url) => {
+        const res = await fetch(url)
+        const resJson = await res.json()
+        setPedidos(resJson.results)
+    }
+
+    useEffect(() => {
+        fetchApi(url)
+    }, [])
+    
+
     return (
         <>
             <div className='mainTable-orders'>
@@ -14,8 +30,6 @@ export const TableOrders = () => {
                     <table className='table-orders'>
                         <thead>
                             <tr>
-                                <th scope='col'>#</th>
-                                <th scope='col'>Pedidos Pendientes</th>
                                 <th scope='col'>Inactivo</th>
                                 <th scope='col'>Por entregar</th>
                                 <th scope='col'>Entregado</th>
@@ -23,55 +37,13 @@ export const TableOrders = () => {
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <th scope='row'>1</th>
-                                <td>Silla color marlon</td>
-                                <td>
-                                    <i className='fas fa-times-circle'></i>
-                                </td>
-                                <td>
-                                    <i className='fa-solid fa-circle-exclamation'></i>
-                                </td>
-                                <td>
-                                    <i className='fa-solid fa-circle-check'></i>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th scope='row'>2</th>
-                                <td>Silla color marlon</td>
-                                <td>
-                                    <i className='fas fa-times-circle'></i>
-                                </td>
-                                <td>
-                                </td>
-                                <td>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th scope='row'>3</th>
-                                <td>Silla color marlon</td>
-                                <td>
-                                </td>
-                                <td>
-                                    <i className='fa-solid fa-circle-exclamation'></i>
-                                </td>
-                                <td>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th scope='row'>4</th>
-                                <td>Silla color marlon</td>
-                                <td>
-                                </td>
-                                <td>
-                                </td>
-                                <td>
-                                    <i className='fa-solid fa-circle-check'></i>
-                                </td>
-                            </tr>
+                            {pedidos.map((index, key) => {
+                                return (
+                                    <tr key={key}>
+                                        <th>{index.name}</th>
+                                    </tr>
+                                )
+                            })}
                         </tbody>
                     </table>
                 </section>
