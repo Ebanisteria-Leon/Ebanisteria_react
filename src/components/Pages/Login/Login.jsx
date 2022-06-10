@@ -48,7 +48,7 @@ export const Login = () => {
     let history = useNavigate()
     
     const manejadorBoton = () => {
-        let url = 'https://leon-ebanisteria.herokuapp.com/login/'
+        let url = 'http://127.0.0.1:8000/login/'
         let response
         axios
             .post(url, state.form)
@@ -60,9 +60,9 @@ export const Login = () => {
 
                     localStorage.setItem('rolUser', rol)
                     localStorage.setItem('username', username)
-                    rol === 'Cliente' || rol === 'Admin'
-                        ? history('/')
-                        : console.log('datos invalidos')
+                    if (rol === 'Cliente' || rol === 'Admin'){
+                        history('/')
+                    }
                 }
             })
             .catch((error) => {

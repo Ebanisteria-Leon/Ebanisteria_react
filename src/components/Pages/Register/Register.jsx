@@ -61,7 +61,7 @@ export const Register = () => {
                 }
             })
             .catch((error) => {
-                console.log('error')
+                console.log(error)
                 cambiarEstadoModalEmail(!estadoModalEmail)
                 const inputNombre = document.getElementById('nombre')
                 const inputEmail = document.getElementById('email')
