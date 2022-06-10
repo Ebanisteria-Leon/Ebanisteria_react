@@ -104,6 +104,39 @@
     position: relative;
   }
 
+  .select_agregar222{
+      width: 50%;
+      display: flex;
+      justify-content: space-around;
+  }
+
+  .select_agregar222 .caja1{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .select_agregar222 .caja2{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+  .select_agregar222 .custom-input-file2{
+      width: 49%;
+  }
+
+  .cajaImagen{
+      width: 40%;
+      height: 45%;
+  }
+
+  .cajaImagen .imagen{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   .custom-input-file:hover {
     background-color: #da9d24;
     color: #fff;
@@ -115,7 +148,7 @@
     line-height: 28px;
 }
 
-.select_agregar input{
+.select_agregar222 input{
     border: 1px solid transparent;
     cursor: pointer;
     font-size: 1px;
@@ -254,6 +287,21 @@ border-bottom: 1px solid #dfac48;
     }
     .divbtn_agregar2{
         height:10%;
+    }
+
+    .select_agregar222{
+        width: 40%;
+        height: 17%;
+        justify-content: space-around;
+    }
+    .select_agregar222 .caja1,
+    .select_agregar222 .caja2{
+        align-items: center;
+        justify-content: space-around;
+    }
+    .select_agregar222 .custom-input-file2{
+        height: 30%;
+        width: 100%;
     }
 }
 

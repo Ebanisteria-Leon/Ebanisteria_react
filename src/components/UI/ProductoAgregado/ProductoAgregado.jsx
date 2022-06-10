@@ -8,23 +8,32 @@ import { useStateValue } from '../../hooks/StateProvider'
 
 import Mueble_Azul_move from '../../../assets/images/muebles-promo/mueble-azul-move.jpg'
 
-export const ProductoAgregado = ({productos : {id, name, image, gender, quantity}}) => {
+export const ProductoAgregado = ({productos : {idProducto, nombre, imagen, descripcion, valor, alto, ancho, largo, color, calificacion, fechaInicio, fechaFinalizacion, estadoProducto, idCategoria, quantity}}) => {
 
     const { mostrar_producto } = useViewModal()
     const [{basket}, dispatch] = useStateValue()
 
+    const eliminarProducto = ( all = false) =>{
+        if(all===false){
+          dispatch({
+            type: actionTypes.REMOVE_ONE_FROM_CART,
+            id: idProducto,
+          })
+        }else{
+          dispatch({
+            type: actionTypes.REMOVE_ALL_FROM_CART,
+            id: idProducto,
+          })
+        }
+      }
 
-    const eliminarProducto = () => dispatch({
-        type: actionTypes.REMOVE_ITEM,
-        id: id
-    })
 
     return (
     <div className='product-card'>
         <div className='product-img-container'>
             <div className='product-img'>
                 <div className='linkImg' onClick={mostrar_producto}>
-                    <Imagen clase='product-img-front' url={image} alt='Front'/>
+                    <Imagen clase='product-img-front' url={imagen} alt='Front'/>
                     <Imagen clase='product-img-back' url={Mueble_Azul_move} alt='Back'/>
                 </div>
             </div>
@@ -32,14 +41,14 @@ export const ProductoAgregado = ({productos : {id, name, image, gender, quantity
 
         <div className='product-box-text'>
             <div className='product-category'>
-                <span>{name}</span>
+                <span>{nombre}</span>
                 </div>
             <p className='product-title'>
-                {gender} X{quantity}
+                {fechaInicio} X{quantity}
             </p>
             <div className='price'>
                 <span className='product-price'>
-                    {accounting.formatMoney(1809900 * quantity, "$")}
+                    {accounting.formatMoney(valor * quantity, "$")}
                 </span>
             </div>
         </div>
@@ -49,8 +58,7 @@ export const ProductoAgregado = ({productos : {id, name, image, gender, quantity
                 className='buy-btn'
                 onClick={eliminarProducto}
             >
-                <i className='fas fa-trash'></i>
-                Eliminar
+                <i className='fas fa-trash'></i> 
             </button>
         </div>
     </div>

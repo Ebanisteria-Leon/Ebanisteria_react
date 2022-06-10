@@ -84,6 +84,14 @@ export const SideBar = () => {
                     </li>
 
                     <li>
+                        <NavLink to='/Admin/TableCategories'>
+                            <i className='fa-solid fa-folder '></i>
+                            <span className='links_name'>Categorías</span>
+                        </NavLink>
+                        <span className='tooltip'>Categorías</span>
+                    </li>
+
+                    <li>
                         <NavLink to='/Admin/TableOrders'>
                             <i className='fa-solid fa-cart-shopping '></i>
                             <span className='links_name'>Ordenes</span>
@@ -100,12 +108,13 @@ export const SideBar = () => {
                     </li>
 
                     <li>
-                        <NavLink to='/clients'>
-                            <i className='fa-solid fa-gear'></i>
-                            <span className='links_name'>Configuracion</span>
+                        <NavLink to='/Admin/AgregarCategoria'>
+                            <i className='fa-solid fa-file-circle-plus'></i>
+                            <span className='links_name'>Agregar categoría</span>
                         </NavLink>
-                        <span className='tooltip'>Configuracion</span>
+                        <span className='tooltip'>Add categoría</span>
                     </li>
+
                 </ul>
 
                 <div className='profile_content'>
@@ -118,10 +127,12 @@ export const SideBar = () => {
                                 <div className='job'>Admin ebanisteria</div>
                             </div>
                         </div>
+                        <NavLink to='/'>
                         <i
                             className='fa-solid fa-arrow-right-from-bracket'
                             id='log_out'
                         ></i>
+                        </NavLink>
                     </div>
                 </div>
             </div>

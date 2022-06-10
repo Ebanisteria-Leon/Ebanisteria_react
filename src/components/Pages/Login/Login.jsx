@@ -5,8 +5,9 @@ import aos from 'aos'
 import 'aos/dist/aos.css'
 import Logo from '../../../assets/images/logo/logoSolo.png'
 import axios from 'axios'
+import jwt from 'jwt-decode'
 
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 import { Header } from '../../Layouts/Header/Header'
 import { Barra } from '../../UI/Barra/Barra'
@@ -43,20 +44,25 @@ export const Login = () => {
                 [e.target.name]: e.target.value,
             },
         })
-        console.log(state)
     }
 
+    let history = useNavigate()
+    
     const manejadorBoton = () => {
         let url = 'http://127.0.0.1:8000/login/'
         let response
         axios
             .post(url, state.form)
             .then((response) => {
-                console.log(response)
                 response = response
                 if (response.status === 200) {
-                    console.log('Se ha logeado correctamente')
-                    localStorage.setItem('token', response.data.token)
+                    const rol = response.data.user.rolUser
+                    const username = response.data.user.username
+
+                    localStorage.setItem('rolUser', rol)
+                    localStorage.setItem('username', username)
+                    rol === 'Cliente' ? history('/')
+                    : console.log('datos invalidos');
                 }
             })
             .catch((error) => {

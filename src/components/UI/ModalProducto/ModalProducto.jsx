@@ -17,7 +17,7 @@ export const ModalProducto = ({children, estado, cambiarEstado, color}) => {
             contenido = document.querySelector('.contenido_modal')
             contenido.style.top='20px'
             contenido.style.background=color
-            contenido.style.color='#fff'
+            contenido.style.color='#000'
            
         }, 100 )
     }
@@ -25,10 +25,10 @@ export const ModalProducto = ({children, estado, cambiarEstado, color}) => {
     return (
         <>
         {estado &&
-            <div className="overlay_modal">
+            <div className="overlay_modal2">
                 <div className="contenido_modal">
-                <button className='cancelar' onClick={cerrarModal}><i class="fa-solid fa-xmark"></i></button>
                     {children}
+                    <button className='cancelar' onClick={cerrarModal}><i class="fa-solid fa-xmark"> Cancelar</i></button>
                 </div>
             </div>
         }  
