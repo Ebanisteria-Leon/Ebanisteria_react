@@ -11,6 +11,8 @@ import { helpHttp } from '../../helpers/helpHttp'
 import ClipLoader from "react-spinners/ClipLoader";
 import { Mensaje } from '../../UI/Mensaje/Mensaje'
 import axios from 'axios'
+import { actionTypes } from '../../hooks/reducer'
+import { useStateValue } from '../../hooks/StateProvider'
 
 
 
@@ -26,6 +28,7 @@ export const TableCategories = () => {
     const [loading, setLoading] = useState(false)
     const [msgError, setMsgError] = useState(null)
     let datoP ={}
+    const [{ buscador }, dispatch] = useStateValue()
       
 
     const [form2, setForm2] = useState({})
@@ -98,7 +101,6 @@ export const TableCategories = () => {
     }
 
     const deleteData = async (data) =>{
-        cambiarEstadoModalEmail(!estadoModalEmail) 
         console.log(data);
         let isDelete = window.confirm(
             `Estas seguro de eliminar el registro con el id ` + data.idCategoria
@@ -120,7 +122,7 @@ export const TableCategories = () => {
         api.get(url).then(res=>{
             if(!res.err){
                 setMsgError(null)
-                setCategorias(res)
+                setCategorias(res.results)
             }else{
                 setMsgError(res)
                 setCategorias([])
@@ -128,6 +130,11 @@ export const TableCategories = () => {
         })
         setLoading(false)
     },[])
+
+    useEffect(() => {
+      setCategorias(buscador)
+    }, [buscador])
+    
 
     return (
         <>
@@ -169,7 +176,7 @@ export const TableCategories = () => {
         </div>
             <div className='mainTable-products'>
                 <h3 className='title-table-products'>CATEGORÍAS</h3>
-                <SideBar />
+                <SideBar url={"https://leon-ebanisteria.herokuapp.com/api/categoria/?search="} />
                 <section className='section__table-products'>
                     {loading && <ClipLoader color='#dcaa47'/>}
                     {msgError && <Mensaje msg={'Error ' + msgError.status + ' : ' + msgError.statusText} bg={"#dc3545"}/>}

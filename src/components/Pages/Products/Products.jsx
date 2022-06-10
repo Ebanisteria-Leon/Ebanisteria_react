@@ -21,7 +21,7 @@ export const Products = () => {
     const fetchApi=async()=>{
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/")
         const responseJSON = await response.json()
-        setTodos(responseJSON.rows)
+        setTodos(responseJSON.results)
         console.log(todos);
     }
 

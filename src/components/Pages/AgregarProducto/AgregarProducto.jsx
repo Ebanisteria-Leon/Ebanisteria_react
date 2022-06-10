@@ -20,7 +20,9 @@ export const initialForm = {
   imagen2:"",
   fechaInicio: null,
   fechaFinalizacion: null,
-  estadoProducto: null,
+  estadoProducto: "",
+  destacado: "",
+  tiempoProducto: "NUE",
   idCategoria: null
 }
 
@@ -84,7 +86,8 @@ export const AgregarProducto = () => {
   const fetchApi=async()=>{
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/categoria/")
         const responseJSON = await response.json()
-        setCategorias(responseJSON)
+        setCategorias(responseJSON.results)
+        console.log(responseJSON);
     }
 
   const mostrarArchivo = (e) => {
@@ -119,12 +122,13 @@ export const AgregarProducto = () => {
   const handleChange = (e) =>{
     const categorias = document.getElementById('selectCategoria')
     const estado = document.getElementById('selectEstado')
-    console.log(estado.value);
+    const destacado = document.getElementById('selectDestacado')
     setForm({
       ...form,
       [e.target.name]: e.target.value,
       idCategoria: Number(categorias.value),
-      estadoProducto: Number(estado.value)
+      estadoProducto: estado.value,
+      destacado: destacado.value,
     })
     console.log(form);
   }
@@ -247,14 +251,6 @@ export const AgregarProducto = () => {
           </div>
 
           <div className="select_agregar">
-            <select id="selectEstado" onChange={handleChange}>
-              <option value="">Estado del producto</option>
-              <option value="1">Nuevo</option>
-              <option value="2">Destacado</option>
-            </select>
-          </div>
-
-          <div className="select_agregar">
             <select id="selectCategoria" onChange={handleChange}>
               <option value="">Categorías</option>
               {!categorias ? "" :
@@ -263,6 +259,20 @@ export const AgregarProducto = () => {
                   <option value={index.idCategoria} key={key}>{index.nombreCategoria}</option>
                 )
               })}
+            </select>
+          </div>
+          <div className="select_agregar">
+            <select id="selectEstado" onChange={handleChange}>
+              <option value="">Estado del producto</option>
+              <option value="D">Disponible</option>
+              <option value="ND">No disponible</option>
+            </select>
+          </div>
+          <div className="select_agregar">
+            <select id="selectDestacado" onChange={handleChange}>
+              <option value="">Producto destacado</option>
+              <option value="DE">Destacado</option>
+              <option value="NDE">No destacado</option>
             </select>
           </div>
 

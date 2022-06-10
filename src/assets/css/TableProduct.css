@@ -27,6 +27,104 @@
     border: 2px solid #000;
 }
 
+thead{
+    background-color:#db970e ;
+}
+
+tbody{
+    background-color: white;
+}
+
+.primerCol{
+    padding: 0;
+    border: none;
+    width: 0;
+}
+
+.etiquetas{
+    
+}
+
+.disponible{
+    position: absolute;
+    width: 6%;
+    right: -70px;
+    top: 15px;
+    z-index: 1;
+    background-color: #db970e;
+    color: white;
+    font-size: 11px;
+    padding: 0px 2px;
+    text-align: center;
+}
+
+
+.disponible:before {
+    content: "";
+    position: absolute;
+    background-color: white;
+    right: -10px;
+    height: 0%;
+    width: 0;
+    border-style: solid;
+    border-width: 9px 10px 8px 0px;
+    border-color: #db970e transparent #db970e #db970e;
+}
+
+.destacado{
+    position: absolute;
+    width: 6%;
+    right: -70px;
+    top: 35px;
+    z-index: 1;
+    background-color: #000000;
+    color: white;
+    font-size: 11px;
+    padding: 0px 2px;
+    text-align: center;
+}
+
+
+.destacado:before {
+    content: "";
+    position: absolute;
+    background-color: white;
+    right: -10px;
+    height: 0%;
+    width: 0;
+    border-style: solid;
+    border-width: 9px 10px 8px 0px;
+    border-color: #000000 transparent #000000 #000000;
+}
+
+.nuevo{
+    position:absolute;
+    width:351px;
+    height:170px;
+    box-sizing:border-box;
+}
+
+
+.nuevo:before {
+    content: "¡Nuevo!";
+    position:absolute;
+    top:-8px;
+    left:-32px;
+    display: block;
+    box-sizing:border-box;
+    font-size: 11px;
+    text-align:center;
+    font-weight: 700;
+    color: white;
+    background: transparent; 
+    height:0;
+    width:98px;                      
+    border:25px solid transparent;
+    border-bottom:25px solid black;
+    line-height:23px;
+    transform: rotate(-45deg);
+}
+
 .buttonsTable-actions{
     display: flex;
     justify-content: center;
@@ -42,6 +140,8 @@
 
 .update-products{
     background-color: #dfac48;
+    width: 32px;
+    height: 40px;
     transition: all 0.35s;
 }
 
@@ -66,4 +166,44 @@
     width: 120px;
     height: 120px;
     object-fit: contain;
+}
+
+.botonEstado{
+    border: none;
+    color: white;
+    transition: all 300ms ease;
+    padding: 5px;
+    border-radius: 2px;
+}
+
+.botonEstado:hover{
+    background-color: #bb800b;
+    transform: translateY(-2px);
+}
+
+.update-products img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.td-descripcion {
+    max-width: 400px;
+}
+
+.td-descripcion p{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+@media (max-width:1400px){
+    .disponible{
+        width:7%;
+    }
+    .destacado{
+        width: 7%;
+        font-size: 10px;
+        padding-bottom: 1px;
+    }
 }

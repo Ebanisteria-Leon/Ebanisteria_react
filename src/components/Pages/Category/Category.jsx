@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
 import '../../../assets/css/Category.css'
 
@@ -6,6 +6,13 @@ import { Barra } from '../../UI/Barra/Barra'
 import { Header } from '../../Layouts/Header/Header'
 
 export const Category = () => {
+
+    // useEffect(() => {
+    //     let token= localStorage.getItem("token")
+    //     console.log(token);
+    // }, [])
+    
+
     return (
         <>
             <div className='mainCategory'>

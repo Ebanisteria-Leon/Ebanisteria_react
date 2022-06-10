@@ -15,6 +15,7 @@ export const ContadorCarrito = () => {
 
     const [mostrar, setMostrar] = useState(true)
     const [cantidad, setCantidad] = useState(0)
+    const [total, setTotal] = useState(0)
     const [{basket}, dispatch] = useStateValue()
     const limpiarCarro =()=>dispatch({
         type: actionTypes.CLEAR_CART
@@ -39,6 +40,9 @@ export const ContadorCarrito = () => {
         setCantidad(
             basket.reduce((previus, current) => previus + current.quantity, 0)
         )
+        setTotal(
+            basket.reduce((amount, item) => amount + item.valor * item.quantity, 0)
+        )
     }, [basket])
     
 
@@ -47,7 +51,6 @@ export const ContadorCarrito = () => {
             <bottom className="contadorCarrito" onClick={mostrarCarrito}>
                 <img src={imgCarrito} alt="" />
                 <div className="contador">
-                    {/* {basket.map((item)=><p>{item?.length}</p>)} */}
                     <p>{cantidad}</p>
                 </div>
             </bottom>
@@ -63,7 +66,7 @@ export const ContadorCarrito = () => {
                     <div className="boxLimpiar">
                         <button onClick={limpiarCarro} className="limpiarCarrito">Limpiar carrito</button>
                     </div>
-                    <Total precioTotal={getBasketTotal(basket)} pTotal={cantidad}/>
+                    <Total precioTotal={total} pTotal={cantidad}/>
                 </div>
                 <div className="botonesPAgregados">
                     <NavLink to="/Productos-agregados">

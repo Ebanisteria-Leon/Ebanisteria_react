@@ -2,14 +2,26 @@ import React from 'react'
 import '../../../assets/css/Sidebar.css'
 import logoDash from '../../../assets/images/logo.png'
 import foto from '../../../assets/images/85535657.jpg'
-
 import { useSidebar } from '../../hooks/useSidebar'
-
 import { NavLink } from 'react-router-dom'
+import { actionTypes } from '../../hooks/reducer'
+import { useStateValue } from '../../hooks/StateProvider'
+import axios from 'axios'
 
-export const SideBar = () => {
-
+export const SideBar = ({url}) => {
+    console.log(url);
+    const [{ buscador }, dispatch] = useStateValue()
     const { cambiar_sidebar } = useSidebar()
+    const capturarBuscador = () =>{
+        const buscador = document.getElementById('buscador')
+        axios.get(url+buscador.value)
+        .then(data=>{
+            dispatch({
+                type:actionTypes.BUSCADOR,
+                data:data.data.results
+            })
+        })
+    }
 
     return (
         <>
@@ -37,7 +49,7 @@ export const SideBar = () => {
                             onClick={cambiar_sidebar}
                             className='fa-solid fa-magnifying-glass '
                         ></i>
-                        <input type='text' placeholder='Buscar' />
+                        <input type='text' placeholder='Buscar' id="buscador" onChange={capturarBuscador}/>
                         <span className='tooltip'>Buscar</span>
                     </li>
 
@@ -55,16 +67,6 @@ export const SideBar = () => {
                             <span className='links_name'>Usuarios</span>
                         </NavLink>
                         <span className='tooltip'>Usuarios</span>
-                    </li>
-
-                    <li>
-                        
-                        <NavLink to="/Contactanos">
-                            <i className='fa-solid fa-envelope '></i>
-                            <span className='links_name'>Contacto</span>
-                        </NavLink>
-                        
-                        <span className='tooltip'>Contacto</span>
                     </li>
 
                     <li>

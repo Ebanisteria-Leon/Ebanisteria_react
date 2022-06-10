@@ -11,7 +11,7 @@ import Mueble_Azul_move from '../../../assets/images/muebles-promo/mueble-azul-m
 import { DescriptionProducts } from '../DescriptionProducts/DescriptionProducts'
 
 export const ProductCard = ({
-    productos: { idProducto, nombre, imagen, imagen2, descripcion, valor, alto, ancho, largo, color, calificacion, fechaInicio, fechaFinalizacion, estadoProducto, idCategoria },
+    productos: { idProducto, nombre, imagen, imagen2, descripcion, valor, alto, ancho, largo, color, calificacion, fechaInicio, fechaFinalizacion, estadoProducto, idCategoria, tiempoProducto, destacado },
 }) => {
     let idProductos
     let colorModal = '#008F39'
@@ -43,6 +43,7 @@ export const ProductCard = ({
                 calificacion
             },
         })
+        localStorage.setItem("producto", JSON.stringify(basket))
         cambiarEstadoModalEmail(!estadoModalEmail)
         const boxCarrito = document.querySelector('.box-carrito')
         boxCarrito.style.opacity = '1'
@@ -60,6 +61,12 @@ export const ProductCard = ({
                 <p>Se añadio al carrito correctamente</p>
             </Modal>
             <div className='product-card'>
+                {tiempoProducto==="NUE"
+                    ?<div className="nuevoP">
+
+                    </div>
+                    :""
+                }
                 <div className='product-img-container'>
                     <div className='product-img'>
                         <div className='linkImg' onClick={mostrar_producto2}>
@@ -78,9 +85,6 @@ export const ProductCard = ({
                 </div>
 
                 <div className='product-box-text'>
-                    <div className='product-category'>
-                        <span>{nombre}</span>
-                    </div>
                     <div className='price'>
                         <span className='product-price'>
                             {accounting.formatMoney(valor, '$')}
@@ -102,6 +106,9 @@ export const ProductCard = ({
                                 )
                             })}
                         </div>
+                    </div>
+                    <div className='product-category'>
+                        <span>{nombre}</span>
                     </div>
                 </div>
 

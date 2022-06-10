@@ -11,12 +11,16 @@ import { helpHttp } from '../../helpers/helpHttp'
 import ClipLoader from "react-spinners/ClipLoader";
 import { Mensaje } from '../../UI/Mensaje/Mensaje'
 import axios from 'axios'
+import Editar from '../../../assets/images/iconos/editarProducto.png'
+import { actionTypes } from '../../hooks/reducer'
+import { useStateValue } from '../../hooks/StateProvider'
 
 
 
 
 export const TableProducts = () => {
 
+    const [{ buscador }, dispatch] = useStateValue()
     let api = helpHttp()
     let url = "https://leon-ebanisteria.herokuapp.com/api/producto/"
     let colorModal ="#fff"
@@ -29,17 +33,59 @@ export const TableProducts = () => {
     let imagen_producto=""
     let setearImg
     let setearImg2 
-    let confirmar = Boolean     
+    let c
+    let confirmar = Boolean   
+    
+
 
 const cambiarEstado = () =>{
     confirmar= true
     updateData2()
 }
 
+const cambiarEstadoP = (data)=>{
+    let estadoProducto
+
+    if(data.estadoProducto === "D"){
+        estadoProducto="ND"
+    }
+    if(data.estadoProducto === "ND"){
+        estadoProducto="D"
+    }
+
+    setForm2({
+        ...data,
+        idCategoria: data.idCategoria[0],
+        estadoProducto: estadoProducto
+    })
+
+    updateData2()
+}
+
+const cambiarDestcado = (data) =>{
+    let estadoDestacado
+
+    if(data.destacado === "DE"){
+        estadoDestacado="NDE"
+    }
+    if(data.destacado === "NDE"){
+        estadoDestacado="DE"
+    }
+
+    setForm2({
+        ...data,
+        idCategoria: data.idCategoria[0],
+        destacado: estadoDestacado
+    })
+
+    updateData2()
+}
+console.log(form2);
+
 const fetchApi=async()=>{
     const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/categoria/")
     const responseJSON = await response.json()
-    setCategorias(responseJSON)
+    setCategorias(responseJSON.results)
 }
 
 const editarProducto = () =>{
@@ -70,17 +116,34 @@ const handleSubmit = (e) =>{
 
 const handleChange = (e) =>{
     const categorias = document.getElementById('selectCategoria')
+    const destacado = document.getElementById('selectDestacado')
+    const estado = document.getElementById('selectEstado')
+    const tiempo = document.getElementById('selectTiempoP')
     setForm2({
     ...form2,
-    [e.target.name]: e.target.value
+    [e.target.name]: e.target.value,
+    idCategoria: Number(categorias.value),
+    estadoProducto: estado.value,
+    tiempoProducto: tiempo.value,
+    destacado: destacado.value
     })
     console.log(form2);
 }
 
+const llenarSelectCategoria = (data) =>{
+    let llenarCategoria = data.idCategoria[0]
+    const categoria = document.getElementById('selectCategoria')
+    console.log(categoria);
+    categoria.value=llenarCategoria
+    console.log(llenarCategoria);
+}
+
 const updateData = (data) =>{
+    llenarSelectCategoria(data)
     setForm2(data)
     editarProducto()
 }
+
 
 const updateData2 = async () =>{
     cambiarEstadoModalEmail(!estadoModalEmail) 
@@ -147,6 +210,7 @@ const uploadImage = () => {
         console.log("url1" + data.url);
     setForm2({
         ...form2,
+        idCategoria: form2.idCategoria[0],
         imagen: data.url
     })
     console.log(form2);
@@ -170,12 +234,13 @@ const uploadImage2 = () => {
             console.log("url2" + data.url);
         setForm2({
             ...form2, 
+            idCategoria: form2.idCategoria[0],
             imagen2: data.url
         })
         console.log(form2);
         })
         .catch(err => console.log(err))
-    }, 8000);
+    }, 5000);
 }
 
 const setearImagen = (e) =>{
@@ -190,20 +255,26 @@ const setearImagen2 = (e) =>{
 }
 
 
-    useEffect(()=>{
-        fetchApi()
-        setLoading(true)
-        api.get(url).then(res=>{
-            if(!res.err){
-                setMsgError(null)
-                setProductos(res.rows)
-            }else{
-                setMsgError(res)
-                setProductos([])
-            }
-        })
-        setLoading(false)
-    },[])
+useEffect(()=>{
+    fetchApi()
+    setLoading(true)
+    api.get(url).then(res=>{
+        if(!res.err){
+            setMsgError(null)
+            setProductos(res.results)
+        }else{
+            setMsgError(res)
+            setProductos([])
+        }
+    })
+    setLoading(false)
+    
+},[])
+
+useEffect(() => {
+    setProductos(buscador)
+}, [buscador])
+
 
     return (
         <>
@@ -312,21 +383,42 @@ const setearImagen2 = (e) =>{
                     <span></span>
                 </div>
 
-                <div className="txt_field">
-                    <input type="text" id="estado" name="estadoProducto" value={form2.estadoProducto} required onChange={handleChange}/>
-                    <label className="labelForm" for="estado"> Estado del producto </label>
-                    <span></span>
-                </div>
-
                 <div className="select_agregar">
-                <select name="agregar" id="selectCategoria" value={form2.idCategoria} onChange={handleChange}>
-                    <option value="">Categorías</option>
+                <select id="selectCategoria" onChange={handleChange}>
+                    <option value="">Categorias</option>
                     {!categorias ? "" :
                     categorias.map((index, key)=>{
                         return (
                         <option value={index.idCategoria} key={key}>{index.nombreCategoria}</option>
                         )
                     })}
+                </select>
+                </div>
+
+                <div className="select_agregar">
+                <select name="agregar" id="selectEstado"  onChange={handleChange}>
+                    {form2.estadoProducto==="D"
+                    ?<option value="D">Estado - Disponible</option>
+                    :<option value="ND">Estado - No disponible</option>
+                    }
+                    <option value="ND" >No disponible</option>
+                    <option value="D" >Disponible</option>
+                </select>
+                </div>
+
+                <div className="select_agregar">
+                <select name="agregar" id="selectDestacado" value={form2.destacado} onChange={handleChange}>
+                    <option value="">Producto Destacado</option>
+                    <option value="DE" >Destacado</option>
+                    <option value="NDE" >No destacado</option>
+                </select>
+                </div>
+
+                <div className="select_agregar">
+                <select name="agregar" id="selectTiempoP" value={form2.tiempoProducto} onChange={handleChange}>
+                    <option value="">Tiempo del producto</option>
+                    <option value="NUE" >Nuevo</option>
+                    <option value="ANT" >Antiguo</option>
                 </select>
                 </div>
 
@@ -340,7 +432,7 @@ const setearImagen2 = (e) =>{
         </div>
             <div className='mainTable-products'>
                 <h3 className='title-table-products'>PRODUCTOS</h3>
-                <SideBar />
+                <SideBar url={"https://leon-ebanisteria.herokuapp.com/api/producto/?search="}/>
                 <section className='section__table-products'>
                     {loading && <ClipLoader color='#dcaa47'/>}
                     {msgError && <Mensaje msg={'Error ' + msgError.status + ' : ' + msgError.statusText} bg={"#dc3545"}/>}
@@ -349,33 +441,43 @@ const setearImagen2 = (e) =>{
                             {/* Cabecera de la tabla */}
                             <thead>
                                 <tr>
-                                    <th scope='col'>ID</th>
+                                    <th className="primerCol"></th>
+                                    <th scope='col'>Imagen</th>
                                     <th scope='col'>Nombre</th>
                                     <th scope='col'>Categoria</th>
                                     <th scope='col'>Descripcion</th>
                                     <th scope='col'>Color</th>
                                     <th scope='col'>Precio</th>
-                                    <th scope='col'>Imagen</th>
                                     <th scope='col'>Acciones</th>
                                 </tr>
                             </thead>
+                            <tbody>
                             {productos &&
                             productos.map((index,_)=>{
                             return(
-                                <tbody>
+                                
+                                <>
                                 <tr>
-                                    <td>{index.idProducto}</td>
-                                    <td>{index.nombre}</td>
-                                    <td>{index.idCategoria}</td>
-                                    <td>
-                                        {index.descripcion}
-                                    </td>
-                                    <td>{index.color}</td>
-                                    <td>
-                                        <span className='priceProducts-table'>
-                                            {accounting.formatMoney(index.valor, "$")}
-                                        </span>
-                                    </td>
+                                    <div className="etiquetas">
+                                        <div className="disponible">
+                                            {index.estadoProducto==="D" 
+                                            ?<p>Disponible</p>
+                                            :<p>No disponible</p>
+                                            }
+                                        </div>
+                                        <div className="destacado">
+                                            {index.destacado==="DE" 
+                                            ?<p>Destacado</p>
+                                            :<p>No destacado</p>
+                                            }
+                                        </div>
+                                        {index.tiempoProducto==="NUE"
+                                            ?<div className="nuevo">
+
+                                            </div>
+                                            :""
+                                        }
+                                    </div>
                                     <td>
                                         <Imagen
                                             clase='img-table'
@@ -383,20 +485,40 @@ const setearImagen2 = (e) =>{
                                             alt='Front'
                                         />
                                     </td>
+                                    <td>{index.nombre}</td>
+                                    <td>{index.idCategoria[1]} </td>
+                                    <td className='td-descripcion'>
+                                        <p>{index.descripcion}</p>
+                                    </td>
+                                    <td>{index.color}</td>
+                                    <td>
+                                        <span className='priceProducts-table'>
+                                            {accounting.formatMoney(index.valor, "$")}
+                                        </span>
+                                    </td>
+                                    
                                     <td>
                                         <div className='buttonsTable-actions'>
-                                            <button className='btnAction-table update-products' onClick={()=>updateData(index)}>
+                                            <button className='btnAction-table update-products' title="Producto destacado / No destacado" onClick={()=>cambiarDestcado(index)}>
+                                                <i class="fa-solid fa-star-half-stroke"></i>
+                                            </button>
+                                            <button className='btnAction-table update-products' title="Cambiar estado del Producto" onClick={()=>cambiarEstadoP(index)}>
+                                                <i class="fa-solid fa-arrows-rotate"></i>
+                                            </button>
+                                            <button className='btnAction-table update-products' title="Editar Producto" onClick={()=>updateData(index)}>
                                                 <i className='fas fa-edit'></i>
                                             </button>
-                                            <button className='btnAction-table delete-products' onClick={()=>deleteData(index)}>
+                                            <button className='btnAction-table delete-products' title="Eliminar Producto" onClick={()=>deleteData(index)}>
                                                 <i className='fas fa-trash'></i>
                                             </button>
                                         </div>
                                     </td>
                                 </tr>
-                            </tbody>
+                                </>
+                            
                             )
                         })}
+                        </tbody>
                         </table>
                 </section>
             </div>

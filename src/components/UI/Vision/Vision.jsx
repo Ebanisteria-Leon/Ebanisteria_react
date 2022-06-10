@@ -12,6 +12,11 @@ export const Vision = () => {
         
 
         <div className="contenedorVision">
+            <div className="container_triangulo2">
+                <div className="triangulo triangulo11"></div>
+                <div className="triangulo triangulo22"></div>
+                <div className="triangulo triangulo33"></div>
+            </div>
             <div className="banner22">
                 <div className="banner__icon-numeral2">
                     <Imagen id={"img_numeral2"} url={Cama2}/>
