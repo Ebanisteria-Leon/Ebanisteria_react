@@ -53,24 +53,24 @@ const reducer = (state, action)=>{
         }
         case "REMOVE_ONE_FROM_CART":{
 
-            let itemToDelete = state.basket.find((item) => item.id === action.id)
+            let itemToDelete = state.basket.find((item) => item.idProducto === action.idProducto)
             return itemToDelete.quantity > 1 
             ? {
                 ...state,
                 basket: state.basket.map((item) => 
-                    item.id === action.id 
+                    item.idProducto === action.idProducto 
                     ? {...item, quantity: item.quantity-1}
                     :item),
             } 
             : {
                 ...state,
-                basket: state.basket.filter((item)=> item.id !== action.id),
+                basket: state.basket.filter((item)=> item.idProducto !== action.idProducto),
             }
         }
         case "REMOVE_ALL_FROM_CART":{
             return{
                 ...state,
-                basket: state.basket.filter((item)=> item.id !== action.id),
+                basket: state.basket.filter((item)=> item.idProducto !== action.idProducto),
             }
         }
         case "CLEAR_CART":

@@ -16,12 +16,12 @@ export const MostrarProductos = ({productos: {idProducto, nombre, imagen, descri
       if(all===false){
         dispatch({
           type: actionTypes.REMOVE_ONE_FROM_CART,
-          id: idProducto,
+          idProducto: idProducto,
         })
       }else{
         dispatch({
           type: actionTypes.REMOVE_ALL_FROM_CART,
-          id: idProducto,
+          idProducto: idProducto,
         })
       }
     }

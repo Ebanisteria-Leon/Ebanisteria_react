@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import accounting from 'accounting'
 import { Imagen } from '../../UI/Imagen/Imagen'
 import { useViewModal } from '../../hooks/useViewModal'
@@ -6,12 +6,14 @@ import { actionTypes } from '../../hooks/reducer'
 import { useStateValue } from '../../hooks/StateProvider'
 
 
+
 import Mueble_Azul_move from '../../../assets/images/muebles-promo/mueble-azul-move.jpg'
 
-export const ProductoAgregado = ({productos : {idProducto, nombre, imagen, descripcion, valor, alto, ancho, largo, color, calificacion, fechaInicio, fechaFinalizacion, estadoProducto, idCategoria, quantity}}) => {
+export const ProductoAgregado = ({productos : {idProducto, nombre, imagen, descripcion, valor, alto, ancho, largo, color, calificacion, fechaInicio, fechaFinalizacion, estadoProducto, idCategoria, quantity, destacado}}) => {
 
     const { mostrar_producto } = useViewModal()
     const [{basket}, dispatch] = useStateValue()
+    
 
     const eliminarProducto = ( all = false) =>{
         if(all===false){
@@ -25,12 +27,12 @@ export const ProductoAgregado = ({productos : {idProducto, nombre, imagen, descr
             id: idProducto,
           })
         }
-      }
+    }
 
 
     return (
-    <div className='product-card'>
-        <div className='product-img-container'>
+    
+        {/* <div className='product-img-container'>
             <div className='product-img'>
                 <div className='linkImg' onClick={mostrar_producto}>
                     <Imagen clase='product-img-front' url={imagen} alt='Front'/>
@@ -53,14 +55,13 @@ export const ProductoAgregado = ({productos : {idProducto, nombre, imagen, descr
             </div>
         </div>
 
-        <div className='product-btn'>
-            <button
-                className='buy-btn'
-                onClick={eliminarProducto}
-            >
-                <i className='fas fa-trash'></i> 
-            </button>
-        </div>
-    </div>
+        <div className="eliminarP">
+          <button className='delete-btn' onClick={()=>eliminarProducto(false)} title="Eliminar unidad"> 
+            <i className='fas fa-trash'></i>
+          </button>
+          <button className='delete-btn' onClick={()=>eliminarProducto(true)} title="Eliminar todos"> 
+            <i class="fa-solid fa-trash-arrow-up"></i>
+          </button>
+        </div> */}
     )
 }

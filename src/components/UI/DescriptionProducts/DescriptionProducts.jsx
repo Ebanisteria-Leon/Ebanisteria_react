@@ -24,10 +24,11 @@ export const DescriptionProducts = ({ id, click}) => {
         dispatch({
             type:actionTypes.ADD_TO_BASKET,
             item: {
-                id,
-                name:dataId.nombre,
-                image:dataId.imagen,
-                gender:dataId.descripcion
+                idProducto:dataId.idProducto,
+                nombre:dataId.nombre,
+                imagen:dataId.imagen,
+                valor:dataId.valor,
+                descripcion:dataId.descripcion
             }
             
         })
