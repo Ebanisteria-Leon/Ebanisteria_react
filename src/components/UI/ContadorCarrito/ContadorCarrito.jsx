@@ -49,10 +49,8 @@ export const ContadorCarrito = () => {
     return (
         <>
             <bottom className="contadorCarrito" onClick={mostrarCarrito}>
-                <img src={imgCarrito} alt="" />
-                <div className="contador">
+                    <img src={imgCarrito} alt="" />
                     <p>{cantidad}</p>
-                </div>
             </bottom>
             <div className="box-carrito">
                 <div className="tituPAgregados">
