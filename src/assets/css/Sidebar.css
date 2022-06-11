@@ -12,7 +12,7 @@
 }
 
 .sidebar.active{
-    width: 14%;
+    width: 20%;
 }
 
 .sidebar .logo-content{
@@ -34,7 +34,7 @@
 }
 
 .logo a{
-    text-decoration: none !important;
+    text-decoration: none;
 }
 
 .sidebar.active .logo_content .logo{

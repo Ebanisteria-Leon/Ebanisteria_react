@@ -61,7 +61,7 @@ export const Promo = () => {
         ],
     }
 
-    let url="https://rickandmortyapi.com/api/character?page=3"
+    let url="https://leon-ebanisteria.herokuapp.com/api/producto/"
 
     const [todosPromo, setTodos] = useState()
 

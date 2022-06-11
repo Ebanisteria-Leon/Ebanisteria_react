@@ -4,18 +4,35 @@ import logoDash from '../../../assets/images/logo.png'
 import foto from '../../../assets/images/85535657.jpg'
 
 import { useSidebar } from '../../hooks/useSidebar'
-
 import { NavLink } from 'react-router-dom'
+import { actionTypes } from '../../hooks/reducer'
+import { useStateValue } from '../../hooks/StateProvider'
+import { Logout } from '../../helpers/logout/Logout'
 
-export const SideBar = () => {
+import axios from 'axios'
 
+export const SideBar = ({ url }) => {
+    console.log(url)
+    const [{ buscador }, dispatch] = useStateValue()
     const { cambiar_sidebar } = useSidebar()
+    const capturarBuscador = () => {
+        const buscador = document.getElementById('buscador')
+        axios.get(url + buscador.value).then((data) => {
+            dispatch({
+                type: actionTypes.BUSCADOR,
+                data: data.data.results,
+            })
+        })
+    }
+
+    const username = localStorage.getItem('username')
+    const rol = localStorage.getItem('rolUser')
 
     return (
         <>
             <div className='sidebar' id='sidebar'>
                 <div className='logo_content'>
-                    <NavLink to="/" className="redirectHome">
+                    <NavLink to='/' className='redirectHome'>
                         <div className='logo'>
                             <img src={logoDash} alt='Logo_ebanisterialeon' />
                             <div className='logo_name'>Ebanistería León</div>
@@ -37,7 +54,12 @@ export const SideBar = () => {
                             onClick={cambiar_sidebar}
                             className='fa-solid fa-magnifying-glass '
                         ></i>
-                        <input type='text' placeholder='Buscar' />
+                        <input
+                            type='text'
+                            placeholder='Buscar'
+                            id='buscador'
+                            onChange={capturarBuscador}
+                        />
                         <span className='tooltip'>Buscar</span>
                     </li>
 
@@ -100,11 +122,12 @@ export const SideBar = () => {
                     <li>
                         <NavLink to='/Admin/AgregarCategoria'>
                             <i className='fa-solid fa-file-circle-plus'></i>
-                            <span className='links_name'>Agregar categoría</span>
+                            <span className='links_name'>
+                                Agregar categoría
+                            </span>
                         </NavLink>
                         <span className='tooltip'>Add categoría</span>
                     </li>
-
                 </ul>
 
                 <div className='profile_content'>
@@ -112,16 +135,16 @@ export const SideBar = () => {
                         <div className='profile_details'>
                             <img src={foto} alt='Profile_img' />
                             <div className='name_job'>
-                                <div className='name'>Gojan Holguin</div>
+                                <div className='name'>{username}</div>
 
-                                <div className='job'>Admin ebanisteria</div>
+                                <div className='job'>{rol} ebanisteria</div>
                             </div>
                         </div>
-                        <NavLink to='/'>
-                        <i
-                            className='fa-solid fa-arrow-right-from-bracket'
-                            id='log_out'
-                        ></i>
+                        <NavLink to='/' onClick={Logout}>
+                            <i
+                                className='fa-solid fa-arrow-right-from-bracket'
+                                id='log_out'
+                            ></i>
                         </NavLink>
                     </div>
                 </div>

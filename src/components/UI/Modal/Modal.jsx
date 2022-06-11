@@ -3,8 +3,7 @@ import '../../../assets/css/Modal.css'
 
 export const Modal = ({children, estado, cambiarEstado, color}) => {
     
-    let contenido 
-    console.log(color);
+    let contenido
 
     const mostrarModal = ()=>{
         const timer = setTimeout(()=>{

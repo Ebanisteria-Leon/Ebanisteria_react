@@ -5,36 +5,37 @@ import { actionTypes } from '../../hooks/reducer'
 import { useStateValue } from '../../hooks/StateProvider'
 import { useViewModal } from '../../hooks/useViewModal'
 import { Modal } from '../Modal/Modal'
+import accounting from 'accounting'
 
 
 
 
 
-export const ProductCardPromo = ({productos : {id, name, image, gender, status, created}}) => {
+export const ProductCardPromo = ({productos : {idProducto, nombre, imagen, imagen2, descripcion, valor, alto, ancho, largo, color, calificacion, fechaInicio, fechaFinalizacion, estadoProducto, idCategoria, quantity}}) => {
 
-    let idProducto
+    let idProductos
     const [{basket}, dispatch] = useStateValue()
     const { mostrar_producto } = useViewModal()
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
-    const mostrar_producto2 = () =>{
-        idProducto=id
+    const mostrar_producto2 = () => {
+        idProductos = idProducto
         dispatch({
-            type:actionTypes.TEMP_DATA,
-            id: idProducto
+            type: actionTypes.TEMP_DATA,
+            id: idProductos,
         })
         mostrar_producto()
     }
 
     const addToCar = () =>{
         dispatch({
-            type:actionTypes.ADD_TO_BASKET,
+            type: actionTypes.ADD_TO_BASKET,
             item: {
-                id,
-                name,
-                image,
-                gender
-            }
-            
+                idProducto,
+                nombre,
+                imagen,
+                valor,
+                calificacion
+            },
         })
         cambiarEstadoModalEmail(!estadoModalEmail)
         const boxCarrito = document.querySelector('.box-carrito')
@@ -56,20 +57,20 @@ export const ProductCardPromo = ({productos : {id, name, image, gender, status, 
                 <span className='p-descuento'>-20%</span>
                 <div className='p-img-container'>
                     <div className='linkImg' onClick={mostrar_producto2}>
-                            <Imagen clase='p-img-front' url={image} alt='Front' />
-                            <Imagen clase='p-img-back' url={Mueble_Azul_move} alt='Back' />
+                            <Imagen clase='p-img-front' url={imagen} alt='Front' />
+                            <Imagen clase='p-img-back' url={imagen2} alt='Back' />
                     </div>
                 </div>
 
                 <div className='p-box-text'>
                     <div className='producto-categoria'>
-                        <span>{name}</span>
+                        <span>{nombre}</span>
                     </div>
                     <a href='/' className='producto-titulo'>
-                        {created}
+                        {fechaInicio}
                     </a>
                     <div className='precio'>
-                        <span className='p-precio'>$1.809.900</span>
+                        <span className='p-precio'>{accounting.formatMoney(valor, "$")}</span>
                         <button
                             className='buy-btn'
                             onClick={addToCar}

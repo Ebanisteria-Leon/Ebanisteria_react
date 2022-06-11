@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 import '../../../assets/css/Register.css'
 import aos from 'aos'
@@ -9,9 +9,6 @@ import axios from 'axios'
 import { Header } from '../../Layouts/Header/Header'
 import { Barra } from '../../UI/Barra/Barra'
 import { Modal } from '../../UI/Modal/Modal'
-
-// import Logo from '../../../assets/images/logo/logoSolo.png'
-// import { Imagen } from '../../UI/Imagen/Imagen'
 
 export const Register = () => {
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
@@ -45,24 +42,26 @@ export const Register = () => {
                 [e.target.name]: e.target.value,
             },
         })
-        console.log(state)
     }
 
+    const history = useNavigate()
+
     const manejadorBoton = () => {
+        console.log(state.form);
         let url = 'https://leon-ebanisteria.herokuapp.com/users/usuario/'
         axios
             .post(url, state.form)
             .then((response) => {
-                console.log(response)
                 if (response.data.status === 'ok') {
                     setState({
                         error: false,
                         errorMsg: 'Usuario registrado con éxito',
                     })
+                    history('/Login')
                 }
             })
             .catch((error) => {
-                // console.log('error')
+                console.log(error)
                 cambiarEstadoModalEmail(!estadoModalEmail)
                 const inputNombre = document.getElementById('nombre')
                 const inputEmail = document.getElementById('email')
