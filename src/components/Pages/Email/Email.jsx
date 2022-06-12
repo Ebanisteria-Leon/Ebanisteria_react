@@ -23,7 +23,6 @@ export const Email = () => {
 
         emailjs.sendForm('service_qadbv1m', 'template_3kt88hq', event.target, 'CI4r5lnQa9QLwrcCF')
         .then(response => {
-            console.log(response)
             cambiarEstadoModalEmail(!estadoModalEmail)
             inputNombre.value=''
             inputEmail.value=''

@@ -1,9 +1,9 @@
 import {useEffect} from 'react'
 
 export const UseMision = () => {
-    useEffect(() => {
-        ejecutarEffect()
-    }, [])
+    // useEffect(() => {
+    //     ejecutarEffect()
+    // }, [])
 
     const ejecutarEffect = () => {
         let elemento1 = document.getElementById('img_micro')
@@ -22,6 +22,6 @@ export const UseMision = () => {
         }
     }
 
-    return ejecutarEffect
+    return {ejecutarEffect}
 }
 

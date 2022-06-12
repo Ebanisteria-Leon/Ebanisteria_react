@@ -61,7 +61,7 @@
   .eliminarP{
     width: 10%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
   }

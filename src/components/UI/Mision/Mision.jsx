@@ -9,13 +9,16 @@ import { UseMision } from '../../hooks/UseMision'
 
 export const Mision = () => {
 
+    const {ejecutarEffect} = UseMision()
+
     useEffect(() => {
+        ejecutarEffect()
     }, [])
 
 
     return (
         <>
-        <UseMision/>
+        {/* <UseMision/> */}
             <section className='mainMision'>
 
                 <img src={onda} alt='' className='onda' />

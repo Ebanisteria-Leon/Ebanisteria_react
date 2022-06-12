@@ -54,10 +54,10 @@ function App() {
                     <Route path='/RecoverPass' element={<RecoverPass />} />
                     <Route path='/Contactanos' element={<Email />} />
 
-                    <Route element={PrivateAdminRoute()}>
+                    {/* <Route element={PrivateAdminRoute()}>
                         <Route exact path='/Admin' element={<Admin />} />
-                    </Route>
-
+                    </Route> */}
+                    <Route exact path='/Admin' element={<Admin />} />
                     {/* <Route element={PrivateProfileRoute()} >
                         <Route exact path='/' element={<UserProfile />} />
                     </Route> */}

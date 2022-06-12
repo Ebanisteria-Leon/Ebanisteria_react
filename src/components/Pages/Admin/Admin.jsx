@@ -114,7 +114,7 @@ export const Admin = () => {
 
     return (
         <div className='mainAdmin'>
-            <audio src={Audio} autoPlay></audio>
+            {/* <audio src={Audio} autoPlay></audio> */}
             <div className='tituAdmin'>
                 <h1>BIENVENIDO/A</h1>
                 <h2>PANEL DE CONTROL</h2>
@@ -135,7 +135,7 @@ export const Admin = () => {
                     </div>
                     <div className='pIcon'>
                         <p>Disponibles</p>
-                        <i class='fa-solid fa-right-long'></i>
+                        <i className='fa-solid fa-right-long'></i>
                     </div>
                 </div>
                 <div
@@ -153,7 +153,7 @@ export const Admin = () => {
                     </div>
                     <div className='pIcon'>
                         <p>No disponibles</p>
-                        <i class='fa-solid fa-right-long'></i>
+                        <i className='fa-solid fa-right-long'></i>
                     </div>
                 </div>
                 <div
@@ -171,7 +171,7 @@ export const Admin = () => {
                     </div>
                     <div className='pIcon'>
                         <p>Destacados</p>
-                        <i class='fa-solid fa-right-long'></i>
+                        <i className='fa-solid fa-right-long'></i>
                     </div>
                 </div>
                 <div
@@ -189,7 +189,7 @@ export const Admin = () => {
                     </div>
                     <div className='pIcon'>
                         <p>No destacados</p>
-                        <i class='fa-solid fa-right-long'></i>
+                        <i className='fa-solid fa-right-long'></i>
                     </div>
                 </div>
                 <div
@@ -207,7 +207,7 @@ export const Admin = () => {
                     </div>
                     <div className='pIcon'>
                         <p>Nuevos</p>
-                        <i class='fa-solid fa-right-long'></i>
+                        <i className='fa-solid fa-right-long'></i>
                     </div>
                 </div>
                 <div className='mainIcono'>
@@ -219,7 +219,7 @@ export const Admin = () => {
                     </div>
                     <div className='pIcon'>
                         <p>Promoción</p>
-                        <i class='fa-solid fa-right-long'></i>
+                        <i className='fa-solid fa-right-long'></i>
                     </div>
                 </div>
             </div>

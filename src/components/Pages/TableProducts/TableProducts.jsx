@@ -80,7 +80,6 @@ const cambiarDestcado = (data) =>{
 
     updateData2()
 }
-console.log(form2);
 
 const fetchApi=async()=>{
     const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/categoria/")
@@ -127,15 +126,12 @@ const handleChange = (e) =>{
     tiempoProducto: tiempo.value,
     destacado: destacado.value
     })
-    console.log(form2);
 }
 
 const llenarSelectCategoria = (data) =>{
     let llenarCategoria = data.idCategoria[0]
     const categoria = document.getElementById('selectCategoria')
-    console.log(categoria);
     categoria.value=llenarCategoria
-    console.log(llenarCategoria);
 }
 
 const updateData = (data) =>{
@@ -152,13 +148,11 @@ const updateData2 = async () =>{
         await axios.put(endpoint, form2)
         .then((res) => {
             window.location.href="/Admin/TableProducts"
-            console.log(res);
         })
     }
 }
 
 const deleteData = async (data) =>{
-    console.log(data.idProducto);
     let isDelete = window.confirm(
         `Estas seguro de eliminar el registro con el id ` + data.idProducto
     )
@@ -167,36 +161,30 @@ const deleteData = async (data) =>{
         await axios.delete(endpoint)
         .then((res) =>{
             window.location.href="/Admin/TableProducts"
-            console.log(res);
         })
         
     }
 }
 
 const mostrarArchivo = (e) => {
-    console.log(e);
     const images = e.target.files
     imagen_producto = images[0].name;
 
     const tituImagen = document.querySelector(".tituImagen");
-    console.log(tituImagen);
     tituImagen.innerText = imagen_producto;
     // setearImagen(e)
   };
 
   const mostrarArchivo2 = (e) => {
-    console.log(e);
     const images = e.target.files
     imagen_producto = images[0].name;
 
     const tituImagen = document.querySelector(".tituImagenC");
-    console.log(tituImagen);
     tituImagen.innerText = imagen_producto;
     // setearImagen(e)
   };
 
 const uploadImage = () => {
-    console.log("entra al upload", setearImg);
     const data = new FormData()
     data.append("file", setearImg)
     data.append("upload_preset", "ebanisteria")
@@ -207,19 +195,16 @@ const uploadImage = () => {
     })
     .then(resp => resp.json())
     .then(data => {
-        console.log("url1" + data.url);
     setForm2({
         ...form2,
         idCategoria: form2.idCategoria[0],
         imagen: data.url
     })
-    console.log(form2);
     })
     .catch(err => console.log(err))
 }
     
 const uploadImage2 = () => {
-    console.log("entra al upload2", setearImg2);
     const data = new FormData()
     data.append("file", setearImg2)
     data.append("upload_preset", "ebanisteria")
@@ -231,20 +216,17 @@ const uploadImage2 = () => {
         })
         .then(resp => resp.json())
         .then(data => {
-            console.log("url2" + data.url);
         setForm2({
             ...form2, 
             idCategoria: form2.idCategoria[0],
             imagen2: data.url
         })
-        console.log(form2);
         })
         .catch(err => console.log(err))
     }, 5000);
 }
 
 const setearImagen = (e) =>{
-    console.log("entra");
     setearImg=e.target.files[0]
     uploadImage()
 }
@@ -283,7 +265,7 @@ useEffect(() => {
                 cambiarEstado={cambiarEstadoModalEmail}
                 color={colorModal}>
                 <p>Confirmar cambios?</p>
-                <button className='aceptar' onClick={cambiarEstado}><i class="fa-solid fa-check"> Aceptar</i></button>
+                <button className='aceptar' onClick={cambiarEstado}><i className="fa-solid fa-check"> Aceptar</i></button>
             </ModalProducto>
         <div className="overlayEditar">
             <div className="container_agregar2">
@@ -500,10 +482,10 @@ useEffect(() => {
                                     <td>
                                         <div className='buttonsTable-actions'>
                                             <button className='btnAction-table update-products' title="Producto destacado / No destacado" onClick={()=>cambiarDestcado(index)}>
-                                                <i class="fa-solid fa-star-half-stroke"></i>
+                                                <i className="fa-solid fa-star-half-stroke"></i>
                                             </button>
                                             <button className='btnAction-table update-products' title="Cambiar estado del Producto" onClick={()=>cambiarEstadoP(index)}>
-                                                <i class="fa-solid fa-arrows-rotate"></i>
+                                                <i className="fa-solid fa-arrows-rotate"></i>
                                             </button>
                                             <button className='btnAction-table update-products' title="Editar Producto" onClick={()=>updateData(index)}>
                                                 <i className='fas fa-edit'></i>

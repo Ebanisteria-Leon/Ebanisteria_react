@@ -5,11 +5,9 @@ export const getProductos = async (url) => {
         .get('http://127.0.0.1:8000/api/categoria/')
         .then(function (response) {
             // manejar respuesta exitosa
-            console.log(response)
         })
         .catch(function (error) {
             // manejar error
-            console.log(error)
         })
         .then(function () {
             // siempre sera executado
@@ -21,10 +19,8 @@ export const getProductos = async (url) => {
             lastName: 'Flintstone',
         })
         .then(function (response) {
-            console.log(response)
         })
         .catch(function (error) {
-            console.log(error)
         })
 
     function getUserAccount() {

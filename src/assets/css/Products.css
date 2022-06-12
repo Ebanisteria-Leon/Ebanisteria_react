@@ -13,12 +13,116 @@
     padding: 20px 0 0 0;
 }
 
+.title-category2 {
+    font-size: 2rem;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: #313131;
+    text-align: center;
+    padding: 20px 0 0 0;
+}
+
+.botones-filtro{
+    width: 80%;
+    height: 200px;
+    margin: 50px auto;
+}
+
+.botones-filtro .contenedorBoton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+}
+
+.contenedorBoton button{
+    height: 100%;
+    width: 80%;
+    border: none;
+    border-radius: 1rem;
+    transition: all ease 0.4s;
+}
+
+.botones-filtro .contenedorBoton:nth-child(1){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+}
+
+.contenedorBoton .botonCategoria0{
+    background-image: url(../images/categorias/comedor.jpg);
+    background-size: cover;
+    color: white;
+}
+.contenedorBoton .botonCategoria1{
+    background-image: url(../images/categorias/comedor.jpg);
+    background-size: cover;
+    color: white;
+}
+.contenedorBoton .botonCategoria2{
+    background-image: url(../images/categorias/comedor.jpg);
+    background-size: cover;
+    color: white;
+}
+.contenedorBoton .botonCategoria3{
+    background-image: url(../images/categorias/comedor.jpg);
+    background-size: cover;
+    color: white;
+}
+.contenedorBoton .botonCategoria4{
+    background-image: url(../images/categorias/comedor.jpg);
+    background-size: cover;
+    color: white;
+}
+.contenedorBoton .botonCategoria5{
+    background-image: url(../images/categorias/comedor.jpg);
+    background-size: cover;
+    color: white;
+}
+.contenedorBoton .botonCategoria6{
+    background-image: url(../images/categorias/comedor.jpg);
+    background-size: cover;
+    color: white;
+}
+.contenedorBoton .botonCategoria7{
+    background-image: url(../images/categorias/comedor.jpg);
+    background-size: cover;
+    color: white;
+}
+.contenedorBoton .botonCategoria8{
+    background-image: url(../images/categorias/comedor.jpg);
+    background-size: cover;
+    color: white;
+}
+.contenedorBoton .botonCategoria9{
+    background-image: url(../images/categorias/comedor.jpg);
+    background-size: cover;
+    color: white;
+}
+.contenedorBoton .botonCategoria10{
+    background-image: url(../images/categorias/comedor.jpg);
+    background-size: cover;
+    color: white;
+}
+.contenedorBoton .botonCategoria11{
+    background-image: url(../images/categorias/comedor.jpg);
+    background-size: cover;
+    color: white;
+}
+.contenedorBoton .botonCategoria12{
+    background-image: url(../images/categorias/comedor.jpg);
+    background-size: cover;
+    color: white;
+}
+
 .section__products {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 50px;
     padding-bottom: 50px;
 }
 

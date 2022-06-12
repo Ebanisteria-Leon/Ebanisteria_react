@@ -34,7 +34,8 @@ export const ProductCardPromo = ({productos : {idProducto, nombre, imagen, image
                 nombre,
                 imagen,
                 valor,
-                calificacion
+                calificacion,
+                quantity:1
             },
         })
         cambiarEstadoModalEmail(!estadoModalEmail)
@@ -75,7 +76,7 @@ export const ProductCardPromo = ({productos : {idProducto, nombre, imagen, image
                             className='buy-btn'
                             onClick={addToCar}
                         >
-                            Compralo ahora!
+                            Añadir al carrito
                         </button>
                     </div>
                 </div>

@@ -21,26 +21,13 @@ export const ProductosAgregados = () => {
     const [total, setTotal] = useState(0)
 
     const [{basket}, dispatch] = useStateValue()
-    // let idProducto
 
-    // basket.map((item,_)=>{
-    //     idProducto=item.idProducto
-    // })
-
-    // const eliminarProducto = ( all = false) =>{
-    //     console.log(idProducto);
-    //     if(all===false){
-    //       dispatch({
-    //         type: actionTypes.REMOVE_ONE_FROM_CART,
-    //         idProducto: idProducto,
-    //       })
-    //     }else{
-    //       dispatch({
-    //         type: actionTypes.REMOVE_ALL_FROM_CART,
-    //         idProducto: idProducto,
-    //       })
-    //     }
-    //   }
+    const eliminarProducto = (id) =>{
+            dispatch({
+                type: actionTypes.REMOVE_ONE_FROM_CART,
+                idProducto: id,
+            })
+      }
 
     useEffect(() => {
         setTotal(
@@ -72,7 +59,7 @@ export const ProductosAgregados = () => {
                                     </thead>
                                     <tbody className="cuerpo-producto">
                                         {basket?.length === 0 
-                                        ? ""
+                                        ? <p className='pNoExiste'>No existen productos agregados a tu carrito</p>
                                         :basket.map((productos,_)=>{
                                             return(
                                                 <tr>
@@ -87,17 +74,16 @@ export const ProductosAgregados = () => {
                                                 </td>
                                                 <td>
                                                     <p>{productos.quantity}X</p>
-                                                    <div className="eliminarP">
-                                                        {/* <button className='delete-btn' onClick={()=>eliminarProducto(false, productos.idNombre)} title="Eliminar unidad"> 
-                                                            <i className='fas fa-trash'></i>
-                                                        </button>
-                                                        <button className='delete-btn' onClick={()=>eliminarProducto(true, productos.idNombre)} title="Eliminar todos"> 
-                                                            <i class="fa-solid fa-trash-arrow-up"></i>
-                                                        </button>*/}
-                                                    </div> 
                                                 </td>
                                                 <td>
-                                                    {accounting.formatMoney(productos.valor*productos.quantity, "$")}
+                                                    <div className="boxTotalProducts">
+                                                        {accounting.formatMoney(productos.valor*productos.quantity, "$")}
+                                                        <div className="eliminarP">
+                                                            <button className='delete-btn' onClick={()=>eliminarProducto(productos.idProducto)} title="Eliminar unidad"> 
+                                                                <i className="fa-solid fa-xmark xProducto"></i>
+                                                            </button>
+                                                        </div> 
+                                                    </div>
                                                 </td>
                                             </tr>
                                             )

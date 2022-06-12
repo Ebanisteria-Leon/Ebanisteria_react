@@ -47,7 +47,6 @@ export const Register = () => {
     const history = useNavigate()
 
     const manejadorBoton = () => {
-        console.log(state.form);
         let url = 'https://leon-ebanisteria.herokuapp.com/users/usuario/'
         axios
             .post(url, state.form)

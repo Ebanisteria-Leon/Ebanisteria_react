@@ -45,7 +45,7 @@ export const MostrarProductos = ({productos: {idProducto, nombre, imagen, descri
             <i className='fas fa-trash'></i>
           </button>
           <button className='delete-btn' onClick={()=>eliminarProducto(true)} title="Eliminar todos"> 
-            <i class="fa-solid fa-trash-arrow-up"></i>
+            <i className="fa-solid fa-trash-arrow-up"></i>
           </button>
         </div>
     </div>

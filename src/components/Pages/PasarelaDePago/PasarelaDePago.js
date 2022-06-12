@@ -23,7 +23,7 @@ export default function PasarelaDePago(){
       }
 
       const handlePay=()=>{
-          console.log("El pago ha sido exitoso");
+          // console.log("El pago ha sido exitoso");
         //   window.location.href = "/"
       }
 

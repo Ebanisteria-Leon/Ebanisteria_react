@@ -28,7 +28,8 @@ export const DescriptionProducts = ({ id, click}) => {
                 nombre:dataId.nombre,
                 imagen:dataId.imagen,
                 valor:dataId.valor,
-                descripcion:dataId.descripcion
+                descripcion:dataId.descripcion,
+                quantity:counter
             }
             
         })
@@ -44,7 +45,6 @@ export const DescriptionProducts = ({ id, click}) => {
         .then(response => response.json())
         .then(data => {
             setDataId(data)
-            console.log(data);
         });
     }, [tempdata])
     

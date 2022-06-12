@@ -46,7 +46,7 @@ const reducer = (state, action)=>{
                 :item)
         } :{
             ...state,
-            basket: [...state.basket, {...action.item, quantity:1}],
+            basket: [...state.basket, {...action.item, quantity:action.item.quantity}],
             
         }
         
@@ -82,7 +82,6 @@ const reducer = (state, action)=>{
             }
         }
         case "BUSCADOR":{
-            console.log(state.buscador)
             return{
                 ...state,
                 buscador:action.data
