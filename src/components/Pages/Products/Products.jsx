@@ -118,9 +118,6 @@ export const Products = () => {
                     <button className="botonCategoria5" value="Escritorios" onClick={capturarCategoria}>Escritorios</button>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria6" value="Bibliotecas" onClick={capturarCategoria}>Bibliotecas</button>
-                    </div>
-                    <div className='contenedorBoton' style={{ width: 200 }}>
                     <button className="botonCategoria7" value="Mesas de centro" onClick={capturarCategoria}>Mesas de centro</button>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
