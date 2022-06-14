@@ -26,7 +26,6 @@ export const SideBar = ({ url }) => {
     const rol = localStorage.getItem('rolUser')
     const username = localStorage.getItem('username')
     const image = localStorage.getItem('image')
-    console.log(image);
     
     return (
         <>
@@ -96,6 +95,14 @@ export const SideBar = ({ url }) => {
                     </li>
 
                     <li>
+                        <NavLink to='/Admin/TablePromo'>
+                            <i className='fa-solid fa-folder '></i>
+                            <span className='links_name'>Promociones</span>
+                        </NavLink>
+                        <span className='tooltip'>Promociones</span>
+                    </li>
+
+                    <li>
                         <NavLink to='/Admin/TableCategories'>
                             <i className='fa-solid fa-folder '></i>
                             <span className='links_name'>Categorías</span>
@@ -118,6 +125,14 @@ export const SideBar = ({ url }) => {
                         </NavLink>
                         <span className='tooltip'>Add producto</span>
                     </li>
+
+                    {/* <li>
+                        <NavLink to='/Admin/AgregarPromocion'>
+                            <i className='fa-solid fa-file-circle-plus'></i>
+                            <span className='links_name'>Agregar producto</span>
+                        </NavLink>
+                        <span className='tooltip'>Add producto</span>
+                    </li> */}
 
                     <li>
                         <NavLink to='/Admin/AgregarCategoria'>

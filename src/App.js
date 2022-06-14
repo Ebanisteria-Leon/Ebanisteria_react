@@ -34,6 +34,7 @@ import { AgregarCategoria } from './components/Pages/AgregarCategoria/AgregarCat
 import { TableCategories } from './components/Pages/TableCategories/TableCategories';
 import PasarelaDePago from './components/Pages/PasarelaDePago/PasarelaDePago';
 import { PerfilUsuario } from './components/Pages/PerfilUsuario/PerfilUsuario'
+import { TablePromo } from './components/Pages/TablePromo/TablePromo'
 
 
 function App() {
@@ -73,6 +74,10 @@ function App() {
                     <Route
                         path='/Admin/TableProducts'
                         element={<TableProducts />}
+                    />
+                    <Route
+                        path='/Admin/TablePromo'
+                        element={<TablePromo />}
                     />
                     <Route
                         path='/Admin/TableCategories'
