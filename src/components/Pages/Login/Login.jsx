@@ -59,12 +59,14 @@ export const Login = () => {
                     const imagenU = response.data.user.image
                     const name= response.data.user.name
                     const apellido= response.data.user.last_name
+                    const idUser= response.data.user.id
 
                     localStorage.setItem('rolUser', rol)
                     localStorage.setItem('username', username)
                     localStorage.setItem('imagenUsuario', imagenU )
                     localStorage.setItem('nombre', name )
                     localStorage.setItem('apellido', apellido )
+                    localStorage.setItem('idUser', idUser )
 
                     if (rol === 'Cliente' || rol === 'Admin'){
                         cambiarEstadoModalEmail(!estadoModalEmail)

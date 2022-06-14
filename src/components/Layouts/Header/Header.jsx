@@ -6,6 +6,7 @@ import { Logout } from '../../helpers/logout/Logout'
 export const Header = () => {
     const rol = localStorage.getItem('rolUser')
     const username = localStorage.getItem('username')
+    const imageUsuario = localStorage.getItem('imagenUsuario')
 
     return (
         <div className='header'>
@@ -14,14 +15,14 @@ export const Header = () => {
                     <>
                         <div className='perfil__header'>
                             <ul className='perfil__details'>
-                                <li>
-                                    <h3 className='perfil__username'>
-                                        {username}
-                                    </h3>
-                                </li>
-                                <li>
-                                    <NavLink to='/PerfilUsuario'>
-                                        <i className='fa fa-solid fa-user'></i>
+                                <li className="li_header">
+                                    <div className="titu_usuario">
+                                        <h3 className='perfil__username'>
+                                            {username}
+                                        </h3>
+                                    </div>
+                                    <NavLink to='/PerfilUsuario' className="access">
+                                        <img src={imageUsuario} alt="" />
                                     </NavLink>
                                 </li>
                             </ul>

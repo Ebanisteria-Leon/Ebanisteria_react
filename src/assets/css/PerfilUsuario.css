@@ -12,13 +12,14 @@
     flex-direction: column;
     margin-left: auto;
     margin-right: auto;
-    width: 90%;
+    width: 60%;
 }
 .perfil-usuario .portada-perfil{
     display: flex;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: black;
     position: relative;
     height: 20rem;
     width: 100%;
@@ -50,21 +51,29 @@
     padding-right: 1rem;
 }
 
+.perfil-usuario .titu_usuario{
+    overflow: hidden;
+    width: 30px;
+}
+
 .perfil-usuario .titulo-usuario{
     font-size: 3rem;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     margin-bottom: .75rem;
+    color: white;
 }
 
 .perfil-usuario .bio-usuario{
     font-size: 1.1em;
     margin-bottom: .75rem;
+    color: white;
 }
 
 .perfil-usuario .lista-perfil{
     list-style: none;
+    color: white;
 }
 
 .perfil-usuario .lista-perfil li{
@@ -96,8 +105,8 @@
 }
 
 .perfil {
-    background-color: rgba(0,0,0,.5);
-    color: #fff;
+    background-color: rgba(255,255,255,.9);
+    color: #000;
     cursor: pointer;
     font-size: 13px;
     font-weight: bold;
@@ -114,6 +123,7 @@
 .perfil:hover {
     background-color: rgba(0,0,0,.7);
     color: #fff;
+    border: 1px solid white;
 }
 
 .perfil p{
@@ -132,18 +142,85 @@
     margin-right: 1rem;
 }
 
-.perfil-usuario .menu-perfil a{
+.perfil-usuario .menu-perfil button{
     display: block;
-    text-decoration: none;
     color: inherit;
     padding: 8px 20px;
     font-weight: bold;
     border-radius: 8px;
     transition: all 300ms ease;
+    border: none;
+    background-color: transparent;
 }
 
-.perfil-usuario .menu-perfil a:hover{
-    background-color: rgb(255, 208, 0);
+.perfil-usuario .menu-perfil button:hover{
+    background-color: rgb(255, 196, 0);
+}
+
+.flechaInicio{
+    position:absolute;
+    left: 10px;
+    top: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+.flechaInicio a{
+    list-style: none;
+    color: black;
+}
+
+.flechaInicio i{
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.flechaInicio i:hover{
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.boxEditarPerfil{
+    width: 60%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:auto;
+    background-color: white;
+    border-radius: 1rem;
+    margin-top: 100px;
+    text-align: center;
+}
+
+.boxEditarPerfil h2{
+    margin-top: 10px;
+}
+
+.editarPerfil{
+    height: 400px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgb(255, 255, 255);
+    font-size:14px;
+}
+
+.boxEditarPerfil .boxInput{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.boxEditarPerfil .boxInput .txt_field{
+    width: 45%;
+}
+
+.boxEditarPerfil .agregar{
+    height: 10%;
+    width: 100%;
 }
 
 @media (max-width: 780px){
