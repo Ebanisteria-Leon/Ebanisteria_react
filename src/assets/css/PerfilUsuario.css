@@ -1,0 +1,253 @@
+.perfil-usuario{
+    background: linear-gradient(rgb(255, 208, 0), transparent);
+
+}
+
+.perfil-usuario img{
+    width: 100%;
+}
+
+.perfil-usuario .contenedor-perfil{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+.perfil-usuario .portada-perfil{
+    display: flex;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black;
+    position: relative;
+    height: 20rem;
+    width: 100%;
+    border-radius: 0 0 12px 12px;
+    margin-bottom: .5rem;
+}
+
+.perfil-usuario .avatar-perfil{
+    display: flex;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    bottom: -50px;
+    left: 4rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 8px solid white;
+    box-shadow: 0 0 12px 2px rgba(0,0,0,.2);
+}
+
+.perfil-usuario .datos-perfil{
+    position: absolute;
+    display: block;
+    width: calc(100% - 230px - 8rem);
+    right: 0;
+    bottom: 0;
+    text-shadow: 0 0 5px rgba(0,0,0,.2);
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+}
+
+.perfil-usuario .titu_usuario{
+    overflow: hidden;
+    width: 30px;
+}
+
+.perfil-usuario .titulo-usuario{
+    font-size: 3rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: .75rem;
+    color: white;
+}
+
+.perfil-usuario .bio-usuario{
+    font-size: 1.1em;
+    margin-bottom: .75rem;
+    color: white;
+}
+
+.perfil-usuario .lista-perfil{
+    list-style: none;
+    color: white;
+}
+
+.perfil-usuario .lista-perfil li{
+    display: inline-block;
+    font-size: 1.1em;
+    margin-right: 1rem;
+}
+
+.perfil-usuario .opciones-perfil{
+    display: flex;
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+}
+
+.perfil-usuario .opciones-perfil input{
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-size: 1px;
+    margin: 0;
+    opacity: 0;
+    outline: 0 none;
+    padding: 0;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.perfil {
+    background-color: rgba(255,255,255,.9);
+    color: #000;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 70%;
+    border-radius: 8px;
+    transition: all 300ms;
+    position: relative;
+    padding: 5px 10px;
+}
+
+.perfil:hover {
+    background-color: rgba(0,0,0,.7);
+    color: #fff;
+    border: 1px solid white;
+}
+
+.perfil p{
+    height: 100%;
+    line-height: 28px;
+}
+
+.perfil-usuario .menu-perfil ul{
+    display: flex;
+    list-style: none;
+    margin-left: calc(230px + 8rem);
+    width: calc(100% - 200px - 8rem);
+}
+
+.perfil-usuario .menu-perfil ul li{
+    margin-right: 1rem;
+}
+
+.perfil-usuario .menu-perfil button{
+    display: block;
+    color: inherit;
+    padding: 8px 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 300ms ease;
+    border: none;
+    background-color: transparent;
+}
+
+.perfil-usuario .menu-perfil button:hover{
+    background-color: rgb(255, 196, 0);
+}
+
+.flechaInicio{
+    position:absolute;
+    left: 10px;
+    top: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+.flechaInicio a{
+    list-style: none;
+    color: black;
+}
+
+.flechaInicio i{
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.flechaInicio i:hover{
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.boxEditarPerfil{
+    width: 60%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:auto;
+    background-color: white;
+    border-radius: 1rem;
+    margin-top: 100px;
+    text-align: center;
+}
+
+.boxEditarPerfil h2{
+    margin-top: 10px;
+}
+
+.editarPerfil{
+    height: 400px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgb(255, 255, 255);
+    font-size:14px;
+}
+
+.boxEditarPerfil .boxInput{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.boxEditarPerfil .boxInput .txt_field{
+    width: 45%;
+}
+
+.boxEditarPerfil .agregar{
+    height: 10%;
+    width: 100%;
+}
+
+@media (max-width: 780px){
+    .perfil-usuario .portada-perfil{
+        height: 28rem;
+        width: 100%;
+    }
+    .perfil-usuario .avatar-perfil{
+        left: calc(50% - 115px);
+    }
+    .perfil-usuario .datos-perfil{
+        bottom: 230px;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+    }
+    .perfil-usuario .bio-usuario{
+        font-size: 1em;
+    }
+    .perfil-usuario .titulo-usuario{
+        font-size: 2.1rem;
+    }
+    .perfil-usuario .menu-perfil ul{
+        flex-direction: column;
+    }
+    .perfil-usuario .lista-perfil{
+        display: block;
+    }
+}

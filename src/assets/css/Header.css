@@ -73,8 +73,8 @@ header img{
 /* PERFIL DE USUARIO */
 .perfil__header{
   position: absolute;
-  top: 5%;
-  right: 10%;
+  top: 30px;
+  right: 10px;
 }
 
 .perfil__details{
@@ -82,12 +82,37 @@ header img{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   align-content: center;
 }
 
 .perfil__details li{
   list-style: none;
+  display: flex;
+  height: 55px;
+}
+
+.perfil__details .titu_usuario{
+  overflow: hidden;
+  width: 100px;
+}
+
+.perfil__details li h3{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.access:hover{
+  text-shadow: none;
+  margin-left: 0px;
+  transform: none;
+}
+
+.perfil__details img{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .perfil__details a{
@@ -97,20 +122,10 @@ header img{
   font-weight: bold;
   padding: 10px;
   transition: all ease-in-out 0.5s;
+  width: 35%;
+  height: 100%;
 }
 
-.perfil__details a:hover {
-  color: white;
-  margin-left: 20px;
-  text-shadow:  0 0 7px #fff,
-                0 0 10px #fff,
-                0 0 21px #fff,
-                0 0 10px #DCAA47,
-                0 0 30px #DCAA47,
-                0 0 40px #DCAA47,
-                0 0 60px #DCAA47,
-                0 0 70px #DCAA47;
-}
 
 .perfil__username{
   padding: 10px;

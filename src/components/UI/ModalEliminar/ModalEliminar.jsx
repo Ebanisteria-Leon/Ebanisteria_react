@@ -27,7 +27,7 @@ export const ModalEliminar = ({children, estado, cambiarEstado, color}) => {
             <div className="overlay_modal2">
                 <div className="contenido_modal">
                     {children}
-                    <button className='cancelar' onClick={cerrarModal}><i class="fa-solid fa-xmark"> Cancelar</i></button>
+                    <button className='cancelar' onClick={cerrarModal}><i className="fa-solid fa-xmark"> Cancelar</i></button>
                 </div>
             </div>
         }  

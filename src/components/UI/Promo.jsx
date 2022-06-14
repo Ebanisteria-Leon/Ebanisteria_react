@@ -24,6 +24,7 @@ export const Promo = () => {
         autoplaySpeed: 5000,
         initialSlide: 0,
         cssEase: 'linear',
+        slidesToShow: 5,
         responsive: [
             {
                 breakpoint: 1400,
@@ -61,7 +62,7 @@ export const Promo = () => {
         ],
     }
 
-    let url="https://rickandmortyapi.com/api/character?page=3"
+    let url="https://leon-ebanisteria.herokuapp.com/api/producto/"
 
     const [todosPromo, setTodos] = useState()
 
@@ -82,7 +83,7 @@ export const Promo = () => {
             <Slider {...settings}>
                 
             {!todosPromo ? <ClipLoader color='#dcaa47'/> :
-            todosPromo.map((productos)=><ProductCardPromo key={productos.id} productos={productos}/>)}
+            todosPromo.map((productos,key)=><ProductCardPromo key={key}  productos={productos}/>)}
                 
             </Slider>
 

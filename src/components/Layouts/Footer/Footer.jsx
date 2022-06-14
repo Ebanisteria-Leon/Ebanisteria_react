@@ -53,7 +53,7 @@ export const Footer = () => {
                     <div className='contenedor_redes-footer'>
                         <li>
                             <a href='#'>
-                            <FontAwesomeIcon icon="fa-brands fa-instagram-square"/>Instagram
+                            <i className="fa-brands fa-instagram"></i>Instagram
                             </a>
                         </li>
                         <li>

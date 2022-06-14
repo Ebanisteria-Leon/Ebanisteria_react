@@ -68,7 +68,7 @@ footer {
 
   @media (max-width: 1400px) {
     footer {
-      height: 80vh;
+      height: 100vh;
       font-size: 18px;
     }
     .informacion_superior-footer{
@@ -78,7 +78,7 @@ footer {
 
   @media (max-width: 1200px) {
     footer {
-      height: 70vh;
+      height: 80vh;
       font-size: 18px;
     }
   }
@@ -87,7 +87,7 @@ footer {
   
   @media (max-width: 1024px) {
     footer {
-      height: 60vh;
+      height: 70vh;
       font-size: 18px;
     }
     .informacion_superior-footer ul li:nth-child(1){
@@ -100,12 +100,12 @@ footer {
   
   @media (max-width: 768px) {
     footer {
-      height: 50vh;
+      height: 60vh;
       font-size: 18px;
     }
 
     .informacion_superior-footer{
-      margin-top: 100px;
+      margin-top: 50px;
     }
 
     .informacion_superior-footer ul li:nth-child(1){
@@ -125,7 +125,7 @@ footer {
   
   @media (max-width: 500px) {
     footer {
-      height: 30vh;
+      height: 45vh;
       font-size: 15px;
     }
     .informacion_superior-footer{

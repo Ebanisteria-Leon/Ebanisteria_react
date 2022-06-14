@@ -25,14 +25,11 @@ export const AgregarCategoria = () => {
             ...form,
             [e.target.name]: e.target.value,
         })
-        console.log(form)
     }
 
     const createData = async () => {
-        console.log(form)
         await axios.post(url, form).then((res) => {
             window.location.href = '/Admin/TableCategories'
-            console.log(res)
         })
     }
 

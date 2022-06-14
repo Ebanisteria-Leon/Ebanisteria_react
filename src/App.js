@@ -32,8 +32,8 @@ import { ProductosAgregados } from './components/Pages/ProductosAgregados/Produc
 import { Admin } from './components/Pages/Admin/Admin';
 import { AgregarCategoria } from './components/Pages/AgregarCategoria/AgregarCategoria';
 import { TableCategories } from './components/Pages/TableCategories/TableCategories';
-
 import PasarelaDePago from './components/Pages/PasarelaDePago/PasarelaDePago';
+import { PerfilUsuario } from './components/Pages/PerfilUsuario/PerfilUsuario'
 
 
 function App() {
@@ -57,10 +57,9 @@ function App() {
                     <Route element={PrivateAdminRoute()}>
                         <Route exact path='/Admin' element={<Admin />} />
                     </Route>
-
-                    {/* <Route element={PrivateProfileRoute()} >
-                        <Route exact path='/' element={<UserProfile />} />
-                    </Route> */}
+                    <Route element={PrivateProfileRoute()} >
+                        <Route exact path='/PerfilUsuario' element={<PerfilUsuario />} />
+                    </Route>
 
                     <Route
                         path='/Admin/TableSalesDate'

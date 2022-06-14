@@ -38,7 +38,6 @@ export const AgregarProducto = () => {
   let setearImg2
 
   const uploadImage = () => {
-    console.log("entra al upload", setearImg);
     const data = new FormData()
     data.append("file", setearImg)
     data.append("upload_preset", "ebanisteria")
@@ -49,18 +48,15 @@ export const AgregarProducto = () => {
     })
     .then(resp => resp.json())
     .then(data => {
-      console.log("url1" + data.url);
     setForm({
       ...form,
       imagen: data.url
     })
-    console.log(form);
     })
     .catch(err => console.log(err))
   }
 
   const uploadImage2 = () => {
-    console.log("entra al upload2", setearImg2);
     const data = new FormData()
     data.append("file", setearImg2)
     data.append("upload_preset", "ebanisteria")
@@ -72,12 +68,10 @@ export const AgregarProducto = () => {
       })
       .then(resp => resp.json())
       .then(data => {
-        console.log("url2" + data.url);
       setForm({
         ...form, 
         imagen2: data.url
       })
-      console.log(form);
       })
       .catch(err => console.log(err))
     }, 8000);
@@ -87,29 +81,24 @@ export const AgregarProducto = () => {
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/categoria/")
         const responseJSON = await response.json()
         setCategorias(responseJSON.results)
-        console.log(responseJSON);
     }
 
   const mostrarArchivo = (e) => {
-    console.log(e);
     const images = e.target.files
     imagen_producto = images[0].name;
 
 
     const tituImagen = document.querySelector(".tituImagen");
-    console.log(tituImagen);
     tituImagen.innerText = imagen_producto;
     // setearImagen(e)
   };
 
   const mostrarArchivo2 = (e) => {
-    console.log(e);
     const images = e.target.files
     imagen_producto = images[0].name;
 
 
     const tituImagen = document.querySelector(".tituImagenC");
-    console.log(tituImagen);
     tituImagen.innerText = imagen_producto;
     // setearImagen(e)
   };
@@ -130,21 +119,17 @@ export const AgregarProducto = () => {
       estadoProducto: estado.value,
       destacado: destacado.value,
     })
-    console.log(form);
   }
   
 
   const createData = async () =>{
-        console.log(form);
         await axios.post(url, form)
         .then(res=>{
             window.location.href="/Admin/TableProducts"
-            console.log(res)
         })
     }
   
   const setearImagen = (e) =>{
-    console.log("entra");
     setearImg=e.target.files[0]
     uploadImage()
   }

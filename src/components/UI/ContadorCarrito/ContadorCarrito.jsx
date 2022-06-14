@@ -48,19 +48,17 @@ export const ContadorCarrito = () => {
 
     return (
         <>
-            <bottom className="contadorCarrito" onClick={mostrarCarrito}>
-                <img src={imgCarrito} alt="" />
-                <div className="contador">
+            <button className="contadorCarrito" onClick={mostrarCarrito}>
+                    <img src={imgCarrito} alt="" />
                     <p>{cantidad}</p>
-                </div>
-            </bottom>
+            </button>
             <div className="box-carrito">
                 <div className="tituPAgregados">
                     <h4>PRODUCTOS AGREGADOS</h4>
                 </div>
                 <div className="productos-agregados">
                     {basket.length===0 ? 'No hay productos agregados' : 
-                    basket.map((productos)=><MostrarProductos key={productos.id} productos={productos}/>)}
+                    basket.map((productos,_)=><MostrarProductos key={productos.id} productos={productos}/>)}
                 </div>
                 <div className="pTotal">
                     <div className="boxLimpiar">

@@ -15,7 +15,7 @@ import { Modal } from '../../UI/Modal/Modal'
 
 export const Login = () => {
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
-    let colorModal = '#FF5733'
+    let colorModal = ''
 
     const [state, setState] = useState({
         form: {
@@ -49,22 +49,34 @@ export const Login = () => {
     
     const manejadorBoton = () => {
         let url = 'https://leon-ebanisteria.herokuapp.com/login/'
-        let response
         axios
             .post(url, state.form)
             .then((response) => {
-                response = response
                 if (response.status === 200) {
+                    console.log(response.data);
                     const rol = response.data.user.rolUser
                     const username = response.data.user.username
-                    const image = response.data.user.image
+                    const imagenU = response.data.user.image
+                    const name= response.data.user.name
+                    const apellido= response.data.user.last_name
+                    const idUser= response.data.user.id
 
                     localStorage.setItem('rolUser', rol)
                     localStorage.setItem('username', username)
-                    localStorage.setItem('image', image)
+                    localStorage.setItem('imagenUsuario', imagenU )
+                    localStorage.setItem('nombre', name )
+                    localStorage.setItem('apellido', apellido )
+                    localStorage.setItem('idUser', idUser )
 
                     if (rol === 'Cliente' || rol === 'Admin'){
-                        history('/')
+                        cambiarEstadoModalEmail(!estadoModalEmail)
+                        setState({
+                            error: false,
+                            errorMsg: 'Haz iniciado sesión correctamente!',
+                        })
+                        setTimeout(() => {
+                            history('/')
+                        }, 3000);
                     }
                 }
             })
@@ -78,22 +90,32 @@ export const Login = () => {
                 inputEmail.value = ''
                 setState({
                     error: true,
-                    errorMsg: response.data.message,
+                    errorMsg: 'Las credenciales son incorrectas',
                 })
             })
     }
 
     return (
         <div className='mainLogin'>
-            {state.error === true && (
+            {state.error === true ?(
                 <Modal
                     estado={estadoModalEmail}
                     cambiarEstado={cambiarEstadoModalEmail}
-                    color={colorModal}
+                    color={colorModal="#FF5733"}
                 >
                     <p>{state.errorMsg}</p>
                 </Modal>
-            )}
+            )
+            :(
+                <Modal
+                    estado={estadoModalEmail}
+                    cambiarEstado={cambiarEstadoModalEmail}
+                    color={colorModal="#008F39"}
+                >
+                    <p>{state.errorMsg}</p>
+                </Modal>
+            )
+            }
             <Barra />
             <Header />
             <div className='contenedor_boxLogin'>

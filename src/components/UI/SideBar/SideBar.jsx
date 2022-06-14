@@ -11,7 +11,6 @@ import { Logout } from '../../helpers/logout/Logout'
 import axios from 'axios'
 
 export const SideBar = ({ url }) => {
-    console.log(url)
     const [{ buscador }, dispatch] = useStateValue()
     const { cambiar_sidebar } = useSidebar()
     const capturarBuscador = () => {

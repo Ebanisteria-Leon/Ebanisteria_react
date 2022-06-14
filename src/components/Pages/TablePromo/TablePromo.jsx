@@ -12,20 +12,18 @@ import { helpHttp } from '../../helpers/helpHttp'
 import { Mensaje } from '../../UI/Mensaje/Mensaje'
 import { useStateValue } from '../../hooks/StateProvider'
 
-export const TableProducts = () => {
+export const TablePromo = () => {
     const [{ buscador }, dispatch] = useStateValue()
     let api = helpHttp()
-    let url = 'https://leon-ebanisteria.herokuapp.com/api/producto/'
+    let url = 'https://leon-ebanisteria.herokuapp.com/api/promocion/'
     let colorModal = '#fff'
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
-    const [productos, setProductos] = useState([])
+    const [promociones, setPromociones] = useState([])
     const [categorias, setCategorias] = useState()
     const [loading, setLoading] = useState(false)
     const [msgError, setMsgError] = useState(null)
     const [form2, setForm2] = useState({})
     let imagen_producto = ''
-    let setearImg
-    let setearImg2
     let c
     let confirmar = Boolean
 
@@ -53,28 +51,9 @@ export const TableProducts = () => {
         updateData2()
     }
 
-    const cambiarDestcado = (data) => {
-        let estadoDestacado
-
-        if (data.destacado === 'DE') {
-            estadoDestacado = 'NDE'
-        }
-        if (data.destacado === 'NDE') {
-            estadoDestacado = 'DE'
-        }
-
-        setForm2({
-            ...data,
-            idCategoria: data.idCategoria[0],
-            destacado: estadoDestacado,
-        })
-
-        updateData2()
-    }
-
     const fetchApi = async () => {
         const response = await fetch(
-            'https://leon-ebanisteria.herokuapp.com/api/categoria/'
+            'https://leon-ebanisteria.herokuapp.com/api/producto/'
         )
         const responseJSON = await response.json()
         setCategorias(responseJSON.results)
@@ -170,51 +149,6 @@ export const TableProducts = () => {
         const tituImagen = document.querySelector('.tituImagenC')
         tituImagen.innerText = imagen_producto
         // setearImagen(e)
-    }
-
-    const uploadImage = () => {
-        const data = new FormData()
-        data.append('file', setearImg)
-        data.append('upload_preset', 'ebanisteria')
-        data.append('cloud_name', 'Ebanisteria')
-        fetch('  https://api.cloudinary.com/v1_1/Ebanisteria/image/upload', {
-            method: 'post',
-            body: data,
-        })
-            .then((resp) => resp.json())
-            .then((data) => {
-                setForm2({
-                    ...form2,
-                    idCategoria: form2.idCategoria[0],
-                    imagen: data.url,
-                })
-            })
-            .catch((err) => console.log(err))
-    }
-
-    const uploadImage2 = () => {
-        const data = new FormData()
-        data.append('file', setearImg2)
-        data.append('upload_preset', 'ebanisteria')
-        data.append('cloud_name', 'Ebanisteria')
-        setTimeout(() => {
-            fetch(
-                '  https://api.cloudinary.com/v1_1/Ebanisteria/image/upload',
-                {
-                    method: 'post',
-                    body: data,
-                }
-            )
-                .then((resp) => resp.json())
-                .then((data) => {
-                    setForm2({
-                        ...form2,
-                        idCategoria: form2.idCategoria[0],
-                        imagen2: data.url,
-                    })
-                })
-                .catch((err) => console.log(err))
-        }, 5000)
     }
 
     const setearImagen = (e) => {
@@ -485,15 +419,15 @@ export const TableProducts = () => {
                                 {!categorias
                                     ? ''
                                     : categorias.map((index, key) => {
-                                            return (
-                                                <option
-                                                    value={index.idCategoria}
-                                                    key={key}
-                                                >
-                                                    {index.nombreCategoria}
-                                                </option>
-                                            )
-                                        })}
+                                          return (
+                                              <option
+                                                  value={index.idCategoria}
+                                                  key={key}
+                                              >
+                                                  {index.nombreCategoria}
+                                              </option>
+                                          )
+                                      })}
                             </select>
                         </div>
 
@@ -551,11 +485,12 @@ export const TableProducts = () => {
                     </form>
                 </div>
             </div>
+
             <div className='mainTable-products'>
                 <h3 className='title-table-products'>PRODUCTOS</h3>
                 <SideBar
                     url={
-                        'https://leon-ebanisteria.herokuapp.com/api/producto/?search='
+                        'https://leon-ebanisteria.herokuapp.com/api/promocion/search='
                     }
                 />
                 <section className='section__table-products'>
@@ -587,29 +522,21 @@ export const TableProducts = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {productos &&
-                                productos.map((index, _) => {
+                            {promociones &&
+                                promociones.map((index, _) => {
                                     return (
                                         <>
                                             <tr>
                                                 <div className='etiquetas'>
                                                     <div className='disponible'>
-                                                        {index.estadoProducto ===
+                                                        {index.estadoPromocion ===
                                                         'D' ? (
                                                             <p>Disponible</p>
                                                         ) : (
                                                             <p>No disponible</p>
                                                         )}
                                                     </div>
-                                                    <div className='destacado'>
-                                                        {index.destacado ===
-                                                        'DE' ? (
-                                                            <p>Destacado</p>
-                                                        ) : (
-                                                            <p>No destacado</p>
-                                                        )}
-                                                    </div>
-                                                    {index.tiempoProducto ===
+                                                    {index.tiempoPromocion ===
                                                     'NUE' ? (
                                                         <div className='nuevo'></div>
                                                     ) : (

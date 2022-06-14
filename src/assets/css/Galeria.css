@@ -144,16 +144,16 @@
 
 @media (max-width: 1400px) {
     .btn_cerrar{
-        right: 5px;
-        top: 5px;
+        right: 50px;
+        top: -15px;
         font-size: 25px;
     }
 }
 
 @media (max-width: 1024px) {
     .btn_cerrar{
-        right: -35px;
-        top: 65px;
+        right: 70px;
+        top: -15px;
         font-size: 25px;
     }
 }
@@ -166,6 +166,7 @@
     }
     .btn_cerrar{
         font-size: 25px;
+        
     }
 }
 
@@ -173,6 +174,12 @@
     .columna{
         flex: 50%;
         max-width: 100%;
+    }
+
+    .btn_cerrar{
+        right: -25px;
+        top: -15px;
+        font-size: 25px;
     }
 }
 
@@ -182,8 +189,8 @@
         max-width: 100%;
     }
     .btn_cerrar{
-        right: -35px;
-        top: 125px;
+        right: -25px;
+        top:30px;
         font-size: 20px;
     }
 }

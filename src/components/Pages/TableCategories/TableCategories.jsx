@@ -79,11 +79,9 @@ export const TableCategories = () => {
         ...form2,
         [e.target.name]: e.target.value
         })
-        console.log(form2);
     }
 
     const updateData = (data) =>{
-        console.log(data);
         setForm2(data)
         editarProducto()
     }
@@ -95,13 +93,11 @@ export const TableCategories = () => {
             await axios.put(endpoint, form2)
             .then((res) => {
             window.location.href="/Admin/TableCategories"
-            console.log(res);
         })
         }
     }
 
     const deleteData = async (data) =>{
-        console.log(data);
         let isDelete = window.confirm(
             `Estas seguro de eliminar el registro con el id ` + data.idCategoria
         )
@@ -110,7 +106,6 @@ export const TableCategories = () => {
             await axios.delete(endpoint)
             .then((res) =>{
                 window.location.href="/Admin/TableCategories"
-                console.log(res);
             })
             
         }

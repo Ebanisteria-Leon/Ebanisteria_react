@@ -20,7 +20,7 @@ export const ProductCard = ({
         idProductos = idProducto
         dispatch({
             type: actionTypes.TEMP_DATA,
-            id: idProductos,
+            id: idProductos
         })
         mostrar_producto()
     }
@@ -40,7 +40,8 @@ export const ProductCard = ({
                 nombre,
                 imagen,
                 valor,
-                calificacion
+                calificacion,
+                quantity:1
             },
         })
         localStorage.setItem("producto", JSON.stringify(basket))
@@ -92,7 +93,7 @@ export const ProductCard = ({
                         <div className='stars'>
                             {stars.map((_, index) => {
                                 return (
-                                    <i class='fa-solid fa-star' key={index}></i>
+                                    <i className='fa-solid fa-star' key={index}></i>
                                 )
                             })}
                         </div>
@@ -100,7 +101,7 @@ export const ProductCard = ({
                             {stars2.map((_, index) => {
                                 return (
                                     <i
-                                        class='fa-solid fa-star star-grey'
+                                        className='fa-solid fa-star star-grey'
                                         key={index}
                                     ></i>
                                 )
@@ -117,7 +118,7 @@ export const ProductCard = ({
                         <i className='fas fa-shopping-cart'></i>
                     </button>
                     <button className='ver-btn' onClick={mostrar_producto2}>
-                        <i class='fa-solid fa-eye'></i>
+                        <i className='fa-solid fa-eye'></i>
                     </button>
                 </div>
             </div>
