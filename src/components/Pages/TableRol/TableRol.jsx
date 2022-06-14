@@ -4,9 +4,21 @@ import '../../../assets/css/TableRol.css'
 import { SideBar } from '../../UI/SideBar/SideBar'
 
 export const TableRol = () => {
+    // axios
+    //     .get(url)
+    //     .then((response) => {
+    //         response = response
+    //         if (response.status === 200) {
+    //             const rol = response.data.user.rolUser
+    //             const username = response.data.user.username
+    //         }
+    //     })
+    //     .catch((error) => {
+    //         console.log(error)
+    //     })
 
-const rol = localStorage.getItem('rolUser')
-const username = localStorage.getItem('username')
+    const rol = localStorage.getItem('rolUser')
+    const username = localStorage.getItem('username')
 
     return (
         <>

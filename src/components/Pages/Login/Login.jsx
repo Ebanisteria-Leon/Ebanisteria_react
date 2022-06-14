@@ -48,7 +48,7 @@ export const Login = () => {
     let history = useNavigate()
     
     const manejadorBoton = () => {
-        let url = 'http://127.0.0.1:8000/login/'
+        let url = 'https://leon-ebanisteria.herokuapp.com/login/'
         let response
         axios
             .post(url, state.form)
@@ -57,9 +57,12 @@ export const Login = () => {
                 if (response.status === 200) {
                     const rol = response.data.user.rolUser
                     const username = response.data.user.username
+                    const image = response.data.user.image
 
                     localStorage.setItem('rolUser', rol)
                     localStorage.setItem('username', username)
+                    localStorage.setItem('image', image)
+
                     if (rol === 'Cliente' || rol === 'Admin'){
                         history('/')
                     }

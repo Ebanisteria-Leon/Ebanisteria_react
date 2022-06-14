@@ -1,7 +1,6 @@
 import React from 'react'
 import '../../../assets/css/Sidebar.css'
 import logoDash from '../../../assets/images/logo.png'
-import foto from '../../../assets/images/85535657.jpg'
 
 import { useSidebar } from '../../hooks/useSidebar'
 import { NavLink } from 'react-router-dom'
@@ -25,9 +24,11 @@ export const SideBar = ({ url }) => {
         })
     }
 
-    const username = localStorage.getItem('username')
     const rol = localStorage.getItem('rolUser')
-
+    const username = localStorage.getItem('username')
+    const image = localStorage.getItem('image')
+    console.log(image);
+    
     return (
         <>
             <div className='sidebar' id='sidebar'>
@@ -133,7 +134,7 @@ export const SideBar = ({ url }) => {
                 <div className='profile_content'>
                     <div className='profile'>
                         <div className='profile_details'>
-                            <img src={foto} alt='Profile_img' />
+                            <img src={image} alt='Profile_img' />
                             <div className='name_job'>
                                 <div className='name'>{username}</div>
 
