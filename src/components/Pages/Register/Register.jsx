@@ -12,7 +12,7 @@ import { Modal } from '../../UI/Modal/Modal'
 
 export const Register = () => {
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
-    let colorModal = '#FF5733'
+    let colorModal = ''
     const [state, setState] = useState({
         form: {
             username: '',
@@ -51,13 +51,15 @@ export const Register = () => {
         axios
             .post(url, state.form)
             .then((response) => {
-                if (response.data.status === 'ok') {
-                    setState({
-                        error: false,
-                        errorMsg: 'Usuario registrado con éxito',
-                    })
+                cambiarEstadoModalEmail(!estadoModalEmail)
+                console.log(response);
+                setState({
+                    error: false,
+                    errorMsg: response.data.message,
+                })
+                setTimeout(() => {
                     history('/Login')
-                }
+                }, 3000);
             })
             .catch((error) => {
                 console.log(error)
@@ -75,22 +77,32 @@ export const Register = () => {
                 inputPassword.value = ''
                 setState({
                     error: true,
-                    errorMsg: 'No se ha podido registrar',
+                    errorMsg: 'El nombre de usuario o el correo electrónico ya existen',
                 })
             })
     }
 
     return (
         <div className='mainRegister'>
-            {state.error === true && (
+            {state.error === true ?(
                 <Modal
                     estado={estadoModalEmail}
                     cambiarEstado={cambiarEstadoModalEmail}
-                    color={colorModal}
+                    color={colorModal="#FF5733"}
                 >
                     <p>{state.errorMsg}</p>
                 </Modal>
-            )}
+            )
+            :(
+                <Modal
+                    estado={estadoModalEmail}
+                    cambiarEstado={cambiarEstadoModalEmail}
+                    color={colorModal="#008F39"}
+                >
+                    <p>{state.errorMsg}</p>
+                </Modal>
+            )
+            }
             <Barra />
             <Header />
             <div className='contenedor_boxRegister'>

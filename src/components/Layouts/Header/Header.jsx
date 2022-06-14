@@ -20,7 +20,7 @@ export const Header = () => {
                                     </h3>
                                 </li>
                                 <li>
-                                    <NavLink to='/'>
+                                    <NavLink to='/PerfilUsuario'>
                                         <i className='fa fa-solid fa-user'></i>
                                     </NavLink>
                                 </li>
