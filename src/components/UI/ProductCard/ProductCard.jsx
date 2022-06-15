@@ -75,12 +75,7 @@ export const ProductCard = ({
                 
                 <div className='product-img-container'>
                     <div className='product-img'>
-                    {destacado === "DE"
-                        ?<div className="estrellaDestacado">
-                            <i className="fa-solid fa-award"></i>
-                        </div>
-                        :""
-                    }
+                    
                         <div className='linkImg' onClick={mostrar_producto2}>
                             <Imagen
                                 clase='product-img-front'
@@ -119,6 +114,12 @@ export const ProductCard = ({
                             })}
                         </div>
                     </div>
+                    {destacado === "DE"
+                        ?<div className="estrellaDestacado">
+                            <i className="fa-solid fa-award"></i>
+                        </div>
+                        :""
+                    }
                     <div className='product-category'>
                         <span>{nombre}</span>
                     </div>

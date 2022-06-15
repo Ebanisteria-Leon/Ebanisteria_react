@@ -3,7 +3,6 @@ import React from 'react'
 import { Imagen } from '../Imagen/Imagen';
 
 export const ModalFiltros = ({url, titulo}) => {
-    console.log(url);
     const cerrarEditor = () =>{
         const overlay = document.querySelector('.overlayFiltro')
         const container = document.querySelector('.modalFiltro')
@@ -46,7 +45,7 @@ export const ModalFiltros = ({url, titulo}) => {
                         />
                     </td>
                     <td>{index.nombre}</td>
-                    <td>{index.idCategoria} </td>
+                    <td>{index.idCategoria[1]} </td>
                     <td className='descripcion-filtro'>
                         <p>{index.descripcion}</p>
                     </td>

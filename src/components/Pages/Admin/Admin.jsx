@@ -44,8 +44,7 @@ export const Admin = () => {
             .then((response) => response.json())
             .then((data) => {
                 setDataDisponible(data.results)
-                setTitulo('PRODUCTOS DISPONIBLES')
-                setearUrl(data, titulo)
+                setearUrl(data, 'PRODUCTOS DISPONIBLES')
                 // abrirModal()
             })
     }
@@ -56,8 +55,7 @@ export const Admin = () => {
             .then((response) => response.json())
             .then((data) => {
                 setDataNoDisponible(data.results)
-                setTitulo('PRODUCTOS NO DISPONIBLES')
-                setearUrl(data, titulo)
+                setearUrl(data, 'PRODUCTOS NO DISPONIBLES')
             })
     }
     const obtenerDestacados = () => {
@@ -67,8 +65,7 @@ export const Admin = () => {
             .then((response) => response.json())
             .then((data) => {
                 setDataDestacado(data.results)
-                setTitulo('PRODUCTOS DESTACADOS')
-                setearUrl(data, titulo)
+                setearUrl(data, 'PRODUCTOS DESTACADOS')
             })
     }
     const obtenerNoDestacados = () => {
@@ -78,8 +75,7 @@ export const Admin = () => {
             .then((response) => response.json())
             .then((data) => {
                 setDataNoDestacado(data.results)
-                setTitulo('PRODUCTOS NO DESTACADOS')
-                setearUrl(data, titulo)
+                setearUrl(data, 'PRODUCTOS NO DESTACADOS')
             })
     }
     const obtenerNuevos = () => {
@@ -89,8 +85,7 @@ export const Admin = () => {
             .then((response) => response.json())
             .then((data) => {
                 setDataNuevo(data.results)
-                setTitulo('PRODUCTOS NUEVOS')
-                setearUrl(data, titulo)
+                setearUrl(data, 'PRODUCTOS NUEVOS')
             })
     }
     variable = dataDisponible.length

@@ -68,7 +68,7 @@ export const Login = () => {
                     localStorage.setItem('apellido', apellido )
                     localStorage.setItem('idUser', idUser )
 
-                    if (rol === 'Cliente' || rol === 'Admin'){
+                    if (rol === 'Cliente'){
                         cambiarEstadoModalEmail(!estadoModalEmail)
                         setState({
                             error: false,
@@ -77,6 +77,9 @@ export const Login = () => {
                         setTimeout(() => {
                             history('/')
                         }, 3000);
+                    }else if(rol === "Admin"){
+                        history('/Admin')
+                        window.location.reload(true)
                     }
                 }
             })

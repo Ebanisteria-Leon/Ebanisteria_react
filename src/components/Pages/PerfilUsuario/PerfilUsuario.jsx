@@ -4,14 +4,16 @@ import { NavLink } from 'react-router-dom'
 import { EditarPerfilUsuario } from '../../UI/EditarPerfilUsuario/EditarPerfilUsuario'
 import axios from 'axios'
 import { ModalProducto } from '../../UI/ModalProducto/ModalProducto'
+import { MisPedidos } from '../../UI/MisPedidos/MisPedidos'
 
 
 
 export const PerfilUsuario = () => {
 
     let idUser = localStorage.getItem('idUser')
-    let mostrarEdit = true
-    let mostrarEdit2 = false
+    const [mostrarEdit, setMostrarEdit] = useState(true)
+    const [mostrarEdit2, setMostrarEdit2] = useState(false)
+    console.log(mostrarEdit2);
     let setearImg
     let colorModal="#fff"
     const [usuario, setUsuario] = useState({})
@@ -73,6 +75,18 @@ export const PerfilUsuario = () => {
         }
     }
 
+    const manejoBotonMiPerfil=()=>{
+        setMostrarEdit2(false)
+        setMostrarEdit(true)
+        console.log(mostrarEdit);
+    }
+
+    const manejoBotonMisPedidos=()=>{
+        setMostrarEdit2(true)
+        setMostrarEdit(false)
+        console.log(mostrarEdit, "primer edit");
+    }
+
     useEffect(() => {
         obtenerUsuario()
     }, [])
@@ -116,12 +130,10 @@ export const PerfilUsuario = () => {
                 <div className="menu-perfil">
                     <ul>
                         <li><button onClick={()=>{
-                            mostrarEdit2=false
-                            mostrarEdit=true
+                            manejoBotonMiPerfil()
                         }}>Mi perfil</button></li>
                         <li><button onClick={()=>{
-                            mostrarEdit=false
-                            mostrarEdit2=true
+                            manejoBotonMisPedidos()
                             }}>Mis pedidos</button></li>
                     </ul>
                 </div>
@@ -131,10 +143,13 @@ export const PerfilUsuario = () => {
                         <h2>EDITAR MI PERFIL</h2>
                             <EditarPerfilUsuario/>
                         </div>
-                    : <p>hola2</p>
+                    : console.log("cambia")
                     }
                     {mostrarEdit2 === true
-                    ? <p>hola</p>
+                    ?   <div className="boxMisPedidos">
+                            <h2>MIS PEDIDOS</h2>
+                            <MisPedidos/>
+                        </div>
                     :""
                     }
                 

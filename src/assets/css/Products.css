@@ -34,6 +34,7 @@
     justify-content: center;
     align-items: center;
     height: 150px;
+    position: relative;
 }
 
 .contenedorBoton button{
@@ -136,6 +137,34 @@
     font-weight:bold;
 }
 
+.overlayBoton{
+    height: 100%;
+    width: 80%;
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    color: white;
+    background-color:rgba(0, 0, 0, 0.479);
+    border-radius: 1rem;
+    transition: all ease 0.4s;
+    cursor: pointer;
+    opacity: 0;
+    visibility:hidden;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.contenedorBoton:hover .overlayBoton{
+    opacity:1;
+    visibility:visible;
+}
+
 .section__products {
     display: flex;
     flex-wrap: wrap;
@@ -227,13 +256,13 @@
 
 .estrellaDestacado{
     position: absolute;
-    left: -15px;
-    top: 50px;
+    right:50px;
+    bottom: 20px;
     width: 10px;
     height: 10px;;
     z-index: 2;
     font-size: 25px;
-    color: #ffee00;
+    color: #ff3333;
 }
 
 .estrellaDestacado i{

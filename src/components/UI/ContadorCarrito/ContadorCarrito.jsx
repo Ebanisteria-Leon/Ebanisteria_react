@@ -24,12 +24,12 @@ export const ContadorCarrito = () => {
     const [cantidad, setCantidad] = useState(0)
     const [total, setTotal] = useState(0)
     const [form, setForm] = useState({
-        fechaPedido: "15/06/2022",
+        fechaPedido: "",
         estadoPedido: "PE",
-        idComprobante: null,
+        idComprobante: 1,
         idTipoPago: null,
-        idPersona: Number(idUsuario),
-        idProducto: basket
+        idPersona: [Number(idUsuario)],
+        idProducto: []
     })
 
     const limpiarCarro =()=>dispatch({
@@ -83,7 +83,7 @@ export const ContadorCarrito = () => {
         let meses = fecha.getUTCMonth() + 1
         let day = fecha.getUTCDate()
         let year = fecha.getUTCFullYear()
-        let fechaCompleta = day + "/" + meses + "/" + year
+        let fechaCompleta = year + "-" + meses + "-" + day
         console.log(fechaCompleta);
         fechaPedidos= fechaCompleta
     }
@@ -115,27 +115,34 @@ export const ContadorCarrito = () => {
             await axios.post(url, form)
             .then(res=>{
                 console.log(res);
+                window.location.reload();
+            })
+            .catch(err=>{
+                console.log(err);
             })
         }
         
     }
 
     const handleChange = (e) =>{
-        let comprobante = document.getElementById('selectComprobante')
+        generarFecha()
+        // let comprobante = document.getElementById('selectComprobante')
         let tipoPago = document.getElementById('selectTipoPago')
 
         setForm({
             ...form,
-            idComprobante: Number(comprobante.value),
+            // idComprobante: Number(comprobante.value),
             idTipoPago: Number(tipoPago.value),
-            idProducto: basket,
             fechaPedido: fechaPedidos
         })
         console.log(form);
         console.log(comprobante.value);
     }
-    const manejadorBoton =() =>{
 
+    const setearProducto = () =>{
+        for (let index = 0; index < basket.length; index++) {
+                form.idProducto.push(basket[index].idProducto)
+        }
     }
 
     useEffect(() => {
@@ -145,6 +152,7 @@ export const ContadorCarrito = () => {
         setTotal(
             basket.reduce((amount, item) => amount + item.valor * item.quantity, 0)
         )
+        setearProducto()
     }, [basket])
 
     useEffect(() => {
@@ -220,7 +228,7 @@ export const ContadorCarrito = () => {
                     </div>
 
                     <div className='divbtn'>
-                        <button className='btnSubmit' onClick={manejadorBoton} > Realizar pedido </button>
+                        <button className='btnSubmit'> Realizar pedido </button>
                     </div>
                 </form>
                 </div>
