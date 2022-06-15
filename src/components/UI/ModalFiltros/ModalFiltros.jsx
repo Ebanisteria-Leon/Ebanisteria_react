@@ -3,7 +3,7 @@ import React from 'react'
 import { Imagen } from '../Imagen/Imagen';
 
 export const ModalFiltros = ({url, titulo}) => {
-    
+    console.log(url);
     const cerrarEditor = () =>{
         const overlay = document.querySelector('.overlayFiltro')
         const container = document.querySelector('.modalFiltro')
@@ -22,7 +22,7 @@ export const ModalFiltros = ({url, titulo}) => {
             </button>
         </div>
         <h2>{titulo}</h2>
-        <table className='table-products'>
+        <table className='table-products tablaFiltros'>
             <thead>
                 <tr>
                     <th scope='col'>Imagen</th>
@@ -47,8 +47,8 @@ export const ModalFiltros = ({url, titulo}) => {
                     </td>
                     <td>{index.nombre}</td>
                     <td>{index.idCategoria} </td>
-                    <td>
-                        {index.descripcion}
+                    <td className='descripcion-filtro'>
+                        <p>{index.descripcion}</p>
                     </td>
                     <td>{index.color}</td>
                     <td>

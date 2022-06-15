@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import '../../../assets/css/Sidebar.css'
 import logoDash from '../../../assets/images/logo.png'
 import foto from '../../../assets/images/85535657.jpg'
@@ -14,6 +14,9 @@ import axios from 'axios'
 export const SideBar = ({ url }) => {
     const [{ buscador }, dispatch] = useStateValue()
     const { cambiar_sidebar } = useSidebar()
+    const [usuario, setUsuario] = useState({})
+    let idUser = localStorage.getItem('idUser')
+
     const capturarBuscador = () => {
         const buscador = document.getElementById('buscador')
         axios.get(url + buscador.value).then((data) => {
@@ -23,6 +26,17 @@ export const SideBar = ({ url }) => {
             })
         })
     }
+
+    const obtenerUsuario = async () =>{
+        const response = await fetch("https://leon-ebanisteria.herokuapp.com/users/usuario/" + idUser)
+        const responseJSON =await response.json()
+        setUsuario(responseJSON)
+    }
+
+    useEffect(() => {
+        obtenerUsuario()
+    }, [])
+    
 
     const username = localStorage.getItem('username')
     const rol = localStorage.getItem('rolUser')
@@ -132,9 +146,9 @@ export const SideBar = ({ url }) => {
                 <div className='profile_content'>
                     <div className='profile'>
                         <div className='profile_details'>
-                            <img src={foto} alt='Profile_img' />
+                            <img src={usuario.image} alt='Profile_img' />
                             <div className='name_job'>
-                                <div className='name'>{username}</div>
+                                <div className='name'>{usuario.username}</div>
 
                                 <div className='job'>{rol} ebanisteria</div>
                             </div>

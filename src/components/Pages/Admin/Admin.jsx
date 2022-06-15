@@ -25,7 +25,7 @@ export const Admin = () => {
     let variable4
     let variable5
     const [url, setUrl] = useState()
-    const [titulo, setTitulo] = useState()
+    const [titulo, setTitulo] = useState("")
 
     const abrirModal = () => {
         const overlay = document.querySelector('.overlayFiltro')

@@ -11,6 +11,10 @@
     transition: all ease 0.5s;
 }
 
+.redirectHome{
+    text-decoration: none;
+}
+
 .sidebar.active{
     width: 20%;
 }

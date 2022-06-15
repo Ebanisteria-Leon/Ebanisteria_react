@@ -72,7 +72,7 @@ export const Login = () => {
                         cambiarEstadoModalEmail(!estadoModalEmail)
                         setState({
                             error: false,
-                            errorMsg: 'haz iniciado sesión correctamente!',
+                            errorMsg: 'has iniciado sesión correctamente!',
                         })
                         setTimeout(() => {
                             history('/')

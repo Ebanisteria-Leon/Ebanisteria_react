@@ -100,40 +100,40 @@ export const Products = () => {
                 <div className="botones-filtro">
                 <Slider {...settings}>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria0" onClick={fetchApi}>Todos</button>
+                    <button className="botonCategoria0" onClick={fetchApi} title="Todos">Todos</button>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria1" value="Sofás" onClick={capturarCategoria}>Sofás</button>
+                    <button className="botonCategoria1" value="Sofás" onClick={capturarCategoria} title="Sofpas">Sofás</button>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria2" value="Camas" onClick={capturarCategoria}>Camas</button>
+                    <button className="botonCategoria2" value="Camas" onClick={capturarCategoria} title="Camas">Camas</button>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria3" value="Sala exterior" onClick={capturarCategoria}>Sala exterior</button>
+                    <button className="botonCategoria3" value="Sala exterior" onClick={capturarCategoria} title="Sala exterior">Sala exterior</button>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria4" value="Bibliotecas" onClick={capturarCategoria}>Bibliotecas</button>
+                    <button className="botonCategoria4" value="Bibliotecas" onClick={capturarCategoria} title="Bibliotecas">Bibliotecas</button>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria5" value="Escritorios" onClick={capturarCategoria}>Escritorios</button>
+                    <button className="botonCategoria5" value="Escritorios" onClick={capturarCategoria} title="Escritorios">Escritorios</button>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria7" value="Mesas de centro" onClick={capturarCategoria}>Mesas de centro</button>
+                    <button className="botonCategoria7" value="Mesas de centro" onClick={capturarCategoria} title="Mesas de centro">Mesas de centro</button>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria8" value="Mesas de noche" onClick={capturarCategoria}>Mesas de noche</button>
+                    <button className="botonCategoria8" value="Mesas de noche" onClick={capturarCategoria} title="Mesas de noche">Mesas de noche</button>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria9" value="Sillas" onClick={capturarCategoria}>Sillas</button>
+                    <button className="botonCategoria9" value="Sillas" onClick={capturarCategoria} title="Sillas">Sillas</button>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria10" value="Bancas" onClick={capturarCategoria}>Bancas</button>
+                    <button className="botonCategoria10" value="Bancas" onClick={capturarCategoria} title="Bancas">Bancas</button>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria11" value="Mesas de comedor" onClick={capturarCategoria}>Mesas de comedor</button>
+                    <button className="botonCategoria11" value="Mesas de comedor" onClick={capturarCategoria} title="Mesas de comedor">Mesas de comedor</button>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria12" value="Repisas" onClick={capturarCategoria}>Repisas</button>
+                    <button className="botonCategoria12" value="Repisas" onClick={capturarCategoria} title="Repisas">Repisas</button>
                     </div>
                 </Slider>
                 </div>

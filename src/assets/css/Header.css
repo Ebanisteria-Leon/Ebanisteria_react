@@ -130,3 +130,12 @@ header img{
 .perfil__username{
   padding: 10px;
 }
+
+@media (max-width: 1400px){
+  .perfil__header{
+    right: 100px;
+  }
+  .perfil__details .titu_usuario{
+    width: 150px;
+  }
+}

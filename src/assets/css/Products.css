@@ -56,78 +56,84 @@
     background-size: cover;
     background-position: center;
     color: white;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria1{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/sofa.jpg);
     background-size: cover;
     background-position: center;
-    color: white;
+    color: black;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria2{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/habitacion.jpg);
     background-size: cover;
     background-position: center;
     color: white;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria3{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/sala_exterior.jpg);
     background-size: cover;
     background-position: center;
     color: white;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria4{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/bibliotecas.jpg);
     background-size: cover;
     background-position: center;
     color: white;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria5{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/escritorios.jpg);
     background-size: cover;
     background-position: center;
-    color: white;
-}
-.contenedorBoton .botonCategoria6{
-    background-image: url(../images/categorias/comedor.jpg);
-    background-size: cover;
-    background-position: center;
-    color: white;
+    color: black;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria7{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/mesas_centro.jpg);
     background-size: cover;
     background-position: center;
-    color: white;
+    color: black;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria8{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/mesas_noche.jpg);
     background-size: cover;
     background-position: center;
     color: white;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria9{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/silla.jpg);
     background-size: cover;
     background-position: center;
     color: white;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria10{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/bancas.jpg);
     background-size: cover;
     background-position: center;
-    color: white;
+    color: black;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria11{
     background-image: url(../images/categorias/comedor.jpg);
     background-size: cover;
     background-position: center;
     color: white;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria12{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/estante.jpg);
     background-size: cover;
     background-position: center;
-    color: white;
+    color: black;
+    font-weight:bold;
 }
 
 .section__products {
@@ -217,6 +223,21 @@
     position: absolute;
     bottom: -300px;
     transition: all 450ms ease;
+}
+
+.estrellaDestacado{
+    position: absolute;
+    left: -15px;
+    top: 50px;
+    width: 10px;
+    height: 10px;;
+    z-index: 2;
+    font-size: 25px;
+    color: #ffee00;
+}
+
+.estrellaDestacado i{
+    z-index: 100;
 }
 
 

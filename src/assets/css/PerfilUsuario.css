@@ -1,5 +1,5 @@
 .perfil-usuario{
-    background: linear-gradient(rgb(255, 208, 0), transparent);
+    background: linear-gradient(rgb(209, 171, 0), transparent);
 
 }
 
@@ -12,7 +12,7 @@
     flex-direction: column;
     margin-left: auto;
     margin-right: auto;
-    width: 60%;
+    width: 70%;
 }
 .perfil-usuario .portada-perfil{
     display: flex;
@@ -181,7 +181,7 @@
 }
 
 .boxEditarPerfil{
-    width: 60%;
+    width: 90%;
     height: 400px;
     display: flex;
     flex-direction: column;
@@ -199,7 +199,7 @@
 
 .editarPerfil{
     height: 400px;
-    width: 95%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -215,7 +215,7 @@
 }
 
 .boxEditarPerfil .boxInput .txt_field{
-    width: 45%;
+    width: 40%;
 }
 
 .boxEditarPerfil .agregar{

@@ -137,6 +137,21 @@
     opacity: 0;
 }
 
+.tablaFiltros thead{
+    background-color: #db970ec5;
+}
+
+.descripcion-filtro{
+    max-width: 300px;
+    overflow: hidden;
+}
+
+.descripcion-filtro p{
+    white-space: noWrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 @media (max-width:1400px){
     .mainTablero{
         max-width: 80%;

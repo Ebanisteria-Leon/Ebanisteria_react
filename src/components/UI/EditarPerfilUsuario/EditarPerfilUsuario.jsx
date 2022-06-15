@@ -44,7 +44,7 @@ export const EditarPerfilUsuario = () => {
             let endpoint = url+usuario.id+'/'
             await axios.put(endpoint, usuario)
             .then((res) => {
-                console.log(res);
+                window.location.reload()
         })
     }
     }

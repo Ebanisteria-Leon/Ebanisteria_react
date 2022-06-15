@@ -32,7 +32,6 @@ import { ProductosAgregados } from './components/Pages/ProductosAgregados/Produc
 import { Admin } from './components/Pages/Admin/Admin';
 import { AgregarCategoria } from './components/Pages/AgregarCategoria/AgregarCategoria';
 import { TableCategories } from './components/Pages/TableCategories/TableCategories';
-import PasarelaDePago from './components/Pages/PasarelaDePago/PasarelaDePago';
 import { PerfilUsuario } from './components/Pages/PerfilUsuario/PerfilUsuario'
 
 
@@ -91,7 +90,6 @@ function App() {
                         path='/Productos-agregados'
                         element={<ProductosAgregados />}
                     />
-                    <Route path='/Payment' element={<PasarelaDePago />} />
                     <Route path='*' element={<PageNot />} />
                 </Routes>
             </BrowserRouter>

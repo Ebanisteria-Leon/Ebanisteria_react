@@ -3,6 +3,8 @@ import '../../../assets/css/PerfilUsuario.css'
 import { NavLink } from 'react-router-dom'
 import { EditarPerfilUsuario } from '../../UI/EditarPerfilUsuario/EditarPerfilUsuario'
 import axios from 'axios'
+import { ModalProducto } from '../../UI/ModalProducto/ModalProducto'
+
 
 
 export const PerfilUsuario = () => {
@@ -11,7 +13,10 @@ export const PerfilUsuario = () => {
     let mostrarEdit = true
     let mostrarEdit2 = false
     let setearImg
+    let colorModal="#fff"
     const [usuario, setUsuario] = useState({})
+    const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
+    let confirmar = Boolean
 
     const perfilStyle = {
         backgroundImage: 'url(' + usuario.image + ')',
@@ -28,6 +33,11 @@ export const PerfilUsuario = () => {
         uploadImage()
     }
 
+    const cambiarEstado = () =>{
+        confirmar= true
+        putImage()
+    }
+
     const uploadImage = () => {
         const data = new FormData()
         data.append("file", setearImg)
@@ -40,25 +50,27 @@ export const PerfilUsuario = () => {
         .then(resp => resp.json())
         .then(data => {
             console.log(data.url);
+            let imagen= data.url
             setUsuario({
                 ...usuario,
-                image: data.url
+                image: imagen
             })
-            console.log(usuario);
-            setTimeout(() => {
-                putImage()
-            }, 3000);
         })
         .catch(err => console.log(err))
+        
+        putImage()  
     }
 
     const putImage = async () =>{
-        let url = "https://leon-ebanisteria.herokuapp.com/users/usuario/"
+        cambiarEstadoModalEmail(!estadoModalEmail)
+        if (confirmar === true) {
+            let url = "https://leon-ebanisteria.herokuapp.com/users/usuario/"
             let endpoint = url+usuario.id+'/'
             await axios.put(endpoint, usuario)
             .then((res) => {
                 console.log(res);
             })
+        }
     }
 
     useEffect(() => {
@@ -68,6 +80,13 @@ export const PerfilUsuario = () => {
 
     return (
         <section className='perfil-usuario'>
+            <ModalProducto
+                estado={estadoModalEmail}
+                cambiarEstado={cambiarEstadoModalEmail}
+                color={colorModal}>
+                <p>Confirmar cambios?</p>
+                <button className='aceptar' onClick={cambiarEstado}><i className="fa-solid fa-check"> Aceptar</i></button>
+            </ModalProducto>
             <div className="flechaInicio">
                 <NavLink to="/">
                     <i className="fa-solid fa-arrow-left"></i>
@@ -82,7 +101,7 @@ export const PerfilUsuario = () => {
                         <h4 className='titulo-usuario'>{usuario.username}</h4>
                         <p className="bio-usuario">{usuario.name} {usuario.last_name}</p>
                         <ul className="lista-perfil">
-                            <li>73 seguidores</li>
+                            <li>{usuario.rolUser}</li>
                         </ul>
                     </div>
                     <div className="opciones-perfil">
