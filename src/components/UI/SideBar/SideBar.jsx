@@ -77,7 +77,7 @@ export const SideBar = ({ url }) => {
                     </li>
 
                     <li>
-                        <NavLink to='/Admin'>
+                        <NavLink to='/Admin' className="casa" activeclassname='active'>
                             <i className='fa-solid fa-house '></i>
                             <span className='links_name'>Inicio</span>
                         </NavLink>

@@ -11,6 +11,7 @@ import { useStateValue } from '../../hooks/StateProvider'
 import ClipLoader from "react-spinners/ClipLoader";
 import { BuscadorProductos } from '../../UI/BuscadorProductos/BuscadorProductos'
 import Slider from 'react-slick'
+import { Paginacion } from '../../UI/Paginacion/Paginacion'
 
 
 
@@ -57,6 +58,10 @@ export const Products = () => {
     const [todos, setTodos] = useState([])
     const [categoria, setCategoria] = useState()
     const [tituCategoria, setTituCategoria] = useState("")
+    const [pagina, setPagina] = useState(1)
+    const [porPagina, setPorPagina] = useState(15)
+    const maximo = todos.length / porPagina
+    console.log(maximo);
 
     const fetchApi=async()=>{
         setTituCategoria("")
@@ -159,10 +164,14 @@ export const Products = () => {
                             </>
                         )
                         : 
-                        todos.map((productos,key)=><ProductCard key={key} productos={productos}/>)}
+                        todos
+                        .slice(
+                            (pagina - 1) * porPagina, 
+                            (pagina - 1) * porPagina + porPagina)
+                        .map((productos,key)=><ProductCard key={key} productos={productos}/>)}
                 </section>
                 <div className="paginator">
-                    
+                    <Paginacion pagina={pagina} setPagina={setPagina} maximo={maximo}/>
                 </div>
                 <div className='overlay' id='overlay'>
                     <DescriptionProducts
