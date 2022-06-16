@@ -207,7 +207,7 @@ export const Admin = () => {
                 </div>
                 <div className='mainIcono'>
                     <div className='conteo'>
-                        <p>{}</p>
+                        <p>{0}</p>
                     </div>
                     <div className='boxIcono'>
                         <img src={Armario} alt='' />

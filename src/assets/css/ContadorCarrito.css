@@ -64,8 +64,8 @@
 }
 
 .boxPedido{
-  width: 40%;
-  height: 30%;
+  width: 45%;
+  height: 45%;
   position: relative;
   background-color: white;
   display: flex;
@@ -80,22 +80,8 @@
   padding:1rem;
 }
 
-.boxPedido .formAgregar22{
-  width: 80%;
-  display: flex;
-  flex-direction: column;
+.boxPedido .pedidoRealizado{
+  color: green;
+  font-size: 40px;
 }
 
-.boxPedido .select_agregar{
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.boxPedido .select_agregar #selectComprobante{
-  width: 45%;
-}
-.boxPedido .select_agregar #selectTipoPago{
-  width: 45%;
-}

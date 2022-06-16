@@ -146,7 +146,9 @@ export const SideBar = ({ url }) => {
                 <div className='profile_content'>
                     <div className='profile'>
                         <div className='profile_details'>
+                            <NavLink to='/perfilUsuario'>
                             <img src={usuario.image} alt='Profile_img' />
+                            </NavLink>
                             <div className='name_job'>
                                 <div className='name'>{usuario.username}</div>
 

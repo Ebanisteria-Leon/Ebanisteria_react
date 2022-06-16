@@ -15,6 +15,8 @@ import { ModalProducto } from '../../UI/ModalProducto/ModalProducto'
 export const ContadorCarrito = () => {
 
     let idUsuario = localStorage.getItem("idUser")
+    let nombreUsuario = localStorage.getItem("nombre")
+    let rolUser = localStorage.getItem('rolUser')
     let fechaPedidos
     let confirmar = Boolean
     let colorModal ="#fff"
@@ -27,7 +29,7 @@ export const ContadorCarrito = () => {
         fechaPedido: "",
         estadoPedido: "PE",
         idComprobante: 1,
-        idTipoPago: null,
+        idTipoPago: 1,
         idPersona: [Number(idUsuario)],
         idProducto: []
     })
@@ -55,16 +57,25 @@ export const ContadorCarrito = () => {
     const [tipoPago, setTipoPago] = useState()
     const [comprobante, setComprobante] = useState()
 
-    const obtenerTipoDePago = async () =>{
-        const response = await fetch("https://leon-ebanisteria.herokuapp.com/detail/tipoPago/")
-        const responseJSON = await response.json()
-        setTipoPago(responseJSON.results)
+    const generarFecha=()=>{
+        let fecha = new Date()
+        let meses = fecha.getUTCMonth() + 1
+        let day = fecha.getUTCDate()
+        let year = fecha.getUTCFullYear()
+        let fechaCompleta = year + "-" + meses + "-" + day
+        console.log(fechaCompleta);
+        fechaPedidos= fechaCompleta
     }
 
-    const obtenerComprobante = async () =>{
-        const response = await fetch("https://leon-ebanisteria.herokuapp.com/detail/comprobantePago/")
-        const responseJSON = await response.json()
-        setComprobante(responseJSON.results)
+    const manejadorSubmit =(e) =>{
+        e.preventDefault()
+        handleChange()
+        crearPedido()
+    }
+
+    const cambiarEstado = () =>{
+        confirmar= true
+        crearPedido()
     }
 
     const generarPedido = () =>{
@@ -77,17 +88,6 @@ export const ContadorCarrito = () => {
         container.style.transform="scale(1)"
         generarFecha()
     }
-
-    const generarFecha=()=>{
-        let fecha = new Date()
-        let meses = fecha.getUTCMonth() + 1
-        let day = fecha.getUTCDate()
-        let year = fecha.getUTCFullYear()
-        let fechaCompleta = year + "-" + meses + "-" + day
-        console.log(fechaCompleta);
-        fechaPedidos= fechaCompleta
-    }
-
     const cerrarPedido = () =>{
         const overlay = document.querySelector('.overlayPedido')
         const container = document.querySelector('.boxPedido')
@@ -96,16 +96,7 @@ export const ContadorCarrito = () => {
         overlay.style.opacity="0"
         container.style.opacity="0"
         container.style.transform="scale(0.6)"
-    }
-
-    const manejadorSubmit =(e) =>{
-        e.preventDefault()
-        crearPedido()
-    }
-
-    const cambiarEstado = () =>{
-        confirmar= true
-        crearPedido()
+        window.location.reload()
     }
 
     const crearPedido = async () =>{
@@ -114,8 +105,7 @@ export const ContadorCarrito = () => {
             let url= "https://leon-ebanisteria.herokuapp.com/detail/pedido/"
             await axios.post(url, form)
             .then(res=>{
-                console.log(res);
-                window.location.reload();
+                generarPedido()
             })
             .catch(err=>{
                 console.log(err);
@@ -126,17 +116,11 @@ export const ContadorCarrito = () => {
 
     const handleChange = (e) =>{
         generarFecha()
-        // let comprobante = document.getElementById('selectComprobante')
-        let tipoPago = document.getElementById('selectTipoPago')
-
         setForm({
             ...form,
-            // idComprobante: Number(comprobante.value),
-            idTipoPago: Number(tipoPago.value),
             fechaPedido: fechaPedidos
         })
         console.log(form);
-        console.log(comprobante.value);
     }
 
     const setearProducto = () =>{
@@ -146,6 +130,12 @@ export const ContadorCarrito = () => {
     }
 
     useEffect(() => {
+        let boton= document.querySelector('.verificar')
+        if(rolUser===null || rolUser===undefined){
+            boton.disabled=true
+            boton.style.background="#7a7a7a"
+            boton.style.cursor="default"
+        }
         setCantidad(
             basket.reduce((previus, current) => previus + current.quantity, 0)
         )
@@ -155,18 +145,13 @@ export const ContadorCarrito = () => {
         setearProducto()
     }, [basket])
 
-    useEffect(() => {
-        obtenerTipoDePago()
-        obtenerComprobante()
-    }, [])
-
     return (
         <>
             <ModalProducto
                 estado={estadoModalEmail}
                 cambiarEstado={cambiarEstadoModalEmail}
                 color={colorModal}>
-                <p>Confirmar cambios?</p>
+                <p>Quieres confirmar tu pedido?</p>
                 <button className='aceptar' onClick={cambiarEstado}><i className="fa-solid fa-check"> Aceptar</i></button>
             </ModalProducto>
             <button className="contadorCarrito" onClick={mostrarCarrito}>
@@ -177,6 +162,9 @@ export const ContadorCarrito = () => {
             <div className="box-carrito">
                 <div className="tituPAgregados">
                     <h4>PRODUCTOS AGREGADOS</h4>
+                    {rolUser===null &&
+                        <p className='parrafoAdvertencia'>Regístrate para realizar el pedido</p>
+                    }
                 </div>
                 <div className="productos-agregados">
                     {basket.length===0 ? 'No hay productos agregados' : 
@@ -192,45 +180,23 @@ export const ContadorCarrito = () => {
                     <NavLink to="/Productos-agregados">
                         <button className="Bver">Mi carrito</button>
                     </NavLink>
-                        <button className="botonTotal" onClick={generarPedido}>Verificar</button>
+                        <button className="botonTotal verificar" onClick={manejadorSubmit}>Verificar</button>
                 </div>
             </div>
 
             <div className="overlayPedido">
                 <div className="boxPedido">
                     <div className='close'>
-                    <button className='buttonClose' onClick={cerrarPedido}>
-                        <i className='fas fa-times-circle'></i>
-                    </button>
+                        <button className='buttonClose' onClick={cerrarPedido}>
+                            <i className='fas fa-times-circle'></i>
+                        </button>
                     </div>
-                    <h2>Realizar Pedido</h2>
-                <form className='formAgregar22' onSubmit={manejadorSubmit}>
-                <div className="select_agregar">
-                    <select id="selectTipoPago" onChange={handleChange}>
-                        <option value="">Tipo de pago</option>
-                        {!tipoPago ? "" :
-                        tipoPago.map((index, key)=>{
-                            return (
-                            <option value={index.idTipoPago} key={key}>{index.nombre}</option>
-                            )
-                    })}
-                    </select>
-
-                    <select id="selectComprobante" onChange={handleChange}>
-                        <option value="">Comprobante de pago</option>
-                        {!comprobante ? "" :
-                        comprobante.map((index, key)=>{
-                            return (
-                            <option value={index.idComprobantePago} key={key}>{index.nombre}</option>
-                            )
-                    })}
-                    </select>
-                    </div>
-
-                    <div className='divbtn'>
-                        <button className='btnSubmit'> Realizar pedido </button>
-                    </div>
-                </form>
+                    <h2>PEDIDO REALIZADO CON ÉXITO!!</h2>
+                    <i className="fa-solid fa-circle-check pedidoRealizado"></i> <br />
+                    <p>Señor/a <b>{nombreUsuario}</b> su pedido se ha realizado correctamente, 
+                    conserve porfavor este id: <b>{idUsuario}</b>. <br /><br />
+                    Pronto será contactado para obtener detalles de su pedido.</p>
+                    <p>Para más información comuniquese a esta linea telefónica: <br /> <b>+57 3134765432.</b></p>
                 </div>
             </div>
         </>

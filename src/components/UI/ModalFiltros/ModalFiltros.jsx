@@ -21,6 +21,7 @@ export const ModalFiltros = ({url, titulo}) => {
             </button>
         </div>
         <h2>{titulo}</h2>
+        <div className="modalFiltro3">
         <table className='table-products tablaFiltros'>
             <thead>
                 <tr>
@@ -32,6 +33,7 @@ export const ModalFiltros = ({url, titulo}) => {
                     <th scope='col'>Precio</th>
                 </tr>
             </thead>
+            
             {!url ? "No existen productos con este estado" :
             url.map((index,_)=>{
             return(
@@ -59,7 +61,9 @@ export const ModalFiltros = ({url, titulo}) => {
             </tbody>
             )
             })}
+            
         </table>
+        </div>
         </div>
   )
 }

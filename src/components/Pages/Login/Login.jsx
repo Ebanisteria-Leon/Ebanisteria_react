@@ -16,6 +16,7 @@ import { Modal } from '../../UI/Modal/Modal'
 export const Login = () => {
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
     let colorModal = ''
+    let colorModal2 = ''
 
     const [state, setState] = useState({
         form: {
@@ -113,7 +114,7 @@ export const Login = () => {
                 <Modal
                     estado={estadoModalEmail}
                     cambiarEstado={cambiarEstadoModalEmail}
-                    color={colorModal="#008F39"}
+                    color={colorModal2="#008F39"}
                 >
                     <p>{state.errorMsg}</p>
                 </Modal>
