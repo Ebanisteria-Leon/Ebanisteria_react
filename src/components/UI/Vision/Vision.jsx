@@ -26,7 +26,7 @@ export const Vision = () => {
                 </div>
                 <div className="banner__text">
                     <h2>Visión</h2>
-                    <p>Ser la ebanistería referencia en el municipio de Circasia para el año 2028 en temas de asesoría y adquisición de muebles con el fin de brindar soluciones a las personas en sus hogares, oficinas y lugares de ocio</p>
+                    <p>Ser la ebanistería referencia en el municipio de Circasia para el año 2028 en temas de asesoría y adquisición de muebles con el fin de brindar soluciones a las personas en sus hogares, oficinas y lugares de ocio.</p>
                 </div>
             </div>
         </div>

@@ -87,7 +87,7 @@ export const DescriptionProducts = ({ id, click}) => {
                                     </span>
 
                                     <span className='paragraph-span'>
-                                        Descripcion:
+                                        Descripción:
                                         <p className='paragraph-p'>
                                             {dataId.descripcion}
                                         </p>

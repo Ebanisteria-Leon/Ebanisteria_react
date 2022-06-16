@@ -97,7 +97,7 @@ export const Products = () => {
                 <BuscadorProductos/>
                 <ContadorCarrito />
 
-                <h3 className='title-category'>Productos nuevos</h3>
+                <h3 className='title-category'>Productos</h3>
                 <div className="botones-filtro">
                 <Slider {...settings}>
                     <div className='contenedorBoton' style={{ width: 200 }}>

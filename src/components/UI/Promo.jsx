@@ -77,7 +77,7 @@ export const Promo = () => {
 
     return (
         <>
-            <h3 className='titu-slider'>SLIDER-PROMOCIONES</h3>
+            <h3 className='titu-slider'>PROMOCIONES</h3>
 
             <Slider {...settings}>
                 

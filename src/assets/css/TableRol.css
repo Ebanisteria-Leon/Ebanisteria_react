@@ -95,3 +95,18 @@
     left: 9px;
     top: 7px;
 }
+
+.botonCambiarRol{
+    padding: 5px 20px;
+    background-color:#d89c25;
+    border-radius: 1rem;
+    border:none;
+    transition: all 300ms ease;
+}
+
+.botonCambiarRol:hover{
+    padding: 5px 20px;
+    background-color:#d89000;
+    border-radius: 1rem;
+    border:none;
+}
