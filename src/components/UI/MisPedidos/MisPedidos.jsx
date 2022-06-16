@@ -33,18 +33,6 @@ export const MisPedidos = () => {
         cambiarEstadoModalEmail(!estadoModalEmail)
         if (confirmar === true) {
             console.log(idPedido);
-            // setUsuario({
-            //     ...usuario,
-            //     estadoPedido: "CA"
-            // })
-            // await axios.update(url, usuario)
-            // .then((res)=>{
-            //     console.log(res);
-            // })
-            // .catch(err=>{
-            //     console.log(err);
-            // })
-            
             await axios.delete(endpoint)
             .then((res) =>{
                 console.log(res);
