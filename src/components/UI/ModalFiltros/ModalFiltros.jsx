@@ -3,7 +3,6 @@ import React from 'react'
 import { Imagen } from '../Imagen/Imagen';
 
 export const ModalFiltros = ({url, titulo}) => {
-    
     const cerrarEditor = () =>{
         const overlay = document.querySelector('.overlayFiltro')
         const container = document.querySelector('.modalFiltro')
@@ -22,7 +21,8 @@ export const ModalFiltros = ({url, titulo}) => {
             </button>
         </div>
         <h2>{titulo}</h2>
-        <table className='table-products'>
+        <div className="modalFiltro3">
+        <table className='table-products tablaFiltros'>
             <thead>
                 <tr>
                     <th scope='col'>Imagen</th>
@@ -33,6 +33,7 @@ export const ModalFiltros = ({url, titulo}) => {
                     <th scope='col'>Precio</th>
                 </tr>
             </thead>
+            
             {!url ? "No existen productos con este estado" :
             url.map((index,_)=>{
             return(
@@ -46,9 +47,9 @@ export const ModalFiltros = ({url, titulo}) => {
                         />
                     </td>
                     <td>{index.nombre}</td>
-                    <td>{index.idCategoria} </td>
-                    <td>
-                        {index.descripcion}
+                    <td>{index.idCategoria[1]} </td>
+                    <td className='descripcion-filtro'>
+                        <p>{index.descripcion}</p>
                     </td>
                     <td>{index.color}</td>
                     <td>
@@ -60,7 +61,9 @@ export const ModalFiltros = ({url, titulo}) => {
             </tbody>
             )
             })}
+            
         </table>
+        </div>
         </div>
   )
 }

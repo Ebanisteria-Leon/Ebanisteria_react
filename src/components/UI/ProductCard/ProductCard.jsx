@@ -25,6 +25,10 @@ export const ProductCard = ({
         mostrar_producto()
     }
 
+    if(calificacion>5){
+        calificacion=5
+    }
+
     const stars = Array(calificacion).fill(0)
     const stars2 = Array(calificacion).fill(0)
 
@@ -64,12 +68,14 @@ export const ProductCard = ({
             <div className='product-card'>
                 {tiempoProducto==="NUE"
                     ?<div className="nuevoP">
-
+                        
                     </div>
                     :""
                 }
+                
                 <div className='product-img-container'>
                     <div className='product-img'>
+                    
                         <div className='linkImg' onClick={mostrar_producto2}>
                             <Imagen
                                 clase='product-img-front'
@@ -108,6 +114,12 @@ export const ProductCard = ({
                             })}
                         </div>
                     </div>
+                    {destacado === "DE"
+                        ?<div className="estrellaDestacado">
+                            <i className="fa-solid fa-award"></i>
+                        </div>
+                        :""
+                    }
                     <div className='product-category'>
                         <span>{nombre}</span>
                     </div>

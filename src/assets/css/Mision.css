@@ -24,7 +24,7 @@
 .triangulo1{
     width: 200px;
     height: 200px;
-    background: linear-gradient(to left, #dc4747, #47cbdc );
+    background: linear-gradient(to left, #B3BBF2, #BBF7FC );
     right: 100px;
     top: 100px;
     animation: t1 8s ease infinite;
@@ -33,7 +33,7 @@
 .triangulo2{
     width: 150px;
     height: 150px;
-    background: linear-gradient(to left, #ee8105, #c7371e );
+    background: linear-gradient(to left, #D9B368, #CF7F63 );
     top: 350px;
     animation: t2 9s ease infinite;
 }
@@ -41,7 +41,7 @@
 .triangulo3{
     width: 250px;
     height: 250px;
-    background: linear-gradient(to left, #d49922, #47cbdc60 );
+    background: linear-gradient(to left, #AD9F9C, #A393A3 );
     left: 200px;
     animation: t3 7s ease infinite;
     border-radius: 50%;

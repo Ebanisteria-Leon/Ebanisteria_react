@@ -34,6 +34,7 @@
     justify-content: center;
     align-items: center;
     height: 150px;
+    position: relative;
 }
 
 .contenedorBoton button{
@@ -56,78 +57,112 @@
     background-size: cover;
     background-position: center;
     color: white;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria1{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/sofa.jpg);
     background-size: cover;
     background-position: center;
-    color: white;
+    color: black;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria2{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/habitacion.jpg);
     background-size: cover;
     background-position: center;
     color: white;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria3{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/sala_exterior.jpg);
     background-size: cover;
     background-position: center;
     color: white;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria4{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/bibliotecas.jpg);
     background-size: cover;
     background-position: center;
     color: white;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria5{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/escritorios.jpg);
     background-size: cover;
     background-position: center;
-    color: white;
-}
-.contenedorBoton .botonCategoria6{
-    background-image: url(../images/categorias/comedor.jpg);
-    background-size: cover;
-    background-position: center;
-    color: white;
+    color: black;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria7{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/mesas_centro.jpg);
     background-size: cover;
     background-position: center;
-    color: white;
+    color: black;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria8{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/mesas_noche.jpg);
     background-size: cover;
     background-position: center;
     color: white;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria9{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/silla.jpg);
     background-size: cover;
     background-position: center;
     color: white;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria10{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/bancas.jpg);
     background-size: cover;
     background-position: center;
-    color: white;
+    color: black;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria11{
     background-image: url(../images/categorias/comedor.jpg);
     background-size: cover;
     background-position: center;
     color: white;
+    font-weight:bold;
 }
 .contenedorBoton .botonCategoria12{
-    background-image: url(../images/categorias/comedor.jpg);
+    background-image: url(../images/categorias/estante.jpg);
     background-size: cover;
     background-position: center;
+    color: black;
+    font-weight:bold;
+}
+
+.overlayBoton{
+    height: 100%;
+    width: 80%;
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
     color: white;
+    background-color:rgba(0, 0, 0, 0.479);
+    border-radius: 1rem;
+    transition: all ease 0.4s;
+    cursor: pointer;
+    opacity: 0;
+    visibility:hidden;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.contenedorBoton:hover .overlayBoton{
+    opacity:1;
+    visibility:visible;
 }
 
 .section__products {
@@ -217,6 +252,20 @@
     position: absolute;
     bottom: -300px;
     transition: all 450ms ease;
+}
+
+.estrellaDestacado{
+    position: absolute;
+    right:50px;
+    bottom: 20px;
+    width: 10px;
+    height: 10px;
+    font-size: 25px;
+    color: #ff3333;
+}
+
+.estrellaDestacado i{
+    z-index: 100;
 }
 
 

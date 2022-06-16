@@ -1,12 +1,23 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import '../../../assets/css/Header.css'
 import { NavLink } from 'react-router-dom'
 import { Logout } from '../../helpers/logout/Logout'
 
 export const Header = () => {
     const rol = localStorage.getItem('rolUser')
-    const username = localStorage.getItem('username')
-    const imageUsuario = localStorage.getItem('imagenUsuario')
+    let idUser = localStorage.getItem('idUser')
+    const [usuario, setUsuario] = useState({})
+
+    const obtenerUsuario = async () =>{
+        const response = await fetch("https://leon-ebanisteria.herokuapp.com/users/usuario/" + idUser)
+        const responseJSON =await response.json()
+        setUsuario(responseJSON)
+    }
+
+
+    useEffect(() => {
+        obtenerUsuario()
+    }, [])
 
     return (
         <div className='header'>
@@ -18,11 +29,11 @@ export const Header = () => {
                                 <li className="li_header">
                                     <div className="titu_usuario">
                                         <h3 className='perfil__username'>
-                                            {username}
+                                            {usuario.username}
                                         </h3>
                                     </div>
                                     <NavLink to='/PerfilUsuario' className="access">
-                                        <img src={imageUsuario} alt="" />
+                                        <img src={usuario.image} alt="" />
                                     </NavLink>
                                 </li>
                             </ul>

@@ -72,7 +72,8 @@ export const Products = () => {
     }
 
     const capturarCategoria = (e) =>{
-        let categoriaBoton= e.target.value
+        console.log(e.target.textContent);
+        let categoriaBoton= e.target.textContent
         setTituCategoria(categoriaBoton)
         obtenerCategoria(categoriaBoton)
     }
@@ -100,40 +101,52 @@ export const Products = () => {
                 <div className="botones-filtro">
                 <Slider {...settings}>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria0" onClick={fetchApi}>Todos</button>
+                    <button className="botonCategoria0"  title="Todos">Todos</button>
+                    <div className="overlayBoton" onClick={fetchApi}>Todos</div>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria1" value="Sofás" onClick={capturarCategoria}>Sofás</button>
+                    <button className="botonCategoria1" value="Sofás" title="Sofpas">Sofás</button>
+                    <div className="overlayBoton" onClick={capturarCategoria}>Sofás</div>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria2" value="Camas" onClick={capturarCategoria}>Camas</button>
+                    <button className="botonCategoria2" value="Camas"title="Camas">Camas</button>
+                    <div className="overlayBoton" onClick={capturarCategoria}>Camas</div>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria3" value="Sala exterior" onClick={capturarCategoria}>Sala exterior</button>
+                    <button className="botonCategoria3" value="Sala exterior" title="Sala exterior">Sala exterior</button>
+                    <div className="overlayBoton" onClick={capturarCategoria}>Sala exterior</div>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria4" value="Bibliotecas" onClick={capturarCategoria}>Bibliotecas</button>
+                    <button className="botonCategoria4" value="Bibliotecas" title="Bibliotecas">Bibliotecas</button>
+                    <div className="overlayBoton" onClick={capturarCategoria}>Bibliotecas</div>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria5" value="Escritorios" onClick={capturarCategoria}>Escritorios</button>
+                    <button className="botonCategoria5" value="Escritorios" title="Escritorios">Escritorios</button>
+                    <div className="overlayBoton" onClick={capturarCategoria}>Escritorios</div>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria7" value="Mesas de centro" onClick={capturarCategoria}>Mesas de centro</button>
+                    <button className="botonCategoria7" value="Mesas de centro" title="Mesas de centro">Mesas de centro</button>
+                    <div className="overlayBoton" onClick={capturarCategoria}>Mesas de centro</div>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria8" value="Mesas de noche" onClick={capturarCategoria}>Mesas de noche</button>
+                    <button className="botonCategoria8" value="Mesas de noche" title="Mesas de noche">Mesas de noche</button>
+                    <div className="overlayBoton" onClick={capturarCategoria}>Mesas de noche</div>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria9" value="Sillas" onClick={capturarCategoria}>Sillas</button>
+                    <button className="botonCategoria9" value="Sillas" title="Sillas">Sillas</button>
+                    <div className="overlayBoton" onClick={capturarCategoria}>Sillas</div>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria10" value="Bancas" onClick={capturarCategoria}>Bancas</button>
+                    <button className="botonCategoria10" value="Bancas" title="Bancas">Bancas</button>
+                    <div className="overlayBoton" onClick={capturarCategoria}>Bancas</div>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria11" value="Mesas de comedor" onClick={capturarCategoria}>Mesas de comedor</button>
+                    <button className="botonCategoria11" value="Mesas de comedor" title="Mesas de comedor">Mesas de comedor</button>
+                    <div className="overlayBoton" onClick={capturarCategoria}>Mesas de comedor</div>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria12" value="Repisas" onClick={capturarCategoria}>Repisas</button>
+                    <button className="botonCategoria12" value="Repisas" title="Repisas">Repisas</button>
+                    <div className="overlayBoton" onClick={capturarCategoria}>Repisas</div>
                     </div>
                 </Slider>
                 </div>
@@ -148,7 +161,9 @@ export const Products = () => {
                         : 
                         todos.map((productos,key)=><ProductCard key={key} productos={productos}/>)}
                 </section>
-
+                <div className="paginator">
+                    
+                </div>
                 <div className='overlay' id='overlay'>
                     <DescriptionProducts
                         id='floatWindow'

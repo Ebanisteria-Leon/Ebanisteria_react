@@ -5,6 +5,7 @@ import { SideBar } from "../../UI/SideBar/SideBar";
 import { Imagen } from "../../UI/Imagen/Imagen";
 import mueble from "../../../assets/images/AgregarProducto/muebleLargo.png";
 import axios from "axios";
+import { Modal } from '../../UI/Modal/Modal';
 
 
 export const initialForm = {
@@ -31,11 +32,12 @@ export const AgregarProducto = () => {
   let url = "https://leon-ebanisteria.herokuapp.com/api/producto/"
   const [form, setForm] = useState(initialForm)
   const [image, setImage] = useState("");
-  
+  const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
   const [categorias, setCategorias] = useState()
   let imagen_producto=""
   let setearImg
   let setearImg2
+  let colorModal='#FF5733'
 
   const uploadImage = () => {
     const data = new FormData()
@@ -127,6 +129,9 @@ export const AgregarProducto = () => {
         .then(res=>{
             window.location.href="/Admin/TableProducts"
         })
+        .catch((error)=>{
+          cambiarEstadoModalEmail(!estadoModalEmail)
+        })
     }
   
   const setearImagen = (e) =>{
@@ -145,6 +150,13 @@ export const AgregarProducto = () => {
 
   return (
     <div className="mainAgregar">
+      <Modal
+        estado={estadoModalEmail}
+        cambiarEstado={cambiarEstadoModalEmail}
+        color={colorModal}
+      >
+        <p>Ha ocurrido un error al momento de agregar un producto</p>
+      </Modal>
       <div className="titulo_agregar">
         <h2>AGREGAR PRODUCTO</h2>
       </div>

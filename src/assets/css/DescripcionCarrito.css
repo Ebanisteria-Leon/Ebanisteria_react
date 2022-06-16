@@ -57,6 +57,17 @@
     font-size: 12px;
     color: #b8b8b8;
   }
+
+  .pName{
+    width: 190px;
+    overflow: hidden;
+  }
+
+  .pName p{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
   
   .eliminarP{
     width: 10%;

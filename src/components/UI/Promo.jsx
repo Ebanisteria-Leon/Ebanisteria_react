@@ -24,7 +24,6 @@ export const Promo = () => {
         autoplaySpeed: 5000,
         initialSlide: 0,
         cssEase: 'linear',
-        slidesToShow: 5,
         responsive: [
             {
                 breakpoint: 1400,

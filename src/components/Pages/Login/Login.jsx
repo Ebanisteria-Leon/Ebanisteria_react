@@ -16,6 +16,7 @@ import { Modal } from '../../UI/Modal/Modal'
 export const Login = () => {
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
     let colorModal = ''
+    let colorModal2 = ''
 
     const [state, setState] = useState({
         form: {
@@ -68,15 +69,18 @@ export const Login = () => {
                     localStorage.setItem('apellido', apellido )
                     localStorage.setItem('idUser', idUser )
 
-                    if (rol === 'Cliente' || rol === 'Admin'){
+                    if (rol === 'Cliente'){
                         cambiarEstadoModalEmail(!estadoModalEmail)
                         setState({
                             error: false,
-                            errorMsg: 'Haz iniciado sesión correctamente!',
+                            errorMsg: 'has iniciado sesión correctamente!',
                         })
                         setTimeout(() => {
                             history('/')
                         }, 3000);
+                    }else if(rol === "Admin"){
+                        history('/Admin')
+                        window.location.reload(true)
                     }
                 }
             })
@@ -110,7 +114,7 @@ export const Login = () => {
                 <Modal
                     estado={estadoModalEmail}
                     cambiarEstado={cambiarEstadoModalEmail}
-                    color={colorModal="#008F39"}
+                    color={colorModal2="#008F39"}
                 >
                     <p>{state.errorMsg}</p>
                 </Modal>
