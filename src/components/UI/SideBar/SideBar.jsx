@@ -22,7 +22,7 @@ export const SideBar = ({ url }) => {
         axios.get(url + buscador.value).then((data) => {
             dispatch({
                 type: actionTypes.BUSCADOR,
-                data: data.data.results,
+                data: data.data,
             })
         })
     }
@@ -77,7 +77,7 @@ export const SideBar = ({ url }) => {
                     </li>
 
                     <li>
-                        <NavLink to='/Admin'>
+                        <NavLink to='/Admin' className="casa" activeclassname='active'>
                             <i className='fa-solid fa-house '></i>
                             <span className='links_name'>Inicio</span>
                         </NavLink>
@@ -95,9 +95,17 @@ export const SideBar = ({ url }) => {
                     <li>
                         <NavLink to='/Admin/TableSalesDate'>
                             <i className='fa-solid fa-chart-pie '></i>
-                            <span className='links_name'>Analiticas</span>
+                            <span className='links_name'>Pedidos</span>
                         </NavLink>
-                        <span className='tooltip'>Analiticas</span>
+                        <span className='tooltip'>Pedidos</span>
+                    </li>
+
+                    <li>
+                        <NavLink to='/Admin/TableOrders'>
+                            <i className='fa-solid fa-cart-shopping '></i>
+                            <span className='links_name'>Estado Pedidos</span>
+                        </NavLink>
+                        <span className='tooltip'>Estado Pedidos</span>
                     </li>
 
                     <li>
@@ -114,14 +122,6 @@ export const SideBar = ({ url }) => {
                             <span className='links_name'>Categorías</span>
                         </NavLink>
                         <span className='tooltip'>Categorías</span>
-                    </li>
-
-                    <li>
-                        <NavLink to='/Admin/TableOrders'>
-                            <i className='fa-solid fa-cart-shopping '></i>
-                            <span className='links_name'>Ordenes</span>
-                        </NavLink>
-                        <span className='tooltip'>Ordenes</span>
                     </li>
 
                     <li>
@@ -155,7 +155,7 @@ export const SideBar = ({ url }) => {
                                 <div className='job'>{rol} ebanisteria</div>
                             </div>
                         </div>
-                        <NavLink to='/' onClick={Logout}>
+                        <NavLink to='/'>
                             <i
                                 className='fa-solid fa-arrow-right-from-bracket'
                                 id='log_out'

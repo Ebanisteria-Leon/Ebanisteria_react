@@ -43,7 +43,7 @@ export const Admin = () => {
         )
             .then((response) => response.json())
             .then((data) => {
-                setDataDisponible(data.results)
+                setDataDisponible(data)
                 setearUrl(data, 'PRODUCTOS DISPONIBLES')
                 // abrirModal()
             })
@@ -54,7 +54,7 @@ export const Admin = () => {
         )
             .then((response) => response.json())
             .then((data) => {
-                setDataNoDisponible(data.results)
+                setDataNoDisponible(data)
                 setearUrl(data, 'PRODUCTOS NO DISPONIBLES')
             })
     }
@@ -64,7 +64,7 @@ export const Admin = () => {
         )
             .then((response) => response.json())
             .then((data) => {
-                setDataDestacado(data.results)
+                setDataDestacado(data)
                 setearUrl(data, 'PRODUCTOS DESTACADOS')
             })
     }
@@ -74,7 +74,7 @@ export const Admin = () => {
         )
             .then((response) => response.json())
             .then((data) => {
-                setDataNoDestacado(data.results)
+                setDataNoDestacado(data)
                 setearUrl(data, 'PRODUCTOS NO DESTACADOS')
             })
     }
@@ -84,7 +84,7 @@ export const Admin = () => {
         )
             .then((response) => response.json())
             .then((data) => {
-                setDataNuevo(data.results)
+                setDataNuevo(data)
                 setearUrl(data, 'PRODUCTOS NUEVOS')
             })
     }
@@ -95,7 +95,7 @@ export const Admin = () => {
     variable5 = dataNuevo.length
 
     const setearUrl = (data, titulo) => {
-        setUrl(data.results)
+        setUrl(data)
         setTitulo(titulo)
     }
 

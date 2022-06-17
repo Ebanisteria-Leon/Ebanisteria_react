@@ -47,6 +47,22 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.productsInfo_name{
+    position: absolute;
+    top: 0px;
+    text-align: center;
+}
+
+.productsInfo_description h3{
+    color: #d89c25;
+}
+
+.descripction_pagragh{
+    padding-right: 10px;
 }
 
 .paragraph-span{
@@ -69,10 +85,11 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-right: 10px;
 }
 
 .buttonProducts{
-    padding: 15px;
+    padding: 12px;
     border: none;
     border-radius: 1em;
     margin: 5px 10px;

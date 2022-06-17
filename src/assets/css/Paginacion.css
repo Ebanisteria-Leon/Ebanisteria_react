@@ -1,0 +1,29 @@
+.containerPaginator{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.containerPaginator button{
+    background-color: black;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    border-radius: 8px;
+}
+
+.containerPaginator input{
+    width: 0;
+    width: 30px;
+    text-align: center;
+    border: 2px solid #000000;
+    outline:none;
+    border-radius: 8px;
+    transition:all 300ms ease;
+}
+
+.containerPaginator input:focus{
+    border: 2px solid #e7ab3b;
+}
+

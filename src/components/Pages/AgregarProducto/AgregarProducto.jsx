@@ -82,7 +82,7 @@ export const AgregarProducto = () => {
   const fetchApi=async()=>{
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/categoria/")
         const responseJSON = await response.json()
-        setCategorias(responseJSON.results)
+        setCategorias(responseJSON)
     }
 
   const mostrarArchivo = (e) => {

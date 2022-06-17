@@ -19,7 +19,7 @@ export const Category = () => {
                 <Barra />
                 <Header />
 
-                <h3 className='title-page-category'>Categorias Agregadas</h3>
+                <h3 className='title-page-category'>Categorías Disponibles</h3>
 
                 <section className='section__category'>
                     <div className='cardCategory image1'>

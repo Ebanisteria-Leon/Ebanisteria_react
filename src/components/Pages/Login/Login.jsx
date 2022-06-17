@@ -77,6 +77,7 @@ export const Login = () => {
                         })
                         setTimeout(() => {
                             history('/')
+                            window.location.reload(true)
                         }, 3000);
                     }else if(rol === "Admin"){
                         history('/Admin')

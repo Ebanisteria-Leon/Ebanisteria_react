@@ -162,6 +162,16 @@
     background-color: #fff;
 }
 
+.nav_list .active{
+    color: #000;
+    background-color: #fff;
+}
+
+.nav_list .casa{
+    color: #fff;
+    background-color: black;
+}
+
 .sidebar ul li i{
     height: 50px;
     line-height: 50px;
@@ -245,3 +255,5 @@
     left: 88%;
     transform: translateX(-80%) scaleX(-1);
 }
+
+

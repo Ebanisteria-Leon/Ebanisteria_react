@@ -68,7 +68,7 @@ export const Promo = () => {
     const fetchApi=async(url)=>{
         const response = await fetch(url)
         const responseJSON = await response.json()
-        setTodos(responseJSON.results)
+        setTodos(responseJSON)
     }
 
     useEffect(()=>{
@@ -77,7 +77,7 @@ export const Promo = () => {
 
     return (
         <>
-            <h3 className='titu-slider'>SLIDER-PROMOCIONES</h3>
+            <h3 className='titu-slider'>PROMOCIONES</h3>
 
             <Slider {...settings}>
                 

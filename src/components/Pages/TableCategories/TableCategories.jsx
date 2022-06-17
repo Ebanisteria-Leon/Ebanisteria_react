@@ -117,7 +117,7 @@ export const TableCategories = () => {
         api.get(url).then(res=>{
             if(!res.err){
                 setMsgError(null)
-                setCategorias(res.results)
+                setCategorias(res)
             }else{
                 setMsgError(res)
                 setCategorias([])
@@ -182,7 +182,7 @@ export const TableCategories = () => {
                                 <tr>
                                     <th scope='col'>ID</th>
                                     <th scope='col'>Nombre</th>
-                                    <th scope='col'>Descripcion</th>
+                                    <th scope='col'>Descripción</th>
                                     <th scope='col'>Acciones</th>
                                 </tr>
                             </thead>

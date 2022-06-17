@@ -11,6 +11,7 @@ import { useStateValue } from '../../hooks/StateProvider'
 import ClipLoader from "react-spinners/ClipLoader";
 import { BuscadorProductos } from '../../UI/BuscadorProductos/BuscadorProductos'
 import Slider from 'react-slick'
+import { Paginacion } from '../../UI/Paginacion/Paginacion'
 
 
 
@@ -57,18 +58,22 @@ export const Products = () => {
     const [todos, setTodos] = useState([])
     const [categoria, setCategoria] = useState()
     const [tituCategoria, setTituCategoria] = useState("")
+    const [pagina, setPagina] = useState(1)
+    const [porPagina, setPorPagina] = useState(10)
+    const maximo = todos.length / porPagina
+    console.log(maximo);
 
     const fetchApi=async()=>{
         setTituCategoria("")
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/")
         const responseJSON = await response.json()
-        setTodos(responseJSON.results)
+        setTodos(responseJSON)
     }
 
     const obtenerCategoria=async(categoria)=>{
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/?search=" + categoria)
         const responseJSON = await response.json()
-        setTodos(responseJSON.results)
+        setTodos(responseJSON)
     }
 
     const capturarCategoria = (e) =>{
@@ -97,7 +102,7 @@ export const Products = () => {
                 <BuscadorProductos/>
                 <ContadorCarrito />
 
-                <h3 className='title-category'>Productos nuevos</h3>
+                <h3 className='title-category'>Productos</h3>
                 <div className="botones-filtro">
                 <Slider {...settings}>
                     <div className='contenedorBoton' style={{ width: 200 }}>
@@ -159,10 +164,14 @@ export const Products = () => {
                             </>
                         )
                         : 
-                        todos.map((productos,key)=><ProductCard key={key} productos={productos}/>)}
+                        todos
+                        .slice(
+                            (pagina - 1) * porPagina, 
+                            (pagina - 1) * porPagina + porPagina)
+                        .map((productos,key)=><ProductCard key={key} productos={productos}/>)}
                 </section>
                 <div className="paginator">
-                    
+                    <Paginacion pagina={pagina} setPagina={setPagina} maximo={maximo}/>
                 </div>
                 <div className='overlay' id='overlay'>
                     <DescriptionProducts

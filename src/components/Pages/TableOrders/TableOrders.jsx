@@ -5,25 +5,24 @@ import { SideBar } from '../../UI/SideBar/SideBar'
 
 export const TableOrders = () => {
 
-    const url = 'https://rickandmortyapi.com/api/character?page=2'
+    const [pedido, setPedido] = useState()
 
-    const [pedidos, setPedidos] = useState([])
-
-    const fetchApi = async (url) => {
-        const res = await fetch(url)
-        const resJson = await res.json()
-        setPedidos(resJson.results)
+    const obtenerMiPedido=async()=>{
+        const response = await fetch("https://leon-ebanisteria.herokuapp.com/detail/pedido/" )
+        const responseJSON =await response.json()
+        console.log(responseJSON);
+        setPedido(responseJSON)
     }
 
     useEffect(() => {
-        fetchApi(url)
+        obtenerMiPedido()
     }, [])
     
 
     return (
         <>
             <div className='mainTable-orders'>
-                <h3 className='title-table-orders'>Tabla de pedidos</h3>
+                <h3 className='title-table-orders'>Pedidos por estado</h3>
 
                 <SideBar />
                 <section className='section__table-orders'>
@@ -35,16 +34,28 @@ export const TableOrders = () => {
                                 <th scope='col'>Entregado</th>
                             </tr>
                         </thead>
-
-                        <tbody>
-                            {pedidos.map((index, key) => {
+                            {!pedido ? "No existen pedidos" :
+                            pedido.map((index, key) => {
                                 return (
-                                    <tr key={key}>
-                                        <th>{index.name}</th>
-                                    </tr>
+                                    <>
+                                    <tbody>
+                                        <tr key={key}>
+                                        {index.estadoPedido === "CAN" 
+                                            ?<th>PENDIENTE</th>
+                                            :<th>0</th>
+                                        }
+                                        {index.estadoPedido === "PE" &&
+                                            <th>PENDIENTE</th>
+                                        }
+                                        {index.estadoPedido === "EN"
+                                            ?<th>PENDIENTE</th>
+                                            :<th>0</th>
+                                        }
+                                        </tr>
+                                    </tbody>                                   
+                                    </>
                                 )
                             })}
-                        </tbody>
                     </table>
                 </section>
             </div>

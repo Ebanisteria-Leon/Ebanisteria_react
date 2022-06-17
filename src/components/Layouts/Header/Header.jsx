@@ -51,10 +51,10 @@ export const Header = () => {
                             <NavLink to='/Products'>Productos</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/Category'>Categorias</NavLink>
+                            <NavLink to='/Category'>Categorías</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/Contactanos'>Contactanos</NavLink>
+                            <NavLink to='/Contactanos'>Contáctanos</NavLink>
                         </li>
 
                         {rol === 'Admin' ? (

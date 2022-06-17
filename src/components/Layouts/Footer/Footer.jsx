@@ -22,7 +22,7 @@ export const Footer = () => {
                     data-aos='fade-up'
                     data-aos-anchor-placement='bottom-bottom'>
                     <li>
-                        <h3>Mas Información</h3>
+                        <h3>Más Información</h3>
                     </li>
                     <li>
                         <a href='#'>Términos y condiciones</a>
@@ -53,7 +53,7 @@ export const Footer = () => {
                     <div className='contenedor_redes-footer'>
                         <li>
                             <a href='#'>
-                            <i className="fa-brands fa-instagram"></i>Instagram
+                            <i className="fa-brands fa-instagram"></i> Instagram
                             </a>
                         </li>
                         <li>
