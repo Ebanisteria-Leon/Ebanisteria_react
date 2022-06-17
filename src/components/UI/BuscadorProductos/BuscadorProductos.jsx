@@ -14,7 +14,7 @@ export const BuscadorProductos = () => {
         .then((data) => {
             dispatch({
                 type: actionTypes.BUSCADOR,
-                data: data.data.results,
+                data: data.data,
             })
         })
     }

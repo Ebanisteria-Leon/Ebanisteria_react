@@ -68,7 +68,7 @@ export const Promo = () => {
     const fetchApi=async(url)=>{
         const response = await fetch(url)
         const responseJSON = await response.json()
-        setTodos(responseJSON.results)
+        setTodos(responseJSON)
     }
 
     useEffect(()=>{

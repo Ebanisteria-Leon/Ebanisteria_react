@@ -117,7 +117,7 @@ export const TableCategories = () => {
         api.get(url).then(res=>{
             if(!res.err){
                 setMsgError(null)
-                setCategorias(res.results)
+                setCategorias(res)
             }else{
                 setMsgError(res)
                 setCategorias([])

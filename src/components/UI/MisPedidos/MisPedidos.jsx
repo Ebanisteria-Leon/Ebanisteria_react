@@ -17,8 +17,8 @@ export const MisPedidos = () => {
     const obtenerMiPedido=async()=>{
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/detail/pedido/?idPersona__id=" + idUser)
         const responseJSON =await response.json()
-        console.log(responseJSON.results);
-        setUsuario(responseJSON.results)
+        console.log(responseJSON);
+        setUsuario(responseJSON)
     }
 
     const cambiarEstado = () =>{

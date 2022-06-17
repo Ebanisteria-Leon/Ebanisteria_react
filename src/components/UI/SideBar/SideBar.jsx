@@ -22,7 +22,7 @@ export const SideBar = ({ url }) => {
         axios.get(url + buscador.value).then((data) => {
             dispatch({
                 type: actionTypes.BUSCADOR,
-                data: data.data.results,
+                data: data.data,
             })
         })
     }

@@ -67,13 +67,13 @@ export const Products = () => {
         setTituCategoria("")
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/")
         const responseJSON = await response.json()
-        setTodos(responseJSON.results)
+        setTodos(responseJSON)
     }
 
     const obtenerCategoria=async(categoria)=>{
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/?search=" + categoria)
         const responseJSON = await response.json()
-        setTodos(responseJSON.results)
+        setTodos(responseJSON)
     }
 
     const capturarCategoria = (e) =>{

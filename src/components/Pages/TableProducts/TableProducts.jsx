@@ -30,6 +30,7 @@ export const TableProducts = () => {
     const [loading, setLoading] = useState(false)
     const [msgError, setMsgError] = useState(null)
     const [form2, setForm2] = useState({})
+    const [mensajeModal, setMensajeModal] = useState("")
     let imagen_producto=""
     let setearImg
     let setearImg2 
@@ -59,6 +60,8 @@ const cambiarEstadoP = (data)=>{
         estadoProducto: estadoProducto
     })
 
+    setMensajeModal("Cambiar estado del producto?")
+
     updateData2()
 }
 
@@ -78,13 +81,15 @@ const cambiarDestcado = (data) =>{
         destacado: estadoDestacado
     })
 
+    setMensajeModal("Cambiar estado destacado?")
+
     updateData2()
 }
 
 const fetchApi=async()=>{
     const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/categoria/")
     const responseJSON = await response.json()
-    setCategorias(responseJSON.results)
+    setCategorias(responseJSON)
 }
 
 const editarProducto = () =>{
@@ -243,7 +248,7 @@ useEffect(()=>{
     api.get(url).then(res=>{
         if(!res.err){
             setMsgError(null)
-            setProductos(res.results)
+            setProductos(res)
         }else{
             setMsgError(res)
             setProductos([])
@@ -264,7 +269,7 @@ useEffect(() => {
                 estado={estadoModalEmail}
                 cambiarEstado={cambiarEstadoModalEmail}
                 color={colorModal}>
-                <p>Confirmar cambios?</p>
+                <p>{mensajeModal}</p>
                 <button className='aceptar' onClick={cambiarEstado}><i className="fa-solid fa-check"> Aceptar</i></button>
             </ModalProducto>
         <div className="overlayEditar">
