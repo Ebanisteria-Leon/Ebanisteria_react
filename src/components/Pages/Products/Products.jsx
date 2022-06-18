@@ -59,7 +59,7 @@ export const Products = () => {
     const [categoria, setCategoria] = useState()
     const [tituCategoria, setTituCategoria] = useState("")
     const [pagina, setPagina] = useState(1)
-    const [porPagina, setPorPagina] = useState(10)
+    const [porPagina, setPorPagina] = useState(6)
     const maximo = todos.length / porPagina
     console.log(maximo);
 
