@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import '../../../assets/css/ContadorCarrito.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping} from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom';
 import { useStateValue } from '../../hooks/StateProvider'
