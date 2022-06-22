@@ -84,15 +84,9 @@ export const DescriptionProducts = ({ id, click}) => {
                                 <div className='descripction_pagragh'>
                                     <span className='paragraph-span'>
                                         Dimensiones:
-                                        <p className='paragraph-p'>
-                                            {dataId.alto}
-                                        </p>
-                                        <p className='paragraph-p'>
-                                            {dataId.ancho}
-                                        </p>
-                                        <p className='paragraph-p'>
-                                            {dataId.largo}
-                                        </p>
+                                        <p className='paragraph-p'><b>Alto: </b> {dataId.alto}</p>
+                                        <p className='paragraph-p'><b>Ancho: </b> {dataId.ancho}</p>
+                                        <p className='paragraph-p'><b>Largo: </b> {dataId.largo}</p>
                                     </span>
 
                                     <span className='paragraph-span'>

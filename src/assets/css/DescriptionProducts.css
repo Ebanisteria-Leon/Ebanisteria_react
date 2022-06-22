@@ -210,6 +210,52 @@
     
 }
 
+@media (max-width: 400px) {
+    .mainDescriptionProducts{
+        height: 60%;
+        width: 90%;
+    }
+    .productsInfo{
+        height: 100%;
+        width: 100%;
+        font-size: 12px;
+    }
+    .buttonProducts_buy{
+        padding: 10px 10px;
+    }
+    .productsActions{
+        margin-right: 10px;
+    }
+    .productsInfo_description{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 5px;
+    }
+    .paragraph-p{
+        padding: 0;
+    }
+    .descripction_pagragh{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+    .productsImage{
+        display: none;
+        width: 0;
+    }
+    .products_img{
+        display: none;
+        width: 0;
+    }
+    
+}
+
 @keyframes mostrartexto {
     from {
         transform: translateY(-25px);

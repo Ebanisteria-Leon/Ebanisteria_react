@@ -282,3 +282,40 @@
         height: 150px;
     }
 }
+
+@media (max-width: 400px) {
+    .contenedorVision{
+        align-items: center;
+    }
+    .banner22{
+        margin: 0;
+    }
+    .banner__icon-micro2{
+        visibility: hidden;
+        width: 0;
+    }
+
+    .banner__text2{
+        width: 100%;
+        font-size: 14px;
+    }
+    .container_triangulo2{
+        max-width: 400px;
+    }
+    .triangulo33{
+        left: 20px;
+        width: 100px;
+        height: 100px;
+    }
+    .triangulo11{
+        width: 130px;
+        height: 130px;
+        top: 100px;
+        right: 20px;
+    }
+
+    .banner__text{
+        font-size: 12px;
+    }
+    
+}

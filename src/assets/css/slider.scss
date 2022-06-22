@@ -1,16 +1,18 @@
 .slick-prev,
 .slick-next {
 
-    background: red;
-    color: red;
+    color: black;
 
     &:hover, &:focus {
-        background: red;
-        color: red;
+        color: black;
     }
     &:before {
 
-        color: red;
+        color: black;
 
     }
 }
+.slick-dots {
+    bottom: -50px;
+}
+

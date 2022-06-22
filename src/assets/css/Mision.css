@@ -270,3 +270,32 @@
         height: 150px;
     }
 }
+
+@media (max-width: 400px) {
+    .contenedorMision{
+        align-items: center;
+    }
+    .banner__icon-micro{
+        visibility: hidden;
+        width: 0;
+    }
+    .container_triangulo{
+        max-width: 400px;
+    }
+    .triangulo3{
+        left: 20px;
+        width: 110px;
+        height: 110px;
+    }
+    .triangulo1{
+        right: 10px;
+        top: 120px;
+        width: 110px;
+        height: 100px;
+    }
+    .triangulo2{
+        width: 100px;
+        height: 100px;
+        top: 300px;
+    }
+}
