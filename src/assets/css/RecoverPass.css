@@ -11,7 +11,7 @@
     width: 70%;
     height: 70%;
     background-image:url(../images/Login/loginFondo.jpg);
-    background-size: 100% 100%;
+    background-size: cover;
     border-radius: .5rem;
     display: flex;
 }
@@ -243,5 +243,9 @@
   .btnSubmit{
     font-size: 5px;
     padding: 10px 10px;
+  }
+
+  .contenedor_boxRecover{
+    height: 60%;
   }
 }

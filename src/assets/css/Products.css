@@ -423,6 +423,12 @@
 }
 
 .paginator{
-    height: 200px;
-    padding-bottom: 20px;
+    height: 100px;
+    margin-top: 20px;
+}
+
+@media (max-width: 500px) {
+    .title-category{
+        padding: 60px 0px 0px 0px;
+    }
 }

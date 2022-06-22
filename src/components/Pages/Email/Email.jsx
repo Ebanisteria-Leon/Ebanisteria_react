@@ -59,8 +59,8 @@ export const Email = () => {
                                 </div>
                                 <div className='contacto_info'>
                                 <h2>EBANISTERÍA LEÓN</h2>
-                                    <p><i className='fa fa-solid fa-map'></i> Circasia calle 15 #10-22 / Colombia</p>
-                                    <p><i className='fa fa-solid fa-phone'></i> : 7384576 / <i className='fa fa-solid fa-mobile'></i> : 3156973456</p>
+                                    <p><i className='fa fa-solid fa-map'></i> Circasia calle 10 #10-50 / Colombia</p>
+                                    <p><i className='fa fa-solid fa-phone'></i> : 7384576 / <i className='fa fa-solid fa-mobile'></i> : 3006066409</p>
                                 </div>
                                 <div className='contacto_logos'>
                                     <h2>Contáctanos por nuestras redes!</h2>

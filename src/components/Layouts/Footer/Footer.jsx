@@ -16,11 +16,9 @@ export const Footer = () => {
     }, [])
 
     return (
-        <footer data-aos='fade-up'>
+        <footer>
             <div className='informacion_superior-footer'>
-                <ul
-                    data-aos='fade-up'
-                    data-aos-anchor-placement='bottom-bottom'>
+                <ul>
                     <li>
                         <h3>Más Información</h3>
                     </li>
@@ -31,9 +29,7 @@ export const Footer = () => {
                         <a href='#'>Política de privacidad</a>
                     </li>
                 </ul>
-                <ul
-                    data-aos='fade-up'
-                    data-aos-anchor-placement='bottom-bottom'>
+                <ul>
                     <li>
                         <h3>Contáctanos</h3>
                     </li>

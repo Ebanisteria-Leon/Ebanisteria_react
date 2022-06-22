@@ -119,6 +119,10 @@ main {
 
 /* SLIDER PROMOCIONES */
 
+.parrafoNoHayPromo{
+  color: red;
+}
+
 .p-slider {
   display: flex;
   flex-direction: column;
@@ -443,6 +447,26 @@ Iconos, por si gustan ponerlos me dicen :)
   }
   .splash h1{
     font-size: 4rem;
+    letter-spacing: 5px;
+  }
+  
+  .splash h2{
+    font-size: 2rem;
+  }
+
+  .banner {
+    background-size: cover;
+  }
+}
+
+@media (max-width: 400px) {
+  .titulo img {
+    width: 100%;
+  }
+  .splash h1{
+    font-size: 4rem;
+    letter-spacing: 5px;
+
   }
   
   .splash h2{

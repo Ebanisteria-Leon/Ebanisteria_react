@@ -39,14 +39,16 @@ export const Products = () => {
                 settings: {
                 slidesToShow: 2,
                 slidesToScroll: 2,
-                initialSlide: 2
+                initialSlide: 2,
+                dots: false,
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
                 slidesToShow: 1,
-                slidesToScroll: 1
+                slidesToScroll: 1,
+                dots: false,
                 }
             }
             ]
@@ -155,11 +157,16 @@ export const Products = () => {
                 </Slider>
                 </div>
                 <h2 className='title-category2'>{tituCategoria}</h2>
+                <div className="paginator">
+                    <Paginacion pagina={pagina} setPagina={setPagina} maximo={maximo}/>
+                </div>
                 <section className='section__products'>
+                        {!todos ? <ClipLoader color='#dcaa47'/> : ""}
                         {todos.length===0 
                         ? (
                             <>
-                                <ClipLoader color='#dcaa47'/>
+                                
+                                <p className='parrafoNoHayPromo'><b>No existen Productos</b></p>
                             </>
                         )
                         : 
@@ -176,9 +183,6 @@ export const Products = () => {
                             )
                         })}
                 </section>
-                <div className="paginator">
-                    <Paginacion pagina={pagina} setPagina={setPagina} maximo={maximo}/>
-                </div>
                 <div className='overlay' id='overlay'>
                     <DescriptionProducts
                         id='floatWindow'

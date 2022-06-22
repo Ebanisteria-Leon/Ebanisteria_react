@@ -11,7 +11,7 @@
     width: 70%;
     height: 70%;
     background-image:url(../images/Login/loginFondo.jpg);
-    background-size: 100% 100%;
+    background-size: cover;
     border-radius: .5rem;
     display: flex;
 }
@@ -260,7 +260,7 @@
 
 @media (max-width: 500px) {
   .contenedor_boxLogin{
-    height: 80%;
+    height: 60%;
   }
   .login{
     height: 85%;

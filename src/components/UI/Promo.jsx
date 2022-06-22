@@ -49,6 +49,7 @@ export const Promo = () => {
                     slidesToShow: 1,
                     slidesToScroll: 1,
                     initialSlide: 2,
+                    dots: false,
                 },
             },
             {
@@ -56,6 +57,7 @@ export const Promo = () => {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
+                    dots: false,
                 },
             },
         ],
@@ -63,7 +65,7 @@ export const Promo = () => {
 
     let url="https://leon-ebanisteria.herokuapp.com/api/producto/"
 
-    const [todosPromo, setTodos] = useState()
+    const [todosPromo, setTodos] = useState([])
 
     const fetchApi=async(url)=>{
         const response = await fetch(url)
@@ -81,7 +83,14 @@ export const Promo = () => {
 
             <Slider {...settings}>
                 
-            {!todosPromo ? <ClipLoader color='#dcaa47'/> :
+            {!todosPromo ? <ClipLoader color='#dcaa47'/> : ""}
+            {todosPromo.length===0 
+            ?(
+                <>
+                <p className="parrafoNoHayPromo"><b>No existen productos en promoción</b></p>
+                </>
+            )
+            :
             todosPromo.map((productos,key)=><ProductCardPromo key={key}  productos={productos}/>)}
                 
             </Slider>
