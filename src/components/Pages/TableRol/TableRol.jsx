@@ -77,6 +77,9 @@ export const TableRol = () => {
                         <thead>
                             <tr>
                                 <th scope='col'>
+                                    ID Usuario
+                                </th>
+                                <th scope='col'>
                                     Listado de usuarios de producción
                                 </th>
                                 <th scope='col'>Rol</th>
@@ -91,6 +94,7 @@ export const TableRol = () => {
                                 <>
                                     <tbody>
                                         <tr>
+                                            <td>{index.id}</td>
                                             <td>{index.name}</td>
                                             <td>{index.rolUser}</td>
                                             <td>

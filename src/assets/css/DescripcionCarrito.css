@@ -244,3 +244,9 @@ background-color: black;
 .total p:nth-child(1){
     font-weight: 900;
 }
+
+.js-image-zoom__zoomed-image{
+  z-index: 1;
+  /* width: 200px !important;
+  height: 200px !important; */
+}

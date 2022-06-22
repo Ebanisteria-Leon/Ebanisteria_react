@@ -61,7 +61,6 @@ export const Products = () => {
     const [pagina, setPagina] = useState(1)
     const [porPagina, setPorPagina] = useState(6)
     const maximo = todos.length / porPagina
-    console.log(maximo);
 
     const fetchApi=async()=>{
         setTituCategoria("")
@@ -168,7 +167,14 @@ export const Products = () => {
                         .slice(
                             (pagina - 1) * porPagina, 
                             (pagina - 1) * porPagina + porPagina)
-                        .map((productos,key)=><ProductCard key={key} productos={productos}/>)}
+                        .map((productos,key)=>{
+                            return(
+                                productos.estadoProducto==="D"
+                                ?<ProductCard key={key} productos={productos}/>
+                                :""
+                                
+                            )
+                        })}
                 </section>
                 <div className="paginator">
                     <Paginacion pagina={pagina} setPagina={setPagina} maximo={maximo}/>

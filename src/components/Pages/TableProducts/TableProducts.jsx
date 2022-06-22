@@ -14,6 +14,8 @@ import axios from 'axios'
 import Editar from '../../../assets/images/iconos/editarProducto.png'
 import { actionTypes } from '../../hooks/reducer'
 import { useStateValue } from '../../hooks/StateProvider'
+import { Paginacion } from '../../UI/Paginacion/Paginacion'
+
 
 
 
@@ -30,7 +32,10 @@ export const TableProducts = () => {
     const [loading, setLoading] = useState(false)
     const [msgError, setMsgError] = useState(null)
     const [form2, setForm2] = useState({})
-    const [mensajeModal, setMensajeModal] = useState("")
+    const [mensajeModal, setMensajeModal] = useState("Quieres editar este producto?")
+    const [pagina, setPagina] = useState(1)
+    const [porPagina, setPorPagina] = useState(6)
+    const maximo = productos.length / porPagina
     let imagen_producto=""
     let setearImg
     let setearImg2 
@@ -152,7 +157,7 @@ const updateData2 = async () =>{
         let endpoint = url+form2.idProducto+'/'
         await axios.put(endpoint, form2)
         .then((res) => {
-            window.location.href="/Admin/TableProducts"
+            window.location.reload()
         })
     }
 }
@@ -165,7 +170,7 @@ const deleteData = async (data) =>{
         let endpoint = url+data.idProducto+'/'
         await axios.delete(endpoint)
         .then((res) =>{
-            window.location.href="/Admin/TableProducts"
+            window.location.reload()
         })
         
     }
@@ -178,16 +183,16 @@ const mostrarArchivo = (e) => {
     const tituImagen = document.querySelector(".tituImagen");
     tituImagen.innerText = imagen_producto;
     // setearImagen(e)
-  };
+};
 
-  const mostrarArchivo2 = (e) => {
+const mostrarArchivo2 = (e) => {
     const images = e.target.files
     imagen_producto = images[0].name;
 
     const tituImagen = document.querySelector(".tituImagenC");
     tituImagen.innerText = imagen_producto;
     // setearImagen(e)
-  };
+};
 
 const uploadImage = () => {
     const data = new FormData()
@@ -440,7 +445,11 @@ useEffect(() => {
                             </thead>
                             <tbody>
                             {productos &&
-                            productos.map((index,_)=>{
+                            productos
+                            .slice(
+                            (pagina - 1) * porPagina, 
+                            (pagina - 1) * porPagina + porPagina)
+                            .map((index,_)=>{
                             return(
                                 
                                 <>
@@ -482,6 +491,7 @@ useEffect(() => {
                                         <span className='priceProducts-table'>
                                             {accounting.formatMoney(index.valor, "$")}
                                         </span>
+                                        <button>Promocionar producto</button>
                                     </td>
                                     
                                     <td>
@@ -508,6 +518,9 @@ useEffect(() => {
                         </tbody>
                         </table>
                 </section>
+                <div className="paginator">
+                    <Paginacion pagina={pagina} setPagina={setPagina} maximo={maximo}/>
+                </div>
             </div>
         </>
     )

@@ -89,6 +89,12 @@ export const ProductCard = ({
                             />
                         </div>
                     </div>
+                    {destacado === "DE"
+                        ?<div className="estrellaDestacado">
+                            <p>Producto destacado!</p>
+                        </div>
+                        :""
+                    }
                 </div>
 
                 <div className='product-box-text'>
@@ -114,12 +120,6 @@ export const ProductCard = ({
                             })}
                         </div>
                     </div>
-                    {destacado === "DE"
-                        ?<div className="estrellaDestacado">
-                            <i className="fa-solid fa-award"></i>
-                        </div>
-                        :""
-                    }
                     <div className='product-category'>
                         <span>{nombre}</span>
                     </div>

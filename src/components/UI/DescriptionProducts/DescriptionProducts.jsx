@@ -10,6 +10,8 @@ import { actionTypes } from '../../hooks/reducer'
 import { useStateValue } from '../../hooks/StateProvider'
 import { Modal } from '../Modal/Modal'
 import accounting from 'accounting'
+import ReactImageZoom from 'react-image-zoom';
+import ReactDOM from 'react-dom';
 
 
 
@@ -47,7 +49,18 @@ export const DescriptionProducts = ({ id, click}) => {
             setDataId(data)
         });
     }, [tempdata])
+
+    if(dataId.imagen === undefined){
+        dataId.imagen = img1
+    }
     
+    const props = {
+        width: 400, 
+        height: 500, 
+        zoomWidth: 500, 
+        zoomPosition: "right",
+        img: dataId.imagen
+    };
 
     return (
         <>
@@ -56,7 +69,8 @@ export const DescriptionProducts = ({ id, click}) => {
                 {!dataId ? "espera" :
                     <>
                     <div className='productsImage' id='contenedor_img'>
-                            <Imagen clase='products_img' url={dataId.imagen} />
+                            {/* <Imagen clase='products_img' url={dataId.imagen} /> */}
+                            <ReactImageZoom {...props} />
                         </div>
 
                         <div className='productsInfo'>

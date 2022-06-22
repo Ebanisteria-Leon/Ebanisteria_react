@@ -41,15 +41,15 @@ export const TableOrders = () => {
                                     <tbody>
                                         <tr key={key}>
                                         {index.estadoPedido === "CAN" 
-                                            ?<th>PENDIENTE</th>
-                                            :<th>0</th>
+                                            ?<th>CANCELADO</th>
+                                            :<th>-</th>
                                         }
                                         {index.estadoPedido === "PE" &&
                                             <th>PENDIENTE</th>
                                         }
                                         {index.estadoPedido === "EN"
-                                            ?<th>PENDIENTE</th>
-                                            :<th>0</th>
+                                            ?<th>ENTREGADO</th>
+                                            :<th>-</th>
                                         }
                                         </tr>
                                     </tbody>                                   

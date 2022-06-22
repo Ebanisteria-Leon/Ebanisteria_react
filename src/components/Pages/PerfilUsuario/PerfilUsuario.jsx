@@ -51,7 +51,6 @@ export const PerfilUsuario = () => {
         })
         .then(resp => resp.json())
         .then(data => {
-            console.log(data.url);
             let imagen= data.url
             setUsuario({
                 ...usuario,
@@ -59,7 +58,6 @@ export const PerfilUsuario = () => {
             })
         })
         .catch(err => console.log(err))
-        
         putImage()  
     }
 
