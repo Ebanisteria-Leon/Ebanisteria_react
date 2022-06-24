@@ -62,7 +62,7 @@ export const Products = () => {
     const [categoria, setCategoria] = useState()
     const [tituCategoria, setTituCategoria] = useState("")
     const [pagina, setPagina] = useState(1)
-    const [porPagina, setPorPagina] = useState(6)
+    const [porPagina, setPorPagina] = useState(10)
     const maximo = todos.length / porPagina
 
     const fetchApi=async()=>{
@@ -79,7 +79,7 @@ export const Products = () => {
         }
         
     }
-    console.log(todos);
+
 
     const fetchApi2=async()=>{
         setTituCategoria("")
@@ -93,6 +93,7 @@ export const Products = () => {
         const responseJSON = await response.json()
         setTodos(responseJSON)
     }
+    console.log(todos);
 
     const capturarCategoria = (e) =>{
         console.log(e.target.textContent);
@@ -106,7 +107,7 @@ export const Products = () => {
     },[])
 
     useEffect(() => {
-    setTodos(buscador)
+        setTodos(buscador)
     }, [buscador])
 
     

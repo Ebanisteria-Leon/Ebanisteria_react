@@ -33,6 +33,7 @@ export const TableProducts = () => {
     const [loading, setLoading] = useState(false)
     const [msgError, setMsgError] = useState(null)
     const [form2, setForm2] = useState({})
+    const [form, setForm] = useState({})
     const [mensajeModal, setMensajeModal] = useState("Quieres editar este producto?")
     const [pagina, setPagina] = useState(1)
     const [porPagina, setPorPagina] = useState(6)
@@ -98,6 +99,18 @@ const fetchApi=async()=>{
     setCategorias(responseJSON)
 }
 
+const obtenerProductos = () =>{
+    api.get(url).then(res=>{
+        if(!res.err){
+            setMsgError(null)
+            setProductos(res)
+        }else{
+            setMsgError(res)
+            setProductos([])
+        }
+    })
+}
+
 const editarProducto = () =>{
     const overlay = document.querySelector('.overlayEditar')
     const container = document.querySelector('.container_agregar2')
@@ -158,7 +171,8 @@ const updateData2 = async () =>{
         let endpoint = url+form2.idProducto+'/'
         await axios.put(endpoint, form2)
         .then((res) => {
-            window.location.reload()
+            cerrarEditor()
+            obtenerProductos()
         })
     }
 }
@@ -171,7 +185,7 @@ const deleteData = async (data) =>{
         let endpoint = url+data.idProducto+'/'
         await axios.delete(endpoint)
         .then((res) =>{
-            window.location.reload()
+            obtenerProductos()
         })
         
     }
@@ -272,15 +286,7 @@ const cerrarPromocion = () =>{
 useEffect(()=>{
     fetchApi()
     setLoading(true)
-    api.get(url).then(res=>{
-        if(!res.err){
-            setMsgError(null)
-            setProductos(res)
-        }else{
-            setMsgError(res)
-            setProductos([])
-        }
-    })
+    obtenerProductos()
     setLoading(false)
     
 },[])
@@ -454,10 +460,44 @@ useEffect(() => {
                     <div className="tituEditar">
                         <h2>PROMOCIONAR PRODUCTO</h2>
                     </div>
-                    <form className="formPromocion" onSubmit={handleSubmit}>
-                        <div className="txt_field">
-                            <input type="number" id="nombre" name="nombre" utoComplete="off" required autoFocus onChange={handleChange}/>
-                            <label className="labelForm" for="nombre"> Descuento del producto </label>
+                    <form className="formCategoria formPromo" onSubmit={handleSubmit}>
+                        <div className='txt_field2'>
+                            <input
+                                type='number'
+                                id='valorDescuento'
+                                name='valorDescuento'
+                                utoComplete='off'
+                                value={form.valorDescuento}
+                                required
+                                onChange={handleChange}
+                            />
+                            <label className='labelForm' for='valorDescuento'>
+                                {' '}
+                                Valor del descuento (%){' '}
+                            </label>
+                            <span></span>
+                        </div>
+
+                        <div className='txt_field2'>
+                            <input
+                                type='number'
+                                id='productoExtra'
+                                name='productoExtra'
+                                utoComplete='off'
+                                value={form.productoExtra}
+                                required
+                                onChange={handleChange}
+                            />
+                            <label className='labelForm' for='productoExtra'>
+                                {' '}
+                                Productos extra{' '}
+                            </label>
+                            <span></span>
+                        </div>
+
+                        <div className="txt_field2">
+                            <input type="date" id="fechaInicio" name="fechaFinalizacion" value={form.fechaFinalizacion} required onChange={handleChange}/>
+                            <label className="labelForm" for="fechaInicio"> Fecha de finalización</label>
                             <span></span>
                         </div>
 
@@ -538,7 +578,10 @@ useEffect(() => {
                                         <span className='priceProducts-table'>
                                             {accounting.formatMoney(index.valor, "$")}
                                         </span>
-                                        <button onClick={(e)=>promocionarProducto(e)}>Promocionar producto</button>
+                                        {index.estadoPromocion==="ENP"
+                                        ?<p className='enPromo'>Producto en promoción!! <i class="fa-solid fa-percent"></i></p>
+                                        :<button onClick={(e)=>promocionarProducto(e)}>Promocionar producto</button>
+                                    }
                                     </td>
                                     
                                     <td>

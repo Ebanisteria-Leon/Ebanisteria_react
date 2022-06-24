@@ -88,6 +88,16 @@ export const Admin = () => {
                 setearUrl(data, 'PRODUCTOS NUEVOS')
             })
     }
+    // const obtenerPromociones = () => {
+    //     fetch(
+    //         'https://leon-ebanisteria.herokuapp.com/api/producto/?tiempoProducto=NUE'
+    //     )
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             setDataNuevo(data)
+    //             setearUrl(data, 'PRODUCTOS NUEVOS')
+    //         })
+    // }
     variable = dataDisponible.length
     variable2 = dataNoDisponible.length
     variable3 = dataDestacado.length

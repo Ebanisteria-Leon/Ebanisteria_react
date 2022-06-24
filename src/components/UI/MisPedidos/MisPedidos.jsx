@@ -12,7 +12,12 @@ export const MisPedidos = () => {
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
     let confirmar = Boolean
     let colorModal="#fff"
-    const [idPedido, setIdPedido] = useState()
+    let idDelProducto
+    let estadoPedido
+    let idUsuario = localStorage.getItem("idUser")
+    const [idPedido, setIdPedido] = useState({})
+    const [form2, setForm2] = useState({})
+    let url = "https://leon-ebanisteria.herokuapp.com/detail/pedido/"
 
     const obtenerMiPedido=async()=>{
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/detail/pedido/?idPersona__id="+ idUser + "&ordering=-idPedidosPendientes")
@@ -27,21 +32,39 @@ export const MisPedidos = () => {
         eliminarPedido(idPedido)
     }
 
-    const eliminarPedido = async (id) =>{
-        setIdPedido(id)
-        let url= "https://leon-ebanisteria.herokuapp.com/detail/pedido/"
-        let endpoint = url+id+'/'
-        cambiarEstadoModalEmail(!estadoModalEmail)
-        if (confirmar === true) {
-            console.log(idPedido);
-            await axios.delete(endpoint)
-            .then((res) =>{
-                console.log(res);
+    const eliminarPedido = async (pedido) =>{
+        pedido.idProducto.map((index,_)=>{
+            return(
+                idDelProducto=index.idProducto
+            )
+        })
+        setForm2(pedido)
+        let estadoPedidos
+
+        if(pedido.estadoPedido==="PE"){
+            estadoPedidos="CAN"
+            estadoPedido = estadoPedidos
+        }
+
+        setForm2({
+            ...pedido,
+            estadoPedido: estadoPedidos,
+            idProducto: [idDelProducto],
+            idPersona: [Number(idUser)]
+        })
+
+        setIdPedido(pedido)
+        actualizarPedido()
+    }
+
+    const actualizarPedido = () =>{
+        console.log(form2);
+        cambiarEstadoModalEmail(!estadoModalEmail) 
+        if(confirmar === true){
+            let endpoint = url+form2.idPedidosPendientes+'/'
+            axios.put(endpoint, form2)
+            .then((res) => {
                 obtenerMiPedido()
-            })
-            .catch(err=>{
-                console.log(err);
-                
             })
         }
     }
@@ -57,63 +80,81 @@ export const MisPedidos = () => {
                 estado={estadoModalEmail}
                 cambiarEstado={cambiarEstadoModalEmail}
                 color={colorModal}>
+                
                 <p>Cancelar pedido?</p>
                 <button className='aceptar' onClick={cambiarEstado}><i className="fa-solid fa-check"> Aceptar</i></button>
             </ModalProducto>
         <section className='section__products2 section_tablaPedido'>
+            {estadoPedido === "CAN"
+            && <p>No tienes pedidos</p>
+            }
             <div className='pedido-tabla'>
                 <div className="box_tabla">
                     <table className="tabla-producto tabla_pedido">
                         <thead className="cabecera-producto">
                             <tr>
+                                <th>Código de pedido</th>
                                 <th>Cantidad de productos</th>
                                 <th>Productos</th>
                                 <th>Estado</th>
                                 <th>Fecha</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody className="cuerpo-producto">
+
                             {usuario?.length === 0 
                             ? <p className='pNoExiste'>No tienes pedidos actualmente</p>
                             :usuario.map((pedido,_)=>{
                                 return(
-                                    <tr>
-                                    <td className='cantidadProductos'>
-                                        <p>{pedido.idProducto.length}</p>
-                                    </td>
-                                    <td className='box_producto_pedido'>
-                                        <div className="descripcion-productoAgregado producto-pedido">
-                                            {pedido.idProducto.map((index,_)=>{
-                                                return(
-                                                    <>
-                                                        <div className="productoPedido">
-                                                            <Imagen clase='img-table' url={index.imagen} alt='Front'/>
-                                                            <div className="descripcion2">
-                                                                <p>{index.nombre}</p>
-                                                                <p>{accounting.formatMoney(index.valor, "$")}</p>
+                                    pedido.estadoPedido === "PE" 
+                                    ?<tr>
+                                        <td className='cantidadProductos'>
+                                            <p>{pedido.idPedidosPendientes}</p>
+                                        </td>
+                                        <td className='cantidadProductos'>
+                                            <p>{pedido.idProducto.length}</p>
+                                        </td>
+                                        <td className='box_producto_pedido'>
+                                            <div className="descripcion-productoAgregado producto-pedido">
+                                                {pedido.idProducto.map((index,_)=>{
+                                                    return(
+                                                        <>
+                                                            <div className="productoPedido">
+                                                                <Imagen clase='img-table' url={index.imagen} alt='Front'/>
+                                                                <div className="descripcion2">
+                                                                    <p>{index.nombre}</p>
+                                                                    <p>{accounting.formatMoney(index.valor, "$")}</p>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </>
-                                                )
-                                            })}
-                                        </div>
-                                    </td>
-                                    <td className='estadoProducto'>
-                                        {pedido.estadoPedido==="PE"&&
-                                            <p>Pendiente</p>
-                                        }
-                                    </td>
-                                    <td>
-                                        <div className="boxTotalProducts">
-                                            <p>{pedido.fechaPedido}</p>
+                                                        </>
+                                                    )
+                                                })}
+                                            </div>
+                                        </td>
+                                        <td className='estadoProducto'>
+                                            {pedido.estadoPedido==="PE"&&
+                                                <p>Pendiente</p>
+                                            }
+                                            {pedido.estadoPedido==="CAN"&&
+                                                <p>Cancelado</p>
+                                            }
+                                        </td>
+                                        <td>
+                                            <div className="boxFechaPedido">
+                                                <p>{pedido.fechaPedido}</p>
+                                                
+                                            </div>
+                                        </td>
+                                        <td>
                                             <div className="eliminarP2">
-                                                <button className='delete-btn' onClick={()=>eliminarPedido(pedido.idPedidosPendientes)} title="Cancelar pedido"> 
+                                                <button className='delete-btn' onClick={()=>eliminarPedido(pedido)} title="Cancelar pedido"> 
                                                     <i className="fa-solid fa-xmark xPedido"> Cancelar Pedido</i>
                                                 </button>
                                             </div> 
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
+                            : ""
                                 )
                             })
                             }

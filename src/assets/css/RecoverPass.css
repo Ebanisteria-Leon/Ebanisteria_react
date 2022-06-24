@@ -234,6 +234,9 @@
 }
 
 @media (max-width: 500px) {
+  .mainRecover{
+    min-height: 100vh;
+  }
   .titulo img {
     width: 100%;
   }

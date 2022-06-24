@@ -24,6 +24,7 @@ export const initialForm = {
   estadoProducto: "",
   destacado: "",
   tiempoProducto: "NUE",
+  estadopromocion: "NOP",
   idCategoria: null
 }
 

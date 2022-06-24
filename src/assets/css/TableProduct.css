@@ -193,6 +193,11 @@ tbody{
     overflow: hidden;
 }
 
+.enPromo{
+    color: rgb(20, 141, 20);
+    font-weight: bold;
+}
+
 @media (max-width:1400px){
     .disponible{
         width:7%;

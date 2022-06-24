@@ -218,6 +218,9 @@
 }
 
 @media (max-width: 500px) {
+  .mainRegister{
+    min-height: 100vh;
+  }
   .contenedor_boxRegister{
     width: 95%;
     height: 70%;

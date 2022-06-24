@@ -259,6 +259,9 @@
 }
 
 @media (max-width: 500px) {
+  .mainLogin{
+    min-height: 100vh;
+  }
   .contenedor_boxLogin{
     height: 60%;
   }

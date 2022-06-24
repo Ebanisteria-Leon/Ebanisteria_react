@@ -9,6 +9,7 @@ import { ModalProducto } from '../../UI/ModalProducto/ModalProducto'
 export const AgregarPromocion = () => {
     
     const [producto, setProducto] = useState([])
+    const [productoSolo, setProductoSolo] = useState([])
     let confirmar = Boolean
     let colorModal ="#fff"
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
@@ -22,6 +23,7 @@ export const AgregarPromocion = () => {
         estadoPromocion: "ACT",
         tiempoPromocion: "NUE"
     })
+    const [form2, setForm2] = useState({})
 
     const fetchApi=async()=>{
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/?estadoProducto=D")
@@ -39,7 +41,7 @@ export const AgregarPromocion = () => {
 
     const handleChange = (e) => {
         const producto = document.getElementById('selectProducto')
-
+        obtenerProductoSolo(producto)
         setForm({
             ...form,
             [e.target.name]: e.target.value,
@@ -47,6 +49,13 @@ export const AgregarPromocion = () => {
             fechaInicio: fechaInicio
         })
         console.log(form);
+    }
+
+    const obtenerProductoSolo = async (producto)=>{
+        const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/" + producto.value)       
+        const responseJSON =await response.json()
+        console.log(responseJSON);
+        setProductoSolo(responseJSON)
     }
 
     const cambiarEstado = () =>{
@@ -60,7 +69,7 @@ export const AgregarPromocion = () => {
             let url= "https://leon-ebanisteria.herokuapp.com/api/promocion/"
             await axios.post(url, form)
             .then(res=>{
-                console.log(res);
+                cambiarEstadoPromocion()
             })
             .catch(err=>{
                 console.log(err);
@@ -68,10 +77,33 @@ export const AgregarPromocion = () => {
         }
     }
 
+    const cambiarEstadoPromocion = () =>{
+        let estadoPromocionn
+        if(productoSolo.estadoPromocion === "false" || productoSolo.estadoPromocion === "NOP"){
+            estadoPromocionn="ENP"
+        }
+        setForm2({
+            ...productoSolo,
+            idCategoria: productoSolo.idCategoria[0],
+            estadoPromocion: estadoPromocionn
+        })
+        
+    }
+    console.log(form2);
+
+    const updateData2 = async () =>{
+            console.log(form2);
+            let endpoint = "https://leon-ebanisteria.herokuapp.com/api/producto/"+productoSolo.idProducto+'/'
+            await axios.put(endpoint, form2)
+            .then((res) => {
+                console.log(res);
+            })
+    }
+
     const generarFecha=()=>{
         let fecha = new Date()
         let meses = fecha.getUTCMonth() + 1
-        let day = fecha.getUTCDate()
+        let day = fecha.getUTCDate()-1
         let year = fecha.getUTCFullYear()
         let fechaCompleta = year + "-" + meses + "-" + day
         console.log(fechaCompleta);
@@ -81,6 +113,10 @@ export const AgregarPromocion = () => {
     useEffect(()=>{
         fetchApi()
     },[])
+
+    useEffect(()=>{
+        updateData2()
+    },[form2])
 
   return (
     <div className='mainCategoria'>
@@ -109,7 +145,9 @@ export const AgregarPromocion = () => {
                         {!producto ? "" :
                         producto.map((index, key)=>{
                             return (
-                            <option value={index.idProducto} key={key}>{index.nombre}</option>
+                                index.estadoPromocion==="NOP" || index.estadoPromocion==="false"
+                                ?<option value={index.idProducto} key={key}>{index.nombre}</option>
+                                :""
                             )
                         })}
                         </select>
@@ -126,7 +164,7 @@ export const AgregarPromocion = () => {
                         />
                         <label className='labelForm' for='valorDescuento'>
                             {' '}
-                            Valor del descuento{' '}
+                            Valor del descuento (%){' '}
                         </label>
                         <span></span>
                     </div>

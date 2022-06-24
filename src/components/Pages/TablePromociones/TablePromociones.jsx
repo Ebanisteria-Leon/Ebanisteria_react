@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import '../../../assets/css/TableProduct.css'
-import '../../../assets/css/EditarProducto.css'
 import '../../../assets/css/AgregarPromocion.css'
 import Mueble_Azul from '../../../assets/images/muebles-promo/mueble-azul.png'
 
@@ -21,11 +20,13 @@ import { Paginacion } from '../../UI/Paginacion/Paginacion'
 
 
 
+
 export const TablePromociones = () => {
 
     const [{ buscador }, dispatch] = useStateValue()
     let api = helpHttp()
     let url = "https://leon-ebanisteria.herokuapp.com/api/promocion/"
+    let urlOrdenada = "https://leon-ebanisteria.herokuapp.com/api/promocion/?ordering=-idPromociones"
     let colorModal ="#fff"
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
     const [productos, setProductos] = useState([])
@@ -35,11 +36,27 @@ export const TablePromociones = () => {
     const [mensajeModal, setMensajeModal] = useState("Quieres editar este producto?")
     const [pagina, setPagina] = useState(1)
     const [porPagina, setPorPagina] = useState(6)
+    const [precioDescuento, setPrecioDescuento] = useState()
+    const [productoSolo, setProductoSolo] = useState({})
     const maximo = productos.length / porPagina
     let imagen_producto=""
+    let valorDescuento
+    let precioProducto
+    let idDelProducto
     let confirmar = Boolean   
     
 
+const obtenerPromociones = () =>{
+    api.get(urlOrdenada).then(res=>{
+        if(!res.err){
+            setMsgError(null)
+            setProductos(res)
+        }else{
+            setMsgError(res)
+            setProductos([])
+        }
+    })
+}
 
 const cambiarEstado = () =>{
     confirmar= true
@@ -47,29 +64,32 @@ const cambiarEstado = () =>{
 }
 
 const cambiarEstadoP = (data)=>{
-    let estadoProducto
-
-    if(data.estadoProducto === "D"){
-        estadoProducto="ND"
+    let estadoPromocion
+    data.idProducto.map((index,_)=>{
+        return(
+            idDelProducto=index.idProducto
+        )
+    })
+    if(data.estadoPromocion === "ACT"){
+        estadoPromocion="INA"
     }
-    if(data.estadoProducto === "ND"){
-        estadoProducto="D"
+    if(data.estadoPromocion === "INA"){
+        estadoPromocion="ACT"
     }
-
     setForm2({
         ...data,
-        idCategoria: data.idCategoria[0],
-        estadoProducto: estadoProducto
+        idProducto: [idDelProducto],
+        estadoPromocion: estadoPromocion
     })
 
-    setMensajeModal("Cambiar estado del producto?")
+    setMensajeModal("Cambiar estado de la promoción?")
 
     updateData2()
 }
 
 const editarProducto = () =>{
-    const overlay = document.querySelector('.overlayEditar')
-    const container = document.querySelector('.container_agregar2')
+    const overlay = document.querySelector('.overlayPromocion')
+    const container = document.querySelector('.containerPromocion')
 
     overlay.style.visibility="visible"
     overlay.style.opacity="1"
@@ -79,8 +99,8 @@ const editarProducto = () =>{
 }
 
 const cerrarEditor = () =>{
-    const overlay = document.querySelector('.overlayEditar')
-    const container = document.querySelector('.container_agregar2')
+    const overlay = document.querySelector('.overlayPromocion')
+    const container = document.querySelector('.containerPromocion')
 
     overlay.style.visibility="hidden"
     overlay.style.opacity="0"
@@ -96,61 +116,114 @@ const handleSubmit = (e) =>{
 const handleChange = (e) =>{
     setForm2({
     ...form2,
-    [e.target.name]: e.target.value
+    [e.target.name]: e.target.value,
+
     })
+    console.log(form2);
 }
 
 
 const updateData = (data) =>{
-    setForm2(data)
     editarProducto()
+    data.idProducto.map((index,_)=>{
+        return(
+            idDelProducto=index.idProducto
+        )
+    })
+    setForm2(data)
+    setForm2({
+        ...data,
+        idProducto: [idDelProducto]
+    })
+    
 }
 
 
 const updateData2 = async () =>{
     cambiarEstadoModalEmail(!estadoModalEmail) 
     if(confirmar === true){
-        let endpoint = url+form2.idPrmociones+'/'
+        let endpoint = url+form2.idPromociones+'/'
         await axios.put(endpoint, form2)
         .then((res) => {
-            window.location.reload()
+            cerrarEditor()
+            obtenerPromociones()
         })
     }
 }
 
 const deleteData = async (data) =>{
     let isDelete = window.confirm(
-        `Estas seguro de eliminar el registro con el id ` + data.idProducto
+        `Estas seguro de eliminar el registro con el id ` + data.idPromociones
     )
     if(isDelete){
-        let endpoint = url+data.idProducto+'/'
+        let endpoint = url+data.idPromociones+'/'
         await axios.delete(endpoint)
         .then((res) =>{
-            window.location.reload()
+            // obtenerPromociones()
+            cambiarEstadoPromocion(data)
         })
         
     }
 }
 
+const cambiarEstadoPromocion = (productoSoloo) =>{
+    
+    obtenerProductoSolo(productoSoloo)
+}
+
+const ejecutarUpdate = () =>{
+    let estadoPromocionn
+    if(productoSolo.estadoPromocion === "ENP"){
+        estadoPromocionn="NOP"
+    }
+    setForm2({
+        ...productoSolo,
+        idCategoria: productoSolo.idCategoria[0],
+        estadoPromocion: estadoPromocionn
+    })
+}
+
+const updateData3 = async () =>{
+    console.log(form2);
+    let endpoint = "https://leon-ebanisteria.herokuapp.com/api/producto/"+form2.idProducto+'/'
+    await axios.put(endpoint, form2)
+    .then((res) => {
+        console.log(res);
+    })
+}
+
+const obtenerProductoSolo = async (producto)=>{
+    let productoCompleto
+    producto.idProducto.map((index,_)=>{
+        productoCompleto=index.idProducto
+    })
+    const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/" + productoCompleto)       
+    const responseJSON =await response.json()
+    console.log(responseJSON);
+    setProductoSolo(responseJSON)
+}
+
 
 useEffect(()=>{
     setLoading(true)
-    api.get(url).then(res=>{
-        if(!res.err){
-            setMsgError(null)
-            setProductos(res)
-        }else{
-            setMsgError(res)
-            setProductos([])
-        }
-    })
+    obtenerPromociones()
     setLoading(false)
     
 },[])
 
 useEffect(() => {
     setProductos(buscador)
+    
 }, [buscador])
+
+useEffect(() => {
+  ejecutarUpdate()
+}, [productoSolo])
+
+useEffect(() => {
+    updateData3()
+}, [form2])
+
 
 
     return (
@@ -162,8 +235,8 @@ useEffect(() => {
                 <p>{mensajeModal}</p>
                 <button className='aceptar' onClick={cambiarEstado}><i className="fa-solid fa-check"> Aceptar</i></button>
             </ModalProducto>
-            <div className="overlayEditar">
-                <div className="container_agregar2">
+            <div className="overlayPromocion">
+                <div className="containerPromocion">
                     <div className='close'>
                         <button className='buttonClose' onClick={cerrarEditor}>
                             <i className='fas fa-times-circle'></i>
@@ -172,42 +245,20 @@ useEffect(() => {
                     <div className="tituEditar">
                         <h2>EDITAR PROMOCIÓN</h2>
                     </div>
-                    <form className="formAgregar2" onSubmit={handleSubmit}>
-                    <div className='txt_field2'>
-                        <input
-                            type='number'
-                            id='valorDescuento'
-                            name='valorDescuento'
-                            utoComplete='off'
-                            value={form2.valorDescuento}
-                            required
-                            onChange={handleChange}
-                        />
-                        <label className='labelForm' for='valorDescuento'>
-                            {' '}
-                            Valor del descuento{' '}
-                        </label>
+                    <form className="formPromocion" onSubmit={handleSubmit}>
+                    <div className="txt_field">
+                        <input type="number" id="valorDescuento" name="valorDescuento" value={form2.valorDescuento} required onChange={handleChange}/>
+                        <label className="labelForm" for="valorDescuento"> Valor del descuento (%) </label>
                         <span></span>
                     </div>
 
-                    <div className='txt_field2'>
-                        <input
-                            type='number'
-                            id='productoExtra'
-                            name='productoExtra'
-                            utoComplete='off'
-                            value={form2.productoExtra}
-                            required
-                            onChange={handleChange}
-                        />
-                        <label className='labelForm' for='productoExtra'>
-                            {' '}
-                            Productos extra{' '}
-                        </label>
+                    <div className="txt_field">
+                        <input type="number" id="productoExtra" name="productoExtra" value={form2.productoExtra} required onChange={handleChange}/>
+                        <label className="labelForm" for="productoExtra"> Productos extra </label>
                         <span></span>
                     </div>
 
-                    <div className="txt_field2">
+                    <div className="txt_field">
                         <input type="date" id="fechaInicio" name="fechaFinalizacion" value={form2.fechaFinalizacion} required onChange={handleChange}/>
                         <label className="labelForm" for="fechaInicio"> Fecha de finalización</label>
                         <span></span>
@@ -234,7 +285,7 @@ useEffect(() => {
                             <thead>
                                 <tr>
                                     <th className="primerCol"></th>
-                                    <th scope='col'>Imagen</th>
+                                    <th scope='col'>Imagen Producto</th>
                                     <th scope='col'>Nombre</th>
                                     <th scope='col'>Descuento</th>
                                     <th scope='col'>Fecha de finalización</th>
@@ -250,6 +301,7 @@ useEffect(() => {
                             (pagina - 1) * porPagina, 
                             (pagina - 1) * porPagina + porPagina)
                             .map((index,_)=>{
+                            valorDescuento = index.valorDescuento
                             return(
                                 
                                 <>
@@ -257,8 +309,8 @@ useEffect(() => {
                                     <div className="etiquetas">
                                         <div className="disponible">
                                             {index.estadoPromocion==="ACT" 
-                                            ?<p>Disponible</p>
-                                            :<p>No disponible</p>
+                                            ?<p>Activo</p>
+                                            :<p>Inactivo</p>
                                             }
                                         </div>
                                         {index.tiempoPromocion==="NUE"
@@ -268,30 +320,47 @@ useEffect(() => {
                                             :""
                                         }
                                     </div>
-                                    <td>
-                                        <Imagen
-                                            clase='img-table'
-                                            url={index.idProducto.imagen}
-                                            alt='Front'
-                                        />
-                                    </td>
-                                    <td>{index.idProducto.nombre}</td>
-                                    <td>{index.valorDescuento} </td>
+                                    {index.idProducto.map((index,_)=>{
+                                        return(
+                                            <>
+                                            <td>
+                                                <Imagen
+                                                    clase='img-table'
+                                                    url={index.imagen}
+                                                    alt='Front'
+                                                />
+                                            </td>
+                                            <td>{index.nombre}</td>
+                                        </>
+                                        )
+                                    })}
+                                    <td>{index.valorDescuento}% </td>
                                     <td>{index.fechaFinalizacion}</td>
                                     
-                                    <td>
-                                        <span className='priceProducts-table'>
-                                            {accounting.formatMoney(index.idProducto.valor, "$")}
-                                        </span>
-                                    </td>
-                                    <td>{index.idProducto.valor}</td>
+                                    {index.idProducto.map((index,_)=>{
+                                        let descuento = (index.valor*valorDescuento)/100
+                                        return(
+                                            <>
+                                                <td>
+                                                    <span className='priceProducts-table'>
+                                                        {accounting.formatMoney(index.valor, "$")}
+                                                    </span>
+                                                </td>
+                                                <td>{accounting.formatMoney((index.valor-descuento), '$')}</td>
+                                            </>
+                                        )
+                                    })}
+                                    
                                     
                                     <td>
                                         <div className='buttonsTable-actions'>
-                                            <button className='btnAction-table update-products' title="Editar Producto" onClick={()=>updateData(index)}>
+                                            <button className='btnAction-table update-products' title="Cambiar estado de la promoción" onClick={()=>cambiarEstadoP(index)}>
+                                                <i className="fa-solid fa-arrows-rotate"></i>
+                                            </button>
+                                            <button className='btnAction-table update-products' title="Editar Promoción" onClick={()=>updateData(index)}>
                                                 <i className='fas fa-edit'></i>
                                             </button>
-                                            <button className='btnAction-table delete-products' title="Eliminar Producto" onClick={()=>deleteData(index)}>
+                                            <button className='btnAction-table delete-products' title="Eliminar Promoción" onClick={()=>deleteData(index)}>
                                                 <i className='fas fa-trash'></i>
                                             </button>
                                         </div>
