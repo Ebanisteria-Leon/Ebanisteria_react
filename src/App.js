@@ -33,6 +33,8 @@ import { Admin } from './components/Pages/Admin/Admin';
 import { AgregarCategoria } from './components/Pages/AgregarCategoria/AgregarCategoria';
 import { TableCategories } from './components/Pages/TableCategories/TableCategories';
 import { PerfilUsuario } from './components/Pages/PerfilUsuario/PerfilUsuario'
+import { AgregarPromocion } from './components/Pages/AgregarPromocion/AgregarPromocion'
+import { TablePromociones } from './components/Pages/TablePromociones/TablePromociones'
 
 
 function App() {
@@ -78,12 +80,21 @@ function App() {
                         element={<TableCategories />}
                     />
                     <Route
+                        path='/Admin/TablePromociones'
+                        element={<TablePromociones />}
+                    />
+                    <Route
                         path='/Admin/AgregarProducto'
                         element={<AgregarProducto />}
                     />
                     <Route
                         path='/Admin/AgregarCategoria'
                         element={<AgregarCategoria />}
+                    />
+
+                    <Route
+                        path='/Admin/AgregarPromocion'
+                        element={<AgregarPromocion />}
                     />
 
                     <Route

@@ -1,5 +1,5 @@
 .perfil-usuario{
-    background: linear-gradient(rgb(255, 208, 0), transparent);
+    background: linear-gradient(#A5C8C3, transparent);
 
 }
 
@@ -16,7 +16,8 @@
 }
 .perfil-usuario .portada-perfil{
     display: flex;
-    background-size: contain;
+    background-image: url(../images/Perfil/portada.jpg);
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-color: black;

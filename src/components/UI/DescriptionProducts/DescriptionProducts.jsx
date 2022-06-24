@@ -55,9 +55,10 @@ export const DescriptionProducts = ({ id, click}) => {
     }
     
     const props = {
+        scale:1,
         width: 400, 
-        height: 500, 
-        zoomWidth: 500, 
+        height: 400, 
+        zoomWidth: 900,
         zoomPosition: "right",
         img: dataId.imagen
     };

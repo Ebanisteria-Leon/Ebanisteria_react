@@ -56,7 +56,8 @@ export const Products = () => {
 
     const { ocultar_producto } = useViewModal()
     const [{ buscador }, dispatch] = useStateValue()
-
+    const buscadorLocal = localStorage.getItem('buscador')
+    const buscadorLocal2=JSON.parse(buscadorLocal)
     const [todos, setTodos] = useState([])
     const [categoria, setCategoria] = useState()
     const [tituCategoria, setTituCategoria] = useState("")
@@ -66,7 +67,23 @@ export const Products = () => {
 
     const fetchApi=async()=>{
         setTituCategoria("")
-        const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/")
+        
+        console.log(buscadorLocal2);
+        if(buscadorLocal2.length===0){
+            const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/?ordering=-idProducto")
+            const responseJSON = await response.json()
+            setTodos(responseJSON)
+        }else{
+            console.log("hola");
+            setTodos(buscadorLocal2)
+        }
+        
+    }
+    console.log(todos);
+
+    const fetchApi2=async()=>{
+        setTituCategoria("")
+        const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/?ordering=-idProducto")
         const responseJSON = await response.json()
         setTodos(responseJSON)
     }
@@ -92,7 +109,7 @@ export const Products = () => {
     setTodos(buscador)
     }, [buscador])
 
-
+    
 
     return (
         <>
@@ -108,7 +125,7 @@ export const Products = () => {
                 <Slider {...settings}>
                     <div className='contenedorBoton' style={{ width: 200 }}>
                     <button className="botonCategoria0"  title="Todos">Todos</button>
-                    <div className="overlayBoton" onClick={fetchApi}>Todos</div>
+                    <div className="overlayBoton" onClick={fetchApi2}>Todos</div>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
                     <button className="botonCategoria1" value="Sofás" title="Sofpas">Sofás</button>

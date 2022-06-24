@@ -36,11 +36,18 @@ export const PerfilUsuario = () => {
     }
 
     const cambiarEstado = () =>{
+        const aceptar = document.querySelector('.aceptar')
+        if(usuario.image){
+            aceptar.disabled=true
+        }else{
+            aceptar.disabled=false
+        }
         confirmar= true
         putImage()
     }
 
     const uploadImage = () => {
+        
         const data = new FormData()
         data.append("file", setearImg)
         data.append("upload_preset", "ebanisteria")
@@ -56,6 +63,7 @@ export const PerfilUsuario = () => {
                 ...usuario,
                 image: imagen
             })
+
         })
         .catch(err => console.log(err))
         putImage()  
@@ -105,7 +113,7 @@ export const PerfilUsuario = () => {
                 </NavLink>
             </div>
             <div className="contenedor-perfil">
-                <div className="portada-perfil" style={perfilStyle}>
+                <div className="portada-perfil">
                     <div className="avatar-perfil">
                         <img src={usuario.image} alt="" />
                     </div>

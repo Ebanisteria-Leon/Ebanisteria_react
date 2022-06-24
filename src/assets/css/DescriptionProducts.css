@@ -7,7 +7,7 @@
     align-items: center;
 
     box-shadow: 0 0 5px 0 rgba(0,0,0,.3);
-    background-color: #f8f8f8;
+    background-color: #EFEFEF;
 
     transition: 0.3s ease all;
     transform: scale(0.6);
@@ -21,6 +21,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     border-radius: 20px;
     transition: all 300ms;
 }
@@ -130,6 +131,13 @@
 .fa-shopping-cart{
     margin: 5px;
 }
+
+.js-image-zoom__zoomed-image{
+    z-index: 1;
+    border: 1px solid #d89c25;
+    /* width: 400px !important;
+    height: 400px !important; */
+  }
 
 /* Animaciones */
 

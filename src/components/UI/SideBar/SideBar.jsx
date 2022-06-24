@@ -33,6 +33,30 @@ export const SideBar = ({ url }) => {
         setUsuario(responseJSON)
     }
 
+    const mostrarMas = () =>{
+        const ul = document.querySelector('.ulDeMas')
+        const vermas = document.querySelector('.vermas')
+        const vermas2 = document.querySelector('.vermas2')
+
+        ul.style.opacity="1"
+        ul.style.visibility="visible"
+        ul.style.right="-84px"
+        vermas.style.display="none"
+        vermas2.style.display="block"
+    }
+
+    const mostrarMenos = () =>{
+        const ul = document.querySelector('.ulDeMas')
+        const vermas = document.querySelector('.vermas')
+        const vermas2 = document.querySelector('.vermas2')
+
+        ul.style.opacity="0"
+        ul.style.visibility="hidden"
+        ul.style.right="0px"
+        vermas.style.display="block"
+        vermas2.style.display="none"
+    }
+
     useEffect(() => {
         obtenerUsuario()
     }, [])
@@ -60,6 +84,7 @@ export const SideBar = ({ url }) => {
                     </button>
                 </div>
 
+                <div className="navAdmin">
                 <ul className='nav_list'>
                     <li>
                         <i
@@ -141,7 +166,32 @@ export const SideBar = ({ url }) => {
                         </NavLink>
                         <span className='tooltip'>Add categoría</span>
                     </li>
+
+                    <p className="vermas" onClick={mostrarMas}>Ver Más</p>
+                    <p className="vermas2" onClick={mostrarMenos}>Ver Menos</p>
+
+                    <ul className='nav_list ulDeMas'>
+                        <li className="liDeMas" >
+                            <NavLink to='/Admin/AgregarPromocion'>
+                                <i className='fa-solid fa-file-circle-plus'></i>
+                                <span className='links_name'>
+                                    Agregar promoción
+                                </span>
+                            </NavLink>
+                            <span className='tooltip'>Add promocion</span>
+                        </li>
+                        <li className="liDeMas" >
+                            <NavLink to='/Admin/TablePromociones'>
+                                <i className='fa-solid fa-folder '></i>
+                                <span className='links_name'>
+                                    Promociones
+                                </span>
+                            </NavLink>
+                            <span className='tooltip'>Promociones</span>
+                        </li>
+                    </ul>
                 </ul>
+                </div>
 
                 <div className='profile_content'>
                     <div className='profile'>

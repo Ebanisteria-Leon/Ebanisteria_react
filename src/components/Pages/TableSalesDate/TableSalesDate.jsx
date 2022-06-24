@@ -30,7 +30,7 @@ export const TableSalesDate = () => {
                         {/* Cabecera de la tabla */}
                         <thead>
                             <tr className='thead'>
-                                <th scope="col">Id pedido</th>
+                                <th scope="col">Código pedido</th>
                                 <th scope="col">Nombre del producto</th>
                                 <th scope="col">Fecha</th>
                                 <th scope="col">Usuario</th>

@@ -82,11 +82,14 @@ const reducer = (state, action)=>{
             }
         }
         case "BUSCADOR":{
+            // if(state.buscador.length>0){
+            //     console.log("entra al local", state.buscador.length);
+            //     localStorage.setItem("buscador", JSON.stringify(state.buscador))
+            // }
             return{
                 ...state,
                 buscador:action.data
             }
-            
         }
         default: return state;
         

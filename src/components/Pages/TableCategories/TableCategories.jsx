@@ -180,7 +180,7 @@ export const TableCategories = () => {
                             {/* Cabecera de la tabla */}
                             <thead>
                                 <tr>
-                                    <th scope='col'>ID</th>
+                                    <th scope='col'>Código categoría</th>
                                     <th scope='col'>Nombre</th>
                                     <th scope='col'>Descripción</th>
                                     <th scope='col'>Acciones</th>

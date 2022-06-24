@@ -78,9 +78,65 @@
     left: 90%;
 }
 
-.sidebar ul{
+.sidebar .navAdmin{
+    position: relative;
     margin-top: 20px;
 }
+
+.sidebar ul{
+    height: 520px;
+}
+
+.sidebar .ulDeMas{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70px;
+    height: 200px;
+    right: 0px;
+    top: 435px;
+    background-color: black;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 300ms ease;
+    z-index: -1;
+    border-left: 1px solid white;
+}
+
+.ulDeMas .liDeMas{
+    margin: 5px 10px;
+    width: 80%;
+}
+
+
+.vermas{
+    font-size: 12px;
+    transition:all 300ms ease;
+    color: white;
+    cursor:pointer;
+}
+
+.vermas2{
+    font-size: 11px;
+    transition:all 300ms ease;
+    color: white;
+    cursor:pointer;
+    display: none;
+}
+
+.vermas:hover{
+    text-decoration: underline;
+}
+
+.vermas2:hover{
+    text-decoration: underline;
+}
+
+.sidebar ul::-webkit-scrollbar{
+    display: none;
+}
+
 
 .sidebar ul li{
     position: relative;
@@ -98,7 +154,7 @@
     transform: translate(-50%, -50%);
     border-radius: 6px;
     height: 35px;
-    width: 122px;
+    width: 130px;
     line-height: 35px;
     text-align: center;
     background-color: #fff;
@@ -107,6 +163,7 @@
     transition: 0s;
     pointer-events: none;
     display: block;
+    z-index: 1000px;
 }
 
 .sidebar.active ul li .tooltip{

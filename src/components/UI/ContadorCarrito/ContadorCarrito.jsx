@@ -52,10 +52,6 @@ export const ContadorCarrito = () => {
         }
     }
 
-    
-    const [tipoPago, setTipoPago] = useState()
-    const [comprobante, setComprobante] = useState()
-
     const generarFecha=()=>{
         let fecha = new Date()
         let meses = fecha.getUTCMonth() + 1
@@ -95,7 +91,7 @@ export const ContadorCarrito = () => {
         overlay.style.opacity="0"
         container.style.opacity="0"
         container.style.transform="scale(0.6)"
-        window.location.reload()
+        limpiarCarro()
     }
 
     const crearPedido = async () =>{
@@ -193,7 +189,7 @@ export const ContadorCarrito = () => {
                     <h2>PEDIDO REALIZADO CON ÉXITO!!</h2>
                     <i className="fa-solid fa-circle-check pedidoRealizado"></i> <br />
                     <p>Señor/a <b>{nombreUsuario}</b> su pedido se ha realizado correctamente, 
-                    conserve porfavor este id: <b>{idUsuario}</b>. <br /><br />
+                    conserve porfavor este código: <b>{idUsuario}</b>. <br /><br />
                     Pronto será contactado para obtener detalles de su pedido.</p>
                     <p>Para más información comuniquese a esta linea telefónica: <br /> <b>+57 3134765432.</b></p>
                 </div>
