@@ -188,7 +188,7 @@ const updateData3 = async () =>{
     let endpoint = "https://leon-ebanisteria.herokuapp.com/api/producto/"+form2.idProducto+'/'
     await axios.put(endpoint, form2)
     .then((res) => {
-        console.log(res);
+        obtenerPromociones()
     })
 }
 
@@ -217,11 +217,17 @@ useEffect(() => {
 }, [buscador])
 
 useEffect(() => {
-  ejecutarUpdate()
+    if(Object.keys(productoSolo).length===0){
+    }else{
+        ejecutarUpdate()
+    }
 }, [productoSolo])
 
 useEffect(() => {
-    updateData3()
+    if(Object.keys(form2).length===0){
+    }else{
+        updateData3()
+    }
 }, [form2])
 
 

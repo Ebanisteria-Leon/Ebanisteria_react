@@ -157,6 +157,7 @@ main {
   height: 100%;
   display: flex;
   overflow: hidden;
+  background-color: #FDFDFB;
 }
 
 .p-img-container .linkImg,
@@ -231,15 +232,31 @@ main {
 
 .precio {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   margin-top: 8px;
 }
 
+.precio .conjuntoPrecio{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  align-items: center;
+}
+
 .precio .p-precio {
-  font-size: 1.3rem;
-  color: #333333;
+  font-size: .9rem;
+  color: #dcaa47;
   font-weight: 700;
+}
+
+.precio .p-precioActual {
+  font-size: .7rem;
+  color: #7a7a7a;
+  text-decoration: line-through;
+  font-weight: 500;
 }
 
 .precio .buy-btn {

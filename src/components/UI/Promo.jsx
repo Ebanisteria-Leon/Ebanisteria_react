@@ -12,6 +12,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 export const Promo = () => {
     // como serializar relaciones
 
+    let descuento
     const { ocultar_producto } = useViewModal()
 
     const settings = {
@@ -63,15 +64,16 @@ export const Promo = () => {
         ],
     }
 
-    let url="https://leon-ebanisteria.herokuapp.com/api/producto/"
+    let url="https://leon-ebanisteria.herokuapp.com/api/promocion/"
 
-    const [todosPromo, setTodos] = useState([])
+    const [todosPromo, setTodosPromo] = useState([])
 
     const fetchApi=async(url)=>{
         const response = await fetch(url)
         const responseJSON = await response.json()
-        setTodos(responseJSON)
+        setTodosPromo(responseJSON)
     }
+
 
     useEffect(()=>{
         fetchApi(url)
@@ -91,7 +93,15 @@ export const Promo = () => {
                 </>
             )
             :
-            todosPromo.map((productos,key)=><ProductCardPromo key={key}  productos={productos}/>)}
+            todosPromo.map((productos,key)=>{
+                productos.idProducto.map((index,_)=>descuento = (index.valor*productos.valorDescuento)/100)
+                return(
+                    <>
+                        
+                        <ProductCardPromo key={key}  productos={productos} descuento={descuento}/>
+                    </>
+                )
+            })}
                 
             </Slider>
 

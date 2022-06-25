@@ -96,14 +96,14 @@ export const AgregarPromocion = () => {
             let endpoint = "https://leon-ebanisteria.herokuapp.com/api/producto/"+productoSolo.idProducto+'/'
             await axios.put(endpoint, form2)
             .then((res) => {
-                console.log(res);
+                window.location.href="/Admin/TablePromociones"
             })
     }
 
     const generarFecha=()=>{
         let fecha = new Date()
         let meses = fecha.getUTCMonth() + 1
-        let day = fecha.getUTCDate()-1
+        let day = fecha.getUTCDate()
         let year = fecha.getUTCFullYear()
         let fechaCompleta = year + "-" + meses + "-" + day
         console.log(fechaCompleta);

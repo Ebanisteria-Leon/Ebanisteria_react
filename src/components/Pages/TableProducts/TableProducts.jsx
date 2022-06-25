@@ -16,7 +16,7 @@ import Editar from '../../../assets/images/iconos/editarProducto.png'
 import { actionTypes } from '../../hooks/reducer'
 import { useStateValue } from '../../hooks/StateProvider'
 import { Paginacion } from '../../UI/Paginacion/Paginacion'
-
+import { Modal } from '../../UI/Modal/Modal';
 
 
 
@@ -26,22 +26,35 @@ export const TableProducts = () => {
     const [{ buscador }, dispatch] = useStateValue()
     let api = helpHttp()
     let url = "https://leon-ebanisteria.herokuapp.com/api/producto/?ordering=-idProducto"
+    let urlNormal = "https://leon-ebanisteria.herokuapp.com/api/producto/"
     let colorModal ="#fff"
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
+    const [estadoModalEmail2, cambiarEstadoModalEmail2] = useState(false)
     const [productos, setProductos] = useState([])
     const [categorias, setCategorias] = useState()
     const [loading, setLoading] = useState(false)
     const [msgError, setMsgError] = useState(null)
     const [form2, setForm2] = useState({})
+    const [form22, setForm22] = useState({})
     const [form, setForm] = useState({})
+    let fechaInicio
+    const [formPromo, setFormPromo] = useState({
+        idProducto: [],
+        valorDescuento: null,
+        productoExtra: null,
+        fechaInicio: "",
+        fechaFinalizacion: "",
+        estadoPromocion: "ACT",
+        tiempoPromocion: "NUE"
+    })
     const [mensajeModal, setMensajeModal] = useState("Quieres editar este producto?")
     const [pagina, setPagina] = useState(1)
     const [porPagina, setPorPagina] = useState(6)
+    const [productoSolo, setProductoSolo] = useState({})
     const maximo = productos.length / porPagina
     let imagen_producto=""
     let setearImg
     let setearImg2 
-    let c
     let confirmar = Boolean   
     
 
@@ -137,6 +150,38 @@ const handleSubmit = (e) =>{
     updateData2()
 }
 
+const handleSubmitPromo = (e) =>{
+    e.preventDefault()
+    generarFecha()
+    handleChangePromo(e)
+    crearPromo()
+}
+
+const crearPromo = async () => {
+        let url= "https://leon-ebanisteria.herokuapp.com/api/promocion/"
+        await axios.post(url, formPromo)
+        .then(res=>{
+            console.log(res);
+            cambiarEstadoPromocion()
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+}
+
+const cambiarEstadoPromocion = () =>{
+        let estadoPromocionn
+        if(productoSolo.estadoPromocion === "false" || productoSolo.estadoPromocion === "NOP"){
+            estadoPromocionn="ENP"
+        }
+        setForm22({
+            ...productoSolo,
+            idCategoria: productoSolo.idCategoria[0],
+            estadoPromocion: estadoPromocionn
+        })
+        
+    }
+
 const handleChange = (e) =>{
     const categorias = document.getElementById('selectCategoria')
     const destacado = document.getElementById('selectDestacado')
@@ -150,6 +195,24 @@ const handleChange = (e) =>{
     tiempoProducto: tiempo.value,
     destacado: destacado.value
     })
+}
+
+const handleChangePromo = (e) =>{
+    console.log(fechaInicio);
+    setFormPromo({
+        ...formPromo,
+        [e.target.name]: e.target.value,
+        idProducto: [productoSolo.idProducto],
+        fechaInicio: fechaInicio
+    })
+    console.log(formPromo);
+}
+
+const obtenerProductoSolo = async (producto)=>{
+    const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/" + producto)       
+    const responseJSON =await response.json()
+    console.log(responseJSON);
+    setProductoSolo(responseJSON)
 }
 
 const llenarSelectCategoria = (data) =>{
@@ -168,21 +231,34 @@ const updateData = (data) =>{
 const updateData2 = async () =>{
     cambiarEstadoModalEmail(!estadoModalEmail) 
     if(confirmar === true){
-        let endpoint = url+form2.idProducto+'/'
+        let endpoint = urlNormal+form2.idProducto+'/'
         await axios.put(endpoint, form2)
         .then((res) => {
+            console.log(res);
             cerrarEditor()
             obtenerProductos()
         })
     }
 }
 
+const updateData3 = async () =>{
+        let endpoint = urlNormal+form22.idProducto+'/'
+        await axios.put(endpoint, form22)
+        .then((res) => {
+            cambiarEstadoModalEmail2(!estadoModalEmail2)
+            console.log(res);
+            cerrarPromocion()
+            obtenerProductos()
+        })
+}
+
+
 const deleteData = async (data) =>{
     let isDelete = window.confirm(
         `Estas seguro de eliminar el registro con el id ` + data.idProducto
     )
     if(isDelete){
-        let endpoint = url+data.idProducto+'/'
+        let endpoint = urlNormal+data.idProducto+'/'
         await axios.delete(endpoint)
         .then((res) =>{
             obtenerProductos()
@@ -262,6 +338,11 @@ const setearImagen2 = (e) =>{
 }
 
 const promocionarProducto=(data)=>{
+    abrirPromocion()
+    obtenerProductoSolo(data)
+}
+
+const abrirPromocion = () =>{
     const overlay = document.querySelector('.overlayPromocion')
     const container = document.querySelector('.containerPromocion')
 
@@ -271,7 +352,6 @@ const promocionarProducto=(data)=>{
     container.style.transform="scale(1)"
 }
 
-
 const cerrarPromocion = () =>{
     const overlay = document.querySelector('.overlayPromocion')
     const container = document.querySelector('.containerPromocion')
@@ -280,6 +360,16 @@ const cerrarPromocion = () =>{
     overlay.style.opacity="0"
     container.style.opacity="0"
     container.style.transform="scale(0.6)"
+}
+
+const generarFecha=()=>{
+        let fecha = new Date()
+        let meses = fecha.getUTCMonth() + 1
+        let day = fecha.getUTCDate()-1
+        let year = fecha.getUTCFullYear()
+        let fechaCompleta = year + "-" + meses + "-" + day
+        console.log(fechaCompleta);
+        fechaInicio= fechaCompleta
 }
 
 
@@ -295,6 +385,13 @@ useEffect(() => {
     setProductos(buscador)
 }, [buscador])
 
+useEffect(()=>{
+    if(Object.keys(form22).length===0){
+    }else{
+        updateData3()
+    }
+},[form22])
+
 
     return (
         <>
@@ -305,6 +402,13 @@ useEffect(() => {
                 <p>{mensajeModal}</p>
                 <button className='aceptar' onClick={cambiarEstado}><i className="fa-solid fa-check"> Aceptar</i></button>
             </ModalProducto>
+            <Modal
+                estado={estadoModalEmail2}
+                cambiarEstado={cambiarEstadoModalEmail2}
+                color={'#008F39'}
+            >
+                <p>Se ha creado correctamente la promoción</p>
+            </Modal>
             <div className="overlayEditar">
                 <div className="container_agregar2">
                     <div className='close'>
@@ -460,7 +564,7 @@ useEffect(() => {
                     <div className="tituEditar">
                         <h2>PROMOCIONAR PRODUCTO</h2>
                     </div>
-                    <form className="formCategoria formPromo" onSubmit={handleSubmit}>
+                    <form className="formCategoria formPromo" onSubmit={handleSubmitPromo}>
                         <div className='txt_field2'>
                             <input
                                 type='number'
@@ -469,7 +573,7 @@ useEffect(() => {
                                 utoComplete='off'
                                 value={form.valorDescuento}
                                 required
-                                onChange={handleChange}
+                                onChange={handleChangePromo}
                             />
                             <label className='labelForm' for='valorDescuento'>
                                 {' '}
@@ -486,7 +590,7 @@ useEffect(() => {
                                 utoComplete='off'
                                 value={form.productoExtra}
                                 required
-                                onChange={handleChange}
+                                onChange={handleChangePromo}
                             />
                             <label className='labelForm' for='productoExtra'>
                                 {' '}
@@ -496,7 +600,7 @@ useEffect(() => {
                         </div>
 
                         <div className="txt_field2">
-                            <input type="date" id="fechaInicio" name="fechaFinalizacion" value={form.fechaFinalizacion} required onChange={handleChange}/>
+                            <input type="date" id="fechaInicio" name="fechaFinalizacion" value={form.fechaFinalizacion} required onChange={handleChangePromo}/>
                             <label className="labelForm" for="fechaInicio"> Fecha de finalización</label>
                             <span></span>
                         </div>
@@ -580,7 +684,7 @@ useEffect(() => {
                                         </span>
                                         {index.estadoPromocion==="ENP"
                                         ?<p className='enPromo'>Producto en promoción!! <i class="fa-solid fa-percent"></i></p>
-                                        :<button onClick={(e)=>promocionarProducto(e)}>Promocionar producto</button>
+                                        :<button onClick={()=>promocionarProducto(index.idProducto)}>Promocionar producto</button>
                                     }
                                     </td>
                                     
