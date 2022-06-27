@@ -43,7 +43,9 @@ export const Login = () => {
                 ...state.form,
                 [e.target.name]: e.target.value,
             },
+            
         })
+        console.log(state.form);
     }
 
     let history = useNavigate()
@@ -165,7 +167,7 @@ export const Login = () => {
                             <div className='recuperar'>
                                 <NavLink to='/RecoverPass'>
                                     <a href='/RecoverPass'>
-                                        ¿Olvidaste tu contraseña?{' '}
+                                        Cambiar contraseña{' '}
                                     </a>
                                 </NavLink>
                             </div>

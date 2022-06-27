@@ -5,14 +5,15 @@ import { EditarPerfilUsuario } from '../../UI/EditarPerfilUsuario/EditarPerfilUs
 import axios from 'axios'
 import { ModalProducto } from '../../UI/ModalProducto/ModalProducto'
 import { MisPedidos } from '../../UI/MisPedidos/MisPedidos'
-
-
+import { CambiarConstrasena } from '../../UI/CambiarContrasena/CambiarConstrasena'
+import { Logout } from '../../helpers/logout/Logout'
 
 export const PerfilUsuario = () => {
 
     let idUser = localStorage.getItem('idUser')
     const [mostrarEdit, setMostrarEdit] = useState(true)
     const [mostrarEdit2, setMostrarEdit2] = useState(false)
+    const [mostrarEdit3, setMostrarEdit3] = useState(false)
     console.log(mostrarEdit2);
     let setearImg
     let colorModal="#fff"
@@ -82,18 +83,47 @@ export const PerfilUsuario = () => {
     }
 
     const manejoBotonMiPerfil=()=>{
+        const boton1 = document.querySelector('.perfil1')
+        const boton2 = document.querySelector('.perfil2')
+        const boton3 = document.querySelector('.perfil3')
+
+        boton1.style.background="rgb(255, 196, 0)"
+        boton2.style.background="transparent"
+        boton3.style.background="transparent"
+        setMostrarEdit3(false)
         setMostrarEdit2(false)
         setMostrarEdit(true)
-        console.log(mostrarEdit);
     }
 
     const manejoBotonMisPedidos=()=>{
+        const boton1 = document.querySelector('.perfil1')
+        const boton2 = document.querySelector('.perfil2')
+        const boton3 = document.querySelector('.perfil3')
+
+        boton1.style.background="transparent"
+        boton2.style.background="rgb(255, 196, 0)"
+        boton3.style.background="transparent"
+        setMostrarEdit3(false)
         setMostrarEdit2(true)
         setMostrarEdit(false)
-        console.log(mostrarEdit, "primer edit");
+    }
+
+    const manejoBotonCambiarContrasena = () =>{
+        const boton1 = document.querySelector('.perfil1')
+        const boton2 = document.querySelector('.perfil2')
+        const boton3 = document.querySelector('.perfil3')
+
+        boton1.style.background="transparent"
+        boton2.style.background="transparent"
+        boton3.style.background="rgb(255, 196, 0)"
+        setMostrarEdit3(true)
+        setMostrarEdit2(false)
+        setMostrarEdit(false)
     }
 
     useEffect(() => {
+        const boton1 = document.querySelector('.perfil1')
+        boton1.style.background="rgb(255, 196, 0)"
         obtenerUsuario()
     }, [])
     
@@ -126,6 +156,13 @@ export const PerfilUsuario = () => {
                     </div>
                     <div className="opciones-perfil">
                         <div className="custom-input-file2 perfil">
+                            
+                                <NavLink to='/' onClick={Logout}>
+                                <button>Cerrar sesión</button>
+                                </NavLink>
+                            
+                        </div>
+                        <div className="custom-input-file2 perfil">
                             <input type="file" id="cambiarFoto" autoComplete="off" onChange={(e)=>{
                                 setearImagen(e)
                             }}/>
@@ -135,12 +172,17 @@ export const PerfilUsuario = () => {
                 </div>
                 <div className="menu-perfil">
                     <ul>
-                        <li><button onClick={()=>{
+                        <li><button className="perfil1" onClick={()=>{
                             manejoBotonMiPerfil()
                         }}>Mi perfil</button></li>
-                        <li><button onClick={()=>{
+                        <li><button className="perfil2" onClick={()=>{
                             manejoBotonMisPedidos()
-                            }}>Mis pedidos</button></li>
+                            }}>Mis pedidos</button>
+                        </li>
+                        <li><button className="perfil3" onClick={()=>{
+                            manejoBotonCambiarContrasena()
+                            }}>Cambiar Contraseña</button>
+                        </li>
                     </ul>
                 </div>
                 
@@ -155,6 +197,13 @@ export const PerfilUsuario = () => {
                     ?   <div className="boxMisPedidos">
                             <h2>MIS PEDIDOS</h2>
                             <MisPedidos/>
+                        </div>
+                    :""
+                    }
+                    {mostrarEdit3 === true
+                    ?   <div className="boxCambiarContrasena">
+                            <h2>Cambiar contraseña</h2>
+                            <CambiarConstrasena/>
                         </div>
                     :""
                     }

@@ -1,0 +1,52 @@
+.boxCambiarContrasena{
+    width: 100%;
+    height: 400px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    margin: auto;
+    background-color: white;
+    text-align: center;
+}
+
+.containerFormC{
+    width: 300px;
+    height: 270px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+.formCambiarC{
+    width: 100%;
+    border: 1px solid #b6b6b6;
+    height: 90%;
+    border-radius: 1rem;
+    margin-top: 20px;
+    visibility: visible;
+    opacity: 1;
+    transition: all 300ms ease;
+}
+
+.formCambiarC2{
+    width: 100%;
+    height: 90%;
+    border: 1px solid #b6b6b6;
+    height: 100%;
+    border-radius: 1rem;
+    right: -100px;
+    position:absolute;
+    visibility: hidden;
+    opacity: 0;
+    z-index:1;
+    margin: 0;
+    transition: all 300ms ease;
+}
+
+@media (max-width: 780px){
+    .boxCambiarContrasena{
+        padding-top: 100px;
+    }
+}

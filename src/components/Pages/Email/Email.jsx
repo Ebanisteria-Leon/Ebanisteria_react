@@ -45,7 +45,7 @@ export const Email = () => {
                 cambiarEstado={cambiarEstadoModalEmail}
                 color={colorModal}
             >
-                <p>Se envió el correo correctamente!</p>
+                <p>Se envió el mensaje correctamente!</p>
             </Modal>
             <div className='mainEmail'>
                 <Barra/>

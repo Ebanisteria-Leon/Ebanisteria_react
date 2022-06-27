@@ -185,4 +185,12 @@
     .linksProducts a{
         font-size: 16px;
     }
+
+    .section__links{
+        width: 90%;
+        margin: auto;
+    }
+    .section__category{
+        width: 100vw;
+    }
 }
