@@ -24,8 +24,6 @@ export const Category = () => {
                 type: actionTypes.BUSCADOR,
                 data: data.data,
             })
-            
-            
         })
     }
 

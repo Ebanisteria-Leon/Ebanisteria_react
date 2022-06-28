@@ -48,3 +48,31 @@
     font-size: 20px;
     margin-right: 5px;
 }
+
+.estadoPedido{
+    padding: 0;
+}
+
+.estadoPedido .nuevo{
+    height: 50px;
+    width: 50px;
+    top: 0;
+    left: -2px;
+}
+
+.estadoPedido .nuevo:before{
+    content: "¡Cancelado!";
+    top: 0;
+    width: 120px;
+    border-bottom: 25px solid rgb(204, 47, 47);
+}
+
+.xPedido2{
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.xPedido22{
+    font-weight: bold;
+    color: rgb(204, 47, 47);
+}

@@ -13,7 +13,7 @@ import { Mensaje } from '../../UI/Mensaje/Mensaje'
 import axios from 'axios'
 import { actionTypes } from '../../hooks/reducer'
 import { useStateValue } from '../../hooks/StateProvider'
-
+import Swal from 'sweetalert2'
 
 
 
@@ -32,6 +32,18 @@ export const TableCategories = () => {
       
 
     const [form2, setForm2] = useState({})
+
+    const obtenerCategorias = () =>{
+        api.get(url).then(res=>{
+            if(!res.err){
+                setMsgError(null)
+                setCategorias(res)
+            }else{
+                setMsgError(res)
+                setCategorias([])
+            }
+        })
+    }
 
     const cambiarEstado = () =>{
         confirmar= true
@@ -92,37 +104,40 @@ export const TableCategories = () => {
             let endpoint = url+form2.idCategoria+'/'
             await axios.put(endpoint, form2)
             .then((res) => {
-            window.location.href="/Admin/TableCategories"
+                obtenerCategorias()
+                cerrarEditor()
         })
         }
     }
 
-    const deleteData = async (data) =>{
-        let isDelete = window.confirm(
-            `Estas seguro de eliminar el registro con el id ` + data.idCategoria
-        )
-        if(isDelete){
-            let endpoint = url+data.idCategoria+'/'
-            await axios.delete(endpoint)
-            .then((res) =>{
-                window.location.href="/Admin/TableCategories"
-            })
+    const deleteData = (data) =>{
+
+        Swal.fire({
+            title: 'Eliminar promoción?',
+            text: "Desea eliminar esta promoción",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let endpoint = url+data.idCategoria+'/'
+                axios.delete(endpoint)
+                .then((res) =>{
+                    obtenerCategorias()
+                })
+            }
+        })
+
             
-        }
     }
 
 
     useEffect(()=>{
         setLoading(true)
-        api.get(url).then(res=>{
-            if(!res.err){
-                setMsgError(null)
-                setCategorias(res)
-            }else{
-                setMsgError(res)
-                setCategorias([])
-            }
-        })
+        obtenerCategorias()
         setLoading(false)
     },[])
 

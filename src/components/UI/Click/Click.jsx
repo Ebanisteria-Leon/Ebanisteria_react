@@ -11,6 +11,12 @@ export const Click = () => {
             <img src={Logo} alt="" />
             </div>
         </div>
+        <div className="contenedor_clicks">
+            <p>ENCUENTRANOS</p>
+            <div className="logo_click">
+            <img src={Logo} alt="" />
+            </div>
+        </div>
     </div>
   )
 }

@@ -17,6 +17,7 @@ import { actionTypes } from '../../hooks/reducer'
 import { useStateValue } from '../../hooks/StateProvider'
 import { Paginacion } from '../../UI/Paginacion/Paginacion'
 import { Modal } from '../../UI/Modal/Modal';
+import Swal from 'sweetalert2'
 
 
 
@@ -253,18 +254,26 @@ const updateData3 = async () =>{
 }
 
 
-const deleteData = async (data) =>{
-    let isDelete = window.confirm(
-        `Estas seguro de eliminar el registro con el id ` + data.idProducto
-    )
-    if(isDelete){
-        let endpoint = urlNormal+data.idProducto+'/'
-        await axios.delete(endpoint)
-        .then((res) =>{
-            obtenerProductos()
+const deleteData = (data) =>{
+        Swal.fire({
+            title: 'Eliminar producto?',
+            text: "Desea eliminar este producto",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let endpoint = urlNormal+data.idProducto+'/'
+                axios.delete(endpoint)
+                .then((res) =>{
+                    obtenerProductos()
+                })
+            }
         })
         
-    }
 }
 
 const mostrarArchivo = (e) => {

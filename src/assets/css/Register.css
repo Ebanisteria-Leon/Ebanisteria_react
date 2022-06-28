@@ -133,6 +133,16 @@
   background-color: #dd9a15;
 }
 
+.ojoPassword{
+  position:absolute;
+  border: none;
+  background: transparent;
+  right: 10px;
+  bottom: 15px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
 @media(max-width:1400px){
   .contenedor_boxRegister{
     height: 80%;

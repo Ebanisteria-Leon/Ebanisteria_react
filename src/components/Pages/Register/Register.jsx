@@ -12,6 +12,8 @@ import { Modal } from '../../UI/Modal/Modal'
 
 export const Register = () => {
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
+    const [activa1, setActiva1] = useState(false)
+    const [activa2, setActiva2] = useState(false)
     let colorModal = ''
     const [state, setState] = useState({
         form: {
@@ -42,13 +44,17 @@ export const Register = () => {
                 [e.target.name]: e.target.value,
             },
         })
+        console.log(state.form);
     }
 
     const history = useNavigate()
 
     const manejadorBoton = () => {
         let url = 'https://leon-ebanisteria.herokuapp.com/users/usuario/'
-        axios
+        let password1 = document.querySelector('#password1')
+        let password2 = document.querySelector('#password2')
+        if(password1.value===password2.value){
+            axios
             .post(url, state.form)
             .then((response) => {
                 cambiarEstadoModalEmail(!estadoModalEmail)
@@ -80,7 +86,43 @@ export const Register = () => {
                     errorMsg: 'El nombre de usuario o el correo electrónico ya existen',
                 })
             })
+        }else{
+            cambiarEstadoModalEmail(!estadoModalEmail)
+            setState({
+                form: {
+                    ...state.form,
+                },
+                error: true,
+                errorMsg: 'Las contraseñas no coinciden',
+            })
+        }
     }
+
+    const mostrarContrasena=()=>{
+        
+        let tipo = document.getElementById("password1");
+        if(tipo.type === "password"){
+            tipo.type = "text";
+            setActiva1(true)
+        }else{
+            tipo.type = "password";
+            setActiva1(false)
+        }
+    }
+
+    const mostrarContrasena2 = () =>{
+        
+        let tipo2 = document.getElementById("password2");
+
+        if(tipo2.type === "password"){
+            tipo2.type = "text";
+            setActiva2(true)
+        }else{
+            tipo2.type = "password";
+            setActiva2(false)
+        }
+    }
+
 
     return (
         <div className='mainRegister'>
@@ -88,7 +130,7 @@ export const Register = () => {
                 <Modal
                     estado={estadoModalEmail}
                     cambiarEstado={cambiarEstadoModalEmail}
-                    color={colorModal="#FF5733"}
+                    color={"#FF5733"}
                 >
                     <p>{state.errorMsg}</p>
                 </Modal>
@@ -97,7 +139,7 @@ export const Register = () => {
                 <Modal
                     estado={estadoModalEmail}
                     cambiarEstado={cambiarEstadoModalEmail}
-                    color={colorModal="#008F39"}
+                    color={"#008F39"}
                 >
                     <p>{state.errorMsg}</p>
                 </Modal>
@@ -177,14 +219,34 @@ export const Register = () => {
                             <div className='txt_field_register'>
                                 <input
                                     type='password'
-                                    id='password'
+                                    id='password1'
+                                    name='password'
+                                    required
+                                />
+                                <label className='labelForm' for='password1'>
+                                    Contaseña
+                                </label>
+                                {activa1===false 
+                                    ?<i onClick={mostrarContrasena} className="fa-solid fa-eye ojoPassword"></i>
+                                    :<i onClick={mostrarContrasena} class="fa-solid fa-eye-slash ojoPassword"></i>
+                                }
+                                <span></span>
+                            </div>
+                            <div className='txt_field_register'>
+                                <input
+                                    type='password'
+                                    id='password2'
                                     name='password'
                                     required
                                     onChange={manejadorChange}
                                 />
-                                <label className='labelForm' for='password'>
-                                    Contaseña
+                                <label className='labelForm' for='password2'>
+                                    Confirmar contraseña
                                 </label>
+                                {activa2===false
+                                    ?<i onClick={mostrarContrasena2} className="fa-solid fa-eye ojoPassword"></i>
+                                    :<i onClick={mostrarContrasena2} class="fa-solid fa-eye-slash ojoPassword"></i>
+                                }
                                 <span></span>
                             </div>
                             <div className='divbtn_register'>

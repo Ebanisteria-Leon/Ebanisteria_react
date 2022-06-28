@@ -15,10 +15,7 @@ import Editar from '../../../assets/images/iconos/editarProducto.png'
 import { actionTypes } from '../../hooks/reducer'
 import { useStateValue } from '../../hooks/StateProvider'
 import { Paginacion } from '../../UI/Paginacion/Paginacion'
-
-
-
-
+import Swal from 'sweetalert2'
 
 
 export const TablePromociones = () => {
@@ -151,19 +148,28 @@ const updateData2 = async () =>{
     }
 }
 
-const deleteData = async (data) =>{
-    let isDelete = window.confirm(
-        `Estas seguro de eliminar el registro con el id ` + data.idPromociones
-    )
-    if(isDelete){
-        let endpoint = url+data.idPromociones+'/'
-        await axios.delete(endpoint)
-        .then((res) =>{
-            // obtenerPromociones()
-            cambiarEstadoPromocion(data)
-        })
+const deleteData = (data) =>{
+    Swal.fire({
+        title: 'Eliminar promoción?',
+        text: "Desea eliminar esta promoción",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            let endpoint = url+data.idPromociones+'/'
+            axios.delete(endpoint)
+            .then((res) =>{
+                // obtenerPromociones()
+                cambiarEstadoPromocion(data)
+            })
+        }
+    })
         
-    }
+        
 }
 
 const cambiarEstadoPromocion = (productoSoloo) =>{

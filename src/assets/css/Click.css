@@ -6,8 +6,9 @@
     justify-content: center;
     align-items:center;
     margin-top: 250px;
-    background-image: url(../images/Clicks/fondo.png);
-    background-size: 100% 100%;
+    background-image: url(../images/Clicks/ubicacion.png);
+    background-size: contain;
+    background-position: center;
     background-attachment: fixed;
 }
 

@@ -18,6 +18,7 @@ export const PerfilUsuario = () => {
     let setearImg
     let colorModal="#fff"
     const [usuario, setUsuario] = useState({})
+    const [ejecutar, setEjecutar] = useState(false)
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
     let confirmar = Boolean
 
@@ -64,10 +65,10 @@ export const PerfilUsuario = () => {
                 ...usuario,
                 image: imagen
             })
-
+            setEjecutar(true)
         })
         .catch(err => console.log(err))
-        putImage()  
+        
     }
 
     const putImage = async () =>{
@@ -77,7 +78,9 @@ export const PerfilUsuario = () => {
             let endpoint = url+usuario.id+'/'
             await axios.put(endpoint, usuario)
             .then((res) => {
-                console.log(res);
+                
+                setEjecutar(false)
+                window.location.reload()
             })
         }
     }
@@ -126,6 +129,13 @@ export const PerfilUsuario = () => {
         boton1.style.background="rgb(255, 196, 0)"
         obtenerUsuario()
     }, [])
+
+    useEffect(() => {
+        if(ejecutar === true){
+            putImage()
+        }
+    }, [ejecutar])
+    
     
 
     return (

@@ -56,26 +56,28 @@ export const Products = () => {
 
     const { ocultar_producto } = useViewModal()
     const [{ buscador }, dispatch] = useStateValue()
-    const buscadorLocal = localStorage.getItem('buscador')
-    const buscadorLocal2=JSON.parse(buscadorLocal)
     const [todos, setTodos] = useState([])
     const [categoria, setCategoria] = useState()
     const [tituCategoria, setTituCategoria] = useState("")
     const [pagina, setPagina] = useState(1)
     const [porPagina, setPorPagina] = useState(10)
     const maximo = todos.length / porPagina
+    // let maximo
+    // if(!todos===null){
+    //     maximo = todos.length / porPagina
+    // }
+    let buscador2 = []
 
     const fetchApi=async()=>{
         setTituCategoria("")
-        
-        console.log(buscadorLocal2);
-        if(buscadorLocal2.length===0){
+
+        if(!buscador2.length>0){
             const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/?ordering=-idProducto")
             const responseJSON = await response.json()
             setTodos(responseJSON)
+            console.log(responseJSON);
         }else{
             console.log("hola");
-            setTodos(buscadorLocal2)
         }
         
     }
@@ -89,6 +91,7 @@ export const Products = () => {
     }
 
     const obtenerCategoria=async(categoria)=>{
+        console.log(categoria);
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/?search=" + categoria)
         const responseJSON = await response.json()
         setTodos(responseJSON)
@@ -107,8 +110,10 @@ export const Products = () => {
     },[])
 
     useEffect(() => {
-        setTodos(buscador)
-    }, [buscador])
+        buscador2= JSON.parse(localStorage.getItem('buscador'))
+        console.log(buscador2);
+        setTodos(buscador2)
+    }, [])
 
     
 
@@ -129,7 +134,7 @@ export const Products = () => {
                     <div className="overlayBoton" onClick={fetchApi2}>Todos</div>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria1" value="Sofás" title="Sofpas">Sofás</button>
+                    <button className="botonCategoria1" value="Sofás" title="Sofás">Sofás</button>
                     <div className="overlayBoton" onClick={capturarCategoria}>Sofás</div>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
@@ -137,7 +142,7 @@ export const Products = () => {
                     <div className="overlayBoton" onClick={capturarCategoria}>Camas</div>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria3" value="Sala exterior" title="Sala exterior">Sala exterior</button>
+                    <button className="botonCategoria3" value="Sala Exterior" title="Sala exterior">Sala exterior</button>
                     <div className="overlayBoton" onClick={capturarCategoria}>Sala exterior</div>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
