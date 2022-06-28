@@ -110,10 +110,12 @@ export const Products = () => {
     },[])
 
     useEffect(() => {
-        buscador2= JSON.parse(localStorage.getItem('buscador'))
-        console.log(buscador2);
-        setTodos(buscador2)
-    }, [])
+        if(!buscador2.length===0){
+            buscador2= JSON.parse(localStorage.getItem('buscador'))
+            console.log(buscador2);
+            setTodos(buscador2)
+        }
+    }, [buscador2])
 
     
 
@@ -146,8 +148,8 @@ export const Products = () => {
                     <div className="overlayBoton" onClick={capturarCategoria}>Sala exterior</div>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
-                    <button className="botonCategoria4" value="Bibliotecas" title="Bibliotecas">Bibliotecas</button>
-                    <div className="overlayBoton" onClick={capturarCategoria}>Bibliotecas</div>
+                    <button className="botonCategoria4" value="Biblioteca" title="Bibliotecas">Biblioteca</button>
+                    <div className="overlayBoton" onClick={capturarCategoria}>Biblioteca</div>
                     </div>
                     <div className='contenedorBoton' style={{ width: 200 }}>
                     <button className="botonCategoria5" value="Escritorios" title="Escritorios">Escritorios</button>
@@ -199,10 +201,7 @@ export const Products = () => {
                             (pagina - 1) * porPagina + porPagina)
                         .map((productos,key)=>{
                             return(
-                                productos.estadoProducto==="D"
-                                ?<ProductCard key={key} productos={productos}/>
-                                :""
-                                
+                                <ProductCard key={key} productos={productos}/>
                             )
                         })}
                 </section>

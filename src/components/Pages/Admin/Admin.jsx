@@ -19,11 +19,13 @@ export const Admin = () => {
     const [dataDestacado, setDataDestacado] = useState([])
     const [dataNoDestacado, setDataNoDestacado] = useState([])
     const [dataNuevo, setDataNuevo] = useState([])
+    const [dataPromocion, setDataPromocion] = useState([])
     let variable
     let variable2
     let variable3
     let variable4
     let variable5
+    let variable6
     const [url, setUrl] = useState()
     const [titulo, setTitulo] = useState("")
 
@@ -88,21 +90,22 @@ export const Admin = () => {
                 setearUrl(data, 'PRODUCTOS NUEVOS')
             })
     }
-    // const obtenerPromociones = () => {
-    //     fetch(
-    //         'https://leon-ebanisteria.herokuapp.com/api/producto/?tiempoProducto=NUE'
-    //     )
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             setDataNuevo(data)
-    //             setearUrl(data, 'PRODUCTOS NUEVOS')
-    //         })
-    // }
+    const obtenerPromociones = () => {
+        fetch(
+            'https://leon-ebanisteria.herokuapp.com/api/producto/?estadoPromocion=ENP'
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                setDataPromocion(data)
+                setearUrl(data, 'PRODUCTOS EN PROMOCIÓN')
+            })
+    }
     variable = dataDisponible.length
     variable2 = dataNoDisponible.length
     variable3 = dataDestacado.length
     variable4 = dataNoDestacado.length
     variable5 = dataNuevo.length
+    variable6 = dataPromocion.length
 
     const setearUrl = (data, titulo) => {
         setUrl(data)
@@ -215,9 +218,12 @@ export const Admin = () => {
                         <i className='fa-solid fa-right-long'></i>
                     </div>
                 </div>
-                <div className='mainIcono'>
+                <div className='mainIcono' onClick={() => {
+                        obtenerPromociones()
+                        abrirModal()
+                    }}>
                     <div className='conteo'>
-                        <p>{0}</p>
+                        <p>{variable6}</p>
                     </div>
                     <div className='boxIcono'>
                         <img src={Armario} alt='' />

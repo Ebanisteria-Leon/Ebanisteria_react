@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, {useState, useEffect} from 'react'
 import { Modal } from '../../UI/Modal/Modal'
 import '../../../assets/css/CambiarContrasena.css'
+import { Logout } from '../../helpers/logout/Logout'
 
 
 export const CambiarConstrasena = () => {
@@ -102,7 +103,8 @@ export const CambiarConstrasena = () => {
         .put(url+idUser+"/", usuario)
         .then((response) => {
             if (response.status === 200) {
-                console.log(response);
+                Logout()
+                window.location.href="/Login"
             }
         })
         .catch((error) => {

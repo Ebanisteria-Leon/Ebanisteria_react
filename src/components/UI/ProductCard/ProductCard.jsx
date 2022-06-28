@@ -123,12 +123,20 @@ export const ProductCard = ({
                     <div className='product-category'>
                         <span>{nombre}</span>
                     </div>
+                    {estadoProducto==="ND"
+                    && <div className="noDisponibleP">
+                        <p>Proximamente disponible</p>
+                    </div>
+                    }
                 </div>
 
                 <div className='product-btn'>
-                    <button className='buy-btn' onClick={addToCar}>
+                    {estadoProducto === "D"
+                    ?<button className='buy-btn' onClick={addToCar}>
                         <i className='fas fa-shopping-cart'></i>
                     </button>
+                    :""
+                    }
                     <button className='ver-btn' onClick={mostrar_producto2}>
                         <i className='fa-solid fa-eye'></i>
                     </button>

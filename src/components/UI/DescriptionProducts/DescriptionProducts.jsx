@@ -105,30 +105,37 @@ export const DescriptionProducts = ({ id, click}) => {
                             </div>
 
                             <div className='productsActions'>
-                                <div className='addProducts'>
-                                    <button
-                                        className='buttonProducts addProducts_add'
-                                        onClick={add}
-                                    >
-                                        <i className='fas fa-plus'></i>
-                                    </button>
-                                    <div className='addProducts_count'>
-                                        <span id='counter'>{counter}</span>
+                            {dataId.estadoProducto === "D"
+                                    ?(
+                                        <>
+                                        <div className='addProducts'>
+                                        <button
+                                            className='buttonProducts addProducts_add'
+                                            onClick={add}
+                                        >
+                                            <i className='fas fa-plus'></i>
+                                        </button>
+                                        <div className='addProducts_count'>
+                                            <span id='counter'>{counter}</span>
+                                        </div>
+                                        <button
+                                            className='buttonProducts addProducts_remove'
+                                            onClick={remove}
+                                        >
+                                            <i className='fas fa-minus'></i>
+                                        </button>
                                     </div>
-                                    <button
-                                        className='buttonProducts addProducts_remove'
-                                        onClick={remove}
-                                    >
-                                        <i className='fas fa-minus'></i>
-                                    </button>
-                                </div>
 
-                                <div className='buyProducts'>
-                                    <button className='buttonProducts_buy' onClick={addToCar}>
-                                        <i className='fas fa-shopping-cart'></i>
-                                        Añadir al Carrito
-                                    </button>
-                                </div>
+                                    <div className='buyProducts'>
+                                        <button className='buttonProducts_buy' onClick={addToCar}>
+                                            <i className='fas fa-shopping-cart'></i>
+                                            Añadir al Carrito
+                                        </button>
+                                    </div>
+                                        </>
+                                    )
+                                :""
+                                }
                             </div>
                         </div>
                     </>
