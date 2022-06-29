@@ -29,7 +29,6 @@ export const AgregarPromocion = () => {
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/?estadoProducto=D")
         const responseJSON = await response.json()
         setProducto(responseJSON)
-        console.log(responseJSON);
     }
 
     const handleSubmit = (e) => {
@@ -48,13 +47,11 @@ export const AgregarPromocion = () => {
             idProducto: [Number(producto.value)],
             fechaInicio: fechaInicio
         })
-        console.log(form);
     }
 
     const obtenerProductoSolo = async (producto)=>{
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/" + producto.value)       
         const responseJSON =await response.json()
-        console.log(responseJSON);
         setProductoSolo(responseJSON)
     }
 
@@ -69,6 +66,7 @@ export const AgregarPromocion = () => {
             let url= "https://leon-ebanisteria.herokuapp.com/api/promocion/"
             await axios.post(url, form)
             .then(res=>{
+                console.log(res);
                 cambiarEstadoPromocion()
             })
             .catch(err=>{
@@ -89,10 +87,8 @@ export const AgregarPromocion = () => {
         })
         
     }
-    console.log(form2);
 
     const updateData2 = async () =>{
-            console.log(form2);
             let endpoint = "https://leon-ebanisteria.herokuapp.com/api/producto/"+productoSolo.idProducto+'/'
             await axios.put(endpoint, form2)
             .then((res) => {
@@ -106,7 +102,6 @@ export const AgregarPromocion = () => {
         let day = fecha.getUTCDate()
         let year = fecha.getUTCFullYear()
         let fechaCompleta = year + "-" + meses + "-" + day
-        console.log(fechaCompleta);
         fechaInicio= fechaCompleta
     }
 

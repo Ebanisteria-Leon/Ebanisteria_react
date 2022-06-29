@@ -38,7 +38,6 @@ export const CambiarConstrasena = () => {
                 [e.target.name]: e.target.value,
             },
         })
-        console.log(state.form)
     }
 
     const manejadorChange2 = (e) => {
@@ -47,7 +46,6 @@ export const CambiarConstrasena = () => {
             ...usuario,
             password: password.value,
         })
-        console.log(usuario)
     }
 
     useEffect(() => {
@@ -60,7 +58,6 @@ export const CambiarConstrasena = () => {
         let form = document.querySelector('#form1')
         let form2 = document.querySelector('#form2')
 
-        console.log(form, form2);
         axios
             .post(url, state.form)
             .then((response) => {
@@ -93,7 +90,14 @@ export const CambiarConstrasena = () => {
         if(password1.value === password2.value){
             cambiarContrasena()
         }else{
-            console.log("No coinciden");
+            cambiarEstadoModalEmail(!estadoModalEmail)
+            const inputContrasena = document.getElementById('password')
+
+                inputContrasena.value = ''
+                setState({
+                    error: true,
+                    errorMsg: 'la contraseña es incorrecta',
+                })
         }
     }
 

@@ -5,6 +5,10 @@ import aos from 'aos'
 import 'aos/dist/aos.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Whatsapp from '../../../assets/images/Redes/whatsapp.png'
+import Facebook from '../../../assets/images/Redes/facebook.png'
+import Instagram from '../../../assets/images/Redes/instagram.png'
+import Github from '../../../assets/images/Redes/github.png' 
 
 
 
@@ -16,7 +20,24 @@ export const Footer = () => {
     }, [])
 
     return (
+        <>
+        <div className="accesosRedes">
+                <div className="red1 red">
+                    <a href="https://wa.me/+573168839000" target={"_blank"}><img src={Whatsapp} alt="" /></a>
+                </div>
+                <div className="red2 red">
+                    <a href="https://web.facebook.com/profile.php?id=100082539743285" target={"_blank"}><img src={Facebook} alt="" /></a>
+                </div>
+                <div className="red3 red">
+                    <a href="https://www.instagram.com/ebanisterialeon/" target={"_blank"}><img src={Instagram} alt="" /></a>
+                </div>
+                <div className="red4 red">
+                    <a href="https://github.com/Ebanisteria-Leon/Ebanisteria_react" target={"_blank"}><img src={Github} alt="" /></a>
+                </div>
+                
+            </div>
         <footer>
+            
             <div className='informacion_superior-footer'>
                 <ul>
                     <li>
@@ -66,5 +87,6 @@ export const Footer = () => {
                 </ul>
             </div>
         </footer>
+        </>
     )
 }

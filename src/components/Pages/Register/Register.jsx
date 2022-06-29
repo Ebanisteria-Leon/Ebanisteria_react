@@ -44,7 +44,6 @@ export const Register = () => {
                 [e.target.name]: e.target.value,
             },
         })
-        console.log(state.form);
     }
 
     const history = useNavigate()

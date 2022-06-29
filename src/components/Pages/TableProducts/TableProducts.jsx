@@ -199,20 +199,18 @@ const handleChange = (e) =>{
 }
 
 const handleChangePromo = (e) =>{
-    console.log(fechaInicio);
     setFormPromo({
         ...formPromo,
         [e.target.name]: e.target.value,
         idProducto: [productoSolo.idProducto],
         fechaInicio: fechaInicio
     })
-    console.log(formPromo);
 }
 
 const obtenerProductoSolo = async (producto)=>{
     const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/" + producto)       
     const responseJSON =await response.json()
-    console.log(responseJSON);
+    console.log(response);
     setProductoSolo(responseJSON)
 }
 
@@ -698,7 +696,7 @@ useEffect(()=>{
                                             {accounting.formatMoney(index.valor, "$")}
                                         </span>
                                         {index.estadoPromocion==="ENP"
-                                        ?<p className='enPromo'>Producto en promoción!! <i class="fa-solid fa-percent"></i></p>
+                                        ?<p className='enPromo'>Producto en promoción!! <i className="fa-solid fa-percent"></i></p>
                                         :<button onClick={()=>promocionarProducto(index.idProducto)}>Promocionar producto</button>
                                     }
                                     </td>

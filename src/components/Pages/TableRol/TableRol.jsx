@@ -24,12 +24,10 @@ export const TableRol = () => {
 
     const cambiarEstado = () =>{
         confirmar= true
-        console.log(idPersona);
         updateData2(idPersona)
     }
 
     const cambiarEstadoPedido= (data) =>{
-        console.log(data);
         let estadoRol
     
         if(data.rolUser === "Cliente"){

@@ -51,6 +51,7 @@ export const AgregarProducto = () => {
     })
     .then(resp => resp.json())
     .then(data => {
+      console.log(data.url);
     setForm({
       ...form,
       imagen: data.url

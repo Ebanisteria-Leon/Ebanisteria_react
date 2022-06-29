@@ -24,7 +24,7 @@ export const TableSalesDate = () => {
     const obtenerMiPedido=async()=>{
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/detail/pedido/" )
         const responseJSON =await response.json()
-        console.log(responseJSON);
+        console.log(response);
         setPedido(responseJSON)
     }
 
@@ -54,14 +54,12 @@ export const TableSalesDate = () => {
             idPersona: [Number(idUser)]
         })
 
-        console.log(form2);
 
         setIdPedido(pedido)
         actualizarPedido()
     }
 
     const actualizarPedido = () =>{
-        console.log(form2);
         cambiarEstadoModalEmail(!estadoModalEmail) 
         if(confirmar === true){
             let endpoint = url+form2.idPedidosPendientes+'/'

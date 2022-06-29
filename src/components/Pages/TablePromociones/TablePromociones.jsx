@@ -116,7 +116,6 @@ const handleChange = (e) =>{
     [e.target.name]: e.target.value,
 
     })
-    console.log(form2);
 }
 
 
@@ -190,7 +189,6 @@ const ejecutarUpdate = () =>{
 }
 
 const updateData3 = async () =>{
-    console.log(form2);
     let endpoint = "https://leon-ebanisteria.herokuapp.com/api/producto/"+form2.idProducto+'/'
     await axios.put(endpoint, form2)
     .then((res) => {
@@ -205,7 +203,7 @@ const obtenerProductoSolo = async (producto)=>{
     })
     const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/" + productoCompleto)       
     const responseJSON =await response.json()
-    console.log(responseJSON);
+    console.log(response);
     setProductoSolo(responseJSON)
 }
 
@@ -218,8 +216,12 @@ useEffect(()=>{
 },[])
 
 useEffect(() => {
-    setProductos(buscador)
-    
+    if(buscador===null || buscador===undefined || buscador.length===0){
+
+    }else{
+        setProductos(buscador)
+        setPagina(1)
+    }
 }, [buscador])
 
 useEffect(() => {

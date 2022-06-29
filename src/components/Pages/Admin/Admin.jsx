@@ -118,6 +118,7 @@ export const Admin = () => {
         obtenerDestacados()
         obtenerNoDestacados()
         obtenerNuevos()
+        obtenerPromociones()
     }, [])
 
     return (

@@ -15,8 +15,7 @@ import { Modal } from '../../UI/Modal/Modal'
 
 export const Login = () => {
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
-    let colorModal = ''
-    let colorModal2 = ''
+    const [activa1, setActiva1] = useState(false)
 
     const [state, setState] = useState({
         form: {
@@ -25,6 +24,7 @@ export const Login = () => {
         },
         error: false,
         errorMsg: '',
+        colorModal: ''
     })
 
     useEffect(() => {
@@ -46,7 +46,6 @@ export const Login = () => {
             },
             
         })
-        console.log(state.form);
     }
 
     let history = useNavigate()
@@ -57,7 +56,7 @@ export const Login = () => {
             .post(url, state.form)
             .then((response) => {
                 if (response.status === 200) {
-                    console.log(response.data);
+                    console.log(response);
                     const rol = response.data.user.rolUser
                     const username = response.data.user.username
                     const imagenU = response.data.user.image
@@ -77,6 +76,8 @@ export const Login = () => {
                         setState({
                             error: false,
                             errorMsg: 'has iniciado sesión correctamente!',
+                            colorModal: '#008F39'
+                            
                         })
                         setTimeout(() => {
                             history('/')
@@ -92,42 +93,39 @@ export const Login = () => {
                 console.log(error)
                 cambiarEstadoModalEmail(!estadoModalEmail)
                 const inputNombre = document.getElementById('nombre')
-                const inputEmail = document.getElementById('email')
+                const inputEmail = document.getElementById('password1')
 
                 inputNombre.value = ''
                 inputEmail.value = ''
                 setState({
                     error: true,
                     errorMsg: 'las credenciales son incorrectas',
+                    colorModal: '#FF5733'
                 })
             })
     }
 
-    const handleGoogleLogin = () =>{
-
+    const mostrarContrasena=()=>{
+        
+        let tipo = document.getElementById("password1");
+        if(tipo.type === "password"){
+            tipo.type = "text";
+            setActiva1(true)
+        }else{
+            tipo.type = "password";
+            setActiva1(false)
+        }
     }
 
     return (
         <div className='mainLogin'>
-            {state.error === true ?(
                 <Modal
                     estado={estadoModalEmail}
                     cambiarEstado={cambiarEstadoModalEmail}
-                    color={colorModal="#FF5733"}
+                    color={state.colorModal}
                 >
                     <p>{state.errorMsg}</p>
                 </Modal>
-            )
-            :(
-                <Modal
-                    estado={estadoModalEmail}
-                    cambiarEstado={cambiarEstadoModalEmail}
-                    color={colorModal2="#008F39"}
-                >
-                    <p>{state.errorMsg}</p>
-                </Modal>
-            )
-            }
             <Barra />
             <Header />
             <div className='contenedor_boxLogin'>
@@ -158,14 +156,18 @@ export const Login = () => {
                             <div className='txt_field'>
                                 <input
                                     type='password'
-                                    id='email'
+                                    id='password1'
                                     name='password'
                                     required
                                     onChange={manejadorChange}
                                 />
-                                <label className='labelForm' for='email'>
+                                <label className='labelForm' for='password1'>
                                     Contraseña
                                 </label>
+                                {activa1===false 
+                                    ?<i onClick={mostrarContrasena} className="fa-solid fa-eye ojoPassword"></i>
+                                    :<i onClick={mostrarContrasena} class="fa-solid fa-eye-slash ojoPassword"></i>
+                                }
                                 <span></span>
                             </div>
 

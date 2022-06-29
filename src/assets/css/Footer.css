@@ -11,6 +11,40 @@ footer {
     height: 900px;
     font-size: 20px;
   }
+
+  .accesosRedes{
+    width: 100%;
+    height: 20%;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .accesosRedes .red{
+    width: 4%;
+    height: 90%;
+  }
+
+  .accesosRedes .red1:hover img{
+    filter: drop-shadow(0 0 0.75rem #A8DAB5);
+  }
+  .accesosRedes .red2:hover img{
+    filter: drop-shadow(0 0 0.75rem #507DD2);
+  }
+  .accesosRedes .red3:hover img{
+    filter: drop-shadow(0 0 0.75rem crimson);
+  }
+  .accesosRedes .red4:hover img{
+    filter: drop-shadow(0 0 0.75rem #232323);
+  }
+
+  .accesosRedes a img{
+    object-fit:contain;
+    width: 100%;
+    height: 100%;
+    transition:all 300ms ease;
+  }
   
   .informacion_superior-footer{
     width: 100%;
@@ -79,7 +113,30 @@ footer {
   @media (max-width: 1200px) {
     footer {
       height: 80vh;
-      font-size: 18px;
+      position: relative;
+    }
+
+    footer h3{
+      margin: 0;
+    }
+
+    .informacion_superior-footer{
+      position: absolute;
+      top: 30px;
+    }
+
+    .informacion_superior-footer h3{
+      line-height: 40px;
+    }
+
+    .contenedor_inferior-footer{
+      position: absolute;
+      bottom: 0px;
+      overflow: none;
+      width: 80%;
+    }
+    .contenedor_inferior-footer h3{
+      line-height: 25px;
     }
   }
 

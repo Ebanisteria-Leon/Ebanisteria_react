@@ -10,7 +10,7 @@ export const TableOrders = () => {
     const obtenerMiPedido=async()=>{
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/detail/pedido/" )
         const responseJSON =await response.json()
-        console.log(responseJSON);
+        console.log(response);
         setPedido(responseJSON)
     }
 
@@ -30,8 +30,6 @@ export const TableOrders = () => {
                         <thead>
                             <tr>
                                 <th scope='col'>Inactivo</th>
-                                <th scope='col'>Por entregar</th>
-                                <th scope='col'>Entregado</th>
                             </tr>
                         </thead>
                             {!pedido ? "No existen pedidos" :
@@ -41,18 +39,53 @@ export const TableOrders = () => {
                                     <tbody>
                                         <tr key={key}>
                                         {index.estadoPedido === "CAN" 
-                                            ?<th>CANCELADO</th>
-                                            :<th>-</th>
-                                        }
-                                        {index.estadoPedido === "PE" &&
-                                            <th>PENDIENTE</th>
-                                        }
-                                        {index.estadoPedido === "EN"
-                                            ?<th>ENTREGADO</th>
-                                            :<th>-</th>
+                                            ?<th>({index.idPedidosPendientes}) CANCELADO</th>
+                                            :""
                                         }
                                         </tr>
                                     </tbody>                                   
+                                    </>
+                                )
+                            })}
+                    </table>
+                    <table className='table-orders'>
+                        <thead>
+                            <tr>
+                                <th scope='col'>Por entregar</th>
+                            </tr>
+                        </thead>
+                            {!pedido ? "No existen pedidos" :
+                            pedido.map((index, key) => {
+                                return (
+                                    <>
+                                    <tbody>
+                                        <tr key={key}>
+                                        {index.estadoPedido === "PE" &&
+                                            <th>({index.idPedidosPendientes}) PENDIENTE</th>
+                                        }
+                                        </tr>
+                                    </tbody>                                   
+                                    </>
+                                )
+                            })}
+                    </table>
+                    <table className='table-orders'>
+                        <thead>
+                            <tr>
+                                <th scope='col'>Por entregar</th>
+                            </tr>
+                        </thead>
+                            {!pedido ? "No existen pedidos" :
+                            pedido.map((index, key) => {
+                                return (
+                                    <>
+                                    <tbody>
+                                        <tr key={key}>
+                                        {index.estadoPedido === "EN" &&
+                                            <th>({index.idPedidosPendientes}) ENTREGADO</th>
+                                        }
+                                        </tr>
+                                    </tbody>                              
                                     </>
                                 )
                             })}

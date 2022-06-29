@@ -1,15 +1,30 @@
 
 .clicks{
     width: 100%;
-    height: 80vh;
+    height: 90vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items:center;
     margin-top: 250px;
-    background-image: url(../images/Clicks/ubicacion.png);
-    background-size: contain;
-    background-position: center;
-    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+    padding: 0px 50px;
+    background-color:rgba(255, 255, 255, 0.329);
+}
+
+.direccionGoogle{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    z-index: -1;
 }
 
 .contenedor_clicks{
@@ -18,10 +33,28 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 40%;
+    
+}
+
+.contenedor_clicks2{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    width: 30%;
+}
+
+.contenedor_clicks2 h2{
+    color: #F29900;
+    border-bottom:2px solid black;
+    
 }
 
 .logo_click{
-    width: 15%;
+    width: 30%;
 }
 
 .contenedor_clicks img{
@@ -30,21 +63,27 @@
     height: 100%;
 }
 
+
 .contenedor_clicks p{
-    font-size: 35px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.contenedor_clicks2 p{
+    font-size: 20px;
     font-weight: bold;
 }
 
 @media (max-width: 1400px) {
     .clicks{
-        margin-top: 200px;
+        margin-top: 300px;
     }
 }
 
 @media (max-width: 1200px) {
     .clicks{
-        height: 60vh;
-        margin-top: 170px;
+        height: 90vh;
+        margin-top: 300px;
     }
 }
 

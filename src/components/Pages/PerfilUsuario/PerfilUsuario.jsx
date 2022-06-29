@@ -7,6 +7,8 @@ import { ModalProducto } from '../../UI/ModalProducto/ModalProducto'
 import { MisPedidos } from '../../UI/MisPedidos/MisPedidos'
 import { CambiarConstrasena } from '../../UI/CambiarContrasena/CambiarConstrasena'
 import { Logout } from '../../helpers/logout/Logout'
+import { Modal } from '../../UI/Modal/Modal';
+
 
 export const PerfilUsuario = () => {
 
@@ -14,12 +16,13 @@ export const PerfilUsuario = () => {
     const [mostrarEdit, setMostrarEdit] = useState(true)
     const [mostrarEdit2, setMostrarEdit2] = useState(false)
     const [mostrarEdit3, setMostrarEdit3] = useState(false)
-    console.log(mostrarEdit2);
     let setearImg
     let colorModal="#fff"
+    let texto
     const [usuario, setUsuario] = useState({})
     const [ejecutar, setEjecutar] = useState(false)
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
+    const [estadoModalEmail2, cambiarEstadoModalEmail2] = useState(false)
     let confirmar = Boolean
 
     const perfilStyle = {
@@ -54,20 +57,27 @@ export const PerfilUsuario = () => {
         data.append("file", setearImg)
         data.append("upload_preset", "ebanisteria")
         data.append("cloud_name","Ebanisteria")
-        fetch("  https://api.cloudinary.com/v1_1/Ebanisteria/image/upload",{
+        fetch("  https://api.cloudinary.com/v1_1/Ebanisteria/image/uploa",{
         method:"post",
         body: data
         })
         .then(resp => resp.json())
         .then(data => {
             let imagen= data.url
+            console.log(imagen);
             setUsuario({
                 ...usuario,
                 image: imagen
             })
-            setEjecutar(true)
+            if(usuario){
+                setEjecutar(true)
+            }
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            texto="No se ha podido cambiar la imagen"
+            console.log(err)
+            cambiarEstadoModalEmail2(!estadoModalEmail2)
+        })
         
     }
 
@@ -78,7 +88,6 @@ export const PerfilUsuario = () => {
             let endpoint = url+usuario.id+'/'
             await axios.put(endpoint, usuario)
             .then((res) => {
-                
                 setEjecutar(false)
                 window.location.reload()
             })
@@ -140,6 +149,13 @@ export const PerfilUsuario = () => {
 
     return (
         <section className='perfil-usuario'>
+                <Modal
+                    estado={estadoModalEmail2}
+                    cambiarEstado={cambiarEstadoModalEmail2}
+                    color={"#FF5733"}
+                >
+                    <p>{texto}</p>
+                </Modal>
             <ModalProducto
                 estado={estadoModalEmail}
                 cambiarEstado={cambiarEstadoModalEmail}
@@ -201,7 +217,7 @@ export const PerfilUsuario = () => {
                         <h2>EDITAR MI PERFIL</h2>
                             <EditarPerfilUsuario/>
                         </div>
-                    : console.log("cambia")
+                    : ""
                     }
                     {mostrarEdit2 === true
                     ?   <div className="boxMisPedidos">

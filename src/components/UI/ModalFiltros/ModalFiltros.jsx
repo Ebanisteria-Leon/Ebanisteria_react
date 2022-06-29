@@ -3,9 +3,6 @@ import React from 'react'
 import { Imagen } from '../Imagen/Imagen';
 
 export const ModalFiltros = ({url, titulo}) => {
-    if(!url === undefined){
-        console.log(url.length);
-    }
     const cerrarEditor = () =>{
         const overlay = document.querySelector('.overlayFiltro')
         const container = document.querySelector('.modalFiltro')

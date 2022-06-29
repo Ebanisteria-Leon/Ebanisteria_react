@@ -20,6 +20,7 @@ export const Category = () => {
         let valorBusqueda = e.target.value
         axios.get("https://leon-ebanisteria.herokuapp.com/api/producto/?search=" + valorBusqueda)
         .then((data) => {
+            console.log(data);
             dispatch({
                 type: actionTypes.BUSCADOR,
                 data: data.data,
