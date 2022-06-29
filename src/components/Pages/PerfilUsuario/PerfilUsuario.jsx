@@ -18,7 +18,7 @@ export const PerfilUsuario = () => {
     const [mostrarEdit3, setMostrarEdit3] = useState(false)
     let setearImg
     let colorModal="#fff"
-    let texto
+    const [texto, setTexto] = useState("")
     const [usuario, setUsuario] = useState({})
     const [ejecutar, setEjecutar] = useState(false)
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
@@ -57,7 +57,7 @@ export const PerfilUsuario = () => {
         data.append("file", setearImg)
         data.append("upload_preset", "ebanisteria")
         data.append("cloud_name","Ebanisteria")
-        fetch("  https://api.cloudinary.com/v1_1/Ebanisteria/image/uploa",{
+        fetch("  https://api.cloudinary.com/v1_1/Ebanisteria/image/upload",{
         method:"post",
         body: data
         })
@@ -74,7 +74,7 @@ export const PerfilUsuario = () => {
             }
         })
         .catch(err => {
-            texto="No se ha podido cambiar la imagen"
+            setTexto("No se ha podido cambiar la imagen")
             console.log(err)
             cambiarEstadoModalEmail2(!estadoModalEmail2)
         })
