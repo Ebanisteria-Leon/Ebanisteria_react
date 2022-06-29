@@ -34,7 +34,6 @@ export const EditarPerfilUsuario = () => {
         ...usuario,
         [e.target.name]: e.target.value
         })
-        console.log(usuario);
     }
 
     const updateUser = async () =>{

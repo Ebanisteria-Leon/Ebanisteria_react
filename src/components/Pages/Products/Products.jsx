@@ -71,8 +71,6 @@ export const Products = () => {
             const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/?ordering=-idProducto")
             const responseJSON = await response.json()
             setTodos(responseJSON)
-        }else{
-            console.log("hola");
         }
         
     }
@@ -86,14 +84,12 @@ export const Products = () => {
     }
 
     const obtenerCategoria=async(categoria)=>{
-        console.log(categoria);
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/?search=" + categoria)
         const responseJSON = await response.json()
         setTodos(responseJSON)
     }
 
     const capturarCategoria = (e) =>{
-        console.log(e.target.textContent);
         let categoriaBoton= e.target.textContent
         setTituCategoria(categoriaBoton)
         obtenerCategoria(categoriaBoton)
@@ -101,7 +97,6 @@ export const Products = () => {
 
     useEffect(()=>{
         buscador2= JSON.parse(localStorage.getItem('buscador'))
-        console.log(buscador2);
         if(buscador2===null || buscador2===undefined || buscador2.length===0){
 
         }else{

@@ -85,7 +85,7 @@ export const ProductCardPromo = ({productos : {idProducto, valorDescuento, produ
                         <span>{producto.nombre}</span>
                     </div>
                     <a href='#' className='producto-titulo'>
-                        {fechaInicio}
+                        {fechaFinalizacion}
                     </a>
                     <div className='precio'>
                         <div className="conjuntoPrecio">

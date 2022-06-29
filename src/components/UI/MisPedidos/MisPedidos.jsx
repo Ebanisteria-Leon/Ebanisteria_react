@@ -58,7 +58,6 @@ export const MisPedidos = () => {
     }
 
     const actualizarPedido = () =>{
-        console.log(form2);
         cambiarEstadoModalEmail(!estadoModalEmail) 
         if(confirmar === true){
             let endpoint = url+form2.idPedidosPendientes+'/'
