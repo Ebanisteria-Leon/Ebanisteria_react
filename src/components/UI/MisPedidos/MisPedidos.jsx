@@ -97,6 +97,7 @@ export const MisPedidos = () => {
                                 <th>Productos</th>
                                 <th>Estado</th>
                                 <th>Fecha</th>
+                                <th>Total</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -124,6 +125,10 @@ export const MisPedidos = () => {
                                                                 <div className="descripcion2">
                                                                     <p>{index.nombre}</p>
                                                                     <p>{accounting.formatMoney(index.valor, "$")}</p>
+                                                                    {index.estadoPromocion === "ENP"
+                                                                    ?<p>Producto en promoción</p>
+                                                                    :""
+                                                                    }
                                                                 </div>
                                                             </div>
                                                         </>
@@ -142,6 +147,14 @@ export const MisPedidos = () => {
                                         <td>
                                             <div className="boxFechaPedido">
                                                 <p>{pedido.fechaPedido}</p>
+                                                
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div className="boxFechaPedido">
+                                                <>
+                                                    <p>{accounting.formatMoney((pedido.idProducto.reduce((amount, item) => amount + item.valor * 1, 0)), "$")}</p>
+                                                </>
                                                 
                                             </div>
                                         </td>

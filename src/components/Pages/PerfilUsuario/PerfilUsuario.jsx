@@ -82,6 +82,7 @@ export const PerfilUsuario = () => {
     }
 
     const putImage = async () =>{
+        console.log(usuario);
         cambiarEstadoModalEmail(!estadoModalEmail)
         if (confirmar === true) {
             let url = "https://leon-ebanisteria.herokuapp.com/users/usuario/"

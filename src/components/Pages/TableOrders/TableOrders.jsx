@@ -29,7 +29,7 @@ export const TableOrders = () => {
                     <table className='table-orders'>
                         <thead>
                             <tr>
-                                <th scope='col'>Inactivo</th>
+                                <th scope='col'>Cancelado</th>
                             </tr>
                         </thead>
                             {!pedido ? "No existen pedidos" :
@@ -72,7 +72,7 @@ export const TableOrders = () => {
                     <table className='table-orders'>
                         <thead>
                             <tr>
-                                <th scope='col'>Por entregar</th>
+                                <th scope='col'>Entregado</th>
                             </tr>
                         </thead>
                             {!pedido ? "No existen pedidos" :
