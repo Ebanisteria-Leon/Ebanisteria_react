@@ -76,14 +76,14 @@ export const Category = () => {
                     <div className='cardCategory image5'>
                         <div className='contentCard'>
                             <h2 className='nameCategory'>Salas exteriores</h2>
-                            <button className='linkCategory' value="salas exteriores" onClick={(e)=>mandarCategoria(e)}>Ver mas!</button>
+                            <button className='linkCategory' value="sala exterior" onClick={(e)=>mandarCategoria(e)}>Ver mas!</button>
                         </div>
                     </div>
 
                     <div className='cardCategory image6'>
                         <div className='contentCard'>
-                            <h2 className='nameCategory'>Bibliotecas</h2>
-                            <button className='linkCategory' value="bibliotecas" onClick={(e)=>mandarCategoria(e)}>Ver mas!</button>
+                            <h2 className='nameCategory'>Biblioteca</h2>
+                            <button className='linkCategory' value="biblioteca" onClick={(e)=>mandarCategoria(e)}>Ver mas!</button>
                         </div>
                     </div>
 

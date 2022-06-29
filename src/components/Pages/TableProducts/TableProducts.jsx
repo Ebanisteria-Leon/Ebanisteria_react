@@ -391,7 +391,12 @@ useEffect(()=>{
 },[])
 
 useEffect(() => {
-    setProductos(buscador)
+    if(buscador===null || buscador===undefined || buscador.length===0){
+
+    }else{
+        setProductos(buscador)
+        setPagina(1)
+    }
 }, [buscador])
 
 useEffect(()=>{
@@ -644,8 +649,9 @@ useEffect(()=>{
                                 </tr>
                             </thead>
                             <tbody>
-                            {productos &&
-                            productos
+                            {productos===undefined || productos===null || productos.length===0
+                            ?"no hay"
+                            :productos
                             .slice(
                             (pagina - 1) * porPagina, 
                             (pagina - 1) * porPagina + porPagina)
@@ -715,7 +721,6 @@ useEffect(()=>{
                                     </td>
                                 </tr>
                                 </>
-                            
                             )
                         })}
                         </tbody>

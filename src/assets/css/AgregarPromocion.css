@@ -90,3 +90,24 @@
 .formPromo .txt_field2 input[type="date"]:focus {
     color: rgb(0, 0, 0);
 }
+
+.divbtn_agregar3{
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    height: 60%;
+    margin-top: 10px;
+}
+
+
+.btnAgregarPromo{
+    padding: 8px 14px;
+    border: none;
+    border-radius: 0.5em;
+    color: white;
+    background-color: #dfac48;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    width: 100%;
+    font-size: 16px;
+}

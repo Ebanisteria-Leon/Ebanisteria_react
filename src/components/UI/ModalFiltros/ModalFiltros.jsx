@@ -3,7 +3,9 @@ import React from 'react'
 import { Imagen } from '../Imagen/Imagen';
 
 export const ModalFiltros = ({url, titulo}) => {
-    console.log(url);
+    if(!url === undefined){
+        console.log(url.length);
+    }
     const cerrarEditor = () =>{
         const overlay = document.querySelector('.overlayFiltro')
         const container = document.querySelector('.modalFiltro')
@@ -35,7 +37,7 @@ export const ModalFiltros = ({url, titulo}) => {
                 </tr>
             </thead>
             
-            {url.length<=0 ? "No existen productos con este estado" :
+            {url===undefined || url===null || url.length===0? "No existen productos con este estado" :
             url.map((index,_)=>{
             return(
                 <tbody>

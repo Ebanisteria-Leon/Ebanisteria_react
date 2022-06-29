@@ -126,10 +126,14 @@ export const ContadorCarrito = () => {
 
     useEffect(() => {
         let boton= document.querySelector('.verificar')
-        if(rolUser===null || rolUser===undefined){
+        if(rolUser===null || rolUser===undefined || basket.length===0){
             boton.disabled=true
             boton.style.background="#7a7a7a"
             boton.style.cursor="default"
+        }else{
+            boton.disabled=false
+            boton.style.background="#CA9A2F"
+            boton.style.cursor="pointer"
         }
         setCantidad(
             basket.reduce((previus, current) => previus + current.quantity, 0)
@@ -175,7 +179,7 @@ export const ContadorCarrito = () => {
                     <NavLink to="/Productos-agregados">
                         <button className="Bver">Mi carrito</button>
                     </NavLink>
-                        <button className="botonTotal verificar" onClick={manejadorSubmit}>Verificar</button>
+                    <button className="botonTotal verificar" onClick={manejadorSubmit}>Verificar</button>
                 </div>
             </div>
 

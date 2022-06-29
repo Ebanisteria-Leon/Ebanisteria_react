@@ -61,21 +61,16 @@ export const Products = () => {
     const [tituCategoria, setTituCategoria] = useState("")
     const [pagina, setPagina] = useState(1)
     const [porPagina, setPorPagina] = useState(10)
-    const maximo = todos.length / porPagina
-    // let maximo
-    // if(!todos===null){
-    //     maximo = todos.length / porPagina
-    // }
+    let maximo = todos.length / porPagina
     let buscador2 = []
 
     const fetchApi=async()=>{
         setTituCategoria("")
 
-        if(!buscador2.length>0){
+        if(buscador2===null || buscador2===undefined || buscador2.length===0){
             const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/?ordering=-idProducto")
             const responseJSON = await response.json()
             setTodos(responseJSON)
-            console.log(responseJSON);
         }else{
             console.log("hola");
         }
@@ -96,7 +91,6 @@ export const Products = () => {
         const responseJSON = await response.json()
         setTodos(responseJSON)
     }
-    console.log(todos);
 
     const capturarCategoria = (e) =>{
         console.log(e.target.textContent);
@@ -106,16 +100,26 @@ export const Products = () => {
     }
 
     useEffect(()=>{
+        buscador2= JSON.parse(localStorage.getItem('buscador'))
+        console.log(buscador2);
+        if(buscador2===null || buscador2===undefined || buscador2.length===0){
+
+        }else{
+            setTodos(buscador2)
+            }
         fetchApi()
+        localStorage.clear()
     },[])
 
     useEffect(() => {
-        if(!buscador2.length===0){
-            buscador2= JSON.parse(localStorage.getItem('buscador'))
-            console.log(buscador2);
-            setTodos(buscador2)
+        if(buscador===null || buscador===undefined || buscador.length===0){
+
+        }else{
+            setTodos(buscador)
+            setPagina(1)
         }
-    }, [buscador2])
+    }, [buscador])
+    
 
     
 
@@ -186,8 +190,8 @@ export const Products = () => {
                     <Paginacion pagina={pagina} setPagina={setPagina} maximo={maximo}/>
                 </div>
                 <section className='section__products'>
-                        {!todos ? <ClipLoader color='#dcaa47'/> : ""}
-                        {todos.length===0 
+                        {todos===null || todos===undefined || todos.length===0 ? <ClipLoader color='#dcaa47'/> : ""}
+                        {todos===null || todos===undefined || todos.length===0 
                         ? (
                             <>
                                 

@@ -85,8 +85,8 @@ export const Promo = () => {
 
             <Slider {...settings}>
                 
-            {!todosPromo ? <ClipLoader color='#dcaa47'/> : ""}
-            {todosPromo.length===0 
+            {todosPromo===null || todosPromo===undefined || todosPromo.length===0 ? <ClipLoader color='#dcaa47'/> : ""}
+            {todosPromo===null || todosPromo===undefined || todosPromo.length===0 
             ?(
                 <>
                 <p className="parrafoNoHayPromo"><b>No existen productos en promoción</b></p>

@@ -21,6 +21,7 @@ export const ProductosAgregados = () => {
 
     const { mostrar_producto } = useViewModal()
     const [total, setTotal] = useState(0)
+    const [cantidad, setCantidad] = useState(0)
     const [{basket}, dispatch] = useStateValue()
     let idUsuario = localStorage.getItem("idUser")
     let nombreUsuario = localStorage.getItem("nombre")
@@ -117,11 +118,18 @@ export const ProductosAgregados = () => {
 
     useEffect(() => {
         let boton= document.querySelector('.verificar')
-        if(rolUser===null || rolUser===undefined){
+        if(rolUser===null || rolUser===undefined || basket.length===0){
             boton.disabled=true
             boton.style.background="#7a7a7a"
             boton.style.cursor="default"
+        }else{
+            boton.disabled=false
+            boton.style.background="#CA9A2F"
+            boton.style.cursor="pointer"
         }
+        setCantidad(
+            basket.reduce((previus, current) => previus + current.quantity, 0)
+        )
         setTotal(
             basket.reduce((amount, item) => amount + item.valor * item.quantity, 0)
         )
@@ -196,7 +204,7 @@ export const ProductosAgregados = () => {
                     </section>
                     <div className="cart-pago">
                         <h2>Detalles de compra</h2>
-                        <Total precioTotal={total} pTotal={basket?.length}/>
+                        <Total precioTotal={total} pTotal={cantidad}/>
                         <button className="botonTotal verificar" onClick={manejadorSubmit}>Verificar</button>
                         {rolUser===null &&
                             <p className='parrafoAdvertencia'>Regístrate para realizar el pedido</p>

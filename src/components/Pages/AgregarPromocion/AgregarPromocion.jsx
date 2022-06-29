@@ -193,8 +193,8 @@ export const AgregarPromocion = () => {
                     </div>
 
                     <div className='divbtn_agregar22'>
-                        <div className='divbtn_agregar'>
-                            <button className='btnSubmit'>Agregar</button>
+                        <div className='divbtn_agregar3 '>
+                            <button className='btnAgregarPromo'>Agregar Promoción</button>
                         </div>
                     </div>
                 </form>

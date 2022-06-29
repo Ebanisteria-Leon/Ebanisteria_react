@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import '../../../assets/css/RecoverPass.css'
 import aos from 'aos'
@@ -11,11 +11,21 @@ import Logo from '../../../assets/images/logo/logoSolo.png'
 import { Imagen } from '../../UI/Imagen/Imagen'
 
 export const RecoverPass = () => {
+
+    const [email, setEmail] = useState(null)
+    let valorInput
+
     useEffect(() => {
         aos.init({
             duration: 1000,
         })
     }, [])
+
+    const handleResetPassword = async (e) =>{
+        e.preventDefault()
+        valorInput = document.getElementById('correoReset').value
+        
+    }
 
     return (
         <div className='mainRecover'>
@@ -35,16 +45,17 @@ export const RecoverPass = () => {
                             <div className='txt_field'>
                                 <input
                                     type='email'
-                                    id='passwordC'
+                                    id='correoReset'
                                     required
+                                    onChange={(e)=> setEmail(e.target.value)}
                                 />
-                                <label className='labelForm' for='passwordC'>
+                                <label className='labelForm' for='correoReset'>
                                     Correo electrónico
                                 </label>
                                 <span></span>
                             </div>
                             <div className='divbtn'>
-                                <button className='btnSubmit'>
+                                <button className='btnSubmit' onClick={handleResetPassword}>
                                     Recuperar Contraseña
                                 </button>
                             </div>

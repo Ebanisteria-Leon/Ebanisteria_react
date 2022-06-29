@@ -33,6 +33,7 @@ export const Login = () => {
         })
     }, [])
 
+
     const manejadorSubmit = (e) => {
         e.preventDefault()
     }
@@ -100,6 +101,10 @@ export const Login = () => {
                     errorMsg: 'las credenciales son incorrectas',
                 })
             })
+    }
+
+    const handleGoogleLogin = () =>{
+
     }
 
     return (

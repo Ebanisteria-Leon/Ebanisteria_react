@@ -40,17 +40,21 @@ import { TablePromociones } from './components/Pages/TablePromociones/TablePromo
 function App() {
 
     return (
+        
+        
         <div className='App'>
+            
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/Products' element={<Products />} />
                     <Route path='/Category' element={<Category />} />
 
-                    <Route element={PrivateLogin()}>
-                        <Route exact path='/Register' element={<Register />} />
-                        <Route exact path='/Login' element={<Login />} />
-                    </Route>
+                    
+                        <Route element={PrivateLogin()}>
+                            <Route exact path='/Register' element={<Register />} />
+                            <Route exact path='/Login' element={<Login />} />
+                        </Route>
 
                     <Route path='/RecoverPass' element={<RecoverPass />} />
                     <Route path='/Contactanos' element={<Email />} />
@@ -103,6 +107,8 @@ function App() {
                     />
                     <Route path='*' element={<PageNot />} />
                 </Routes>
+                
+            
             </BrowserRouter>
         </div>
     )

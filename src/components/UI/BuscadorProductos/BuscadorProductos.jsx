@@ -17,6 +17,7 @@ export const BuscadorProductos = () => {
                 data: data.data,
             })
         })
+        console.log(buscador);
     }
 
     return (
