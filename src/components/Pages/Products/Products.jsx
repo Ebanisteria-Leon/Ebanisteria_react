@@ -103,7 +103,7 @@ export const Products = () => {
             setTodos(buscador2)
             }
         fetchApi()
-        localStorage.clear()
+        localStorage.removeItem('buscador')
     },[])
 
     useEffect(() => {
