@@ -70,6 +70,8 @@ export const TableRol = () => {
             .then((res) => {
                 console.log(res);
                 window.location.reload()
+                const rol = usuarioListo.rolUser
+                localStorage.setItem('rolUser', rol)
             })
         }
     }
@@ -103,9 +105,20 @@ export const TableRol = () => {
             <ModalProducto
                 estado={estadoModalEmail}
                 cambiarEstado={cambiarEstadoModalEmail}
-                color={colorModal}>
-                <p>Este usuario se volverá <b>ADMIN</b>, continuar?</p>
-                <button className='aceptar' onClick={cambiarEstado}><i className="fa-solid fa-check"> Aceptar</i></button>
+                color={colorModal}
+            >
+                {usuarioSolo.rolUser === 'Admin' ? (
+                    <p>
+                        Este usuario se volverá <b>ADMIN</b>, continuar?
+                    </p>
+                ) : (
+                    <p>
+                        Este usuario se volverá <b>Cliente</b>, continuar?
+                    </p>
+                )}
+                <button className='aceptar' onClick={cambiarEstado}>
+                    <i className='fa-solid fa-check'> Aceptar</i>
+                </button>
             </ModalProducto>
             <div className='mainTable-assingRol'>
                 <h3 className='title-table-assingRol'>ASIGNAR ROL</h3>
@@ -114,9 +127,7 @@ export const TableRol = () => {
                     <table className='table-assingRol'>
                         <thead>
                             <tr>
-                                <th scope='col'>
-                                    Código trabajador
-                                </th>
+                                <th scope='col'>Código trabajador</th>
                                 <th scope='col'>
                                     Listado de trabajadores de producción
                                 </th>
@@ -126,21 +137,30 @@ export const TableRol = () => {
                         </thead>
 
                         {/* Cuerpo de la tabla, coff la info de los productos */}
-                        {!usuario ? "No existen usuarios "
-                        :usuario.map((index,_)=>{
-                            return(
-                                <>
-                                    <tbody>
-                                        <tr>
-                                            <td>{index.id}</td>
-                                            <td>{index.name}</td>
-                                            <td>{index.rolUser}</td>
-                                            <td>
-                                                <label className='lbl'>
-                                                    <button className='botonCambiarRol' title="Producto destacado / No destacado" onClick={()=>cambiarEstadoPedido(index)}>
-                                                    Cambiar Rol
-                                                    </button>
-                                                    {/* <input
+                        {!usuario
+                            ? 'No existen usuarios '
+                            : usuario.map((index, _) => {
+                                  return (
+                                      <>
+                                          <tbody>
+                                              <tr>
+                                                  <td>{index.id}</td>
+                                                  <td>{index.name}</td>
+                                                  <td>{index.rolUser}</td>
+                                                  <td>
+                                                      <label className='lbl'>
+                                                          <button
+                                                              className='botonCambiarRol'
+                                                              title='Producto destacado / No destacado'
+                                                              onClick={() =>
+                                                                  cambiarEstadoPedido(
+                                                                      index
+                                                                  )
+                                                              }
+                                                          >
+                                                              Cambiar Rol
+                                                          </button>
+                                                          {/* <input
                                                         type='checkbox'
                                                         className='switch'
                                                     />
@@ -148,14 +168,13 @@ export const TableRol = () => {
                                                         <i className='fas fa-check on'></i>
                                                         <i className='fas fa-times off'></i>
                                                     </span> */}
-                                                </label>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </>
-                            )
-                        })
-                        }
+                                                      </label>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </>
+                                  )
+                              })}
                     </table>
                 </section>
             </div>

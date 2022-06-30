@@ -97,7 +97,6 @@ export const Promo = () => {
                 productos.idProducto.map((index,_)=>descuento = (index.valor*productos.valorDescuento)/100)
                 return(
                     <>
-                        
                         <ProductCardPromo key={key}  productos={productos} descuento={descuento}/>
                     </>
                 )

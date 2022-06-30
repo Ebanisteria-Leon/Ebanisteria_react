@@ -83,6 +83,11 @@ export const ProductCardPromo = ({productos : {idProducto, valorDescuento, produ
                 <div className='p-box-text'>
                     <div className='producto-categoria'>
                         <span>{producto.nombre}</span>
+                        {estadoPromocion==="INA"
+                        && <div className="noDisponibleP">
+                            <p>Proximamente disponible</p>
+                        </div>
+                        }
                     </div>
                     <a href='#' className='producto-titulo'>
                         {fechaFinalizacion}
@@ -92,12 +97,15 @@ export const ProductCardPromo = ({productos : {idProducto, valorDescuento, produ
                         <span className='p-precioActual'>{accounting.formatMoney(producto.valor, "$")}</span><br />
                         <span className='p-precio'>{accounting.formatMoney((producto.valor-descuento), "$")}</span>
                         </div>
-                        <button
+                        {estadoPromocion==="INA"
+                        ?""
+                        :<button
                             className='buy-btn'
                             onClick={addToCar}
-                        >
-                            Añadir al carrito
+                        >Añadir al carrito
                         </button>
+                        }
+                            
                     </div>
                 </div>
             </div>

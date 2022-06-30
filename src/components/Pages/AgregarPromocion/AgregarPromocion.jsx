@@ -119,7 +119,7 @@ export const AgregarPromocion = () => {
                 estado={estadoModalEmail}
                 cambiarEstado={cambiarEstadoModalEmail}
                 color={colorModal}>
-                <p>Quieres confirmar tu pedido?</p>
+                <p>Quieres agregar esta promoción?</p>
                 <button className='aceptar' onClick={cambiarEstado}><i className="fa-solid fa-check"> Aceptar</i></button>
             </ModalProducto>
             <div className='titulo_agregar'>
