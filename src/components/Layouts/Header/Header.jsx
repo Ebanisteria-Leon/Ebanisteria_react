@@ -71,7 +71,7 @@ export const Header = () => {
                             <>
                                 <li>
                                     <NavLink to='/Login'>
-                                        Iniciar sesion
+                                        Iniciar sesión
                                     </NavLink>
                                 </li>
                                 <li>
