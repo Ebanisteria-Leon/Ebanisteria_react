@@ -69,17 +69,17 @@ export const Footer = () => {
                     </li>
                     <div className='contenedor_redes-footer'>
                         <li>
-                            <a href='#'>
+                            <a href='https://www.instagram.com/ebanisterialeon/'>
                             <i className="fa-brands fa-instagram"></i> Instagram
                             </a>
                         </li>
                         <li>
-                            <a href='#'>
+                            <a href='https://web.facebook.com/profile.php?id=100082539743285'>
                                 <i className='fab fa-facebook'></i> Facebook
                             </a>
                         </li>
                         <li>
-                            <a href='#'>
+                            <a href='https://wa.me/+573168839000'>
                                 <i className='fab fa-whatsapp'></i> Whatsapp
                             </a>
                         </li>

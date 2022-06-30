@@ -77,7 +77,6 @@ export const DescriptionProducts = ({ id, click}) => {
                         <div className='productsInfo'>
                             <div className='productsInfo_name'>
                                 <h2>{dataId.nombre}</h2>
-                                <h3>{dataId.fechaInicio}</h3>
                             </div>
 
                             <div className='productsInfo_description'>

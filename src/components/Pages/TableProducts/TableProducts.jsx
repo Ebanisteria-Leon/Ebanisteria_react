@@ -608,41 +608,6 @@ export const TableProducts = () => {
                             <span></span>
                         </div>
 
-                        <div className='txt_field'>
-                            <input
-                                type='date'
-                                id='fechaInicio'
-                                name='fechaInicio'
-                                value={form2.fechaInicio}
-                                required
-                                onChange={handleChange}
-                            />
-                            <label className='labelForm' for='fechaInicio'>
-                                {' '}
-                                Fecha de inicio
-                            </label>
-                            <span></span>
-                        </div>
-
-                        <div className='txt_field'>
-                            <input
-                                type='date'
-                                id='fechaFinalizacion'
-                                name='fechaFinalizacion'
-                                value={form2.fechaFinalizacion}
-                                required
-                                onChange={handleChange}
-                            />
-                            <label
-                                className='labelForm'
-                                for='fechaFinalizacion'
-                            >
-                                {' '}
-                                Fecha de finalización
-                            </label>
-                            <span></span>
-                        </div>
-
                         <div className='select_agregar'>
                             <select
                                 id='selectCategoria'

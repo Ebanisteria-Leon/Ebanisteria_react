@@ -237,18 +237,6 @@ export const AgregarProducto = () => {
             <span></span>
           </div>
 
-          <div className="txt_field">
-            <input type="date" id="fechaInicio" name="fechaInicio" value={form.fechaInicio} required onChange={handleChange}/>
-            <label className="labelForm" for="fechaInicio"> Fecha de inicio</label>
-            <span></span>
-          </div>
-
-          <div className="txt_field">
-            <input type="date" id="fechaInicio" name="fechaFinalizacion" value={form.fechaFinalizacion} required onChange={handleChange}/>
-            <label className="labelForm" for="fechaInicio"> Fecha de finalización</label>
-            <span></span>
-          </div>
-
           <div className="select_agregar">
             <select id="selectCategoria" onChange={handleChange}>
               <option value="">Categorías</option>

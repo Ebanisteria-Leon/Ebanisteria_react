@@ -204,6 +204,19 @@ footer {
       width: 70%;
       overflow: hidden;
     }
+    .accesosRedes{
+      width: 100%;
+      height: 20%;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+
+    .accesosRedes .red{
+      width: 4%;
+      height: 90%;
+    }
   }
 
   @media (max-width: 400px) {
