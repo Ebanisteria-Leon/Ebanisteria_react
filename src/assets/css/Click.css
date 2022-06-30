@@ -109,11 +109,16 @@
 @media (max-width: 500px) {
     .clicks{
         margin-top: 0;
-        margin-bottom: 100px;
+        margin-bottom: 50px;
         align-items: center;
+        flex-direction: column;
+        justify-content: space-evenly;
     }
     .contenedor_clicks{
-        margin-top: 70px;
+        width: 90%;
+    }
+    .contenedor_clicks2{
+        width: 90%;
     }
     .logo_click{
         width: 30%;
@@ -121,5 +126,16 @@
     .contenedor_clicks p{
         font-size: 20px;
         font-weight: bold;
+    }
+    .accesosRedes{
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .accesosRedes .red{
+        width: 8%;
+        height: 90%;
     }
 }
