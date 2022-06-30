@@ -16,9 +16,27 @@ export const Category = () => {
     const buscadorLocal2=JSON.parse(buscadorLocal)
 
     const mandarCategoria = (e) =>{
-        // localStorage.clear()
+        console.log(e.target);
         let valorBusqueda = e.target.value
         axios.get("https://leon-ebanisteria.herokuapp.com/api/producto/?search=" + valorBusqueda)
+        .then((data) => {
+            console.log(data);
+            dispatch({
+                type: actionTypes.BUSCADOR,
+                data: data.data,
+            })
+        })
+    }
+    
+    const mandarCategoria2 = (e) =>{
+        console.log(e);
+        let url
+        if(e==="NUE"){
+            url="https://leon-ebanisteria.herokuapp.com/api/producto/?tiempoProducto="
+        }else if(e==="NDE" || e==="DE"){
+            url="https://leon-ebanisteria.herokuapp.com/api/producto/?destacado="
+        }
+        axios.get(url + e)
         .then((data) => {
             console.log(data);
             dispatch({
@@ -126,10 +144,10 @@ export const Category = () => {
 
                 <section className='section__links'>
                     <ul className='linksProducts'>
-                        <li><NavLink to='/Products'>Productos</NavLink></li>
-                        <li><NavLink to='/Products'>Productos Nuevos</NavLink></li>
-                        <li><NavLink to='/Products'>Productos No Destacados</NavLink></li>
-                        <li><NavLink to='/Products'>Productos Destacados</NavLink></li>
+                        <li><NavLink to='/Products' >Productos</NavLink></li>
+                        <li className="accesosCategoria" onClick={()=>mandarCategoria2("NUE")}>Productos Nuevos</li>
+                        <li className="accesosCategoria" onClick={()=>mandarCategoria2("NDE")}>Productos No Destacados</li>
+                        <li className="accesosCategoria" onClick={()=>mandarCategoria2("DE")}>Productos Destacados</li>
                     </ul>
                 </section>
 

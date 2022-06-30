@@ -21,9 +21,11 @@ export const ContadorCarrito = () => {
     let colorModal ="#fff"
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
     const [{basket}, dispatch] = useStateValue()
+    console.log(basket);
     const [mostrar, setMostrar] = useState(true)
     const [cantidad, setCantidad] = useState(0)
     const [total, setTotal] = useState(0)
+    const [promo, setPromo] = useState([])
     const [form, setForm] = useState({
         fechaPedido: "",
         estadoPedido: "PE",

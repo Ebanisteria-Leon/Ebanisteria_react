@@ -35,6 +35,7 @@ export const ProductCardPromo = ({productos : {idProducto, valorDescuento, produ
                 imagen:producto.imagen,
                 valor:producto.valor-descuento,
                 calificacion:producto.calificacion,
+                estadoPromocion: producto.estadoPromocion,
                 quantity:1
             },
         })

@@ -167,6 +167,21 @@
     text-decoration: underline;
 }
 
+.linksProducts li{
+    color: #252525;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.35s;
+    cursor: pointer;
+}
+
+.linksProducts li:hover{
+    font-size: 21px;
+    color: #000;
+    text-decoration: underline;
+}
+
 
 @media (max-width: 768px) {
     .linksProducts li{
