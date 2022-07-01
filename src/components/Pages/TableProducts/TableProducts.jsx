@@ -253,8 +253,8 @@ export const TableProducts = () => {
 
     const deleteData = (data) => {
         Swal.fire({
-            title: 'Eliminar producto?',
-            text: 'Desea eliminar este producto',
+            title: 'Eliminar exhibición?',
+            text: 'Desea eliminar este producto en exhibición?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
@@ -433,7 +433,7 @@ export const TableProducts = () => {
                         </button>
                     </div>
                     <div className='tituEditar'>
-                        <h2>EDITAR PRODUCTO</h2>
+                        <h2>EDITAR EXHIBICIÓN DEL PRODUCTO</h2>
                     </div>
                     <form className='formAgregar2' onSubmit={handleSubmit}>
                         <div className='txt_field'>
@@ -750,16 +750,16 @@ export const TableProducts = () => {
                             <span></span>
                         </div>
 
-                        <div className='divbtn_agregar2'>
+                        <div className='divbtn_agregar22 botonPromocion'>
                             <div className='divbtn_agregar'>
-                                <button className='btnSubmit'>Modificar</button>
+                                <button className='btnSubmit'>Promocionar</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
             <div className='mainTable-products'>
-                <h3 className='title-table-products'>PRODUCTOS</h3>
+                <h3 className='title-table-products'>PRODUCTOS EN EXHIBICIÓN</h3>
                 <SideBar
                     url={
                         'https://leon-ebanisteria.herokuapp.com/api/producto/?search='

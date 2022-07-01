@@ -197,6 +197,10 @@
   .recuperar a{
     font-size: 13px;
   }
+  .ojoPassword{
+    right: 5px;
+    bottom: 25px;
+  }
 }
 
 @media(max-width: 1024px){

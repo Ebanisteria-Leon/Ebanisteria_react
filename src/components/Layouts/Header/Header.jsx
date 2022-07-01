@@ -32,9 +32,11 @@ export const Header = () => {
                                             {usuario.username}
                                         </h3>
                                     </div>
+                                    <div className="imgUser">
                                     <NavLink to='/PerfilUsuario' className="access">
                                         <img src={usuario.image} alt="" />
                                     </NavLink>
+                                    </div>
                                 </li>
                             </ul>
                         </div>

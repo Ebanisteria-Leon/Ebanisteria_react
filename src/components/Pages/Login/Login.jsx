@@ -46,6 +46,7 @@ export const Login = () => {
             },
             
         })
+        console.log(state.form);
     }
 
     let history = useNavigate()
@@ -165,8 +166,8 @@ export const Login = () => {
                                     Contraseña
                                 </label>
                                 {activa1===false 
-                                    ?<i onClick={mostrarContrasena} className="fa-solid fa-eye ojoPassword"></i>
-                                    :<i onClick={mostrarContrasena} class="fa-solid fa-eye-slash ojoPassword"></i>
+                                    ?<i onClick={mostrarContrasena} className="fa-solid fa-eye  ojoPassword2"></i>
+                                    :<i onClick={mostrarContrasena} class="fa-solid fa-eye-slash  ojoPassword2"></i>
                                 }
                                 <span></span>
                             </div>

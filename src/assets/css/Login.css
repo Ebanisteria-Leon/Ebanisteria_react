@@ -212,6 +212,15 @@
   .recuperar a{
     font-size: 13px;
   }
+  .ojoPassword2{
+    position: absolute;
+    border: none;
+    background: transparent;
+    right: 10px;
+    bottom: 15px;
+    font-size: 15px;
+    cursor: pointer;
+  }
 }
 
 @media (max-width: 1200px) {

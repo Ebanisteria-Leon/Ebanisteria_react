@@ -47,7 +47,7 @@ export const Galeria = () => {
                 </div>
             </div>
             <div className='titulo_galeria'>
-                <h2>GALERIA DE PRODUCTOS</h2>
+                <h2>GALERÍA</h2>
             </div>
             <section className='galeria'>
                 <div className='columna'>

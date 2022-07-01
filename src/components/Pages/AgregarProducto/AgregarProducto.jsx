@@ -160,7 +160,7 @@ export const AgregarProducto = () => {
         <p>Ha ocurrido un error al momento de agregar un producto</p>
       </Modal>
       <div className="titulo_agregar">
-        <h2>AGREGAR PRODUCTO</h2>
+        <h2>AGREGAR EXHIBICIÓN</h2>
       </div>
 
       <SideBar />
