@@ -62,7 +62,6 @@ export const CambiarConstrasena = () => {
             .post(url, state.form)
             .then((response) => {
                 if (response.status === 200) {
-                    console.log(response);
                     // form.style.visibility="hidden"
                     // form.style.opacity="0"
                     form2.style.visibility="visible"
@@ -71,7 +70,6 @@ export const CambiarConstrasena = () => {
                 }
             })
             .catch((error) => {
-                console.log(error)
                 cambiarEstadoModalEmail(!estadoModalEmail)
                 const inputContrasena = document.getElementById('password')
 

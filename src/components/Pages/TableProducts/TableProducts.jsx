@@ -161,7 +161,6 @@ export const TableProducts = () => {
         await axios
             .post(url, formPromo)
             .then((res) => {
-                console.log(res)
                 cambiarEstadoPromocion()
             })
             .catch((err) => {
@@ -213,7 +212,6 @@ export const TableProducts = () => {
             'https://leon-ebanisteria.herokuapp.com/api/producto/' + producto
         )
         const responseJSON = await response.json()
-        console.log(response)
         setProductoSolo(responseJSON)
     }
 
@@ -234,7 +232,6 @@ export const TableProducts = () => {
         if (confirmar === true) {
             let endpoint = urlNormal + form2.idProducto + '/'
             await axios.put(endpoint, form2).then((res) => {
-                console.log(res)
                 cerrarEditor()
                 obtenerProductos()
             })
@@ -245,7 +242,6 @@ export const TableProducts = () => {
         let endpoint = urlNormal + form22.idProducto + '/'
         await axios.put(endpoint, form22).then((res) => {
             cambiarEstadoModalEmail2(!estadoModalEmail2)
-            console.log(res)
             cerrarPromocion()
             obtenerProductos()
         })
@@ -265,7 +261,6 @@ export const TableProducts = () => {
             if (result.isConfirmed) {
                 let endpoint = urlNormal + data.idProducto + '/'
                 axios.delete(endpoint).then((res) => {
-                    console.log(res)
                     obtenerProductos()
                 })
             }
@@ -376,7 +371,6 @@ export const TableProducts = () => {
         let day = fecha.getUTCDate() - 1
         let year = fecha.getUTCFullYear()
         let fechaCompleta = year + '-' + meses + '-' + day
-        console.log(fechaCompleta)
         fechaInicio = fechaCompleta
     }
 

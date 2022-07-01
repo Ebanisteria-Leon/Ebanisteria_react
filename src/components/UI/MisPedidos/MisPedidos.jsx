@@ -23,7 +23,6 @@ export const MisPedidos = () => {
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/detail/pedido/?idPersona__id="+ idUser + "&ordering=-idPedidosPendientes")
         // const response = await fetch("https://leon-ebanisteria.herokuapp.com/detail/pedido/?idPersona__id="+ idUser)         
         const responseJSON =await response.json()
-        console.log(response);
         setUsuario(responseJSON)
     }
 

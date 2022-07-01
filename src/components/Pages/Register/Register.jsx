@@ -57,7 +57,6 @@ export const Register = () => {
             .post(url, state.form)
             .then((response) => {
                 cambiarEstadoModalEmail(!estadoModalEmail)
-                console.log(response);
                 setState({
                     error: false,
                     errorMsg: response.data.message,

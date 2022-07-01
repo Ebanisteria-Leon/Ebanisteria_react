@@ -75,7 +75,6 @@ export const ProductosAgregados = () => {
             let url= "https://leon-ebanisteria.herokuapp.com/detail/pedido/"
             await axios.post(url, form)
             .then(res=>{
-                console.log(res);
                 generarPedido()
             })
             .catch(err=>{

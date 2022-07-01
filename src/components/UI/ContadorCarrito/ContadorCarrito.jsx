@@ -21,7 +21,6 @@ export const ContadorCarrito = () => {
     let colorModal ="#fff"
     const [estadoModalEmail, cambiarEstadoModalEmail] = useState(false)
     const [{basket}, dispatch] = useStateValue()
-    console.log(basket);
     const [mostrar, setMostrar] = useState(true)
     const [cantidad, setCantidad] = useState(0)
     const [total, setTotal] = useState(0)
@@ -101,7 +100,6 @@ export const ContadorCarrito = () => {
             let url= "https://leon-ebanisteria.herokuapp.com/detail/pedido/"
             await axios.post(url, form)
             .then(res=>{
-                console.log(res);
                 generarPedido()
             })
             .catch(err=>{

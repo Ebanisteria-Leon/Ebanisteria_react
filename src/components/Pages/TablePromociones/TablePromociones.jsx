@@ -203,7 +203,6 @@ const obtenerProductoSolo = async (producto)=>{
     })
     const response = await fetch("https://leon-ebanisteria.herokuapp.com/api/producto/" + productoCompleto)       
     const responseJSON =await response.json()
-    console.log(response);
     setProductoSolo(responseJSON)
 }
 

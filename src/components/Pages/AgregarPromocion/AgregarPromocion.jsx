@@ -66,7 +66,6 @@ export const AgregarPromocion = () => {
             let url= "https://leon-ebanisteria.herokuapp.com/api/promocion/"
             await axios.post(url, form)
             .then(res=>{
-                console.log(res);
                 cambiarEstadoPromocion()
             })
             .catch(err=>{

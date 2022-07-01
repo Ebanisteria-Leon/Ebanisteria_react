@@ -24,7 +24,6 @@ export const TableSalesDate = () => {
     const obtenerMiPedido=async()=>{
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/detail/pedido/" )
         const responseJSON =await response.json()
-        console.log(response);
         setPedido(responseJSON)
     }
 

@@ -16,11 +16,9 @@ export const Category = () => {
     const buscadorLocal2=JSON.parse(buscadorLocal)
 
     const mandarCategoria = (e) =>{
-        console.log(e.target);
         let valorBusqueda = e.target.value
         axios.get("https://leon-ebanisteria.herokuapp.com/api/producto/?search=" + valorBusqueda)
         .then((data) => {
-            console.log(data);
             dispatch({
                 type: actionTypes.BUSCADOR,
                 data: data.data,
@@ -29,7 +27,6 @@ export const Category = () => {
     }
     
     const mandarCategoria2 = (e) =>{
-        console.log(e);
         let url
         if(e==="NUE"){
             url="https://leon-ebanisteria.herokuapp.com/api/producto/?tiempoProducto="
@@ -38,7 +35,6 @@ export const Category = () => {
         }
         axios.get(url + e)
         .then((data) => {
-            console.log(data);
             dispatch({
                 type: actionTypes.BUSCADOR,
                 data: data.data,
@@ -47,7 +43,6 @@ export const Category = () => {
     }
 
     useEffect(() => {
-        console.log("hola");
         localStorage.setItem("buscador", JSON.stringify(buscador))
         if(buscador.length>0){
             window.location.href="/products"

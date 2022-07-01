@@ -46,7 +46,6 @@ export const Login = () => {
             },
             
         })
-        console.log(state.form);
     }
 
     let history = useNavigate()
@@ -57,7 +56,6 @@ export const Login = () => {
             .post(url, state.form)
             .then((response) => {
                 if (response.status === 200) {
-                    console.log(response);
                     const rol = response.data.user.rolUser
                     const username = response.data.user.username
                     const imagenU = response.data.user.image

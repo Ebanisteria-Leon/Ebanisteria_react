@@ -64,7 +64,6 @@ export const PerfilUsuario = () => {
         .then(resp => resp.json())
         .then(data => {
             let imagen= data.url
-            console.log(imagen);
             setUsuario({
                 ...usuario,
                 image: imagen
@@ -82,7 +81,6 @@ export const PerfilUsuario = () => {
     }
 
     const putImage = async () =>{
-        console.log(usuario);
         cambiarEstadoModalEmail(!estadoModalEmail)
         if (confirmar === true) {
             let url = "https://leon-ebanisteria.herokuapp.com/users/usuario/"

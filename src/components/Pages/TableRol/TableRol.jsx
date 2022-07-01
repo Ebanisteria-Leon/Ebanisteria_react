@@ -20,18 +20,15 @@ export const TableRol = () => {
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/users/usuario/")
         const responseJSON =await response.json()
         setUsuario(responseJSON)
-        console.log(responseJSON);
     }
 
     const obtenerUsuarioSolo = async () =>{
         const response = await fetch("https://leon-ebanisteria.herokuapp.com/users/usuario/"+idUsuario)
         const responseJSON =await response.json()
         setUsuarioSolo(responseJSON)
-        console.log(responseJSON);
     }
 
     const cambiarEstado = () =>{
-        console.log(usuarioSolo);
         confirmar= true
         updateData2(usuarioSolo)
     }
@@ -65,10 +62,8 @@ export const TableRol = () => {
         cambiarEstadoModalEmail(!estadoModalEmail) 
         if(confirmar === true){
             let endpoint = "https://leon-ebanisteria.herokuapp.com/users/usuario/"+usuarioListo.id+'/'
-            console.log(endpoint);
             await axios.put(endpoint, usuarioListo)
             .then((res) => {
-                console.log(res);
                 window.location.reload()
                 const rol = usuarioListo.rolUser
                 localStorage.setItem('rolUser', rol)
@@ -88,11 +83,9 @@ export const TableRol = () => {
     }, [idUsuario])
 
     useEffect(() => {
-        console.log(usuarioSolo.length);
         if(usuarioSolo.length===undefined){
             updateData2(usuarioSolo)
         }else{
-            console.log("holaaaaaaaaaa");
         }
     }, [usuarioSolo])
     
